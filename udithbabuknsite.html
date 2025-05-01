@@ -1,0 +1,1034 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udith Babu K N - Portfolio</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Results-driven IT graduate with an MBA in Operations Management and expertise in Agile methodologies (Scrum). Skilled in Python, MySQL, Figma, and data analysis. Passionate about delivering IT-driven solutions for operational excellence.">
+
+    <!-- Meta Keywords -->
+    <meta name="keywords" content="Business Analyst, IT Professional, Agile Scrum, Python Developer, MySQL, Figma">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://udithbabukn.github.io/udithbabukn-portfolio/">
+
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Udith Babu K N">
+    <meta property="og:description" content="Results-driven IT graduate with expertise in Agile methodologies, Python, MySQL, and Figma. Passionate about delivering IT-driven solutions for operational excellence.">
+    <meta property="og:image" content="https://udithbabukn.github.io/udithbabukn-portfolio/images/portfolio-thumbnail.jpg">
+    <meta property="og:url" content="https://udithbabukn.github.io/udithbabukn-portfolio/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Udith Babu K N">
+    <meta name="twitter:description" content="Results-driven IT graduate with expertise in Agile methodologies, Python, MySQL, and Figma. Passionate about delivering IT-driven solutions for operational excellence.">
+    <meta name="twitter:image" content="https://udithbabukn.github.io/udithbabukn-portfolio/images/portfolio-thumbnail.jpg">
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="8Oz6c3JNTIXXBvMxN6Er4-VOYIxwiFYjY19Pgpl7F_A" />
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Professional Black, Gray, White Color Scheme */
+            --primary-color: #333333;       /* Dark Gray (almost black) */
+            --secondary-color: #666666;     /* Medium Gray */
+            --accent-color: #4d4d4d;        /* Charcoal Gray for accents */
+            --text-color: #ffffff;          /* White */
+            --text-muted: #cccccc;          /* Light Gray */
+            --bg-color: #000000;            /* Black */
+            --bg-sidebar: #111111;          /* Very Dark Gray (near black) */
+            --bg-content: #000000;          /* Black */
+            --bg-card: #171717;             /* Dark Gray (slightly lighter) */
+            --border-color: rgba(204, 204, 204, 0.1);
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            /* Logo animation */
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            transition: width 0.6s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        /* Contact info */
+        .contact-info {
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            /* Adding subtle entrance animation */
+            animation: fadeSlideUp 0.6s ease-out;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item i {
+            width: 1.25rem;
+            color: #aaaaaa;
+            margin-right: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover i {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .contact-item a, .contact-item span {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+            /* Fix for long email addresses */
+            word-break: break-word;
+            overflow-wrap: break-word;
+            flex: 1;
+            font-size: 0.85rem;
+        }
+
+        .contact-item a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Social links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            color: var(--text-color);
+            transition: var(--transition);
+            text-decoration: none; /* Removing underline from social icons */
+            /* Add hover pulse effect */
+            position: relative;
+        }
+
+        .social-link:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Navigation */
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            width: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link:hover i {
+            transform: translateX(3px);
+        }
+
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            padding: 3rem 2rem;
+            background-color: var(--bg-content);
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .section-header {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #666666;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: #ffffff;
+            bottom: -2px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .section-header:hover::before {
+            width: 100%;
+        }
+
+        /* Content boxes */
+        .content-box {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-category li:hover {
+            transform: translateX(3px);
+        }
+
+        .skill-category li::before {
+            content: '•';
+            color: #aaaaaa;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Experience items */
+        .experience-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .experience-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .experience-date {
+            display: inline-block;
+            color: #aaaaaa;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+        }
+
+        .experience-item li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease;
+        }
+
+        .experience-item li:hover {
+            transform: translateX(3px);
+        }
+
+        .experience-item li::before {
+            content: '✓';
+            color: #aaaaaa;  /* Light gray check marks */
+            position: absolute;
+            left: 0;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .experience-item li:hover::before {
+            color: #ffffff;
+        }
+
+        /* Project grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .project-card {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-radius: 8px;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .tech-stack {
+            color: #aaaaaa;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .achievement {
+            margin-top: auto;
+            padding-top: 0.75rem;
+            font-weight: 500;
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        /* Certification items */
+        .certification-item {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-radius: 8px;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certification-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .certification-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+
+        .form-group::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .form-group:focus-within::after {
+            width: 100%;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .form-control:focus + .form-label,
+        .form-control:not(:placeholder-shown) + .form-label {
+            transform: translateY(-5px);
+            color: #ffffff;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(15, 23, 42, 0.5);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #666666;
+            box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #333333;
+            color: white;
+            border: 1px solid #666666;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn:hover {
+            background-color: #444444; /* Lighter gray when hovering */
+            transform: translateY(-2px);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-success {
+            background-color: #333333;
+            border-color: #666666;
+        }
+
+        .btn-success:hover {
+            background-color: #444444; /* Lighter gray when hovering */
+        }
+
+        /* Lazy loading animation */
+        .lazy-load {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            :root {
+                --sidebar-width: 100%;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                height: auto;
+                position: relative;
+                overflow: visible;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 1rem;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+                padding: 1.5rem;
+            }
+
+            .section-header {
+                font-size: 1.75rem;
+            }
+
+            .skills-grid,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-card);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1 class="logo">Udith Babu K N</h1>
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="/cdn-cgi/l/email-protection#d7e2f3fee3fff5f6f5e2e1f6e5e5fef2e5d7f0faf6fefbb9f4f8fa"><span class="__cf_email__" data-cfemail="a8ddccc1dcc0cac9cadddec9dadac1cddae8cfc5c9c1c486cbc7c5">[email&#160;protected]</span></a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+918301993853">+91 8301993853</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kochi, Kerala, India</span>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/udithkn/maljpeg_project" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#summary" class="nav-link active">
+                            <i class="fas fa-user"></i>Summary
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">
+                            <i class="fas fa-code"></i>Skills
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link">
+                            <i class="fas fa-briefcase"></i>Experience
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#education" class="nav-link">
+                            <i class="fas fa-graduation-cap"></i>Education
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link">
+                            <i class="fas fa-project-diagram"></i>Projects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#certifications" class="nav-link">
+                            <i class="fas fa-certificate"></i>Certifications
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">
+                            <i class="fas fa-envelope"></i>Get in Touch
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="content-scroller">
+                <!-- Content will be loaded here via JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        const contentData = {
+            summary: {
+                title: "Summary",
+                content: `
+                    <div class="content-box lazy-load">
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 500;">Strategic professional with an MBA in Operations Management and a B.Tech in Information Technology.</p>
+                        <p>I excel at driving revenue growth through targeted lead generation, CRM optimization, and insightful market analysis. Skilled in Python, MySQL, Jira, Trello, and Figma, I deliver data-driven solutions and operational excellence using Agile methodologies. My expertise in stakeholder engagement and persuasive sales strategies empowers organizations to achieve ambitious goals.</p>
+                    </div>`
+            },
+
+            skills: {
+                title: "Skills",
+                content: `
+                    <div class="content-box lazy-load">
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h3>Programming Languages</h3>
+                                <ul>
+                                    <li>Python (Advanced)</li>
+                                    <li>JavaScript (Intermediate)</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h3>Database Management</h3>
+                                <ul>
+                                    <li>MySQL (Intermediate)</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h3>Tools</h3>
+                                <ul>
+                                    <li>Microsoft Office Suite (Advanced)</li>
+                                    <li>Jira (Proficient)</li>
+                                    <li>Trello (Proficient)</li>
+                                    <li>Figma (Proficient)</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h3>Soft Skills</h3>
+                                <ul>
+                                    <li>Stakeholder Negotiation</li>
+                                    <li>Scrum Facilitation</li>
+                                    <li>Root-Cause Analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>`
+            },
+
+            experience: {
+                title: "Professional Experience",
+                content: `
+                    <div class="content-box lazy-load">
+                        <div class="experience-item">
+                            <h3>Business Development Executive</h3>
+                            <div class="experience-date">JIITAK Inc., Kochi, Kerala | April 2025 – Present</div>
+                            <ul>
+                                <li>Generated high-value leads, increasing lead pipeline by 20%.</li>
+                                <li>Conducted market segmentation analysis, enhancing outreach efficiency by 15%.</li>
+                                <li>Maintained CRM database with 100% accuracy, streamlining lead tracking.</li>
+                                <li>Developed persuasive sales presentations, driving 30% increase in client engagement.</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Business Analyst Intern</h3>
+                            <div class="experience-date">CST - Cyber Sapient, Bangalore, Karnataka | Sep 2024 – Dec 2024</div>
+                            <ul>
+                                <li>Gathered and documented 100+ business requirements.</li>
+                                <li>Designed 10+ functional specifications and wireframes in Figma.</li>
+                                <li>Analysed 50+ datasets using Python, improving sprint outcomes by 15%.</li>
+                                <li>Coordinated and executed UAT for three key features with 98% compliance.</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Operations Intern</h3>
+                            <div class="experience-date">Techmindz, Kochi, Kerala | Aug 2023 – Sep 2023</div>
+                            <ul>
+                                <li>Automated customer service processes using AI, reducing response time by 30%.</li>
+                                <li>Analysed customer data to improve service strategies (15% satisfaction increase).</li>
+                                <li>Collaborated with development team to integrate AI tools.</li>
+                            </ul>
+                        </div>
+                    </div>`
+            },
+
+            education: {
+                title: "Education",
+                content: `
+                    <div class="content-box lazy-load">
+                        <div class="experience-item">
+                            <h3>MBA (Operations Management and Marketing)</h3>
+                            <div class="experience-date">College of Engineering Thalassery | 2022-2024</div>
+                            <p style="margin-top: 0.5rem;">Graduated with 7.29 CGPA (72.90%)</p>
+                        </div>
+                        <div class="experience-item">
+                            <h3>B.Tech (Information Technology)</h3>
+                            <div class="experience-date">College of Engineering Thalassery | 2018-2022</div>
+                            <p style="margin-top: 0.5rem;">Graduated with 7.84 CGPA (78.40%)</p>
+                        </div>
+                    </div>`
+            },
+
+            projects: {
+                title: "Projects",
+                content: `
+                    <div class="content-box lazy-load">
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <h3>Advanced Web Security Chrome Extension</h3>
+                                <div class="tech-stack">Python, JavaScript, HTML, CSS, Machine Learning</div>
+                                <p>Developed a Chrome extension to enhance web security by detecting potentially malicious JPEG images during web browsing.</p>
+                                <div class="achievement">Improved detection accuracy by 25%</div>
+                            </div>
+                            <div class="project-card">
+                                <h3>JPMorgan Chase & Co. Agile Job Simulation</h3>
+                                <div class="tech-stack">Forage | July 2024</div>
+                                <p>Drafted eight user stories using Trello, ran daily standups, and conducted sprint reviews to enhance team alignment and process efficiency.</p>
+                            </div>
+                        </div>
+                    </div>`
+            },
+
+            certifications: {
+                title: "Certifications",
+                content: `
+                    <div class="content-box lazy-load">
+                        <div class="certification-item">
+                            <h3>JPMorgan Chase & Co. Agile Job Simulation</h3>
+                            <div class="experience-date">Forage | July 2024</div>
+                            <ul>
+                                <li>Drafted eight user stories using Trello.</li>
+                                <li>Ran daily standups and conducted sprint reviews.</li>
+                            </ul>
+                        </div>
+                    </div>`
+            },
+
+            contact: {
+                title: "Get in Touch",
+                content: `
+                    <div class="content-box lazy-load">
+                        <p>Looking for a professional to help drive your business growth? Let's connect and explore how my skills in business analysis, IT, and operations can benefit your organization.</p>
+                        
+                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST">
+                            <!-- FormSubmit configuration -->
+                            <input type="hidden" name="_subject" value="New portfolio contact submission">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://udithbabukn.github.io/thank-you.html">
+                            
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company" class="form-label">Company</label>
+                                <input type="text" id="company" name="company" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" name="message" class="form-control" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>`
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentScroller = document.querySelector('.content-scroller');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            function loadSection(sectionId) {
+                const sectionData = contentData[sectionId];
+                if (sectionData) {
+                    contentScroller.innerHTML = `
+                        <section class="section">
+                            <h2 class="section-header">${sectionData.title}</h2>
+                            ${sectionData.content}
+                        </section>
+                    `;
+                    // Trigger lazy loading for newly loaded content
+                    setTimeout(() => {
+                        document.querySelectorAll('.lazy-load').forEach(el => {
+                            el.classList.add('loaded');
+                        });
+                    }, 100);
+                }
+            }
+
+            function setActiveLink(activeLink) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                activeLink.classList.add('active');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('href').substring(1);
+                    loadSection(sectionId);
+                    setActiveLink(link);
+                    
+                    // For mobile devices, scroll to content
+                    if (window.innerWidth < 768) {
+                        window.scrollTo({
+                            top: document.querySelector('.content').offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Load initial section
+            loadSection('summary');
+            setActiveLink(document.querySelector('[href="#summary"]'));
+        });
+    </script>
+</body>
+</html>
