@@ -665,7 +665,7 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
         
-        .lazy-load.loaded {
+        .lazy-load.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -734,7 +734,7 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#d7e2f3fee3fff5f6f5e2e1f6e5e5fef2e5d7f0faf6fefbb9f4f8fa"><span class="__cf_email__" data-cfemail="a8ddccc1dcc0cac9cadddec9dadac1cddae8cfc5c9c1c486cbc7c5">[email&#160;protected]</span></a>
+                    <a href="mailto:udithbabuvarrier@gmail.com"><span class="__cf_email__" data-cfemail="a8ddccc1dcc0cac9cadddec9dadac1cddae8cfc5c9c1c486cbc7c5">udithbabuvarrier@gmail.com</span></a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
@@ -799,13 +799,22 @@
 
         <main class="content">
             <div class="content-scroller">
-                <!-- Content will be loaded here via JavaScript -->
+                <!-- Fallback content if JavaScript fails -->
+                <section class="section">
+                    <h2 class="section-header">Summary</h2>
+                    <div class="content-box">
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 500;">Strategic professional with an MBA in Operations Management and a B.Tech in Information Technology.</p>
+                        <p>I excel at driving revenue growth through targeted lead generation, CRM optimization, and insightful market analysis. Skilled in Python, MySQL, Jira, Trello, and Figma, I deliver data-driven solutions and operational excellence using Agile methodologies. My expertise in stakeholder engagement and persuasive sales strategies empowers organizations to achieve ambitious goals.</p>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
+        console.log('JavaScript loaded');
+        
         const contentData = {
             summary: {
                 title: "Summary",
@@ -982,10 +991,17 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM fully loaded');
             const contentScroller = document.querySelector('.content-scroller');
             const navLinks = document.querySelectorAll('.nav-link');
 
+            if (!contentScroller) {
+                console.error('Content scroller not found');
+                return;
+            }
+
             function loadSection(sectionId) {
+                console.log('Loading section:', sectionId);
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
                     contentScroller.innerHTML = `
@@ -995,11 +1011,9 @@
                         </section>
                     `;
                     // Trigger lazy loading for newly loaded content
-                    setTimeout(() => {
-                        document.querySelectorAll('.lazy-load').forEach(el => {
-                            el.classList.add('loaded');
-                        });
-                    }, 100);
+                    initLazyLoad();
+                } else {
+                    console.error('Section data not found for:', sectionId);
                 }
             }
 
@@ -1008,10 +1022,43 @@
                 activeLink.classList.add('active');
             }
 
+            // Lazy loading with IntersectionObserver
+            function initLazyLoad() {
+                const lazyElements = document.querySelectorAll('.lazy-load');
+                console.log('Found lazy-load elements:', lazyElements.length);
+
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { rootMargin: '0px 0px 100px 0px' });
+
+                    lazyElements.forEach(element => observer.observe(element));
+                } else {
+                    // Fallback for older browsers
+                    lazyElements.forEach(element => element.classList.add('visible'));
+                }
+
+                // Fallback to show content after 2 seconds if observer fails
+                setTimeout(() => {
+                    lazyElements.forEach(element => {
+                        if (!element.classList.contains('visible')) {
+                            console.warn('Fallback: Forcing visibility for element');
+                            element.classList.add('visible');
+                        }
+                    });
+                }, 2000);
+            }
+
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const sectionId = link.getAttribute('href').substring(1);
+                    console.log('Nav link clicked:', sectionId);
                     loadSection(sectionId);
                     setActiveLink(link);
                     
@@ -1026,8 +1073,12 @@
             });
 
             // Load initial section
-            loadSection('summary');
-            setActiveLink(document.querySelector('[href="#summary"]'));
+            try {
+                loadSection('summary');
+                setActiveLink(document.querySelector('[href="#summary"]'));
+            } catch (error) {
+                console.error('Error loading initial section:', error);
+            }
         });
     </script>
 </body>
