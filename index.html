@@ -37,7 +37,47 @@
         }
         return gk_fileData[filename] || "";
         }
-        </script><!DOCTYPE html>
+        </script><script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+</script>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -86,11 +126,12 @@
         "@type": "Person",
         "name": "Udith Babu K N",
         "jobTitle": "Business Analyst",
- Emmett    "description": "Results-driven IT graduate and MBA with expertise in Agile methodologies, Python, MySQL, and Figma.",
+        "description": "Results-driven IT graduate and MBA with expertise in Agile methodologies, Python, MySQL, and Figma.",
         "url": "https://udithbabukn.github.io/udithbabukn-portfolio/",
         "sameAs": [
             "https://www.linkedin.com/in/udith-babu-k-n-607b131a1/",
-            "https://github.com/udithkn/maljpeg_project"
+            "https://github.com/udithkn/maljpeg_project",
+            "https://medium.com/@udithbabuvarrier10"
         ],
         "address": {
             "@type": "PostalAddress",
@@ -769,6 +810,10 @@
             box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.2);
         }
 
+        .form-control.invalid {
+            border-color: #ff5555;
+        }
+
         textarea.form-control {
             resize: vertical;
             min-height: 120px;
@@ -815,6 +860,17 @@
 
         .btn-success:hover {
             background-color: #444444;
+        }
+
+        .error-message {
+            color: #ff5555;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.invalid .error-message {
+            display: block;
         }
 
         /* Lazy loading animation */
@@ -893,7 +949,7 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <a href="mailto:udithbabuvarrier@gmail.com" aria-label="Email Udith Babu">udithbabuvarrier@gmail.com</a>
+                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading email...</span></a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone" aria-hidden="true"></i>
@@ -912,6 +968,9 @@
                 </a>
                 <a href="https://github.com/udithkn/maljpeg_project" target="_blank" class="social-link" aria-label="GitHub Profile">
                     <i class="fab fa-github"></i>
+                </a>
+                <a href="https://medium.com/@udithbabuvarrier10" target="_blank" class="social-link" aria-label="Medium Blog">
+                    <i class="fab fa-medium"></i>
                 </a>
             </div>
 
@@ -1231,18 +1290,22 @@
                             <div class="form-group">
                                 <label for="name" class="form-label">Your Name</label>
                                 <input type="text" id="name" name="name" class="form-control" required aria-required="true">
+                                <span class="error-message">Please enter your name</span>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">Your Email</label>
                                 <input type="email" id="email" name="email" class="form-control" required aria-required="true">
+                                <span class="error-message">Please enter a valid email address</span>
                             </div>
                             <div class="form-group">
                                 <label for="company" class="form-label">Company</label>
                                 <input type="text" id="company" name="company" class="form-control">
+                                <span class="error-message">Please enter your company name</span>
                             </div>
                             <div class="form-group">
                                 <label for="message" class="form-label">Message</label>
                                 <textarea id="message" name="message" class="form-control" required aria-required="true"></textarea>
+                                <span class="error-message">Please enter a message</span>
                             </div>
                             <button type="submit" class="btn" aria-label="Send Message">Send Message</button>
                         </form>
@@ -1251,6 +1314,15 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Dynamically set email address to avoid Cloudflare obfuscation
+            const emailLink = document.querySelector('.email-link');
+            const emailPlaceholder = document.querySelector('.email-placeholder');
+            const emailAddress = 'udithbabuvarrier@gmail.com';
+            if (emailLink && emailPlaceholder) {
+                emailLink.href = `mailto:${emailAddress}`;
+                emailPlaceholder.textContent = emailAddress;
+            }
+
             const contentScroller = document.querySelector('.content-scroller');
             const navLinks = document.querySelectorAll('.nav-link');
             const titleElement = document.querySelector('title');
@@ -1276,6 +1348,9 @@
                     initLazyLoad();
                     if (sectionId === 'skills') {
                         setTimeout(animateProgressBars, 100);
+                    }
+                    if (sectionId === 'contact') {
+                        initContactForm();
                     }
                 } else {
                     console.error('Section data not found for:', sectionId);
@@ -1320,6 +1395,49 @@
                     setTimeout(() => {
                         fill.style.width = fill.getAttribute('data-width');
                     }, 300);
+                });
+            }
+
+            function initContactForm() {
+                const form = document.getElementById('contactForm');
+                if (!form) return;
+
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let isValid = true;
+
+                    // Reset previous error states
+                    const formGroups = form.querySelectorAll('.form-group');
+                    formGroups.forEach(group => {
+                        group.classList.remove('invalid');
+                    });
+
+                    // Validate name
+                    const name = form.querySelector('#name');
+                    if (!name.value.trim()) {
+                        name.parentElement.classList.add('invalid');
+                        isValid = false;
+                    }
+
+                    // Validate email
+                    const email = form.querySelector('#email');
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!email.value.trim() || !emailRegex.test(email.value)) {
+                        email.parentElement.classList.add('invalid');
+                        isValid = false;
+                    }
+
+                    // Validate message
+                    const message = form.querySelector('#message');
+                    if (!message.value.trim()) {
+                        message.parentElement.classList.add('invalid');
+                        isValid = false;
+                    }
+
+                    // If valid, submit the form
+                    if (isValid) {
+                        form.submit();
+                    }
                 });
             }
 
