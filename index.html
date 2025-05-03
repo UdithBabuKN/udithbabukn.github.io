@@ -42,40 +42,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udith Babu K N - Portfolio</title>
+    <title>Udith Babu K N - Business Analyst Portfolio</title>
 
     <!-- Meta Description -->
-    <meta name="description" content="Results-driven IT graduate with an MBA in Operations Management and expertise in Agile methodologies (Scrum). Skilled in Python, MySQL, Figma, and data analysis. Passionate about delivering IT-driven solutions for operational excellence.">
+    <meta name="description" content="Portfolio of Udith Babu K N, a results-driven IT graduate and MBA with expertise in Agile, Python, MySQL, and Figma. Explore my skills, projects, and experience.">
 
     <!-- Meta Keywords -->
-    <meta name="keywords" content="Business Analyst, IT Professional, Agile Scrum, Python Developer, MySQL, Figma">
+    <meta name="keywords" content="Udith Babu, Business Analyst, Agile Scrum, Python Developer, MySQL, Figma, Portfolio, IT Professional">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://udithbabukn.github.io/udithbabukn-portfolio/">
 
-    <!-- Open Graph Tags for Social Media -->
-    <meta property="og:title" content="Udith Babu K N">
-    <meta property="og:description" content="Results-driven IT graduate with expertise in Agile methodologies, Python, MySQL, and Figma. Passionate about delivering IT-driven solutions for operational excellence.">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Udith Babu K N - Business Analyst Portfolio">
+    <meta property="og:description" content="Explore the portfolio of Udith Babu K N, an IT graduate and MBA specializing in Agile methodologies, Python, MySQL, and Figma.">
     <meta property="og:image" content="https://udithbabukn.github.io/udithbabukn-portfolio/images/portfolio-thumbnail.jpg">
     <meta property="og:url" content="https://udithbabukn.github.io/udithbabukn-portfolio/">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Udith Babu K N">
-    <meta name="twitter:description" content="Results-driven IT graduate with expertise in Agile methodologies, Python, MySQL, and Figma. Passionate about delivering IT-driven solutions for operational excellence.">
+    <meta name="twitter:title" content="Udith Babu K N - Business Analyst Portfolio">
+    <meta name="twitter:description" content="Explore the portfolio of Udith Babu K N, an IT graduate and MBA specializing in Agile methodologies, Python, MySQL, and Figma.">
     <meta name="twitter:image" content="https://udithbabukn.github.io/udithbabukn-portfolio/images/portfolio-thumbnail.jpg">
 
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="8Oz6c3JNTIXXBvMxN6Er4-VOYIxwiFYjY19Pgpl7F_A" />
 
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
     <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Udith Babu K N",
+        "jobTitle": "Business Analyst",
+ Emmett    "description": "Results-driven IT graduate and MBA with expertise in Agile methodologies, Python, MySQL, and Figma.",
+        "url": "https://udithbabukn.github.io/udithbabukn-portfolio/",
+        "sameAs": [
+            "https://www.linkedin.com/in/udith-babu-k-n-607b131a1/",
+            "https://github.com/udithkn/maljpeg_project"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kochi",
+            "addressRegion": "Kerala",
+            "addressCountry": "India"
+        },
+        "email": "udithbabuvarrier@gmail.com",
+        "telephone": "+918301993853"
+    }
+    </script>
+
     <style>
         :root {
-            /* Professional Black, Gray, White Color Scheme */
             --primary-color: #333333;
             --secondary-color: #666666;
             --accent-color: #4d4d4d;
@@ -185,9 +214,9 @@
             overflow-wrap: break-word;
             flex: 1;
             font-size: 0.85rem;
-            white-space: nowrap; /* Add this line to prevent wrapping */
-            overflow: hidden;    /* Add this line to handle overflow */
-            text-overflow: ellipsis; /* Add this for showing ellipsis if text overflows */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .contact-item a:hover {
@@ -312,25 +341,13 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulse {
@@ -806,7 +823,7 @@
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        
+
         .lazy-load.visible {
             opacity: 1;
             transform: translateY(0);
@@ -869,137 +886,107 @@
 
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <aside class="sidebar" aria-label="Sidebar Navigation">
             <h1 class="logo">Udith Babu K N</h1>
-            
+
             <!-- Contact Information -->
             <div class="contact-info">
                 <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:udithbabuvarrier@gmail.com">udithbabuvarrier@gmail.com</a>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <a href="mailto:udithbabuvarrier@gmail.com" aria-label="Email Udith Babu">udithbabuvarrier@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+918301993853">+91 8301993853</a>
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                     <span>Kochi, Kerala, India</span>
                 </div>
             </div>
 
             <!-- Social Links -->
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link">
+                <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/udithkn/maljpeg_project" target="_blank" class="social-link">
+                <a href="https://github.com/udithkn/maljpeg_project" target="_blank" class="social-link" aria-label="GitHub Profile">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
 
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#summary" class="nav-link active">
-                            <i class="fas fa-user"></i>Summary
+                        <a href="#summary" class="nav-link active" aria-current="page">
+                            <i class="fas fa-user" aria-hidden="true"></i>Summary
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#skills" class="nav-link">
-                            <i class="fas fa-code"></i>Skills
+                            <i class="fas fa-code" aria-hidden="true"></i>Technical Skills
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#experience" class="nav-link">
-                            <i class="fas fa-briefcase"></i>Experience
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>Professional Experience
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#education" class="nav-link">
-                            <i class="fas fa-graduation-cap"></i>Education
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>Education
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#projects" class="nav-link">
-                            <i class="fas fa-project-diagram"></i>Projects
+                            <i class="fas fa-project-diagram" aria-hidden="true"></i>Projects
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#certifications" class="nav-link">
-                            <i class="fas fa-certificate"></i>Certifications
+                            <i class="fas fa-certificate" aria-hidden="true"></i>Certifications
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#contact" class="nav-link">
-                            <i class="fas fa-envelope"></i>Get in Touch
+                            <i class="fas fa-envelope" aria-hidden="true"></i>Contact Me
                         </a>
                     </li>
                 </ul>
             </nav>
         </aside>
 
-        <main class="content">
+        <main class="content" aria-label="Main Content">
             <div class="content-scroller">
-                <!-- Fallback content if JavaScript fails -->
-                <section class="section">
+                <!-- Fallback content -->
+                <section class="section" id="summary">
                     <h2 class="section-header">Summary</h2>
-                    <div class="content-box">
+                    <article class="content-box">
                         <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 500;">Strategic professional with an MBA in Operations Management and a B.Tech in Information Technology.</p>
                         <p>I excel at driving revenue growth through targeted lead generation, CRM optimization, and insightful market analysis. Skilled in Python, MySQL, Jira, Trello, and Figma, I deliver data-driven solutions and operational excellence using Agile methodologies. My expertise in stakeholder engagement and persuasive sales strategies empowers organizations to achieve ambitious goals.</p>
-                    </div>
+                    </article>
                 </section>
             </div>
         </main>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-            return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-                try {
-                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                    var firstSheetName = workbook.SheetNames[0];
-                    var worksheet = workbook.Sheets[firstSheetName];
-                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                    var filteredData = jsonData.filter(row => row.some(filledCell));
-                    var headerRowIndex = filteredData.findIndex((row, index) =>
-                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                    );
-                    if (headerRowIndex === -1 || headerRowIndex > 25) {
-                        headerRowIndex = 0;
-                    }
-                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                    return csv;
-                } catch (e) {
-                    console.error(e);
-                    return "";
-                }
-            }
-            return gk_fileData[filename] || "";
-        }
-
         const contentData = {
             summary: {
                 title: "Summary",
+                metaDescription: "Learn about Udith Babu K N, a strategic IT and MBA professional specializing in Agile, Python, and data-driven solutions.",
                 content: `
-                    <div class="content-box lazy-load">
+                    <article class="content-box lazy-load">
                         <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 500;">Strategic professional with an MBA in Operations Management and a B.Tech in Information Technology.</p>
                         <p>I excel at driving revenue growth through targeted lead generation, CRM optimization, and insightful market analysis. Skilled in Python, MySQL, Jira, Trello, and Figma, I deliver data-driven solutions and operational excellence using Agile methodologies. My expertise in stakeholder engagement and persuasive sales strategies empowers organizations to achieve ambitious goals.</p>
-                    </div>`
+                    </article>`
             },
 
             skills: {
-                title: "Skills",
+                title: "Technical Skills",
+                metaDescription: "Explore Udith Babu K N's technical skills, including Python, MySQL, Figma, Jira, and Agile methodologies.",
                 content: `
-                    <div class="content-box lazy-load">
+                    <article class="content-box lazy-load">
                         <div class="skills-grid">
                             <div class="skill-category">
                                 <h3>Programming Languages</h3>
@@ -1104,13 +1091,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>`
+                    </article>`
             },
 
             experience: {
                 title: "Professional Experience",
+                metaDescription: "View Udith Babu K N's professional experience as a Business Development Executive and Business Analyst Intern.",
                 content: `
-                    <div class="content-box lazy-load">
+                    <article class="content-box lazy-load">
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
@@ -1151,13 +1139,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>`
+                    </article>`
             },
 
             education: {
                 title: "Education",
+                metaDescription: "Discover Udith Babu K N's educational background, including an MBA in Operations Management and a B.Tech in Information Technology.",
                 content: `
-                    <div class="content-box lazy-load">
+                    <article class="content-box lazy-load">
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
@@ -1176,13 +1165,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>`
+                    </article>`
             },
 
             projects: {
                 title: "Projects",
+                metaDescription: "Check out Udith Babu K N's projects, including an Advanced Web Security Chrome Extension built with Python and Machine Learning.",
                 content: `
-                    <div class="content-box lazy-load">
+                    <article class="content-box lazy-load">
                         <div class="project-grid">
                             <div class="project-card">
                                 <div class="card-inner">
@@ -1200,13 +1190,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>`
+                    </article>`
             },
 
             certifications: {
                 title: "Certifications",
+                metaDescription: "View Udith Babu K N's certifications, including the JPMorgan Chase & Co. Agile Job Simulation on Forage.",
                 content: `
-                    <div class="content-box lazy-load">
+                    <article class="content-box lazy-load">
                         <div class="project-grid">
                             <div class="project-card">
                                 <div class="card-inner">
@@ -1224,25 +1215,26 @@
                                 </div>
                             </div>
                         </div>
-                    </div>`
+                    </article>`
             },
 
             contact: {
-                title: "Get in Touch",
+                title: "Contact Me",
+                metaDescription: "Get in touch with Udith Babu K N to discuss business analysis, IT solutions, or collaboration opportunities.",
                 content: `
-                    <div class="content-box lazy-load">
+                    <article class="content-box lazy-load">
                         <p>Looking for a professional to help drive your business growth? Let's connect and explore how my skills in business analysis, IT, and operations can benefit your organization.</p>
-                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST">
+                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST" aria-label="Contact Form">
                             <input type="hidden" name="_subject" value="New portfolio contact submission">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://udithbabukn.github.io/thank-you.html">
                             <div class="form-group">
                                 <label for="name" class="form-label">Your Name</label>
-                                <input type="text" id="name" name="name" class="form-control" required>
+                                <input type="text" id="name" name="name" class="form-control" required aria-required="true">
                             </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">Your Email</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
+                                <input type="email" id="email" name="email" class="form-control" required aria-required="true">
                             </div>
                             <div class="form-group">
                                 <label for="company" class="form-label">Company</label>
@@ -1250,18 +1242,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea id="message" name="message" class="form-control" required></textarea>
+                                <textarea id="message" name="message" class="form-control" required aria-required="true"></textarea>
                             </div>
-                            <button type="submit" class="btn">Send Message</button>
+                            <button type="submit" class="btn" aria-label="Send Message">Send Message</button>
                         </form>
-                    </div>`
+                    </article>`
             }
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM fully loaded');
             const contentScroller = document.querySelector('.content-scroller');
             const navLinks = document.querySelectorAll('.nav-link');
+            const titleElement = document.querySelector('title');
+            const metaDescription = document.querySelector('meta[name="description"]');
 
             if (!contentScroller) {
                 console.error('Content scroller not found');
@@ -1269,15 +1262,17 @@
             }
 
             function loadSection(sectionId) {
-                console.log('Loading section:', sectionId);
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
                     contentScroller.innerHTML = `
-                        <section class="section">
+                        <section class="section" id="${sectionId}">
                             <h2 class="section-header">${sectionData.title}</h2>
                             ${sectionData.content}
                         </section>
                     `;
+                    // Update title and meta description
+                    titleElement.textContent = `Udith Babu K N - ${sectionData.title}`;
+                    metaDescription.setAttribute('content', sectionData.metaDescription);
                     initLazyLoad();
                     if (sectionId === 'skills') {
                         setTimeout(animateProgressBars, 100);
@@ -1290,11 +1285,13 @@
             function setActiveLink(activeLink) {
                 navLinks.forEach(link => link.classList.remove('active'));
                 activeLink.classList.add('active');
+                navLinks.forEach(link => {
+                    link.setAttribute('aria-current', link.classList.contains('active') ? 'page' : 'false');
+                });
             }
 
             function initLazyLoad() {
                 const lazyElements = document.querySelectorAll('.lazy-load');
-                console.log('Found lazy-load elements:', lazyElements.length);
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver((entries, observer) => {
                         entries.forEach(entry => {
@@ -1311,7 +1308,6 @@
                 setTimeout(() => {
                     lazyElements.forEach(element => {
                         if (!element.classList.contains('visible')) {
-                            console.warn('Fallback: Forcing visibility for element');
                             element.classList.add('visible');
                         }
                     });
@@ -1386,7 +1382,6 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const sectionId = link.getAttribute('href').substring(1);
-                    console.log('Nav link clicked:', sectionId);
                     loadSection(sectionId);
                     setActiveLink(link);
                     if (window.innerWidth < 768) {
@@ -1407,6 +1402,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939c5f080cecb0c1',t:'MTc0NjIzOTc5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
