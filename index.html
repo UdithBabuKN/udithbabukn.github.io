@@ -37,51 +37,21 @@
         }
         return gk_fileData[filename] || "";
         }
-        </script><script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
         </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Udith Babu K N - Project Coordinator & Business Analyst Portfolio</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WK70SLBZH3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WK70SLBZH3');
+    </script>
 
     <!-- Meta Description -->
     <meta name="description" content="Portfolio of Udith Babu K N, an IT graduate and MBA specializing in Agile project coordination, business analysis, Python, and Figma.">
@@ -114,7 +84,6 @@
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <!-- Favicon -->
-    <!-- Replace with your favicon path -->
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <!-- Fonts and Icons -->
@@ -182,7 +151,6 @@
             min-height: 100vh;
         }
 
-        /* Sidebar */
         .sidebar {
             width: var(--sidebar-width);
             height: 100vh;
@@ -219,7 +187,6 @@
             width: 100%;
         }
 
-        /* Contact info */
         .contact-info {
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
@@ -270,7 +237,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Social links */
         .social-links {
             display: flex;
             gap: 1rem;
@@ -314,7 +280,6 @@
             transform: scale(1);
         }
 
-        /* Navigation */
         .nav-list {
             list-style: none;
         }
@@ -372,7 +337,6 @@
             width: 100%;
         }
 
-        /* Main Content */
         .content {
             margin-left: var(--sidebar-width);
             width: calc(100% - var(--sidebar-width));
@@ -414,7 +378,8 @@
         }
 
         .section-header {
-            font-size: 2rem;
+            font-size: sense
+            2rem;
             background: var(--accent-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -439,7 +404,6 @@
             width: 100%;
         }
 
-        /* Content boxes */
         .content-box {
             background-color: var(--bg-card);
             border-radius: 8px;
@@ -455,7 +419,6 @@
             box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
         }
 
-        /* Skills grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -505,7 +468,6 @@
             left: 0;
         }
 
-        /* Experience items */
         .experience-item {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
@@ -565,7 +527,6 @@
             color: #ffffff;
         }
 
-        /* Project grid */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -653,7 +614,6 @@
             font-size: 0.9rem;
         }
 
-        /* Timeline Styling */
         .timeline {
             position: relative;
             margin: 0 0 0 20px;
@@ -705,7 +665,6 @@
             box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
         }
 
-        /* Progress Bar Styling */
         .skill-progress {
             margin-bottom: 0.75rem;
         }
@@ -740,7 +699,6 @@
             transition: width 1.8s ease-out;
         }
 
-        /* Mouse Follower Effect */
         .cursor-follower {
             position: fixed;
             width: 40px;
@@ -771,7 +729,6 @@
             transition: width 0.3s, height 0.3s;
         }
 
-        /* Contact Form */
         .contact-form {
             margin-top: 1.5rem;
         }
@@ -896,7 +853,6 @@
             display: block;
         }
 
-        /* Thank You Message Styling */
         .thank-you-message {
             text-align: center;
             padding: 2rem;
@@ -915,11 +871,10 @@
             font-size: 1rem;
         }
 
-        /* Lazy loading animation */
         .lazy-load {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.5s  opacity: 0.5s ease, transform 0.5s ease;
         }
 
         .lazy-load.visible {
@@ -927,7 +882,6 @@
             transform: translateY(0);
         }
 
-        /* Responsive design */
         @media (max-width: 768px) {
             :root {
                 --sidebar-width: 100%;
@@ -962,7 +916,6 @@
             }
         }
 
-        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -987,7 +940,6 @@
         <aside class="sidebar" aria-label="Sidebar Navigation">
             <h1 class="logo">Udith Babu K N</h1>
 
-            <!-- Contact Information -->
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -1003,7 +955,6 @@
                 </div>
             </div>
 
-            <!-- Social Links -->
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin-in"></i>
@@ -1059,7 +1010,6 @@
 
         <main class="content" aria-label="Main Content">
             <div class="content-scroller">
-                <!-- Fallback content -->
                 <section class="section" id="summary">
                     <h2 class="section-header">Summary</h2>
                     <article class="content-box summary-scale-in">
@@ -1071,6 +1021,42 @@
             </div>
         </main>
     </div>
+
+    <script>
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+          if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+              try {
+                  var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                  var firstSheetName = workbook.SheetNames[0];
+                  var worksheet = workbook.Sheets[firstSheetName];
+
+                  var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                  var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                  var headerRowIndex = filteredData.findIndex((row, index) =>
+                    row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                  );
+                  if (headerRowIndex === -1 || headerRowIndex > 25) {
+                    headerRowIndex = 0;
+                  }
+
+                  var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                  csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                  return csv;
+              } catch (e) {
+                  console.error(e);
+                  return "";
+              }
+          }
+          return gk_fileData[filename] || "";
+        }
+    </script>
 
     <script>
         const contentData = {
@@ -1345,7 +1331,6 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Dynamically set email address to avoid obfuscation
             const emailLink = document.querySelector('.email-link');
             const emailPlaceholder = document.querySelector('.email-placeholder');
             const emailAddress = 'udithbabuvarrier@gmail.com';
@@ -1373,7 +1358,6 @@
                             ${sectionData.content}
                         </section>
                     `;
-                    // Update title and meta description
                     titleElement.textContent = `Udith Babu K N - ${sectionData.title}`;
                     metaDescription.setAttribute('content', sectionData.metaDescription);
                     initLazyLoad();
@@ -1439,12 +1423,10 @@
                     e.preventDefault();
                     let isValid = true;
 
-                    // Reset previous error states
                     const formGroups = form.querySelectorAll('.form-group');
                     formGroups.forEach(group => group.classList.remove('invalid'));
                     formError.style.display = 'none';
 
-                    // Validate inputs
                     const name = form.querySelector('#name');
                     if (!name.value.trim()) {
                         name.parentElement.classList.add('invalid');
@@ -1464,7 +1446,6 @@
                         isValid = false;
                     }
 
-                    // If valid, attempt to submit the form
                     if (isValid) {
                         submitButton.disabled = true;
                         submitButton.textContent = 'Sending...';
@@ -1479,8 +1460,7 @@
                             });
 
                             if (response.ok) {
-                                // Show thank you message
-                                const contentBox = form.closest('.artz-content-box');
+                                const contentBox = form.closest('.content-box');
                                 contentBox.innerHTML = `
                                     <div class="thank-you-message lazy-load">
                                         <h3>Thank You!</h3>
@@ -1489,7 +1469,6 @@
                                     </div>
                                 `;
                                 initLazyLoad();
-                                // Add event listener for sending another message
                                 document.getElementById('sendAnother').addEventListener('click', () => {
                                     loadSection('contact');
                                 });
@@ -1586,15 +1565,6 @@
         });
     </script>
 
-    <!-- Google Analytics (Placeholder - Replace UA-XXXXX-Y with your tracking ID) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-XXXXX-Y');
-    </script>
-    -->
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93acc834ecb76733',t:'MTc0NjQxMTg3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
