@@ -37,7 +37,8 @@
         }
         return gk_fileData[filename] || "";
         }
-        </script><!DOCTYPE html>
+</script>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -92,6 +93,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" defer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- Added three.js library for 3D rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script type="application/ld+json">
     {
@@ -194,7 +197,7 @@
             --text-muted: #d1d5db;
             --bg-color: #0f172a;
             --bg-sidebar: rgba(15, 23, 42, 0.85);
-            --bg-content: #0f172a;
+            --bg-content: transparent; /* Make content background transparent */
             --bg-card: rgba(30, 41, 59, 0.9);
             --border-color: rgba(255, 255, 255, 0.1);
             --transition: all 0.3s ease;
@@ -210,12 +213,11 @@
             --text-hover: #111827;
             --bg-color: #f3f4f6;
             --bg-sidebar: rgba(255, 255, 255, 0.95);
-            --bg-content: #f3f4f6;
+            --bg-content: transparent; /* Make content background transparent */
             --bg-card: rgba(255, 255, 255, 0.9);
             --border-color: rgba(0, 0, 0, 0.1);
             --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
         }
-        /* FIX: Added rule for skill category heading in light mode */
         [data-theme="light"] .skill-category h3 {
             color: var(--text-color);
         }
@@ -226,24 +228,39 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-color) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><circle cx="50" cy="50" r="20" fill="white"/></svg>') repeat;
+            background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
             transition: background-color var(--transition), color var(--transition);
         }
+        /* Full-page canvas container */
+        #global-canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place it behind all content */
+            pointer-events: none;
+        }
         .container {
             display: flex;
             min-height: 100vh;
+            position: relative; /* Ensure z-index works on children */
+            z-index: 1;
         }
         .sidebar {
             width: var(--sidebar-width);
             height: 100vh;
             position: fixed;
             background-color: var(--bg-sidebar);
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px);
             border-right: 1px solid var(--border-color);
             padding: 2rem 1.5rem;
             overflow-y: auto;
+            z-index: 10;
         }
         .theme-toggle {
             display: flex;
@@ -487,6 +504,8 @@
         }
         .content-box {
             background-color: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 2rem;
@@ -932,6 +951,9 @@
 </head>
 
 <body>
+    <!-- Container for the full-page 3D canvas -->
+    <div id="global-canvas-container"></div>
+
     <div class="container">
         <aside class="sidebar" aria-label="Sidebar Navigation">
             <h1 class="logo">Udith Babu K N</h1>
@@ -1008,14 +1030,7 @@
 
         <main class="content" aria-label="Main Content">
             <div class="content-scroller">
-                <section class="section" id="summary" lang="en">
-                    <h2 class="section-header">Summary</h2>
-                    <article class="content-box summary-scale-in">
-                        <h3>Dynamic IT Business Analyst and Project Coordinator</h3>
-                        <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 500;">MBA in Operations Management and B.Tech in Information Technology.</p>
-                        <p style="font-size: 0.95rem;">Results-driven IT Business Analyst, Project Coordinator, and Product Analyst with expertise in Agile methodologies, data analysis, and process optimization. Skilled in Python, MySQL, Figma, and stakeholder communication to deliver impactful IT solutions.</p>
-                    </article>
-                </section>
+                <!-- Content will be loaded here dynamically -->
             </div>
         </main>
     </div>
@@ -1330,7 +1345,7 @@
                                         <h3>micro1 Business Analyst Certification</h3>
                                         <div class="tech-stack">micro1 | May 2025</div>
                                         <p>Successfully passed micro1's AI Interview, earning certification as a Business Analyst.</p>
-                                        <div class="achievement">Certified by micro1 AI Interview</div>
+                                        <div class="achievement">Certified by micro1</div>
                                     </div>
                                     <div class="card-back">
                                         <h3>Certification Details</h3>
@@ -1378,6 +1393,118 @@
             }
         };
 
+        /**
+         * Initializes the full-page 3D particle background.
+         */
+        function initThreeJS() {
+            const container = document.getElementById('global-canvas-container');
+            if (!container) return;
+
+            // --- Scene, Camera, Renderer ---
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+            
+            // --- Mouse tracking ---
+            const mouse = new THREE.Vector2();
+            document.addEventListener('mousemove', (event) => {
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+            });
+
+            // --- Particles ---
+            const particleCount = 7000;
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+            const sizes = new Float32Array(particleCount);
+
+            const color1 = new THREE.Color("#3b82f6");
+            const color2 = new THREE.Color("#a855f7");
+
+            for(let i = 0; i < particleCount; i++) {
+                // Position
+                positions[i * 3 + 0] = (Math.random() - 0.5) * 15;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * 15;
+                positions[i * 3 + 2] = (Math.random() - 0.5) * 15;
+                
+                // Color
+                const mixedColor = color1.clone().lerp(color2, Math.random());
+                colors[i * 3 + 0] = mixedColor.r;
+                colors[i * 3 + 1] = mixedColor.g;
+                colors[i * 3 + 2] = mixedColor.b;
+
+                // Size
+                sizes[i] = Math.random() * 0.05 + 0.01;
+            }
+
+            const particlesGeometry = new THREE.BufferGeometry();
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+            // --- Shader Material for more control ---
+            const vertexShader = `
+                attribute float size;
+                varying vec3 vColor;
+                void main() {
+                    vColor = color;
+                    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                    gl_PointSize = size * (300.0 / -mvPosition.z);
+                    gl_Position = projectionMatrix * mvPosition;
+                }
+            `;
+
+            const fragmentShader = `
+                varying vec3 vColor;
+                void main() {
+                    if (length(gl_PointCoord - vec2(0.5, 0.5)) > 0.475) discard;
+                    gl_FragColor = vec4(vColor, 1.0);
+                }
+            `;
+
+            const particlesMaterial = new THREE.ShaderMaterial({
+                vertexShader,
+                fragmentShader,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                transparent: true,
+                vertexColors: true
+            });
+
+            const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particles);
+
+            camera.position.z = 5;
+
+            const clock = new THREE.Clock();
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const elapsedTime = clock.getElapsedTime();
+
+                camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.05;
+                camera.position.y += (-mouse.y * 0.5 - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+                
+                particles.rotation.y = elapsedTime * 0.1;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            });
+        }
+
+
         document.addEventListener('DOMContentLoaded', () => {
             const emailLink = document.querySelector('.email-link');
             const emailPlaceholder = document.querySelector('.email-placeholder');
@@ -1392,7 +1519,6 @@
             const titleElement = document.querySelector('title');
             const metaDescription = document.querySelector('meta[name="description"]');
 
-            // Theme Toggle Functionality
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = themeToggle.querySelector('i');
             const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -1619,22 +1745,16 @@
             });
 
             try {
+                // Initialize the persistent 3D background
+                initThreeJS();
+                // Load the initial section
                 loadSection('summary');
                 setActiveLink(document.querySelector('[data-section="summary"]'));
                 initCursorEffect();
             } catch (error) {
-                console.error('Error loading initial section:', error);
+                console.error('Error during initialization:', error);
             }
         });
     </script>
-
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93acc834ecb76733',t:'MTc0NjQxMTg3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b153e33ea978cc',t:'MTc0NjQ1OTUzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93bd62698a4fc01f',t:'MTc0NjU4NTk2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93c52fb1de68674e',t:'MTc0NjY2Nzc2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93db41871d8444d6',t:'MTc0Njg5OTE4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93de94a2da66e58e',t:'MTc0NjkzNDA0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93df34c268864563',t:'MTc0Njk0MDYwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93e13003bee8b0c4',t:'MTc0Njk2MTM4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
