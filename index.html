@@ -478,48 +478,120 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
         }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        .skill-category {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 1rem;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .skill-category:hover {
-            transform: translateX(5px);
-            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
-        }
-        .skill-category h3 {
-            font-size: 1.1rem;
-            color: #fff;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-        .skill-category ul {
-            list-style: none;
-        }
-        .skill-category li {
-            position: relative;
-            padding-left: 1rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            transition: transform 0.2s ease;
-        }
-        .skill-category li:hover {
-            transform: translateX(3px);
-        }
-        .skill-category li::before {
-            content: '•';
+
+        /* --- START: Redesigned Technical Skills Section --- */
+        .skills-intro {
+            text-align: center;
             color: var(--text-muted);
-            position: absolute;
-            left: 0;
+            margin-bottom: 2rem;
+            font-size: 1rem;
         }
         
+        .skill-category-foldable {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .skill-category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+        }
+        
+        .category-chevron {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.5s ease-in-out;
+            margin-top: 0;
+        }
+
+        .skill-category-foldable:hover .skills-grid,
+        .skill-category-foldable.expanded .skills-grid {
+            max-height: 600px; /* Adjust if more skills are added */
+            opacity: 1;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-category-foldable:hover .category-chevron,
+        .skill-category-foldable.expanded .category-chevron {
+            transform: rotate(180deg);
+        }
+
+        .skill-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 200px;
+        }
+        .skill-card:hover, .skill-card:focus {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            outline: none;
+        }
+        .skill-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
+        }
+        .skill-card:hover .skill-icon, .skill-card:focus .skill-icon {
+            transform: scale(1.1);
+        }
+        .skill-name {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        .skill-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, var(--primary-color) 0%, rgba(30, 65, 175, 0) 100%);
+            color: #fff;
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100%;
+        }
+        .skill-card:hover .skill-details, .skill-card:focus .skill-details {
+            transform: translateY(0);
+        }
+        .skill-level {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        /* --- END: Redesigned Technical Skills Section --- */
+
         /* --- START: Page Peel Timeline Styles --- */
         .page-peel-timeline {
             display: flex;
@@ -693,35 +765,6 @@
             font-size: 0.9rem;
         }
         
-        .skill-progress {
-            margin-bottom: 0.75rem;
-        }
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.35rem;
-        }
-        .skill-level {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .progress-bar {
-            height: 8px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-        .progress-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background: var(--accent-color);
-            border-radius: 4px;
-            width: 0;
-            transition: width 1.8s ease-out;
-        }
         .cursor-follower {
             position: fixed;
             width: 40px;
@@ -878,6 +921,15 @@
             opacity: 1;
             transform: translateY(0);
         }
+        @media (max-width: 992px) {
+             .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+            .skill-card {
+                min-height: 180px;
+            }
+        }
         @media (max-width: 768px) {
             :root {
                 --sidebar-width: 100%;
@@ -901,9 +953,22 @@
             .section-header {
                 font-size: 1.75rem;
             }
-            .skills-grid,
             .project-grid {
                 grid-template-columns: 1fr;
+            }
+             .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 1rem;
+            }
+            .skill-card {
+                padding: 1rem 0.5rem;
+                min-height: 150px;
+            }
+            .skill-icon {
+                font-size: 2.8rem;
+            }
+            .skill-name {
+                font-size: 0.9rem;
             }
         }
         ::-webkit-scrollbar {
@@ -1067,106 +1132,107 @@
                 metaDescription: "Udith Babu K N's skills in Python, MySQL, Figma, Jira, and Agile for IT business analysis and project coordination.",
                 content: `
                     <article class="content-box lazy-load" lang="en">
-                        <div class="skills-grid">
-                            <div class="skill-category">
-                                <h3>Programming Languages</h3>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Python</span>
+                        <p class="skills-intro">I focus on a curated set of tools and methodologies to deliver efficient and effective solutions. Hover or tap a category to expand.</p>
+                        
+                        <div class="skill-category-foldable">
+                            <h3 class="skill-category-title">
+                                <span>Core Technologies</span>
+                                <i class="fas fa-chevron-down category-chevron"></i>
+                            </h3>
+                            <div class="skills-grid">
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fab fa-python skill-icon"></i>
+                                    <span class="skill-name">Python</span>
+                                    <div class="skill-details">
                                         <span class="skill-level">Advanced</span>
                                     </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="85%"></div>
-                                    </div>
                                 </div>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>JavaScript</span>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fas fa-database skill-icon"></i>
+                                    <span class="skill-name">MySQL</span>
+                                    <div class="skill-details">
                                         <span class="skill-level">Intermediate</span>
                                     </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="65%"></div>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="skill-category">
-                                <h3>Database Management</h3>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>MySQL</span>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fab fa-js-square skill-icon"></i>
+                                    <span class="skill-name">JavaScript</span>
+                                    <div class="skill-details">
                                         <span class="skill-level">Intermediate</span>
                                     </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="70%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category-foldable">
+                            <h3 class="skill-category-title">
+                                <span>Project Management & Design</span>
+                                <i class="fas fa-chevron-down category-chevron"></i>
+                            </h3>
+                            <div class="skills-grid">
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fab fa-jira skill-icon"></i>
+                                    <span class="skill-name">Jira</span>
+                                    <div class="skill-details">
+                                        <span class="skill-level">Proficient</span>
+                                    </div>
+                                </div>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fab fa-trello skill-icon"></i>
+                                    <span class="skill-name">Trello</span>
+                                    <div class="skill-details">
+                                        <span class="skill-level">Proficient</span>
+                                    </div>
+                                </div>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fab fa-figma skill-icon"></i>
+                                    <span class="skill-name">Figma</span>
+                                    <div class="skill-details">
+                                        <span class="skill-level">Proficient</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="skill-category">
-                                <h3>Tools</h3>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Microsoft Office Suite</span>
+                        </div>
+
+                        <div class="skill-category-foldable">
+                            <h3 class="skill-category-title">
+                                <span>Business & Analysis</span>
+                                <i class="fas fa-chevron-down category-chevron"></i>
+                            </h3>
+                            <div class="skills-grid">
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fas fa-users skill-icon"></i>
+                                    <span class="skill-name">Stakeholder Negotiation</span>
+                                    <div class="skill-details">
                                         <span class="skill-level">Advanced</span>
                                     </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="90%"></div>
-                                    </div>
                                 </div>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Jira</span>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fas fa-tasks skill-icon"></i>
+                                    <span class="skill-name">Scrum Facilitation</span>
+                                    <div class="skill-details">
                                         <span class="skill-level">Proficient</span>
                                     </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="75%"></div>
-                                    </div>
                                 </div>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Trello</span>
-                                        <span class="skill-level">Proficient</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="80%"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Figma</span>
-                                        <span class="skill-level">Proficient</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-category">
-                                <h3>Soft Skills</h3>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Stakeholder Negotiation</span>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fas fa-sitemap skill-icon"></i>
+                                    <span class="skill-name">Root-Cause Analysis</span>
+                                    <div class="skill-details">
                                         <span class="skill-level">Advanced</span>
                                     </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="85%"></div>
-                                    </div>
                                 </div>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Scrum Facilitation</span>
-                                        <span class="skill-level">Proficient</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="80%"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="skill-name">
-                                        <span>Root-Cause Analysis</span>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fas fa-file-excel skill-icon"></i>
+                                    <span class="skill-name">Microsoft Office</span>
+                                    <div class="skill-details">
                                         <span class="skill-level">Advanced</span>
                                     </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" data-width="85%"></div>
+                                </div>
+                                <div class="skill-card" tabindex="0">
+                                    <i class="fas fa-headset skill-icon"></i>
+                                    <span class="skill-name">CRM Handling</span>
+                                    <div class="skill-details">
+                                        <span class="skill-level">Proficient</span>
                                     </div>
                                 </div>
                             </div>
@@ -1520,6 +1586,16 @@
                 return;
             }
 
+            function initFoldableSkills() {
+                const foldableCategories = document.querySelectorAll('.skill-category-foldable');
+                foldableCategories.forEach(category => {
+                    const title = category.querySelector('.skill-category-title');
+                    title.addEventListener('click', () => {
+                        category.classList.toggle('expanded');
+                    });
+                });
+            }
+
             function loadSection(sectionId) {
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
@@ -1532,8 +1608,9 @@
                     titleElement.textContent = `Udith Babu K N - ${sectionData.title}`;
                     metaDescription.setAttribute('content', sectionData.metaDescription);
                     initLazyLoad();
+                    
                     if (sectionId === 'skills') {
-                        setTimeout(animateProgressBars, 100);
+                        initFoldableSkills();
                     }
                     if (sectionId === 'contact') {
                         initContactForm();
@@ -1573,15 +1650,6 @@
                         }
                     });
                 }, 2000);
-            }
-
-            function animateProgressBars() {
-                const progressFills = document.querySelectorAll('.progress-fill');
-                progressFills.forEach(fill => {
-                    setTimeout(() => {
-                        fill.style.width = fill.getAttribute('data-width');
-                    }, 300);
-                });
             }
 
             function initContactForm() {
@@ -1680,7 +1748,7 @@
                     }
                 });
                 function addInteractiveEvents() {
-                    const clickables = document.querySelectorAll('a, button, .nav-link, .social-link, .project-card, .btn, .theme-toggle, .page-peel-card');
+                    const clickables = document.querySelectorAll('a, button, .nav-link, .social-link, .project-card, .btn, .theme-toggle, .page-peel-card, .skill-card');
                     clickables.forEach(el => {
                         el.addEventListener('mouseenter', () => {
                             follower.style.width = '60px';
