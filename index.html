@@ -1,43 +1,3 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -215,7 +175,7 @@
             --bg-color: #f3f4f6;
             --bg-sidebar: rgba(255, 255, 255, 0.95);
             --bg-content: transparent; /* Make content background transparent */
-            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-card: rgba(255, 255, 255, 0.95);
             --border-color: rgba(0, 0, 0, 0.1);
             --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
         }
@@ -559,55 +519,103 @@
             position: absolute;
             left: 0;
         }
-        .experience-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
+        
+        /* --- START: Page Peel Timeline Styles --- */
+        .page-peel-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
-        .experience-item:hover {
-            transform: translateX(5px);
-        }
-        .experience-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        .experience-item h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        .experience-date {
-            display: inline-block;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
-        }
-        .experience-item ul {
-            list-style: none;
-        }
-        .experience-item li {
+
+        .page-peel-card {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            transition: transform 0.2s ease;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
         }
-        .experience-item li:hover {
-            transform: translateX(3px);
+
+        .page-peel-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            background: linear-gradient(135deg, transparent 50%, var(--bg-color) 50.1%);
+            box-shadow: -5px -5px 10px rgba(0,0,0,0.2);
+            transition: width 0.4s ease-out, height 0.4s ease-out;
+            z-index: 2;
         }
-        .experience-item li::before {
-            content: '✓';
+
+        .page-peel-card:hover::before {
+            width: 75px;
+            height: 75px;
+        }
+
+        .card-date {
             color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-peel-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .page-peel-card .company {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .page-peel-card .details {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s 0.1s ease-in-out, margin-top 0.5s ease-in-out;
+        }
+        
+        .page-peel-card:hover .details {
+            max-height: 500px; /* Adjust as needed */
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        .details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            background: var(--accent-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .details li {
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .details li::before {
+            content: '✓';
             position: absolute;
             left: 0;
-            font-size: 0.875rem;
-            transition: color 0.2s ease;
+            color: var(--secondary-color);
         }
-        .experience-item li:hover::before {
-            color: #fff;
-        }
+        /* --- END: Page Peel Timeline Styles --- */
+
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -684,50 +692,7 @@
             color: var(--text-muted);
             font-size: 0.9rem;
         }
-        .timeline {
-            position: relative;
-            margin: 0 0 0 20px;
-        }
-        .timeline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 3px;
-            background: var(--accent-color);
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 40px;
-        }
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-        .timeline-marker {
-            position: absolute;
-            top: 0;
-            left: -8px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--secondary-color);
-            border: 3px solid var(--bg-card);
-            box-shadow: 0 0 0 4px rgba(77, 77, 77, 0.1);
-            z-index: 1;
-        }
-        .timeline-content {
-            padding: 1.5rem;
-            background: var(--bg-card);
-            border-radius: 8px;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .timeline-content:hover {
-            transform: translateX(5px);
-            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
-        }
+        
         .skill-progress {
             margin-bottom: 0.75rem;
         }
@@ -1212,13 +1177,14 @@
                 title: "Professional Experience",
                 metaDescription: "Udith Babu K N's experience as Business Development Executive, IT Business Analyst Intern, and Operations Intern in business development, Agile, and IT projects.",
                 content: `
-                    <article class="content-box lazy-load" lang="en">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h3>Business Development Executive</h3>
-                                    <div class="experience-date">Accelgrowth Technology Pvt. Ltd., Hyderabad, Telangana, India | May 2025 – Present</div>
+                    <article class="lazy-load" lang="en">
+                        <div class="page-peel-timeline">
+                            <div class="page-peel-card">
+                                <p class="card-date">May 2025 – Present</p>
+                                <h3>Business Development Executive</h3>
+                                <p class="company">Accelgrowth Technology Pvt. Ltd.</p>
+                                <div class="details">
+                                    <h4>Key Responsibilities</h4>
                                     <ul>
                                         <li>Conducted market research and gathered client requirements for strategic planning.</li>
                                         <li>Analyzed customer data to identify trends and support decisions.</li>
@@ -1230,11 +1196,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h3>Business Analyst Intern</h3>
-                                    <div class="experience-date">CST - Cyber Sapient, Bangalore, Karnataka | Sep 2024 – Dec 2024</div>
+                             <div class="page-peel-card">
+                                <p class="card-date">Sep 2024 – Dec 2024</p>
+                                <h3>Business Analyst Intern</h3>
+                                <p class="company">CST - Cyber Sapient</p>
+                                <div class="details">
+                                    <h4>Achievements</h4>
                                     <ul>
                                         <li>Gathered and documented 100+ business requirements.</li>
                                         <li>Designed 10+ functional specifications and wireframes in Figma.</li>
@@ -1243,11 +1210,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h3>Operations Intern</h3>
-                                    <div class="experience-date">Techmindz, Kochi, Kerala | Aug 2023 – Sep 2023</div>
+                             <div class="page-peel-card">
+                                <p class="card-date">Aug 2023 – Sep 2023</p>
+                                <h3>Operations Intern</h3>
+                                <p class="company">Techmindz</p>
+                                <div class="details">
+                                    <h4>Achievements</h4>
                                     <ul>
                                         <li>Automated customer service processes using AI, reducing response time by 30%.</li>
                                         <li>Analysed customer data to improve service strategies (15% satisfaction increase).</li>
@@ -1262,22 +1230,32 @@
                 title: "Education",
                 metaDescription: "Udith Babu K N's MBA in Operations Management and B.Tech in Information Technology from College of Engineering Thalassery.",
                 content: `
-                    <article class="content-box lazy-load" lang="en">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h3>MBA (Operations Management and Marketing)</h3>
-                                    <div class="experience-date">College of Engineering Thalassery | 2022-2024</div>
-                                    <p style="margin-top: 0.5rem;">Graduated with 7.29 CGPA (72.90%)</p>
+                    <article class="lazy-load" lang="en">
+                        <div class="page-peel-timeline">
+                            <div class="page-peel-card">
+                                <p class="card-date">2022 – 2024</p>
+                                <h3>MBA (Operations & Marketing)</h3>
+                                <p class="company">College of Engineering Thalassery</p>
+                                <div class="details">
+                                    <h4>Details</h4>
+                                    <ul>
+                                        <li>Specialized in Operations Management and Marketing.</li>
+                                        <li>Graduated with 7.29 CGPA (72.90%).</li>
+                                        <li>Gained expertise in supply chain, project management, and marketing strategies.</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h3>B.Tech (Information Technology)</h3>
-                                    <div class="experience-date">College of Engineering Thalassery | 2018-2022</div>
-                                    <p style="margin-top: 0.5rem;">Graduated with 7.84 CGPA (78.40%)</p>
+                            <div class="page-peel-card">
+                                <p class="card-date">2018 – 2022</p>
+                                <h3>B.Tech (Information Technology)</h3>
+                                <p class="company">College of Engineering Thalassery</p>
+                                <div class="details">
+                                    <h4>Details</h4>
+                                    <ul>
+                                        <li>Specialized in Information Technology.</li>
+                                        <li>Graduated with 7.84 CGPA (78.40%).</li>
+                                        <li>Developed a strong foundation in software development, database management, and networking.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -1702,7 +1680,7 @@
                     }
                 });
                 function addInteractiveEvents() {
-                    const clickables = document.querySelectorAll('a, button, .nav-link, .social-link, .project-card, .btn, .theme-toggle');
+                    const clickables = document.querySelectorAll('a, button, .nav-link, .social-link, .project-card, .btn, .theme-toggle, .page-peel-card');
                     clickables.forEach(el => {
                         el.addEventListener('mouseenter', () => {
                             follower.style.width = '60px';
