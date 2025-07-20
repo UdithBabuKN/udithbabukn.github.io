@@ -164,7 +164,6 @@
             --transition: all 0.3s ease;
             --box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             --sidebar-width: 280px;
-            --sidebar-collapsed-width: 90px; /* New: Collapsed sidebar width */
         }
         [data-theme="light"] {
             --primary-color: #2563eb;
@@ -223,7 +222,6 @@
             padding: 2rem 1.5rem;
             overflow-y: auto;
             z-index: 10;
-            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .theme-toggle {
             display: flex;
@@ -253,7 +251,6 @@
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
-            transition: opacity 0.3s ease;
         }
         [data-theme="light"] .logo:hover {
             background: none;
@@ -279,7 +276,6 @@
             padding: 1.25rem;
             margin-bottom: 1.5rem;
             animation: fadeSlideUp 0.6s ease-out;
-             transition: all 0.3s ease;
         }
         .contact-item {
             display: flex;
@@ -312,13 +308,11 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-             transition: opacity 0.3s ease, width 0.3s ease;
         }
         .social-links {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
-            transition: opacity 0.3s ease;
         }
         .social-link {
             display: flex;
@@ -358,7 +352,6 @@
         }
         .nav-list {
             list-style: none;
-            transition: all 0.3s ease;
         }
         .nav-item {
             margin-bottom: 0.5rem;
@@ -373,9 +366,6 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-        }
-        .nav-link span {
-            transition: opacity 0.3s ease, width 0.3s ease;
         }
         .nav-link i {
             margin-right: 0.75rem;
@@ -422,7 +412,6 @@
             width: calc(100% - var(--sidebar-width));
             padding: 3rem 2rem;
             background-color: var(--bg-content);
-            transition: margin-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .section {
             max-width: 800px;
@@ -596,6 +585,10 @@
         }
         .skill-card:hover .skill-details, .skill-card:focus .skill-details {
             transform: translateY(0);
+        }
+        .skill-level {
+            font-size: 1.1rem;
+            font-weight: 600;
         }
         /* --- END: Redesigned Technical Skills Section --- */
 
@@ -928,161 +921,42 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
-        /* --- START: New Responsive and Collapsible Styles --- */
-
-        /* Hamburger button for mobile */
-        .sidebar-toggle-btn {
-            display: none;
-            position: fixed;
-            top: 1.5rem;
-            left: 1.5rem;
-            z-index: 1001;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        .sidebar-toggle-btn:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        /* Desktop Collapsible Styles */
-        @media (min-width: 769px) {
-            .container.sidebar-collapsed .sidebar {
-                width: var(--sidebar-collapsed-width);
+        @media (max-width: 992px) {
+             .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
             }
-
-            .container.sidebar-collapsed .content {
-                margin-left: var(--sidebar-collapsed-width);
-            }
-
-            .container.sidebar-collapsed .sidebar:hover {
-                width: var(--sidebar-width);
-                box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            }
-
-            .container.sidebar-collapsed .sidebar:hover + .content {
-                margin-left: var(--sidebar-width);
-            }
-            
-            /* Hides text content when collapsed */
-            .container.sidebar-collapsed .sidebar .logo,
-            .container.sidebar-collapsed .sidebar .nav-link span {
-                opacity: 0;
-                visibility: hidden;
-                width: 0;
-                transition: opacity 0.1s ease;
-                white-space: nowrap;
-            }
-
-            /* Hides contact and social blocks completely when collapsed */
-            .container.sidebar-collapsed .sidebar .contact-info,
-            .container.sidebar-collapsed .sidebar .social-links {
-                opacity: 0;
-                visibility: hidden;
-                max-height: 0;
-                overflow: hidden;
-                margin-bottom: 0;
-                padding-top: 0;
-                padding-bottom: 0;
-                transition: opacity 0.2s ease, max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), margin-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            }
-
-            /* Centers icons when collapsed */
-            .container.sidebar-collapsed .sidebar .nav-list {
-                align-items: center;
-            }
-            .container.sidebar-collapsed .sidebar .nav-link {
-                justify-content: center;
-                width: 60px;
-            }
-            .container.sidebar-collapsed .sidebar .nav-link i {
-                margin-right: 0;
-            }
-
-            /* --- HOVER STYLES --- */
-
-            /* Shows text content on hover */
-            .container.sidebar-collapsed .sidebar:hover .logo,
-            .container.sidebar-collapsed .sidebar:hover .nav-link span {
-                opacity: 1;
-                visibility: visible;
-                width: auto;
-                transition: opacity 0.2s ease 0.15s;
-            }
-
-            /* Shows contact and social blocks on hover */
-            .container.sidebar-collapsed .sidebar:hover .contact-info {
-                opacity: 1;
-                visibility: visible;
-                max-height: 500px; /* Generous height for transition */
-                margin-bottom: 1.5rem;
-                padding-top: 1.25rem;
-                padding-bottom: 1.25rem;
-                transition-delay: 0.1s;
-            }
-
-            .container.sidebar-collapsed .sidebar:hover .social-links {
-                opacity: 1;
-                visibility: visible;
-                max-height: 500px; /* Generous height for transition */
-                margin-bottom: 2rem;
-                transition-delay: 0.1s;
-            }
-
-            /* Resets nav items to expanded layout on hover */
-            .container.sidebar-collapsed .sidebar:hover .nav-list {
-                align-items: initial;
-            }
-            .container.sidebar-collapsed .sidebar:hover .nav-link {
-                justify-content: flex-start;
-                width: 100%;
-            }
-            .container.sidebar-collapsed .sidebar:hover .nav-link i {
-                margin-right: 0.75rem;
+            .skill-card {
+                min-height: 180px;
             }
         }
-
-        /* Mobile Slide-in Menu Styles */
         @media (max-width: 768px) {
-            .sidebar-toggle-btn {
-                display: flex;
+            :root {
+                --sidebar-width: 100%;
             }
-
+            .container {
+                flex-direction: column;
+            }
             .sidebar {
-                position: fixed;
-                width: var(--sidebar-width);
-                max-width: 80%;
-                height: 100vh;
-                transform: translateX(-110%);
-                z-index: 1000;
-                border-right: 1px solid var(--border-color);
+                height: auto;
+                position: relative;
+                overflow: visible;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 1rem;
             }
-
-            .sidebar.open {
-                transform: translateX(0);
-                box-shadow: 10px 0 40px rgba(0,0,0,0.3);
-            }
-
             .content {
                 margin-left: 0;
                 width: 100%;
                 padding: 1.5rem;
             }
-
+            .section-header {
+                font-size: 1.75rem;
+            }
             .project-grid {
                 grid-template-columns: 1fr;
             }
-            .skills-grid {
+             .skills-grid {
                 grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
                 gap: 1rem;
             }
@@ -1097,8 +971,6 @@
                 font-size: 0.9rem;
             }
         }
-        /* --- END: New Responsive and Collapsible Styles --- */
-
         ::-webkit-scrollbar {
             display: none;
         }
@@ -1112,11 +984,6 @@
 <body>
     <!-- Container for the full-page 3D canvas -->
     <div id="global-canvas-container"></div>
-    
-    <!-- New: Hamburger button for mobile -->
-    <button class="sidebar-toggle-btn" aria-label="Toggle Navigation">
-        <i class="fas fa-bars"></i>
-    </button>
 
     <div class="container">
         <aside class="sidebar" aria-label="Sidebar Navigation">
@@ -1131,7 +998,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone" aria-hidden="true"></i>
-                    <a href="tel:+918301993853" aria-label="Call Udith Babu"><span>+91 8301993853</span></a>
+                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
@@ -1158,37 +1025,37 @@
                 <ul class="nav-list">
                     <li class="nav-item">
                         <a href="#summary" class="nav-link active" data-section="summary" aria-current="page">
-                            <i class="fas fa-user" aria-hidden="true"></i><span>Summary</span>
+                            <i class="fas fa-user" aria-hidden="true"></i>Summary
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#skills" class="nav-link" data-section="skills">
-                            <i class="fas fa-code" aria-hidden="true"></i><span>Technical Skills</span>
+                            <i class="fas fa-code" aria-hidden="true"></i>Technical Skills
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#experience" class="nav-link" data-section="experience">
-                            <i class="fas fa-briefcase" aria-hidden="true"></i><span>Experience</span>
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>Experience
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#education" class="nav-link" data-section="education">
-                            <i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Education</span>
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>Education
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#projects" class="nav-link" data-section="projects">
-                            <i class="fas fa-project-diagram" aria-hidden="true"></i><span>Projects</span>
+                            <i class="fas fa-project-diagram" aria-hidden="true"></i>Projects
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#certifications" class="nav-link" data-section="certifications">
-                            <i class="fas fa-certificate" aria-hidden="true"></i><span>Certifications</span>
+                            <i class="fas fa-certificate" aria-hidden="true"></i>Certifications
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#contact" class="nav-link" data-section="contact">
-                            <i class="fas fa-envelope" aria-hidden="true"></i><span>Contact Me</span>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>Contact Me
                         </a>
                     </li>
                 </ul>
@@ -1911,47 +1778,26 @@
                 }
                 animate();
             }
-            
-            // --- New Sidebar Logic ---
-            const sidebar = document.querySelector('.sidebar');
-            const container = document.querySelector('.container');
-            const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-            const content = document.querySelector('.content');
 
-            const handleSidebarState = () => {
-                if (window.innerWidth > 768) {
-                    container.classList.add('sidebar-collapsed');
-                    sidebar.classList.remove('open');
-                } else {
-                    container.classList.remove('sidebar-collapsed');
-                }
-            };
-
-            if (toggleBtn && sidebar) {
-                toggleBtn.addEventListener('click', () => {
-                    sidebar.classList.toggle('open');
-                });
-            }
-            
-            // Close sidebar when a nav link is clicked on mobile
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const sectionId = link.getAttribute('data-section');
                     loadSection(sectionId);
                     setActiveLink(link);
-                    if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
-                        sidebar.classList.remove('open');
+                    if (window.innerWidth < 768) {
+                        window.scrollTo({
+                            top: document.querySelector('.content').offsetTop,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
 
-            // Initial setup
             try {
-                handleSidebarState();
-                window.addEventListener('resize', handleSidebarState);
-                
+                // Initialize the persistent 3D background
                 initThreeJS();
+                // Load the initial section
                 loadSection('summary');
                 setActiveLink(document.querySelector('[data-section="summary"]'));
                 initCursorEffect();
