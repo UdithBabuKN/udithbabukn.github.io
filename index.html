@@ -127,7 +127,7 @@
             "name": "Udith Babu K N"
         },
         "datePublished": "2024-01-01",
-        "dateModified": "2025-07-20"
+        "dateModified": "2025-07-24"
     }
     </script>
 
@@ -137,7 +137,8 @@
             --secondary-color: #7c3aed;
             --accent-color: linear-gradient(45deg, #3b82f6, #a855f7);
             --text-color: #fff;
-            --text-muted: #d1d5db;
+            /* ACCESSIBILITY UPDATE: Increased contrast for muted text */
+            --text-muted: #e2e8f0;
             --bg-color: #0f172a;
             --bg-sidebar: rgba(15, 23, 42, 0.85);
             --bg-content: transparent;
@@ -146,13 +147,15 @@
             --transition: all 0.3s ease;
             --box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             --sidebar-width: 280px;
+            --error-color: #ff6b6b;
         }
         [data-theme="light"] {
             --primary-color: #2563eb;
             --secondary-color: #9333ea;
             --accent-color: linear-gradient(45deg, #60a5fa, #c084fc);
             --text-color: #111827;
-            --text-muted: #4b5563;
+            /* ACCESSIBILITY UPDATE: Ensured high contrast for light theme muted text */
+            --text-muted: #374151;
             --text-hover: #111827;
             --bg-color: #f3f4f6;
             --bg-sidebar: rgba(255, 255, 255, 0.95);
@@ -160,6 +163,7 @@
             --bg-card: rgba(255, 255, 255, 0.95);
             --border-color: rgba(0, 0, 0, 0.1);
             --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+            --error-color: #e53e3e;
         }
         [data-theme="light"] .skill-category h3 {
             color: var(--text-color);
@@ -179,6 +183,16 @@
             line-height: 1.6;
             overflow-x: hidden;
             transition: background-color var(--transition), color var(--transition);
+        }
+        /* ACCESSIBILITY UPDATE: Added highly visible focus styles for all interactive elements */
+        a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: 3px;
+            border-radius: 4px;
+            transition: outline 0.2s ease;
+        }
+        .form-control:focus-visible {
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
         }
         #global-canvas-container {
             position: fixed;
@@ -230,6 +244,7 @@
             text-decoration: none;
             cursor: pointer;
             margin-bottom: 1rem;
+            border: none;
         }
         .theme-toggle:hover {
             background: var(--accent-color);
@@ -544,7 +559,6 @@
         .skill-card:hover, .skill-card:focus {
             transform: translateY(-10px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-            outline: none;
         }
         .skill-icon {
             font-size: 3.5rem;
@@ -799,10 +813,13 @@
         .form-control:focus {
             outline: none;
             border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
         }
         .form-control.invalid {
-            border-color: #ff5555;
+            border-color: var(--error-color);
+        }
+        /* FORM UPDATE: Style for invalid label */
+        .form-group.invalid .form-label {
+            color: var(--error-color);
         }
         textarea.form-control {
             resize: vertical;
@@ -843,7 +860,7 @@
             cursor: not-allowed;
         }
         .error-message {
-            color: #ff5555;
+            color: var(--error-color);
             font-size: 0.85rem;
             margin-top: 0.25rem;
             display: none;
@@ -1002,9 +1019,10 @@
         <!-- Sidebar Navigation (Desktop) -->
         <aside class="sidebar" aria-label="Sidebar Navigation">
             <h1 class="logo">Udith Babu K N</h1>
-            <div class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <!-- ACCESSIBILITY UPDATE: Added aria-pressed for state and aria-label -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
                 <i class="fas fa-moon"></i>
-            </div>
+            </button>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -1079,7 +1097,15 @@
         <!-- Main Content Area -->
         <main class="content" aria-label="Main Content">
             <div class="content-scroller">
-                <!-- Content will be loaded here dynamically by JavaScript -->
+                <!-- NO-JS FALLBACK: Summary section is now hard-coded for immediate visibility -->
+                <section class="section" id="summary" lang="en">
+                    <h2 class="section-header">Professional Summary</h2>
+                    <article class="content-box summary-scale-in" lang="en">
+                        <h3>Dynamic IT Business Analyst and Project Coordinator</h3>
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 500;">MBA in Operations Management and B.Tech in Information Technology.</p>
+                        <p style="font-size: 0.95rem;">Results-driven IT Business Analyst, Project Coordinator, and Product Analyst with expertise in Agile methodologies, data analysis, and process optimization. Skilled in Python, MySQL, Figma, and stakeholder communication to deliver impactful IT solutions.</p>
+                    </article>
+                </section>
             </div>
         </main>
     </div>
@@ -1130,7 +1156,8 @@
                 </a>
             </li>
             <li class="mobile-nav-item">
-                <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle Theme">
+                <!-- ACCESSIBILITY UPDATE: Added aria-pressed for state and aria-label -->
+                <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
                     <i class="fas fa-moon"></i>
                     <span>Theme</span>
                 </button>
@@ -1184,6 +1211,7 @@
     <script>
         // Main application logic is deferred until the DOM is fully loaded.
         document.addEventListener('DOMContentLoaded', () => {
+            // ERROR FIX: Restored the summary object to contentData.
             const contentData = {
                 summary: {
                     title: "Professional Summary",
@@ -1479,31 +1507,31 @@
                     content: `
                         <article class="content-box lazy-load" lang="en">
                             <p>Looking to drive IT projects to success? Connect to explore my expertise in Agile, business analysis, and product analysis.</p>
-                            <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST" aria-label="Contact Form">
+                            <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST" aria-label="Contact Form" novalidate>
                                 <input type="hidden" name="_subject" value="New portfolio contact submission">
                                 <input type="hidden" name="_captcha" value="false">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Your Name</label>
                                     <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required aria-required="true">
-                                    <span class="error-message">Please enter your name</span>
+                                    <span class="error-message" id="nameError">Please enter your name</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="form-label">Your Email</label>
                                     <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required aria-required="true">
-                                    <span class="error-message">Please enter a valid email address</span>
+                                    <span class="error-message" id="emailError">Please enter a valid email address</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="company" class="form-label">Company</label>
                                     <input type="text" id="company" name="company" class="form-control" placeholder="Enter your company name">
-                                    <span class="error-message">Please enter your company name</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="message" class="form-label">Message</label>
                                     <textarea id="message" name="message" class="form-control" placeholder="Enter your message" required aria-required="true"></textarea>
-                                    <span class="error-message">Please enter a message</span>
+                                    <span class="error-message" id="messageError">Please enter a message</span>
                                 </div>
                                 <button type="submit" class="btn btn-success" aria-label="Send Message" id="submitButton">Send Message</button>
-                                <span class="error-message" id="formError" style="display: none;">An error occurred. Please try again or contact me at udithbabuvarrier@gmail.com.</span>
+                                <!-- ACCESSIBILITY UPDATE: Added aria-live for screen readers -->
+                                <span class="error-message" id="formError" style="display: none;" aria-live="polite">An error occurred. Please try again or contact me directly.</span>
                             </form>
                         </article>`
                 }
@@ -1528,13 +1556,19 @@
 
             const themeToggle = document.getElementById('themeToggle');
             const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+            const allThemeToggles = [themeToggle, mobileThemeToggle];
             const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
 
             function applyTheme(theme) {
                 document.documentElement.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
+                const isDark = theme === 'dark';
                 themeIcons.forEach(icon => {
-                    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                });
+                // ACCESSIBILITY UPDATE: Set aria-pressed state
+                allThemeToggles.forEach(toggle => {
+                    toggle.setAttribute('aria-pressed', isDark);
                 });
             }
 
@@ -1547,8 +1581,7 @@
             const savedTheme = localStorage.getItem('theme') || 'dark';
             applyTheme(savedTheme);
 
-            themeToggle.addEventListener('click', toggleTheme);
-            mobileThemeToggle.addEventListener('click', toggleTheme);
+            allThemeToggles.forEach(toggle => toggle.addEventListener('click', toggleTheme));
 
             if (!contentScroller) {
                 console.error('Content scroller not found');
@@ -1579,6 +1612,12 @@
             }
 
             function loadSection(sectionId) {
+                // This check prevents replacing the initial HTML on page load, avoiding a content flash.
+                if (sectionId === 'summary' && document.getElementById('summary') && contentScroller.children.length === 1) {
+                    initLazyLoad();
+                    return;
+                }
+                
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
                     contentScroller.innerHTML = `
@@ -1608,7 +1647,7 @@
                         link.setAttribute('aria-current', 'page');
                     } else {
                         link.classList.remove('active');
-                        link.setAttribute('aria-current', 'false');
+                        link.removeAttribute('aria-current');
                     }
                 });
             }
@@ -1641,24 +1680,50 @@
                 }
             }
 
+            // FORM UPDATE: Rewritten for real-time validation
             function initContactForm() {
                 const form = document.getElementById('contactForm');
+                if (!form) return;
+
                 const submitButton = document.getElementById('submitButton');
                 const formError = document.getElementById('formError');
-                if (!form || !submitButton) return;
+                const inputs = {
+                    name: form.querySelector('#name'),
+                    email: form.querySelector('#email'),
+                    message: form.querySelector('#message')
+                };
+
+                const validators = {
+                    name: value => value.trim() !== '',
+                    email: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+                    message: value => value.trim() !== ''
+                };
+
+                const validateField = (fieldName) => {
+                    const input = inputs[fieldName];
+                    const isValid = validators[fieldName](input.value);
+                    const group = input.closest('.form-group');
+                    if (isValid) {
+                        group.classList.remove('invalid');
+                    } else {
+                        group.classList.add('invalid');
+                    }
+                    return isValid;
+                };
+
+                Object.keys(inputs).forEach(fieldName => {
+                    inputs[fieldName].addEventListener('input', () => validateField(fieldName));
+                });
 
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    let isValid = true;
-                    // Basic validation
-                    const name = form.name.value.trim();
-                    const email = form.email.value.trim();
-                    const message = form.message.value.trim();
-                    if (!name || !email || !message) {
-                        isValid = false;
-                    }
+                    formError.style.display = 'none';
 
-                    if (isValid) {
+                    const isNameValid = validateField('name');
+                    const isEmailValid = validateField('email');
+                    const isMessageValid = validateField('message');
+
+                    if (isNameValid && isEmailValid && isMessageValid) {
                         submitButton.disabled = true;
                         submitButton.textContent = 'Sending...';
                         try {
@@ -1669,7 +1734,7 @@
                             if (response.ok) {
                                 const contentBox = form.closest('.content-box');
                                 contentBox.innerHTML = `
-                                    <div class="thank-you-message lazy-load">
+                                    <div class="thank-you-message lazy-load" aria-live="polite">
                                         <h3>Thank You!</h3>
                                         <p>Your message has been sent successfully. I'll get back to you soon!</p>
                                         <button class="btn btn-success" id="sendAnother" aria-label="Send Another Message">Send Another</button>
@@ -1691,7 +1756,6 @@
             }
             
             function initThreeJS() {
-                // Check if Three.js is loaded
                 if (typeof THREE === 'undefined') {
                     console.warn('Three.js is not loaded, skipping 3D background.');
                     return;
@@ -1701,7 +1765,7 @@
 
                 const scene = new THREE.Scene();
                 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ alpha: true });
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -1793,7 +1857,7 @@
                     camera.updateProjectionMatrix();
                     renderer.setSize(window.innerWidth, window.innerHeight);
                     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                });
+                }, { passive: true });
             }
 
             function initParticleTrail() {
@@ -1810,7 +1874,7 @@
                     canvas.width = window.innerWidth;
                     canvas.height = window.innerHeight;
                 }
-                window.addEventListener('resize', resizeCanvas);
+                window.addEventListener('resize', resizeCanvas, { passive: true });
                 resizeCanvas();
 
                 class Particle {
@@ -1848,7 +1912,7 @@
                     for (let i = 0; i < 2; i++) {
                         particles.push(new Particle(mouse.x, mouse.y));
                     }
-                });
+                }, { passive: true });
                 
                 function createBurst(x, y) {
                     for (let i = 0; i < 30; i++) {
