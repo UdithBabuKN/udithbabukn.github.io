@@ -501,13 +501,15 @@
             margin-top: 0;
         }
 
-        .skill-category-foldable.expanded .skills-grid {
+        .skill-category-foldable.expanded .skills-grid,
+        .skill-category-foldable:hover .skills-grid {
             max-height: 600px;
             opacity: 1;
             margin-top: 1.5rem;
         }
         
-        .skill-category-foldable.expanded .category-chevron {
+        .skill-category-foldable.expanded .category-chevron,
+        .skill-category-foldable:hover .category-chevron {
             transform: rotate(180deg);
         }
 
@@ -626,7 +628,8 @@
             transition: max-height 0.5s ease-in-out, opacity 0.5s 0.1s ease-in-out, margin-top 0.5s ease-in-out;
         }
         
-        .page-peel-card.expanded .details {
+        .page-peel-card.expanded .details,
+        .page-peel-card:hover .details {
             max-height: 500px;
             opacity: 1;
             margin-top: 1rem;
@@ -892,7 +895,7 @@
         .mobile-nav-item {
             flex: 0 0 auto;
         }
-        .mobile-nav-link {
+        .mobile-nav-link, .mobile-theme-toggle {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -904,8 +907,11 @@
             padding: 0 16px;
             transition: color 0.3s ease;
             -webkit-tap-highlight-color: transparent;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
-        .mobile-nav-link i {
+        .mobile-nav-link i, .mobile-theme-toggle i {
             font-size: 1.3rem;
             margin-bottom: 5px;
         }
@@ -963,6 +969,20 @@
             }
             .footer {
                 display: none;
+            }
+            /* Mobile-only interaction overrides */
+            .skill-category-foldable:hover .skills-grid {
+                max-height: 0;
+                opacity: 0;
+                margin-top: 0;
+            }
+            .skill-category-foldable:hover .category-chevron {
+                transform: rotate(0deg);
+            }
+            .page-peel-card:hover .details {
+                max-height: 0;
+                opacity: 0;
+                margin-top: 0;
             }
         }
         ::-webkit-scrollbar {
@@ -1107,6 +1127,12 @@
                     <i class="fas fa-envelope" aria-hidden="true"></i>
                     <span>Contact</span>
                 </a>
+            </li>
+            <li class="mobile-nav-item">
+                <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                    <span>Theme</span>
+                </button>
             </li>
         </ul>
     </nav>
@@ -1688,18 +1714,29 @@
             const metaDescription = document.querySelector('meta[name="description"]');
 
             const themeToggle = document.getElementById('themeToggle');
-            const themeIcon = themeToggle.querySelector('i');
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            themeIcon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+            const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
 
-            themeToggle.addEventListener('click', () => {
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                themeIcons.forEach(icon => {
+                    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                });
+            }
+
+            function toggleTheme() {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                themeIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-            });
+                applyTheme(newTheme);
+            }
+            
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(savedTheme);
+
+            themeToggle.addEventListener('click', toggleTheme);
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+
 
             if (!contentScroller) {
                 console.error('Content scroller not found');
@@ -1710,21 +1747,25 @@
                 const foldableCategories = document.querySelectorAll('.skill-category-foldable');
                 foldableCategories.forEach(category => {
                     const title = category.querySelector('.skill-category-title');
-                    title.addEventListener('click', () => {
-                        category.classList.toggle('expanded');
-                    });
+                    // Use click for mobile/touch, rely on CSS hover for desktop
+                    if (window.innerWidth <= 768) {
+                        title.addEventListener('click', () => {
+                            category.classList.toggle('expanded');
+                        });
+                    }
                 });
             }
             
             function initPagePeelCards() {
                 const cards = document.querySelectorAll('.page-peel-card');
-                cards.forEach(card => {
-                    card.addEventListener('click', () => {
-                        if (window.innerWidth <= 768) {
+                 // Use click for mobile/touch, rely on CSS hover for desktop
+                if (window.innerWidth <= 768) {
+                    cards.forEach(card => {
+                        card.addEventListener('click', () => {
                             card.classList.toggle('expanded');
-                        }
+                        });
                     });
-                });
+                }
             }
 
             function loadSection(sectionId) {
@@ -1741,8 +1782,8 @@
                     window.scrollTo(0, 0);
                     initLazyLoad();
                     
-                    if (sectionId === 'skills') initFoldableSkills();
-                    if (sectionId === 'experience' || sectionId === 'education') initPagePeelCards();
+                    initFoldableSkills();
+                    initPagePeelCards();
                     if (sectionId === 'contact') initContactForm();
 
                 } else {
