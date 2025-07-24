@@ -970,20 +970,6 @@
             .footer {
                 display: none;
             }
-            /* Mobile-only interaction overrides */
-            .skill-category-foldable:hover .skills-grid {
-                max-height: 0;
-                opacity: 0;
-                margin-top: 0;
-            }
-            .skill-category-foldable:hover .category-chevron {
-                transform: rotate(0deg);
-            }
-            .page-peel-card:hover .details {
-                max-height: 0;
-                opacity: 0;
-                margin-top: 0;
-            }
         }
         ::-webkit-scrollbar {
             display: none;
@@ -1698,6 +1684,8 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            const isMobile = window.innerWidth <= 768;
+
             const emailLink = document.querySelector('.email-link');
             const emailPlaceholder = document.querySelector('.email-placeholder');
             const emailAddress = 'udithbabuvarrier@gmail.com';
@@ -1747,8 +1735,7 @@
                 const foldableCategories = document.querySelectorAll('.skill-category-foldable');
                 foldableCategories.forEach(category => {
                     const title = category.querySelector('.skill-category-title');
-                    // Use click for mobile/touch, rely on CSS hover for desktop
-                    if (window.innerWidth <= 768) {
+                     if (isMobile) {
                         title.addEventListener('click', () => {
                             category.classList.toggle('expanded');
                         });
@@ -1758,8 +1745,7 @@
             
             function initPagePeelCards() {
                 const cards = document.querySelectorAll('.page-peel-card');
-                 // Use click for mobile/touch, rely on CSS hover for desktop
-                if (window.innerWidth <= 768) {
+                if(isMobile) {
                     cards.forEach(card => {
                         card.addEventListener('click', () => {
                             card.classList.toggle('expanded');
@@ -1879,7 +1865,7 @@
                     const sectionId = link.getAttribute('data-section');
                     loadSection(sectionId);
                     setActiveLink(sectionId);
-                    if (window.innerWidth <= 768) {
+                    if (isMobile) {
                         scrollNavToActive(sectionId);
                     }
                 });
@@ -1887,14 +1873,15 @@
 
             try {
                 initThreeJS();
+                initParticleTrail();
+
                 const initialSection = window.location.hash.substring(1) || 'summary';
                 loadSection(initialSection);
                 setActiveLink(initialSection);
-                // On initial load, ensure the active mobile nav item is visible
-                if (window.innerWidth <= 768) {
+
+                if (isMobile) {
                     setTimeout(() => scrollNavToActive(initialSection), 100);
                 }
-                initParticleTrail();
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
