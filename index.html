@@ -183,6 +183,10 @@
             line-height: 1.6;
             overflow-x: hidden;
             transition: background-color var(--transition), color var(--transition);
+            /* --- FOOTER FIX: Make body a flex container --- */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         /* ACCESSIBILITY UPDATE: Added highly visible focus styles for all interactive elements */
         a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible, input:focus-visible, textarea:focus-visible {
@@ -214,9 +218,10 @@
         }
         .container {
             display: flex;
-            min-height: 100vh;
             position: relative;
             z-index: 1;
+             /* --- FOOTER FIX: Allow container to grow and fill space --- */
+            flex-grow: 1;
         }
         .sidebar {
             width: var(--sidebar-width);
