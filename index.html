@@ -203,6 +203,9 @@
             flex-direction: column;
             min-height: 100vh;
         }
+        body.mobile-menu-open {
+            overflow: hidden;
+        }
         a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible, input:focus-visible, textarea:focus-visible {
             outline: 3px solid var(--secondary-color);
             outline-offset: 3px;
@@ -1040,14 +1043,12 @@
             transform: translateY(0);
         }
         
-        .mobile-fab-nav {
-            display: none;
+        /* ===== NEW MOBILE NAVIGATION STYLES ===== */
+        .mobile-menu-toggle {
+            display: none; /* Hidden by default */
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1001;
-        }
-        .fab-toggler {
             width: 60px;
             height: 60px;
             background: var(--accent-color);
@@ -1060,67 +1061,75 @@
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1002;
             transition: transform 0.3s ease;
         }
-        .fab-toggler.open {
-            transform: rotate(45deg);
-        }
-        .fab-menu {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-sidebar);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1001;
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .fab-menu.open {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .fab-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .fab-label {
-            background-color: var(--bg-card);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .fab-link {
-            width: 45px;
-            height: 45px;
-            background-color: var(--bg-sidebar);
-            border-radius: 50%;
-            display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            text-decoration: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: background-color 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
-        .fab-link.active {
+
+        .mobile-nav-menu.open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .mobile-nav-menu .nav-list {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .mobile-nav-menu .nav-item {
+            margin: 1rem 0;
+        }
+
+        .mobile-nav-menu .nav-link {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-nav-menu .nav-link:hover {
+            transform: scale(1.1);
             background: var(--accent-color);
-            color: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .mobile-nav { display: none; }
         
+        .mobile-nav-menu .nav-link.active {
+            font-weight: 700;
+            background: var(--accent-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .mobile-nav-menu .mobile-theme-toggle {
+            margin-top: 2rem;
+        }
+
         .mobile-contact-info {
             display: none;
         }
-        /* NEW: Mobile Social Links Style */
+        
         .mobile-social-links {
             display: flex;
             justify-content: center;
@@ -1141,15 +1150,15 @@
         }
         @media (max-width: 768px) {
             .sidebar {
-                display: none; /* Keep sidebar hidden on mobile */
+                display: none; /* Hide desktop sidebar on mobile */
             }
             .content {
                 margin-left: 0; /* Full width on mobile */
                 width: 100%;
                 padding: 1.5rem 1rem 85px 1rem;
             }
-            .mobile-fab-nav {
-                display: block;
+            .mobile-menu-toggle {
+                display: flex; /* Show mobile menu button */
             }
             .section-header {
                 font-size: 1.75rem;
@@ -1298,48 +1307,25 @@
         </main>
     </div>
     
-    <!-- NEW: Mobile FAB Navigation -->
-    <nav class="mobile-fab-nav" aria-label="Mobile Navigation">
-        <button class="fab-toggler" id="fabToggler" aria-label="Toggle Navigation Menu" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul class="fab-menu" id="fabMenu">
-            <li class="fab-item">
-                <span class="fab-label">Theme</span>
-                <button class="fab-link" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </li>
-            <li class="fab-item">
-                <span class="fab-label">Contact</span>
-                <a href="#contact" class="fab-link" data-section="contact"><i class="fas fa-envelope"></i></a>
-            </li>
-            <li class="fab-item">
-                <span class="fab-label">Certs</span>
-                <a href="#certifications" class="fab-link" data-section="certifications"><i class="fas fa-certificate"></i></a>
-            </li>
-             <li class="fab-item">
-                 <span class="fab-label">Projects</span>
-                <a href="#projects" class="fab-link" data-section="projects"><i class="fas fa-project-diagram"></i></a>
-            </li>
-             <li class="fab-item">
-                <span class="fab-label">Education</span>
-                <a href="#education" class="fab-link" data-section="education"><i class="fas fa-graduation-cap"></i></a>
-            </li>
-            <li class="fab-item">
-                <span class="fab-label">Experience</span>
-                <a href="#experience" class="fab-link" data-section="experience"><i class="fas fa-briefcase"></i></a>
-            </li>
-            <li class="fab-item">
-                <span class="fab-label">Skills</span>
-                <a href="#skills" class="fab-link" data-section="skills"><i class="fas fa-code"></i></a>
-            </li>
-            <li class="fab-item">
-                <span class="fab-label">Summary</span>
-                <a href="#summary" class="fab-link active" data-section="summary"><i class="fas fa-user"></i></a>
-            </li>
+    <!-- ===== NEW: Mobile Full-Screen Navigation ===== -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileNavMenu">
+        <i class="fas fa-bars"></i>
+    </button>
+    <nav class="mobile-nav-menu" id="mobileNavMenu" aria-label="Mobile Navigation">
+        <ul class="nav-list">
+             <li class="nav-item"><a href="#summary" class="nav-link" data-section="summary">Summary</a></li>
+             <li class="nav-item"><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+             <li class="nav-item"><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+             <li class="nav-item"><a href="#education" class="nav-link" data-section="education">Education</a></li>
+             <li class="nav-item"><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+             <li class="nav-item"><a href="#certifications" class="nav-link" data-section="certifications">Certs</a></li>
+             <li class="nav-item"><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
         </ul>
+        <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+            <i class="fas fa-moon"></i>
+        </button>
     </nav>
+
 
     <!-- Footer -->
     <footer class="footer" style="background-color: transparent; padding: 2rem 1rem; text-align: center; color: var(--text-muted);">
@@ -1707,29 +1693,31 @@
             }
 
             const contentScroller = document.querySelector('.content-scroller');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const fabLinks = document.querySelectorAll('.fab-link'); 
-            const allNavLinks = [...navLinks, ...fabLinks]; 
+            const desktopNavLinks = document.querySelectorAll('.sidebar .nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu .nav-link');
+            const allNavLinks = [...desktopNavLinks, ...mobileNavLinks];
             const titleElement = document.querySelector('title');
             const metaDescription = document.querySelector('meta[name="description"]');
 
             const themeToggle = document.getElementById('themeToggle');
             const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-            const allThemeToggles = [themeToggle, mobileThemeToggle];
+            const allThemeToggles = [themeToggle, mobileThemeToggle].filter(Boolean);
             const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
 
-            const fabToggler = document.getElementById('fabToggler');
-            const fabMenu = document.getElementById('fabMenu');
-            const fabTogglerIcon = fabToggler.querySelector('i');
+            // --- NEW MOBILE MENU LOGIC ---
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
+            const mobileMenuIcon = mobileMenuToggle.querySelector('i');
 
-            if(fabToggler) {
-                fabToggler.addEventListener('click', () => {
-                    fabMenu.classList.toggle('open');
-                    fabToggler.classList.toggle('open');
-                    const isOpen = fabMenu.classList.contains('open');
-                    fabToggler.setAttribute('aria-expanded', isOpen);
-                    fabTogglerIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-                });
+            function toggleMobileMenu() {
+                const isOpen = mobileNavMenu.classList.toggle('open');
+                document.body.classList.toggle('mobile-menu-open', isOpen);
+                mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+                mobileMenuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+            }
+            
+            if(mobileMenuToggle && mobileNavMenu) {
+                mobileMenuToggle.addEventListener('click', toggleMobileMenu);
             }
             
             let vantaEffect;
@@ -1739,22 +1727,21 @@
                 localStorage.setItem('theme', theme);
                 const isDark = theme === 'dark';
                 themeIcons.forEach(icon => {
-                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                    if(icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
                 });
                 allThemeToggles.forEach(toggle => {
-                    toggle.setAttribute('aria-pressed', isDark);
+                    if(toggle) toggle.setAttribute('aria-pressed', isDark);
                 });
                 
                 // Update Vanta.js colors
                 if (vantaEffect) {
                     vantaEffect.setOptions({
-                        // ===== UPDATED VANTA.JS COLORS =====
-                        skyColor: isDark ? 0x1a202c : 0x93c5fd, // Dark Charcoal vs Bright Blue
-                        cloudColor: isDark ? 0x2c5282 : 0xffffff, // Muted Blue vs White
-                        cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe, // Darker Muted Blue vs Light Blue
-                        sunColor: isDark ? 0x718096 : 0xfbbf24, // Slate vs Golden
-                        sunGlareColor: isDark ? 0x4a5568 : 0xfde68a, // Darker Slate vs Soft Yellow
-                        sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7 // Light Slate vs Pale Yellow
+                        skyColor: isDark ? 0x1a202c : 0x93c5fd,
+                        cloudColor: isDark ? 0x2c5282 : 0xffffff,
+                        cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe,
+                        sunColor: isDark ? 0x718096 : 0xfbbf24,
+                        sunGlareColor: isDark ? 0x4a5568 : 0xfde68a,
+                        sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7
                     })
                 }
             }
@@ -1767,7 +1754,9 @@
             
             const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light mode
             
-            allThemeToggles.forEach(toggle => toggle.addEventListener('click', toggleTheme));
+            allThemeToggles.forEach(toggle => {
+                if(toggle) toggle.addEventListener('click', toggleTheme);
+            });
 
             if (!contentScroller) {
                 console.error('Content scroller not found');
@@ -1933,13 +1922,12 @@
                       gyroControls: false,
                       minHeight: 200.00,
                       minWidth: 200.00,
-                      // ===== UPDATED VANTA.JS COLORS =====
-                      skyColor: isDark ? 0x1a202c : 0x93c5fd, // Dark Charcoal vs Bright Blue
-                      cloudColor: isDark ? 0x2c5282 : 0xffffff, // Muted Blue vs White
-                      cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe, // Darker Muted Blue vs Light Blue
-                      sunColor: isDark ? 0x718096 : 0xfbbf24, // Slate vs Golden
-                      sunGlareColor: isDark ? 0x4a5568 : 0xfde68a, // Darker Slate vs Soft Yellow
-                      sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7 // Light Slate vs Pale Yellow
+                      skyColor: isDark ? 0x1a202c : 0x93c5fd,
+                      cloudColor: isDark ? 0x2c5282 : 0xffffff,
+                      cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe,
+                      sunColor: isDark ? 0x718096 : 0xfbbf24,
+                      sunGlareColor: isDark ? 0x4a5568 : 0xfde68a,
+                      sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7
                     });
                 } else {
                     console.warn('Vanta.js CLOUDS is not loaded.');
@@ -1954,8 +1942,8 @@
                     const sectionId = link.getAttribute('data-section');
                     loadSection(sectionId);
                     setActiveLink(sectionId);
-                    if (isMobile && fabMenu.classList.contains('open')) {
-                       fabToggler.click();
+                    if (isMobile && mobileNavMenu.classList.contains('open')) {
+                       toggleMobileMenu();
                     }
                 });
             });
