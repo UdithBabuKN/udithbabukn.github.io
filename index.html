@@ -132,36 +132,36 @@
     </script>
 
     <style>
+        /* ===== NEW EYE-FRIENDLY COLOR PALETTE ===== */
         :root {
-            --primary-color: #1e40af;
-            --secondary-color: #7c3aed;
+            --primary-color: #3b82f6; /* Blue 500 */
+            --secondary-color: #8b5cf6; /* Violet 500 */
             --accent-color: linear-gradient(45deg, #3b82f6, #a855f7);
-            --text-color: #fff;
-            --text-muted: #e2e8f0;
-            --bg-color: #0f172a;
-            --bg-sidebar: rgba(15, 23, 42, 0.85);
-            --bg-content: transparent;
-            --bg-card: rgba(30, 41, 59, 0.9);
+            /* Dark Mode (Default) */
+            --text-color: #e5e7eb; /* Gray 200 */
+            --text-muted: #9ca3af; /* Gray 400 */
+            --bg-color: #1f2937; /* Gray 800 */
+            --bg-sidebar: rgba(31, 41, 55, 0.85); /* Gray 800 with alpha */
+            --bg-card: rgba(55, 65, 81, 0.9); /* Gray 700 with alpha */
             --border-color: rgba(255, 255, 255, 0.1);
             --transition: all 0.3s ease;
-            --box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --sidebar-width: 280px;
-            --error-color: #ff6b6b;
+            --error-color: #ef4444; /* Red 500 */
         }
         [data-theme="light"] {
-            --primary-color: #2563eb;
-            --secondary-color: #9333ea;
-            --accent-color: linear-gradient(45deg, #60a5fa, #c084fc);
-            --text-color: #111827;
-            --text-muted: #374151;
+            --primary-color: #2563eb; /* Blue 600 */
+            --secondary-color: #9333ea; /* Purple 600 */
+            /* Light Mode */
+            --text-color: #111827; /* Gray 900 */
+            --text-muted: #4b5563; /* Gray 600 */
             --text-hover: #111827;
-            --bg-color: #f3f4f6;
+            --bg-color: #f9fafb; /* Gray 50 */
             --bg-sidebar: rgba(255, 255, 255, 0.95);
-            --bg-content: transparent;
             --bg-card: rgba(255, 255, 255, 0.95);
             --border-color: rgba(0, 0, 0, 0.1);
             --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
-            --error-color: #e53e3e;
+            --error-color: #dc2626; /* Red 600 */
         }
         [data-theme="light"] .skill-category h3 {
             color: var(--text-color);
@@ -211,23 +211,13 @@
         .form-control:focus-visible {
             box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
         }
-        #global-canvas-container {
+        #vanta-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            pointer-events: none;
-        }
-        #particle-trail-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9998;
-            pointer-events: none;
         }
         .container {
             display: flex;
@@ -235,19 +225,54 @@
             z-index: 1;
             flex-grow: 1;
         }
+        
+        /* ===== MODIFIED SIDEBAR STYLES ===== */
         .sidebar {
             width: var(--sidebar-width);
             height: 100vh;
             position: fixed;
-            background-color: var(--bg-sidebar);
+            background-color: transparent; /* Initially transparent */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-right: 1px solid var(--border-color);
+            border-right: none; /* No border when hidden */
             padding: 2rem 1.5rem;
             overflow-y: auto;
             z-index: 10;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(calc(-100% + 20px)); /* Leave a 20px invisible hover area */
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.4s ease;
         }
+
+        .sidebar:hover {
+            transform: translateX(0);
+            background-color: var(--bg-sidebar); /* Show background on hover */
+            border-right: 1px solid var(--border-color); /* Show border on hover */
+        }
+        
+        /* Hide sidebar content when collapsed */
+        .sidebar > * {
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .sidebar:hover > * {
+            opacity: 1;
+        }
+        
+        /* ===== MODIFIED CONTENT STYLES ===== */
+        .content {
+            margin-left: 20px; /* Space for the invisible hover area */
+            width: calc(100% - 20px);
+            padding: 3rem 2rem;
+            background-color: var(--bg-content);
+            transition: margin-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Push content over when sidebar is hovered/visible */
+        .sidebar:hover ~ .content {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+        }
+        
         .theme-toggle {
             display: flex;
             align-items: center;
@@ -440,13 +465,7 @@
         .nav-link:hover::after {
             width: 100%;
         }
-        .content {
-            margin-left: var(--sidebar-width);
-            width: calc(100% - var(--sidebar-width));
-            padding: 3rem 2rem;
-            background-color: var(--bg-content);
-            transition: margin-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+        
         .section {
             max-width: 800px;
             margin: 0 auto;
@@ -1088,10 +1107,10 @@
         }
         @media (max-width: 768px) {
             .sidebar {
-                display: none;
+                display: none; /* Keep sidebar hidden on mobile */
             }
             .content {
-                margin-left: 0;
+                margin-left: 0; /* Full width on mobile */
                 width: 100%;
                 padding: 1.5rem 1rem 85px 1rem;
             }
@@ -1150,9 +1169,8 @@
 </head>
 
 <body>
-    <!-- Canvas elements for background animations -->
-    <div id="global-canvas-container"></div>
-    <canvas id="particle-trail-canvas"></canvas>
+    <!-- Vanta.js background container -->
+    <div id="vanta-bg"></div>
 
     <div class="container">
         <!-- Sidebar Navigation (Desktop) -->
@@ -1264,7 +1282,7 @@
                 <span class="fab-label">Certs</span>
                 <a href="#certifications" class="fab-link" data-section="certifications"><i class="fas fa-certificate"></i></a>
             </li>
-            <li class="fab-item">
+             <li class="fab-item">
                  <span class="fab-label">Projects</span>
                 <a href="#projects" class="fab-link" data-section="projects"><i class="fas fa-project-diagram"></i></a>
             </li>
@@ -1292,45 +1310,12 @@
         <p id="copyright-year"></p>
     </footer>
 
-    <!-- Deferred scripts to prevent render blocking -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <!-- Vanta.js and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
     
     <!-- LinkedIn Badge Script -->
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-
-    <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-            return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-                try {
-                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                    var firstSheetName = workbook.SheetNames[0];
-                    var worksheet = workbook.Sheets[firstSheetName];
-                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                    var filteredData = jsonData.filter(row => row.some(filledCell));
-                    var headerRowIndex = filteredData.findIndex((row, index) =>
-                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                    );
-                    if (headerRowIndex === -1 || headerRowIndex > 25) {
-                        headerRowIndex = 0;
-                    }
-                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                    return csv;
-                } catch (e) {
-                    console.error(e);
-                    return "";
-                }
-            }
-            return gk_fileData[filename] || "";
-        }
-    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1616,7 +1601,7 @@
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-phone" aria-hidden="true"></i>
-                                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+918301993853</a>
+                                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
@@ -1710,6 +1695,8 @@
                     fabTogglerIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
                 });
             }
+            
+            let vantaEffect;
 
             function applyTheme(theme) {
                 document.documentElement.setAttribute('data-theme', theme);
@@ -1721,6 +1708,19 @@
                 allThemeToggles.forEach(toggle => {
                     toggle.setAttribute('aria-pressed', isDark);
                 });
+                
+                // Update Vanta.js colors
+                if (vantaEffect) {
+                    vantaEffect.setOptions({
+                        // ===== UPDATED VANTA.JS COLORS =====
+                        skyColor: isDark ? 0x1a202c : 0x93c5fd, // Dark Charcoal vs Bright Blue
+                        cloudColor: isDark ? 0x2c5282 : 0xffffff, // Muted Blue vs White
+                        cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe, // Darker Muted Blue vs Light Blue
+                        sunColor: isDark ? 0x718096 : 0xfbbf24, // Slate vs Golden
+                        sunGlareColor: isDark ? 0x4a5568 : 0xfde68a, // Darker Slate vs Soft Yellow
+                        sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7 // Light Slate vs Pale Yellow
+                    })
+                }
             }
 
             function toggleTheme() {
@@ -1729,9 +1729,8 @@
                 applyTheme(newTheme);
             }
             
-            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light mode
-            applyTheme(savedTheme);
-
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark for better initial experience
+            
             allThemeToggles.forEach(toggle => toggle.addEventListener('click', toggleTheme));
 
             if (!contentScroller) {
@@ -1888,202 +1887,27 @@
                 });
             }
             
-            function initThreeJS() {
-                if (typeof THREE === 'undefined') {
-                    console.warn('Three.js is not loaded, skipping 3D background.');
-                    return;
+            function initVanta() {
+                if (typeof VANTA !== 'undefined' && VANTA.CLOUDS) {
+                    const isDark = savedTheme === 'dark';
+                    vantaEffect = VANTA.CLOUDS({
+                      el: "#vanta-bg",
+                      mouseControls: true,
+                      touchControls: true,
+                      gyroControls: false,
+                      minHeight: 200.00,
+                      minWidth: 200.00,
+                      // ===== UPDATED VANTA.JS COLORS =====
+                      skyColor: isDark ? 0x1a202c : 0x93c5fd, // Dark Charcoal vs Bright Blue
+                      cloudColor: isDark ? 0x2c5282 : 0xffffff, // Muted Blue vs White
+                      cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe, // Darker Muted Blue vs Light Blue
+                      sunColor: isDark ? 0x718096 : 0xfbbf24, // Slate vs Golden
+                      sunGlareColor: isDark ? 0x4a5568 : 0xfde68a, // Darker Slate vs Soft Yellow
+                      sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7 // Light Slate vs Pale Yellow
+                    });
+                } else {
+                    console.warn('Vanta.js CLOUDS is not loaded.');
                 }
-                const container = document.getElementById('global-canvas-container');
-                if (!container) return;
-
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                container.appendChild(renderer.domElement);
-                
-                const mouse = new THREE.Vector2();
-                document.addEventListener('mousemove', (event) => {
-                    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-                    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-                }, { passive: true });
-
-                const particleCount = 7000;
-                const positions = new Float32Array(particleCount * 3);
-                const colors = new Float32Array(particleCount * 3);
-                const sizes = new Float32Array(particleCount);
-
-                const color1 = new THREE.Color("#3b82f6");
-                const color2 = new THREE.Color("#a855f7");
-
-                for(let i = 0; i < particleCount; i++) {
-                    positions[i * 3 + 0] = (Math.random() - 0.5) * 15;
-                    positions[i * 3 + 1] = (Math.random() - 0.5) * 15;
-                    positions[i * 3 + 2] = (Math.random() - 0.5) * 15;
-                    
-                    const mixedColor = color1.clone().lerp(color2, Math.random());
-                    colors[i * 3 + 0] = mixedColor.r;
-                    colors[i * 3 + 1] = mixedColor.g;
-                    colors[i * 3 + 2] = mixedColor.b;
-
-                    sizes[i] = Math.random() * 0.05 + 0.01;
-                }
-
-                const particlesGeometry = new THREE.BufferGeometry();
-                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-                particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-
-                const vertexShader = `
-                    attribute float size;
-                    varying vec3 vColor;
-                    void main() {
-                        vColor = color;
-                        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-                        gl_PointSize = size * (300.0 / -mvPosition.z);
-                        gl_Position = projectionMatrix * mvPosition;
-                    }
-                `;
-
-                const fragmentShader = `
-                    varying vec3 vColor;
-                    void main() {
-                        if (length(gl_PointCoord - vec2(0.5, 0.5)) > 0.475) discard;
-                        gl_FragColor = vec4(vColor, 1.0);
-                    }
-                `;
-
-                const particlesMaterial = new THREE.ShaderMaterial({
-                    vertexShader,
-                    fragmentShader,
-                    blending: THREE.AdditiveBlending,
-                    depthWrite: false,
-                    transparent: true,
-                    vertexColors: true
-                });
-
-                const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-                scene.add(particles);
-
-                camera.position.z = 5;
-
-                const clock = new THREE.Clock();
-
-                function animate() {
-                    requestAnimationFrame(animate);
-                    const elapsedTime = clock.getElapsedTime();
-
-                    camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.05;
-                    camera.position.y += (-mouse.y * 0.5 - camera.position.y) * 0.05;
-                    camera.lookAt(scene.position);
-                    
-                    particles.rotation.y = elapsedTime * 0.1;
-
-                    renderer.render(scene, camera);
-                }
-                animate();
-
-                window.addEventListener('resize', () => {
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                }, { passive: true });
-            }
-
-            function initParticleTrail() {
-                // The effect is disabled on touch devices for performance and usability.
-                if ('ontouchstart' in window) return;
-
-                const canvas = document.getElementById('particle-trail-canvas');
-                if (!canvas) {
-                    console.error("Particle trail canvas not found!");
-                    return;
-                }
-                const ctx = canvas.getContext('2d');
-                let particles = [];
-                const mouse = { x: null, y: null };
-
-                // Colors for the particles, can be customized.
-                const colors = ['#3b82f6', '#a855f7', '#60a5fa', '#c084fc'];
-
-                // Function to set the canvas size to the full window size.
-                function resizeCanvas() {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                }
-                // Resize the canvas initially and on window resize.
-                window.addEventListener('resize', resizeCanvas, { passive: true });
-                resizeCanvas();
-
-                // Particle class defines the behavior of each particle.
-                class Particle {
-                    constructor(x, y) {
-                        this.x = x;
-                        this.y = y;
-                        // Random angle for movement direction.
-                        const angle = Math.random() * Math.PI * 2;
-                        // Reduced speed for a more subtle effect.
-                        const speed = Math.random() * 1.5;
-                        this.vx = Math.cos(angle) * speed;
-                        this.vy = Math.sin(angle) * speed;
-                        // Reduced size for smaller particles.
-                        this.size = Math.random() * 1.5 + 0.5;
-                        // Reduced lifetime so they fade out faster.
-                        this.life = Math.random() * 20 + 20;
-                        this.color = colors[Math.floor(Math.random() * colors.length)];
-                    }
-
-                    // Update particle position and life.
-                    update() {
-                        this.x += this.vx;
-                        this.y += this.vy;
-                        this.life -= 1;
-                        // Shrink the particle over time.
-                        if (this.size > 0.1) this.size -= 0.05;
-                    }
-
-                    // Draw the particle on the canvas.
-                    draw() {
-                        ctx.fillStyle = this.color;
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-                }
-
-                // Listen for mouse movement to create new particles.
-                window.addEventListener('mousemove', e => {
-                    mouse.x = e.clientX;
-                    mouse.y = e.clientY;
-                    // Create just one particle per mouse move for a thinner trail.
-                    particles.push(new Particle(mouse.x, mouse.y));
-                }, { passive: true });
-
-                // The main animation loop.
-                function animateParticles() {
-                    // Clear the canvas on each frame.
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                    // Loop through particles, update and draw them.
-                    for (let i = particles.length - 1; i >= 0; i--) {
-                        const p = particles[i];
-                        p.update();
-                        p.draw();
-                        // Remove particles that have died or become too small.
-                        if (p.life <= 0 || p.size <= 0.1) {
-                            particles.splice(i, 1);
-                        }
-                    }
-
-                    // Request the next frame.
-                    requestAnimationFrame(animateParticles);
-                }
-
-                // Start the animation loop.
-                animateParticles();
             }
 
 
@@ -2101,8 +1925,8 @@
             });
 
             try {
-                initThreeJS();
-                initParticleTrail();
+                initVanta();
+                applyTheme(savedTheme);
 
                 // Load initial section based on URL hash or default to 'summary'
                 const initialSection = window.location.hash.substring(1) || 'summary';
