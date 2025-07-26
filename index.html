@@ -206,6 +206,18 @@
         body.mobile-menu-open {
             overflow: hidden;
         }
+        /* Accessibility Helper */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
         a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible, input:focus-visible, textarea:focus-visible {
             outline: 3px solid var(--secondary-color);
             outline-offset: 3px;
@@ -1045,7 +1057,7 @@
         
         /* ===== NEW MOBILE NAVIGATION STYLES ===== */
         .mobile-menu-toggle {
-            display: none; /* Hidden by default */
+            display: none; /* Hidden by default, shown in media query */
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -1056,7 +1068,6 @@
             border: none;
             color: white;
             font-size: 1.5rem;
-            display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
@@ -1241,16 +1252,16 @@
 
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn Profile</span>
                 </a>
                 <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" class="social-link" aria-label="Instagram Profile">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram Profile</span>
                 </a>
                 <a href="https://medium.com/@udithbabuvarrier10" target="_blank" class="social-link" aria-label="Medium Blog">
-                    <i class="fab fa-medium"></i>
+                    <i class="fab fa-medium" aria-hidden="true"></i><span class="sr-only">Medium Blog</span>
                 </a>
                 <a href="https://pin.it/4uRzYJXFB" target="_blank" class="social-link" aria-label="Pinterest Profile">
-                    <i class="fab fa-pinterest"></i>
+                    <i class="fab fa-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest Profile</span>
                 </a>
             </div>
             
@@ -1333,8 +1344,8 @@
     </footer>
 
     <!-- Vanta.js and dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js" defer></script>
     
     <!-- LinkedIn Badge Script -->
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
@@ -1632,16 +1643,16 @@
                                 <!-- NEW: Mobile Social Links -->
                                 <div class="mobile-social-links">
                                     <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
-                                        <i class="fab fa-linkedin-in"></i>
+                                        <i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn Profile</span>
                                     </a>
                                     <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" class="social-link" aria-label="Instagram Profile">
-                                        <i class="fab fa-instagram"></i>
+                                        <i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram Profile</span>
                                     </a>
                                     <a href="https://medium.com/@udithbabuvarrier10" target="_blank" class="social-link" aria-label="Medium Blog">
-                                        <i class="fab fa-medium"></i>
+                                        <i class="fab fa-medium" aria-hidden="true"></i><span class="sr-only">Medium Blog</span>
                                     </a>
                                     <a href="https://pin.it/4uRzYJXFB" target="_blank" class="social-link" aria-label="Pinterest Profile">
-                                        <i class="fab fa-pinterest"></i>
+                                        <i class="fab fa-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest Profile</span>
                                     </a>
                                 </div>
                             </div>
