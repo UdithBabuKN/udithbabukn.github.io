@@ -62,7 +62,7 @@
 
     <!-- Asynchronously load CSS -->
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <!-- Font Awesome - Loaded asynchronously to not block rendering -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
@@ -137,7 +137,6 @@
             --secondary-color: #7c3aed;
             --accent-color: linear-gradient(45deg, #3b82f6, #a855f7);
             --text-color: #fff;
-            /* ACCESSIBILITY UPDATE: Increased contrast for muted text */
             --text-muted: #e2e8f0;
             --bg-color: #0f172a;
             --bg-sidebar: rgba(15, 23, 42, 0.85);
@@ -154,7 +153,6 @@
             --secondary-color: #9333ea;
             --accent-color: linear-gradient(45deg, #60a5fa, #c084fc);
             --text-color: #111827;
-            /* ACCESSIBILITY UPDATE: Ensured high contrast for light theme muted text */
             --text-muted: #374151;
             --text-hover: #111827;
             --bg-color: #f3f4f6;
@@ -183,12 +181,10 @@
             line-height: 1.6;
             overflow-x: hidden;
             transition: background-color var(--transition), color var(--transition);
-            /* --- FOOTER FIX: Make body a flex container --- */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-        /* ACCESSIBILITY UPDATE: Added highly visible focus styles for all interactive elements */
         a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible, input:focus-visible, textarea:focus-visible {
             outline: 3px solid var(--secondary-color);
             outline-offset: 3px;
@@ -220,7 +216,6 @@
             display: flex;
             position: relative;
             z-index: 1;
-             /* --- FOOTER FIX: Allow container to grow and fill space --- */
             flex-grow: 1;
         }
         .sidebar {
@@ -450,11 +445,6 @@
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
-        .summary-scale-in {
-            opacity: 0;
-            transform: scale(0.95);
-            animation: scaleIn 0.6s ease-out forwards;
-        }
         .section-header {
             font-size: 2rem;
             background: var(--accent-color);
@@ -493,14 +483,51 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
         }
-        /* MOBILE FIX: Add responsive typography classes */
-        .summary-subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
+
+        .creative-summary {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
         }
-        .summary-description {
-            font-size: 0.95rem;
+        .creative-summary::before {
+            content: '“';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 0;
+            transform: rotate(-10deg);
+        }
+        [data-theme="light"] .creative-summary::before {
+            color: rgba(0, 0, 0, 0.05);
+        }
+        .creative-summary h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            color: var(--text-color);
+        }
+        .creative-summary .summary-subtitle {
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .creative-summary .summary-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
 
         .skills-intro {
@@ -831,7 +858,6 @@
         .form-control.invalid {
             border-color: var(--error-color);
         }
-        /* FORM UPDATE: Style for invalid label */
         .form-group.invalid .form-label {
             color: var(--error-color);
         }
@@ -907,72 +933,85 @@
             transform: translateY(0);
         }
         
-        /* --- START: Mobile Bottom Navigation --- */
-        .mobile-nav {
-            display: none; 
+        /* --- NEW: Mobile FAB Navigation --- */
+        .mobile-fab-nav {
+            display: none;
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 65px;
-            background-color: var(--bg-sidebar);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 1px solid var(--border-color);
-            z-index: 1000;
-            overflow: hidden;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
         }
-        .mobile-nav-list {
-            list-style: none;
+        .fab-toggler {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
             display: flex;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-            /* MOBILE FIX: Justify content to spread items evenly */
-            justify-content: space-around;
-        }
-        .mobile-nav-item {
-            /* MOBILE FIX: Allow items to grow and fill space */
-            flex: 1;
-            text-align: center;
-        }
-        .mobile-nav-link, .mobile-theme-toggle {
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .fab-toggler.open {
+            transform: rotate(45deg);
+        }
+        .fab-menu {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .fab-menu.open {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .fab-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .fab-label {
+            background-color: var(--bg-card);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .fab-link {
+            width: 45px;
+            height: 45px;
+            background-color: var(--bg-sidebar);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.75rem;
-            /* MOBILE FIX: Remove horizontal padding to let flexbox handle spacing */
-            padding: 0 5px;
-            transition: color 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-            background: none;
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
         }
-        /* MOBILE FIX: Slightly larger text for readability */
-        .mobile-nav-link span, .mobile-theme-toggle span {
-            font-size: 0.8rem;
-        }
-        .mobile-nav-link i, .mobile-theme-toggle i {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        .mobile-nav-link.active {
-            color: #fff;
+        .fab-link.active {
             background: var(--accent-color);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: white;
         }
-        [data-theme="light"] .mobile-nav-link.active {
-             -webkit-text-fill-color: var(--primary-color);
-        }
-        /* --- END: Mobile Bottom Navigation Bar --- */
+        .mobile-nav { display: none; } /* Hide old nav */
+        /* --- END: Mobile FAB Navigation --- */
         
-        /* MOBILE FIX: New block for contact info, hidden on desktop */
         .mobile-contact-info {
             display: none;
         }
@@ -993,22 +1032,20 @@
             .content {
                 margin-left: 0;
                 width: 100%;
-                padding: 1.5rem 1rem 85px 1rem; /* Adjusted side padding */
+                padding: 1.5rem 1rem 85px 1rem;
             }
-            .mobile-nav {
+            .mobile-fab-nav {
                 display: block;
             }
             .section-header {
                 font-size: 1.75rem;
             }
-            /* MOBILE FIX: Adjust summary text size */
-            .summary-subtitle {
+            .creative-summary h3 {
+                font-size: 1.75rem;
+            }
+             .creative-summary .summary-description {
                 font-size: 1rem;
             }
-            .summary-description {
-                font-size: 0.9rem;
-            }
-            /* MOBILE FIX: Adjust content box padding */
             .content-box {
                 padding: 1.25rem;
             }
@@ -1016,12 +1053,12 @@
                 grid-template-columns: 1fr;
             }
              .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* smaller minmax */
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
                 gap: 1rem;
             }
             .skill-card {
                 padding: 1rem 0.5rem;
-                min-height: 140px; /* Reduced height */
+                min-height: 140px;
             }
             .skill-icon {
                 font-size: 2.8rem;
@@ -1032,7 +1069,6 @@
             .footer {
                 display: none;
             }
-            /* MOBILE FIX: Display contact info block */
             .mobile-contact-info {
                 display: block;
                 background-color: var(--bg-card);
@@ -1061,7 +1097,6 @@
         <!-- Sidebar Navigation (Desktop) -->
         <aside class="sidebar" aria-label="Sidebar Navigation">
             <h1 class="logo">Udith Babu K N</h1>
-            <!-- ACCESSIBILITY UPDATE: Added aria-pressed for state and aria-label -->
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
                 <i class="fas fa-moon"></i>
             </button>
@@ -1139,10 +1174,9 @@
         <!-- Main Content Area -->
         <main class="content" aria-label="Main Content">
             <div class="content-scroller">
-                <!-- NO-JS FALLBACK: Summary section is now hard-coded for immediate visibility -->
                 <section class="section" id="summary" lang="en">
                     <h2 class="section-header">Professional Summary</h2>
-                    <article class="content-box summary-scale-in" lang="en">
+                    <article class="creative-summary" lang="en">
                         <h3>Dynamic IT Business Analyst and Project Coordinator</h3>
                         <p class="summary-subtitle">MBA in Operations Management and B.Tech in Information Technology.</p>
                         <p class="summary-description">Results-driven IT Business Analyst, Project Coordinator, and Product Analyst with expertise in Agile methodologies, data analysis, and process optimization. Skilled in Python, MySQL, Figma, and stakeholder communication to deliver impactful IT solutions.</p>
@@ -1152,57 +1186,45 @@
         </main>
     </div>
     
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav" aria-label="Mobile Navigation">
-        <ul class="mobile-nav-list">
-            <li class="mobile-nav-item">
-                <a href="#summary" class="mobile-nav-link active" data-section="summary" aria-current="page">
-                    <i class="fas fa-user" aria-hidden="true"></i>
-                    <span>Summary</span>
-                </a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#skills" class="mobile-nav-link" data-section="skills">
-                    <i class="fas fa-code" aria-hidden="true"></i>
-                    <span>Skills</span>
-                </a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#experience" class="mobile-nav-link" data-section="experience">
-                    <i class="fas fa-briefcase" aria-hidden="true"></i>
-                    <span>Experience</span>
-                </a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#education" class="mobile-nav-link" data-section="education">
-                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                    <span>Education</span>
-                </a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#projects" class="mobile-nav-link" data-section="projects">
-                    <i class="fas fa-project-diagram" aria-hidden="true"></i>
-                    <span>Projects</span>
-                </a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#certifications" class="mobile-nav-link" data-section="certifications">
-                    <i class="fas fa-certificate" aria-hidden="true"></i>
-                    <span>Certs</span>
-                </a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#contact" class="mobile-nav-link" data-section="contact">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <span>Contact</span>
-                </a>
-            </li>
-            <li class="mobile-nav-item">
-                <!-- ACCESSIBILITY UPDATE: Added aria-pressed for state and aria-label -->
-                <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+    <!-- NEW: Mobile FAB Navigation -->
+    <nav class="mobile-fab-nav" aria-label="Mobile Navigation">
+        <button class="fab-toggler" id="fabToggler" aria-label="Toggle Navigation Menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="fab-menu" id="fabMenu">
+            <li class="fab-item">
+                <span class="fab-label">Theme</span>
+                <button class="fab-link" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
                     <i class="fas fa-moon"></i>
-                    <span>Theme</span>
                 </button>
+            </li>
+            <li class="fab-item">
+                <span class="fab-label">Contact</span>
+                <a href="#contact" class="fab-link" data-section="contact"><i class="fas fa-envelope"></i></a>
+            </li>
+            <li class="fab-item">
+                <span class="fab-label">Certs</span>
+                <a href="#certifications" class="fab-link" data-section="certifications"><i class="fas fa-certificate"></i></a>
+            </li>
+            <li class="fab-item">
+                 <span class="fab-label">Projects</span>
+                <a href="#projects" class="fab-link" data-section="projects"><i class="fas fa-project-diagram"></i></a>
+            </li>
+             <li class="fab-item">
+                <span class="fab-label">Education</span>
+                <a href="#education" class="fab-link" data-section="education"><i class="fas fa-graduation-cap"></i></a>
+            </li>
+            <li class="fab-item">
+                <span class="fab-label">Experience</span>
+                <a href="#experience" class="fab-link" data-section="experience"><i class="fas fa-briefcase"></i></a>
+            </li>
+            <li class="fab-item">
+                <span class="fab-label">Skills</span>
+                <a href="#skills" class="fab-link" data-section="skills"><i class="fas fa-code"></i></a>
+            </li>
+            <li class="fab-item">
+                <span class="fab-label">Summary</span>
+                <a href="#summary" class="fab-link active" data-section="summary"><i class="fas fa-user"></i></a>
             </li>
         </ul>
     </nav>
@@ -1217,7 +1239,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 
     <script type="text/javascript">
-        // This script block remains for xlsx functionality.
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
         var gk_fileData = {};
@@ -1251,17 +1272,14 @@
     </script>
 
     <script>
-        // Main application logic is deferred until the DOM is fully loaded.
         document.addEventListener('DOMContentLoaded', () => {
-            // ERROR FIX: Restored the summary object to contentData.
             const contentData = {
                 summary: {
                     title: "Professional Summary",
                     metaDescription: "Portfolio of Udith Babu K N, a results-driven IT Business Analyst and Project Coordinator specializing in Agile, data analysis, and delivering high-impact tech solutions.",
                     content: `
-                        <article class="content-box summary-scale-in" lang="en">
+                        <article class="creative-summary" lang="en">
                             <h3>Dynamic IT Business Analyst and Project Coordinator</h3>
-                            <!-- MOBILE FIX: Replaced inline styles with CSS classes -->
                             <p class="summary-subtitle">MBA in Operations Management and B.Tech in Information Technology.</p>
                             <p class="summary-description">Results-driven IT Business Analyst, Project Coordinator, and Product Analyst with expertise in Agile methodologies, data analysis, and process optimization. Skilled in Python, MySQL, Figma, and stakeholder communication to deliver impactful IT solutions.</p>
                         </article>`
@@ -1549,7 +1567,6 @@
                     metaDescription: "Connect with Udith Babu K N for opportunities in IT Business Analysis, Project Coordination, and Product Management. Let's build innovative solutions together.",
                     content: `
                         <article class="content-box lazy-load" lang="en">
-                            <!-- MOBILE FIX: Added contact info block for mobile -->
                             <div class="mobile-contact-info">
                                 <div class="contact-item">
                                     <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -1588,7 +1605,6 @@
                                     <span class="error-message" id="messageError">Please enter a message</span>
                                 </div>
                                 <button type="submit" class="btn btn-success" aria-label="Send Message" id="submitButton">Send Message</button>
-                                <!-- ACCESSIBILITY UPDATE: Added aria-live for screen readers -->
                                 <span class="error-message" id="formError" style="display: none;" aria-live="polite">An error occurred. Please try again or contact me directly.</span>
                             </form>
                         </article>`
@@ -1607,8 +1623,8 @@
 
             const contentScroller = document.querySelector('.content-scroller');
             const navLinks = document.querySelectorAll('.nav-link');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-            const allNavLinks = [...navLinks, ...mobileNavLinks];
+            const fabLinks = document.querySelectorAll('.fab-link'); // New
+            const allNavLinks = [...navLinks, ...fabLinks]; // Updated
             const titleElement = document.querySelector('title');
             const metaDescription = document.querySelector('meta[name="description"]');
 
@@ -1617,6 +1633,22 @@
             const allThemeToggles = [themeToggle, mobileThemeToggle];
             const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
 
+            // --- NEW: FAB Navigation Logic ---
+            const fabToggler = document.getElementById('fabToggler');
+            const fabMenu = document.getElementById('fabMenu');
+            const fabTogglerIcon = fabToggler.querySelector('i');
+
+            if(fabToggler) {
+                fabToggler.addEventListener('click', () => {
+                    fabMenu.classList.toggle('open');
+                    fabToggler.classList.toggle('open');
+                    const isOpen = fabMenu.classList.contains('open');
+                    fabToggler.setAttribute('aria-expanded', isOpen);
+                    fabTogglerIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+                });
+            }
+            // --- END: FAB Navigation Logic ---
+
             function applyTheme(theme) {
                 document.documentElement.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
@@ -1624,7 +1656,6 @@
                 themeIcons.forEach(icon => {
                     icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
                 });
-                // ACCESSIBILITY UPDATE: Set aria-pressed state
                 allThemeToggles.forEach(toggle => {
                     toggle.setAttribute('aria-pressed', isDark);
                 });
@@ -1670,7 +1701,6 @@
             }
 
             function loadSection(sectionId) {
-                // This check prevents replacing the initial HTML on page load, avoiding a content flash.
                 if (sectionId === 'summary' && document.getElementById('summary') && contentScroller.children.length === 1) {
                     initLazyLoad();
                     return;
@@ -1710,19 +1740,8 @@
                 });
             }
             
-            function scrollNavToActive(sectionId) {
-                const mobileNavLink = document.querySelector(`.mobile-nav-link[data-section="${sectionId}"]`);
-                if (mobileNavLink) {
-                    mobileNavLink.scrollIntoView({
-                        behavior: 'smooth',
-                        inline: 'center',
-                        block: 'nearest'
-                    });
-                }
-            }
-
             function initLazyLoad() {
-                const lazyElements = document.querySelectorAll('.lazy-load, .summary-scale-in');
+                const lazyElements = document.querySelectorAll('.lazy-load, .creative-summary');
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver((entries, observer) => {
                         entries.forEach(entry => {
@@ -1738,7 +1757,6 @@
                 }
             }
 
-            // FORM UPDATE: Rewritten for real-time validation
             function initContactForm() {
                 const form = document.getElementById('contactForm');
                 if (!form) return;
@@ -1979,7 +1997,7 @@
                 }
 
                 function addHoverBurstListeners() {
-                    const clickables = document.querySelectorAll('a, button, .nav-link, .mobile-nav-link, .social-link, .project-card, .btn, .theme-toggle, .page-peel-card, .skill-card');
+                    const clickables = document.querySelectorAll('a, button, .nav-link, .fab-link, .social-link, .project-card, .btn, .theme-toggle, .page-peel-card, .skill-card');
                     clickables.forEach(el => {
                         if (!el.dataset.burstListenerAttached) {
                             el.addEventListener('mouseenter', e => {
@@ -2018,8 +2036,8 @@
                     const sectionId = link.getAttribute('data-section');
                     loadSection(sectionId);
                     setActiveLink(sectionId);
-                    if (isMobile) {
-                        scrollNavToActive(sectionId);
+                    if (isMobile && fabMenu.classList.contains('open')) {
+                       fabToggler.click();
                     }
                 });
             });
@@ -2032,9 +2050,6 @@
                 loadSection(initialSection);
                 setActiveLink(initialSection);
 
-                if (isMobile) {
-                    setTimeout(() => scrollNavToActive(initialSection), 100);
-                }
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
