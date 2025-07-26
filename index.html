@@ -933,7 +933,6 @@
             transform: translateY(0);
         }
         
-        /* --- NEW: Mobile FAB Navigation --- */
         .mobile-fab-nav {
             display: none;
             position: fixed;
@@ -1009,11 +1008,19 @@
             background: var(--accent-color);
             color: white;
         }
-        .mobile-nav { display: none; } /* Hide old nav */
-        /* --- END: Mobile FAB Navigation --- */
+        .mobile-nav { display: none; }
         
         .mobile-contact-info {
             display: none;
+        }
+        /* NEW: Mobile Social Links Style */
+        .mobile-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
         }
 
         @media (max-width: 992px) {
@@ -1580,6 +1587,21 @@
                                     <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                     <span>Thalassery, Kerala, India</span>
                                 </div>
+                                <!-- NEW: Mobile Social Links -->
+                                <div class="mobile-social-links">
+                                    <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" class="social-link" aria-label="Instagram Profile">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://medium.com/@udithbabuvarrier10" target="_blank" class="social-link" aria-label="Medium Blog">
+                                        <i class="fab fa-medium"></i>
+                                    </a>
+                                    <a href="https://pin.it/4uRzYJXFB" target="_blank" class="social-link" aria-label="Pinterest Profile">
+                                        <i class="fab fa-pinterest"></i>
+                                    </a>
+                                </div>
                             </div>
                             <p>Looking to drive IT projects to success? Connect to explore my expertise in Agile, business analysis, and product analysis.</p>
                             <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST" aria-label="Contact Form" novalidate>
@@ -1623,8 +1645,8 @@
 
             const contentScroller = document.querySelector('.content-scroller');
             const navLinks = document.querySelectorAll('.nav-link');
-            const fabLinks = document.querySelectorAll('.fab-link'); // New
-            const allNavLinks = [...navLinks, ...fabLinks]; // Updated
+            const fabLinks = document.querySelectorAll('.fab-link'); 
+            const allNavLinks = [...navLinks, ...fabLinks]; 
             const titleElement = document.querySelector('title');
             const metaDescription = document.querySelector('meta[name="description"]');
 
@@ -1633,7 +1655,6 @@
             const allThemeToggles = [themeToggle, mobileThemeToggle];
             const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
 
-            // --- NEW: FAB Navigation Logic ---
             const fabToggler = document.getElementById('fabToggler');
             const fabMenu = document.getElementById('fabMenu');
             const fabTogglerIcon = fabToggler.querySelector('i');
@@ -1647,7 +1668,6 @@
                     fabTogglerIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
                 });
             }
-            // --- END: FAB Navigation Logic ---
 
             function applyTheme(theme) {
                 document.documentElement.setAttribute('data-theme', theme);
