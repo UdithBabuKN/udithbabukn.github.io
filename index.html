@@ -1976,43 +1976,58 @@
             }
 
             function initParticleTrail() {
+                // The effect is disabled on touch devices for performance and usability.
                 if ('ontouchstart' in window) return;
 
                 const canvas = document.getElementById('particle-trail-canvas');
+                if (!canvas) {
+                    console.error("Particle trail canvas not found!");
+                    return;
+                }
                 const ctx = canvas.getContext('2d');
                 let particles = [];
                 const mouse = { x: null, y: null };
-                
+
+                // Colors for the particles, can be customized.
                 const colors = ['#3b82f6', '#a855f7', '#60a5fa', '#c084fc'];
 
+                // Function to set the canvas size to the full window size.
                 function resizeCanvas() {
                     canvas.width = window.innerWidth;
                     canvas.height = window.innerHeight;
                 }
+                // Resize the canvas initially and on window resize.
                 window.addEventListener('resize', resizeCanvas, { passive: true });
                 resizeCanvas();
 
+                // Particle class defines the behavior of each particle.
                 class Particle {
-                    constructor(x, y, isBurst = false) {
+                    constructor(x, y) {
                         this.x = x;
                         this.y = y;
-                        this.isBurst = isBurst;
+                        // Random angle for movement direction.
                         const angle = Math.random() * Math.PI * 2;
-                        const speed = this.isBurst ? Math.random() * 4 + 2 : Math.random() * 2;
+                        // Reduced speed for a more subtle effect.
+                        const speed = Math.random() * 1.5;
                         this.vx = Math.cos(angle) * speed;
                         this.vy = Math.sin(angle) * speed;
-                        this.size = this.isBurst ? Math.random() * 4 + 2 : Math.random() * 2 + 1;
-                        this.life = this.isBurst ? Math.random() * 40 + 60 : Math.random() * 20 + 30;
+                        // Reduced size for smaller particles.
+                        this.size = Math.random() * 1.5 + 0.5;
+                        // Reduced lifetime so they fade out faster.
+                        this.life = Math.random() * 20 + 20;
                         this.color = colors[Math.floor(Math.random() * colors.length)];
                     }
 
+                    // Update particle position and life.
                     update() {
                         this.x += this.vx;
                         this.y += this.vy;
                         this.life -= 1;
+                        // Shrink the particle over time.
                         if (this.size > 0.1) this.size -= 0.05;
                     }
 
+                    // Draw the particle on the canvas.
                     draw() {
                         ctx.fillStyle = this.color;
                         ctx.beginPath();
@@ -2021,53 +2036,38 @@
                     }
                 }
 
+                // Listen for mouse movement to create new particles.
                 window.addEventListener('mousemove', e => {
                     mouse.x = e.clientX;
                     mouse.y = e.clientY;
-                    for (let i = 0; i < 2; i++) {
-                        particles.push(new Particle(mouse.x, mouse.y));
-                    }
+                    // Create just one particle per mouse move for a thinner trail.
+                    particles.push(new Particle(mouse.x, mouse.y));
                 }, { passive: true });
-                
-                function createBurst(x, y) {
-                    for (let i = 0; i < 30; i++) {
-                        particles.push(new Particle(x, y, true));
-                    }
-                }
 
-                function addHoverBurstListeners() {
-                    const clickables = document.querySelectorAll('a, button, .nav-link, .fab-link, .social-link, .btn, .theme-toggle, .page-peel-card, .skill-card, .interactive-card');
-                    clickables.forEach(el => {
-                        if (!el.dataset.burstListenerAttached) {
-                            el.addEventListener('mouseenter', e => {
-                                createBurst(e.clientX, e.clientY);
-                            });
-                            el.dataset.burstListenerAttached = 'true';
-                        }
-                    });
-                }
-
+                // The main animation loop.
                 function animateParticles() {
+                    // Clear the canvas on each frame.
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
+
+                    // Loop through particles, update and draw them.
                     for (let i = particles.length - 1; i >= 0; i--) {
                         const p = particles[i];
                         p.update();
                         p.draw();
+                        // Remove particles that have died or become too small.
                         if (p.life <= 0 || p.size <= 0.1) {
                             particles.splice(i, 1);
                         }
                     }
-                    
+
+                    // Request the next frame.
                     requestAnimationFrame(animateParticles);
                 }
 
-                addHoverBurstListeners();
-                const observer = new MutationObserver(addHoverBurstListeners);
-                observer.observe(document.body, { childList: true, subtree: true });
-
+                // Start the animation loop.
                 animateParticles();
             }
+
 
             // --- INITIALIZATION ---
             allNavLinks.forEach(link => {
