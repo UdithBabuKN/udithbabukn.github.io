@@ -1221,16 +1221,8 @@
 
         <!-- Main Content Area -->
         <main class="content" aria-label="Main Content">
-            <div class="content-scroller">
-                <section class="section" id="summary" lang="en">
-                    <h2 class="section-header">Professional Summary</h2>
-                     <article class="interactive-card lazy-load" lang="en" style="--angle: 45deg;">
-                        <h3 class="interactive-card-heading" style="font-size: 2.25rem; font-family: 'Playfair Display', serif;">Dynamic IT Business Analyst and Project Coordinator</h3>
-                        <p class="summary-subtitle" style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1rem;">MBA in Operations Management and B.Tech in Information Technology.</p>
-                        <p class="summary-description" style="font-size: 1.1rem; line-height: 1.7;">Results-driven IT Business Analyst, Project Coordinator, and Product Analyst with expertise in Agile methodologies, data analysis, and process optimization. Skilled in Python, MySQL, Figma, and stakeholder communication to deliver impactful IT solutions.</p>
-                    </article>
-                </section>
-            </div>
+            <!-- Content is now loaded dynamically by JavaScript -->
+            <div class="content-scroller"></div>
         </main>
     </div>
     
@@ -1279,7 +1271,7 @@
 
     <!-- Footer -->
     <footer class="footer" style="background-color: transparent; padding: 2rem 1rem; text-align: center; color: var(--text-muted);">
-        <p>© 2025 Udith Babu K N. All rights reserved.</p>
+        <p id="copyright-year"></p>
     </footer>
 
     <!-- Deferred scripts to prevent render blocking -->
@@ -1324,6 +1316,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- DYNAMIC DATA ---
             const contentData = {
                 summary: {
                     title: "Professional Summary",
@@ -1657,7 +1650,14 @@
                 }
             };
 
+            // --- CORE LOGIC ---
             const isMobile = window.innerWidth <= 768;
+
+            // Set dynamic copyright year
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
+            }
 
             const emailLink = document.querySelector('.email-link');
             const emailPlaceholder = document.querySelector('.email-placeholder');
@@ -1745,11 +1745,6 @@
             }
 
             function loadSection(sectionId) {
-                if (sectionId === 'summary' && document.getElementById('summary') && contentScroller.children.length === 1) {
-                    initLazyLoad();
-                    return;
-                }
-                
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
                     contentScroller.innerHTML = `
@@ -2074,6 +2069,7 @@
                 animateParticles();
             }
 
+            // --- INITIALIZATION ---
             allNavLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -2090,6 +2086,7 @@
                 initThreeJS();
                 initParticleTrail();
 
+                // Load initial section based on URL hash or default to 'summary'
                 const initialSection = window.location.hash.substring(1) || 'summary';
                 loadSection(initialSection);
                 setActiveLink(initialSection);
