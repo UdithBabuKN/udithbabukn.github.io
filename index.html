@@ -138,12 +138,12 @@
             --secondary-color: #8b5cf6; /* Violet 500 */
             --accent-color: linear-gradient(45deg, #3b82f6, #a855f7);
             /* Dark Mode (Default) */
-            --text-color: #e5e7eb; /* Gray 200 */
-            --text-muted: #9ca3af; /* Gray 400 */
-            --bg-color: #1f2937; /* Gray 800 */
-            --bg-sidebar: rgba(31, 41, 55, 0.85); /* Gray 800 with alpha */
-            --bg-card: rgba(55, 65, 81, 0.9); /* Gray 700 with alpha */
-            --border-color: rgba(255, 255, 255, 0.1);
+            --text-color: #ffffff; /* Pure White */
+            --text-muted: #bbbbbb; /* Lighter Gray for muted text */
+            --bg-color: #000000; /* Pure Black */
+            --bg-sidebar: rgba(0, 0, 0, 0.85); /* Pure Black with alpha */
+            --bg-card: rgba(18, 18, 18, 0.9); /* Very Dark Gray with alpha */
+            --border-color: rgba(255, 255, 255, 0.15); /* Slightly brighter border */
             --transition: all 0.3s ease;
             --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --sidebar-width: 280px;
@@ -153,15 +153,15 @@
         [data-theme="light"] {
             --primary-color: #2563eb; /* Blue 600 */
             --secondary-color: #9333ea; /* Purple 600 */
-            /* Softer Light Mode */
-            --text-color: #1f2937; /* Gray 800 */
-            --text-muted: #6b7280; /* Gray 500 */
-            --text-hover: #111827; /* Gray 900 */
-            --bg-color: #f5f5f4; /* Stone 100 (soft off-white) */
+            /* High Contrast Light Mode */
+            --text-color: #000000; /* Pure Black */
+            --text-muted: #555555; /* Dark Gray */
+            --text-hover: #000000; /* Pure Black */
+            --bg-color: #ffffff; /* Pure White */
             --bg-sidebar: rgba(255, 255, 255, 0.95);
             --bg-card: #ffffff; /* Pure white for cards to create depth */
-            --border-color: rgba(0, 0, 0, 0.08); /* Softer border */
-            --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+            --border-color: rgba(0, 0, 0, 0.1); /* Slightly darker border for contrast */
+            --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
             --error-color: #dc2626; /* Red 600 */
         }
         [data-theme="light"] .skill-category h3 {
@@ -1747,13 +1747,14 @@
                 // Update Vanta.js colors
                 if (vantaEffect) {
                     vantaEffect.setOptions({
-                        skyColor: isDark ? 0x1a202c : 0x93c5fd,
-                        cloudColor: isDark ? 0x2c5282 : 0xffffff,
-                        cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe,
-                        sunColor: isDark ? 0x718096 : 0xfbbf24,
-                        sunGlareColor: isDark ? 0x4a5568 : 0xfde68a,
-                        sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7
-                    })
+                        // "Cosmic Purple" (Dark) and "Morning Freshness" (Light) palettes
+                        skyColor: isDark ? 0x1a0b2e : 0x87ceeb, // Deep Eggplant / SkyBlue
+                        cloudColor: isDark ? 0x3a2d4d : 0xf0f8ff, // Muted Purple-Grey / AliceBlue
+                        cloudShadowColor: isDark ? 0x000000 : 0xb0c4de, // Black / LightSteelBlue
+                        sunColor: isDark ? 0xab47bc : 0xffa500, // Medium Purple / Orange
+                        sunGlareColor: isDark ? 0xce93d8 : 0xffd700, // Light Purple / Gold
+                        sunlightColor: isDark ? 0x8e24aa : 0xffec8b // Vibrant Purple / LightGoldenrod1
+                    });
                 }
             }
 
@@ -1933,12 +1934,13 @@
                       gyroControls: false,
                       minHeight: 200.00,
                       minWidth: 200.00,
-                      skyColor: isDark ? 0x1a202c : 0x93c5fd,
-                      cloudColor: isDark ? 0x2c5282 : 0xffffff,
-                      cloudShadowColor: isDark ? 0x1a365d : 0xbfdbfe,
-                      sunColor: isDark ? 0x718096 : 0xfbbf24,
-                      sunGlareColor: isDark ? 0x4a5568 : 0xfde68a,
-                      sunlightColor: isDark ? 0xa0aec0 : 0xfef3c7
+                      // "Cosmic Purple" (Dark) and "Morning Freshness" (Light) palettes
+                      skyColor: isDark ? 0x1a0b2e : 0x87ceeb, // Deep Eggplant / SkyBlue
+                      cloudColor: isDark ? 0x3a2d4d : 0xf0f8ff, // Muted Purple-Grey / AliceBlue
+                      cloudShadowColor: isDark ? 0x000000 : 0xb0c4de, // Black / LightSteelBlue
+                      sunColor: isDark ? 0xab47bc : 0xffa500, // Medium Purple / Orange
+                      sunGlareColor: isDark ? 0xce93d8 : 0xffd700, // Light Purple / Gold
+                      sunlightColor: isDark ? 0x8e24aa : 0xffec8b // Vibrant Purple / LightGoldenrod1
                     });
                 } else {
                     console.warn('Vanta.js CLOUDS is not loaded.');
