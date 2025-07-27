@@ -132,38 +132,40 @@
     </script>
 
     <style>
-        /* ===== EYE-FRIENDLY COLOR PALETTE ===== */
+        /* ===== NEW "AURORA BOREALIS" & "HIGH CONTRAST" THEMES ===== */
         :root {
-            --primary-color: #3b82f6; /* Blue 500 */
-            --secondary-color: #8b5cf6; /* Violet 500 */
-            --accent-color: linear-gradient(45deg, #3b82f6, #a855f7);
-            /* Dark Mode (Default) */
+            --primary-color: #00e5ff; /* Ethereal Cyan */
+            --secondary-color: #9c27b0; /* Vibrant Purple */
+            --accent-color: linear-gradient(45deg, #00e5ff, #e91e63);
+            /* Dark Mode ("Aurora Borealis") */
             --text-color: #ffffff; /* Pure White */
-            --text-muted: #bbbbbb; /* Lighter Gray for muted text */
-            --bg-color: #000000; /* Pure Black */
-            --bg-sidebar: rgba(0, 0, 0, 0.85); /* Pure Black with alpha */
-            --bg-card: rgba(18, 18, 18, 0.9); /* Very Dark Gray with alpha */
-            --border-color: rgba(255, 255, 255, 0.15); /* Slightly brighter border */
+            --text-muted: #cccccc; /* Bright Gray */
+            --bg-color: #0c0a24; /* Deep Space Blue */
+            --bg-sidebar: rgba(20, 18, 50, 0.85); /* Dark Blue-Purple with alpha */
+            --bg-card: rgba(20, 18, 50, 0.9); /* Dark Blue-Purple with alpha */
+            --border-color: rgba(156, 39, 176, 0.3); /* Faint Purple Border */
             --transition: all 0.3s ease;
             --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --sidebar-width: 280px;
             --error-color: #ef4444; /* Red 500 */
         }
-        /* ===== UPDATED LIGHT MODE PALETTE ===== */
+        
         [data-theme="light"] {
-            --primary-color: #2563eb; /* Blue 600 */
-            --secondary-color: #9333ea; /* Purple 600 */
-            /* High Contrast Light Mode */
+            --primary-color: #ff9800; /* Warm Orange */
+            --secondary-color: #f48fb1; /* Rose Gold */
+            --accent-color: linear-gradient(45deg, #ff9800, #f48fb1);
+            /* Light Mode ("High Contrast") */
             --text-color: #000000; /* Pure Black */
-            --text-muted: #555555; /* Dark Gray */
+            --text-muted: #333333; /* Dark Gray */
             --text-hover: #000000; /* Pure Black */
             --bg-color: #ffffff; /* Pure White */
-            --bg-sidebar: rgba(255, 255, 255, 0.95);
-            --bg-card: #ffffff; /* Pure white for cards to create depth */
-            --border-color: rgba(0, 0, 0, 0.1); /* Slightly darker border for contrast */
+            --bg-sidebar: rgba(245, 245, 245, 0.95); /* Off-white */
+            --bg-card: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.1); /* Soft Black Border */
             --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
             --error-color: #dc2626; /* Red 600 */
         }
+
         [data-theme="light"] .skill-category h3 {
             color: var(--text-color);
         }
@@ -1747,13 +1749,13 @@
                 // Update Vanta.js colors
                 if (vantaEffect) {
                     vantaEffect.setOptions({
-                        // "Cosmic Purple" (Dark) and "Morning Freshness" (Light) palettes
-                        skyColor: isDark ? 0x1a0b2e : 0x87ceeb, // Deep Eggplant / SkyBlue
-                        cloudColor: isDark ? 0x3a2d4d : 0xf0f8ff, // Muted Purple-Grey / AliceBlue
-                        cloudShadowColor: isDark ? 0x000000 : 0xb0c4de, // Black / LightSteelBlue
-                        sunColor: isDark ? 0xab47bc : 0xffa500, // Medium Purple / Orange
-                        sunGlareColor: isDark ? 0xce93d8 : 0xffd700, // Light Purple / Gold
-                        sunlightColor: isDark ? 0x8e24aa : 0xffec8b // Vibrant Purple / LightGoldenrod1
+                        // "Cosmic Purple" (Dark) and "Golden Hour Sunset" (Light) palettes
+                        skyColor: isDark ? 0x1a0b2e : 0xffcc80, // Deep Eggplant / Soft Orange
+                        cloudColor: isDark ? 0x3a2d4d : 0xffe0e0, // Muted Purple-Grey / Pinkish White
+                        cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8, // Black / Warm Gray
+                        sunColor: isDark ? 0xab47bc : 0xffeb3b, // Medium Purple / Golden Yellow
+                        sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1, // Light Purple / Rose Gold
+                        sunlightColor: isDark ? 0x8e24aa : 0xfff59d // Vibrant Purple / Soft Yellow
                     });
                 }
             }
@@ -1934,13 +1936,13 @@
                       gyroControls: false,
                       minHeight: 200.00,
                       minWidth: 200.00,
-                      // "Cosmic Purple" (Dark) and "Morning Freshness" (Light) palettes
-                      skyColor: isDark ? 0x1a0b2e : 0x87ceeb, // Deep Eggplant / SkyBlue
-                      cloudColor: isDark ? 0x3a2d4d : 0xf0f8ff, // Muted Purple-Grey / AliceBlue
-                      cloudShadowColor: isDark ? 0x000000 : 0xb0c4de, // Black / LightSteelBlue
-                      sunColor: isDark ? 0xab47bc : 0xffa500, // Medium Purple / Orange
-                      sunGlareColor: isDark ? 0xce93d8 : 0xffd700, // Light Purple / Gold
-                      sunlightColor: isDark ? 0x8e24aa : 0xffec8b // Vibrant Purple / LightGoldenrod1
+                      // "Cosmic Purple" (Dark) and "Golden Hour Sunset" (Light) palettes
+                      skyColor: isDark ? 0x1a0b2e : 0xffcc80, // Deep Eggplant / Soft Orange
+                      cloudColor: isDark ? 0x3a2d4d : 0xffe0e0, // Muted Purple-Grey / Pinkish White
+                      cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8, // Black / Warm Gray
+                      sunColor: isDark ? 0xab47bc : 0xffeb3b, // Medium Purple / Golden Yellow
+                      sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1, // Light Purple / Rose Gold
+                      sunlightColor: isDark ? 0x8e24aa : 0xfff59d // Vibrant Purple / Soft Yellow
                     });
                 } else {
                     console.warn('Vanta.js CLOUDS is not loaded.');
