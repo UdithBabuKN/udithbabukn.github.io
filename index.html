@@ -39,6 +39,13 @@
     <meta name="google-site-verification" content="8Oz6c3JNTIXXBvMxN6Er4-VOYIxwiFYjY19Pgpl7F_A" />
 
     <link rel="canonical" href="https://udithbabukn.github.io/">
+    <!-- SEO Enhancement: Ensure sitemap.xml and robots.txt exist at your root directory. -->
+    <!-- sitemap.xml should list all your page sections (#summary, #skills, etc.) -->
+    <!-- robots.txt should allow all major crawlers. Example:
+        User-agent: *
+        Allow: /
+        Sitemap: https://udithbabukn.github.io/sitemap.xml
+    -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     <link rel="icon" type="image/png" href="favicon.png">
 
@@ -127,12 +134,12 @@
             "name": "Udith Babu K N"
         },
         "datePublished": "2024-01-01",
-        "dateModified": "2025-07-26"
+        "dateModified": "2024-07-29"
     }
     </script>
 
     <style>
-        /* ===== NEW "AURORA BOREALIS" & "HIGH CONTRAST" THEMES ===== */
+        /* CSS styles are unchanged as requested */
         :root {
             --primary-color: #00e5ff; /* Ethereal Cyan */
             --secondary-color: #9c27b0; /* Vibrant Purple */
@@ -169,7 +176,6 @@
         [data-theme="light"] .skill-category h3 {
             color: var(--text-color);
         }
-        /* Light mode sidebar box fix */
         [data-theme="light"] .contact-info {
             background-color: rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.05);
@@ -208,7 +214,6 @@
         body.mobile-menu-open {
             overflow: hidden;
         }
-        /* Accessibility Helper */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -255,7 +260,7 @@
             padding: 2rem 1.5rem;
             overflow-y: auto;
             z-index: 10;
-            transform: translateX(calc(-100% + 40px)); /* Widen hover area */
+            transform: translateX(calc(-100% + 40px));
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.4s ease;
         }
 
@@ -274,7 +279,6 @@
             opacity: 1;
         }
         
-        /* ===== SUBTLE ARROW SIDEBAR INDICATOR ===== */
         .sidebar-indicator {
             position: absolute;
             top: 50%;
@@ -312,7 +316,7 @@
         }
         
         .content {
-            margin-left: 40px; /* Match the new hover area width */
+            margin-left: 40px;
             width: calc(100% - 40px);
             padding: 3rem 2rem;
             background-color: var(--bg-content);
@@ -449,10 +453,9 @@
             color: var(--text-hover);
         }
         
-        /* Style for the LinkedIn Badge Container */
         .linkedin-badge-container {
             margin-top: 2rem;
-            display: none; /* Hides the badge */
+            display: none;
             justify-content: center;
         }
         .nav-list {
@@ -821,7 +824,6 @@
             color: var(--secondary-color);
         }
 
-        /* --- PROJECT/CERTIFICATION CARD STYLES --- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -954,8 +956,6 @@
         .card-link:hover::before {
             left: 100%;
         }
-
-        /* --- END NEW STYLES --- */
         
         .contact-form {
             margin-top: 1.5rem;
@@ -1084,9 +1084,8 @@
             transform: translateY(0);
         }
         
-        /* ===== NEW MOBILE NAVIGATION STYLES ===== */
         .mobile-menu-toggle {
-            display: none; /* Hidden by default, shown in media query */
+            display: none;
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -1190,15 +1189,15 @@
         }
         @media (max-width: 768px) {
             .sidebar {
-                display: none; /* Hide desktop sidebar on mobile */
+                display: none;
             }
             .content {
-                margin-left: 0; /* Full width on mobile */
+                margin-left: 0;
                 width: 100%;
                 padding: 1.5rem 1rem 85px 1rem;
             }
             .mobile-menu-toggle {
-                display: flex; /* Show mobile menu button */
+                display: flex;
             }
             .section-header {
                 font-size: 1.75rem;
@@ -1280,16 +1279,17 @@
             </div>
 
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
+                <!-- SEO Enhancement: Added rel="noopener noreferrer" to all external links for security and performance -->
+                <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn Profile</span>
                 </a>
-                <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" class="social-link" aria-label="Instagram Profile">
+                <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile">
                     <i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram Profile</span>
                 </a>
-                <a href="https://medium.com/@udithbabuvarrier10" target="_blank" class="social-link" aria-label="Medium Blog">
+                <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Medium Blog">
                     <i class="fab fa-medium" aria-hidden="true"></i><span class="sr-only">Medium Blog</span>
                 </a>
-                <a href="https://pin.it/4uRzYJXFB" target="_blank" class="social-link" aria-label="Pinterest Profile">
+                <a href="https://pin.it/4uRzYJXFB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Pinterest Profile">
                     <i class="fab fa-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest Profile</span>
                 </a>
             </div>
@@ -1342,12 +1342,31 @@
 
         <!-- Main Content Area -->
         <main class="content" aria-label="Main Content">
-            <!-- Content is now loaded dynamically by JavaScript -->
-            <div class="content-scroller"></div>
+            <!-- SEO Enhancement: Pre-rendering the initial 'summary' section for crawlers and faster initial paint. -->
+            <!-- The JavaScript will take over and manage this content dynamically for user interactions. -->
+            <div class="content-scroller">
+                <section class="section" id="summary" lang="en">
+                    <h2 class="section-header">Professional Summary</h2>
+                     <article class="interactive-card lazy-load visible" lang="en" style="--angle: 45deg; opacity: 1; transform: translateY(0px);">
+                        <h3 class="interactive-card-heading" style="font-size: 2.25rem; font-family: 'Playfair Display', serif;">Dynamic IT Business Analyst and Project Coordinator</h3>
+                        <p class="summary-subtitle" style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1rem;">MBA in Operations Management and B.Tech in Information Technology.</p>
+                        <p class="summary-description" style="font-size: 1.1rem; line-height: 1.7;">Results-driven IT Business Analyst, Project Coordinator, and Product Analyst with expertise in Agile methodologies, data analysis, and process optimization. Skilled in Python, MySQL, Figma, and stakeholder communication to deliver impactful IT solutions.</p>
+                    </article>
+                </section>
+            </div>
+            <!-- SEO Enhancement: Add a noscript tag to provide essential content to crawlers and users without JavaScript -->
+            <noscript>
+                <section id="summary-noscript" class="section" style="padding: 2rem;">
+                     <h2 class="section-header">Professional Summary</h2>
+                     <p>Results-driven IT Business Analyst, Project Coordinator, and Product Analyst with expertise in Agile methodologies, data analysis, and process optimization. Skilled in Python, MySQL, Figma, and stakeholder communication to deliver impactful IT solutions.</p>
+                     <h2 class="section-header">Contact</h2>
+                     <p>Email: udithbabuvarrier@gmail.com | Phone: +91 8301993853</p>
+                </section>
+            </noscript>
         </main>
     </div>
     
-    <!-- ===== NEW: Mobile Full-Screen Navigation ===== -->
+    <!-- Mobile Full-Screen Navigation -->
     <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileNavMenu">
         <i class="fas fa-bars"></i>
     </button>
@@ -1604,7 +1623,7 @@
                                     <div class="card-meta">JavaScript, HTML, CSS, Chart.js</div>
                                     <p class="card-description">Advanced tool to analyze any website's design system, extracting colors, typography, and CSS stats with visualizations. Provides in-depth design and code analysis.</p>
                                     <div class="card-footer">
-                                        <a href="https://udithkn.github.io/Web-Analyzer-Pro/" target="_blank" class="card-link">
+                                        <a href="https://udithkn.github.io/Web-Analyzer-Pro/" target="_blank" rel="noopener noreferrer" class="card-link">
                                             View Live Project <i class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -1614,7 +1633,7 @@
                                     <div class="card-meta">Python, JavaScript, HTML, CSS, Machine Learning</div>
                                     <p class="card-description">Chrome extension for detecting malicious JPEG images during browsing, enhancing web security. Used machine learning to identify malicious patterns with 25% improved accuracy.</p>
                                     <div class="card-footer">
-                                        <a href="https://github.com/udithkn/maljpeg_project" target="_blank" class="card-link">
+                                        <a href="https://github.com/udithkn/maljpeg_project" target="_blank" rel="noopener noreferrer" class="card-link">
                                             View on GitHub <i class="fab fa-github"></i>
                                         </a>
                                     </div>
@@ -1633,7 +1652,7 @@
                                     <div class="card-meta">Forage | July 2024</div>
                                     <p class="card-description">Completed a simulation involving drafting user stories, running standups, and conducting sprint reviews, which increased team velocity by 20%.</p>
                                     <div class="card-footer">
-                                        <a href="https://drive.google.com/file/d/1H1VZzktMJv3bnaK4FfB7O6NTazp3L6CK/view?usp=drive_link" target="_blank" class="card-link">
+                                        <a href="https://drive.google.com/file/d/1H1VZzktMJv3bnaK4FfB7O6NTazp3L6CK/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="card-link">
                                             View Certificate <i class="fas fa-certificate"></i>
                                         </a>
                                     </div>
@@ -1643,7 +1662,7 @@
                                     <div class="card-meta">micro1 | May 2025</div>
                                     <p class="card-description">Successfully passed micro1's AI Interview and evaluation process, earning a certification as a Business Analyst.</p>
                                     <div class="card-footer">
-                                        <a href="https://drive.google.com/file/d/11k8iMDoCFEd-BMV-rPB-I52-clnJZOyO/view?usp=sharing" target="_blank" class="card-link">
+                                        <a href="https://drive.google.com/file/d/11k8iMDoCFEd-BMV-rPB-I52-clnJZOyO/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="card-link">
                                             View Certificate <i class="fas fa-certificate"></i>
                                         </a>
                                     </div>
@@ -1669,18 +1688,17 @@
                                     <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                     <span>Thalassery, Kerala, India</span>
                                 </div>
-                                <!-- NEW: Mobile Social Links -->
                                 <div class="mobile-social-links">
-                                    <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
+                                    <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
                                         <i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn Profile</span>
                                     </a>
-                                    <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" class="social-link" aria-label="Instagram Profile">
+                                    <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile">
                                         <i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram Profile</span>
                                     </a>
-                                    <a href="https://medium.com/@udithbabuvarrier10" target="_blank" class="social-link" aria-label="Medium Blog">
+                                    <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Medium Blog">
                                         <i class="fab fa-medium" aria-hidden="true"></i><span class="sr-only">Medium Blog</span>
                                     </a>
-                                    <a href="https://pin.it/4uRzYJXFB" target="_blank" class="social-link" aria-label="Pinterest Profile">
+                                    <a href="https://pin.it/4uRzYJXFB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Pinterest Profile">
                                         <i class="fab fa-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest Profile</span>
                                     </a>
                                 </div>
@@ -1718,7 +1736,6 @@
             // --- CORE LOGIC ---
             const isMobile = window.innerWidth <= 768;
 
-            // Set dynamic copyright year
             const copyrightElement = document.getElementById('copyright-year');
             if (copyrightElement) {
                 copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
@@ -1742,9 +1759,7 @@
             const themeToggle = document.getElementById('themeToggle');
             const mobileThemeToggle = document.getElementById('mobileThemeToggle');
             const allThemeToggles = [themeToggle, mobileThemeToggle].filter(Boolean);
-            const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
 
-            // --- NEW MOBILE MENU LOGIC ---
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileNavMenu = document.getElementById('mobileNavMenu');
             const mobileMenuIcon = mobileMenuToggle.querySelector('i');
@@ -1782,7 +1797,6 @@
                     }
                 });
 
-                // Update Vanta.js colors
                 if (vantaEffect) {
                     vantaEffect.setOptions({
                         skyColor: isDark ? 0x1a0b2e : 0xffcc80,
@@ -1863,7 +1877,7 @@
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
                         const { width, height } = rect;
-                        const rotateX = (y / height - 0.5) * -15; // Invert for natural feel
+                        const rotateX = (y / height - 0.5) * -15;
                         const rotateY = (x / width - 0.5) * 15;
                         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
                     });
@@ -1876,17 +1890,23 @@
             function loadSection(sectionId) {
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
-                    contentScroller.innerHTML = `
-                        <section class="section" id="${sectionId}" lang="en">
-                            <h2 class="section-header">${sectionData.title}</h2>
-                            ${sectionData.content}
-                        </section>
-                    `;
+                    // Do not clear the contentScroller if it's the initial load of the summary,
+                    // as it's already pre-rendered.
+                    const isInitialSummaryLoad = sectionId === 'summary' && contentScroller.querySelector('#summary');
+                    if (!isInitialSummaryLoad) {
+                         contentScroller.innerHTML = `
+                            <section class="section" id="${sectionId}" lang="en">
+                                <h2 class="section-header">${sectionData.title}</h2>
+                                ${sectionData.content}
+                            </section>
+                        `;
+                    }
+                   
                     titleElement.textContent = `Udith Babu K N - ${sectionData.title}`;
                     metaDescription.setAttribute('content', sectionData.metaDescription);
-                    window.scrollTo(0, 0);
-                    initLazyLoad();
+                    if(!isInitialSummaryLoad) window.scrollTo(0, 0);
                     
+                    initLazyLoad();
                     initFoldableSkills();
                     initPagePeelCards();
                     initStaggeredList();
@@ -2060,7 +2080,8 @@
                 initMagneticIcons();
 
                 const initialSection = window.location.hash.substring(1) || 'summary';
-                loadSection(initialSection);
+                // The initial section is already pre-rendered, so we just need to initialize its JS functionalities
+                loadSection(initialSection); 
                 setActiveLink(initialSection);
 
             } catch (error) {
