@@ -144,7 +144,7 @@
             --bg-sidebar: rgba(20, 18, 50, 0.85); /* Dark Blue-Purple with alpha */
             --bg-card: rgba(20, 18, 50, 0.9); /* Dark Blue-Purple with alpha */
             --border-color: rgba(156, 39, 176, 0.3); /* Faint Purple Border */
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing function */
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --sidebar-width: 280px;
             --error-color: #ef4444; /* Red 500 */
@@ -338,7 +338,17 @@
             cursor: pointer;
             margin-bottom: 1rem;
             border: none;
+            overflow: hidden;
+            position: relative;
         }
+        .theme-toggle i {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
+        }
+        .theme-toggle.rotating i {
+            transform: rotate(360deg) scale(0);
+            opacity: 0;
+        }
+
         .theme-toggle:hover {
             background: var(--accent-color);
             transform: translateY(-3px);
@@ -367,7 +377,7 @@
             width: 0;
             height: 2px;
             background: var(--accent-color);
-            transition: width 0.6s ease;
+            transition: width 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         .logo:hover::after {
             width: 100%;
@@ -377,7 +387,7 @@
             border-radius: 8px;
             padding: 1.25rem;
             margin-bottom: 1.5rem;
-            animation: fadeSlideUp 0.6s ease-out;
+            animation: fadeSlideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transition: background-color var(--transition);
         }
         .contact-item {
@@ -426,33 +436,19 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             color: var(--text-color);
-            transition: var(--transition);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
             text-decoration: none;
             position: relative;
         }
         .social-link:hover {
             background: var(--accent-color);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
         [data-theme="light"] .social-link:hover {
             color: var(--text-hover);
         }
-        .social-link::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transform: scale(1.2);
-            transition: all 0.3s ease;
-        }
-        .social-link:hover::before {
-            opacity: 1;
-            transform: scale(1);
-        }
+        
         /* Style for the LinkedIn Badge Container */
         .linkedin-badge-container {
             margin-top: 2rem;
@@ -508,19 +504,22 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 0;
+            width: 100%;
             height: 2px;
             background: var(--accent-color);
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .nav-link:hover::after {
-            width: 100%;
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
         }
         
         .section {
             max-width: 800px;
             margin: 0 auto;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -557,7 +556,7 @@
             background: var(--accent-color);
             bottom: -2px;
             left: 0;
-            transition: width 0.3s ease;
+            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .section-header:hover::before {
             width: 100%;
@@ -571,7 +570,7 @@
             margin-bottom: 2rem;
             border: 1px solid var(--border-color);
             box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .content-box:hover {
             transform: translateY(-8px);
@@ -585,7 +584,7 @@
             border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
-            animation: fadeIn 1s ease-out;
+            animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         [data-theme="light"] .creative-summary::before {
@@ -648,7 +647,7 @@
             max-height: 0;
             overflow: hidden;
             opacity: 0;
-            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.5s ease-in-out;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), margin-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             margin-top: 0;
         }
 
@@ -677,11 +676,11 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             min-height: 200px;
+            transform-style: preserve-3d;
         }
         .skill-card:hover, .skill-card:focus {
-            transform: translateY(-10px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.2);
         }
         .skill-icon {
@@ -690,10 +689,10 @@
             background: var(--accent-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .skill-card:hover .skill-icon, .skill-card:focus .skill-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) translateZ(20px);
         }
         .skill-name {
             font-weight: 500;
@@ -743,7 +742,7 @@
             height: 0;
             background: linear-gradient(135deg, transparent 50%, var(--bg-color) 50.1%);
             box-shadow: -5px -5px 10px rgba(0,0,0,0.2);
-            transition: width 0.4s ease-out, height 0.4s ease-out;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 2;
         }
 
@@ -775,7 +774,7 @@
             max-height: 0;
             overflow: hidden;
             opacity: 0;
-            transition: max-height 0.5s ease-in-out, opacity 0.5s 0.1s ease-in-out, margin-top 0.5s ease-in-out;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), margin-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .page-peel-card.expanded .details,
@@ -805,6 +804,14 @@
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
             color: var(--text-muted);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .details li.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .details li::before {
@@ -836,7 +843,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 1;
         }
 
@@ -860,7 +867,7 @@
                 transparent 100%
             );
             transform: translate(-50%, -50%) rotate(0deg);
-            transition: opacity 0.4s ease-out;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             animation: animated-border 8s linear infinite;
             opacity: 0;
             z-index: -2;
@@ -924,12 +931,30 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .card-link:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
+
+        .card-link:hover::before {
+            left: 100%;
+        }
+
         /* --- END NEW STYLES --- */
         
         .contact-form {
@@ -944,19 +969,21 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 0;
+            width: 100%;
             height: 2px;
             background: var(--accent-color);
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .form-group:focus-within::after {
-            width: 100%;
+            transform: scaleX(1);
         }
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .form-control:focus + .form-label,
         .form-control:not(:placeholder-shown) + .form-label {
@@ -1009,8 +1036,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.7s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .btn:hover {
             transform: scale(1.05);
@@ -1050,7 +1077,7 @@
         .lazy-load {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .lazy-load.visible {
             opacity: 1;
@@ -1075,7 +1102,7 @@
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             z-index: 1002;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .mobile-nav-menu {
@@ -1095,7 +1122,7 @@
             opacity: 0;
             pointer-events: none;
             transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .mobile-nav-menu.open {
@@ -1118,7 +1145,7 @@
             font-size: 1.5rem;
             color: var(--text-color);
             padding: 0.5rem 1rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .mobile-nav-menu .nav-link:hover {
@@ -1735,27 +1762,35 @@
             
             let vantaEffect;
 
-            function applyTheme(theme) {
+            function applyTheme(theme, isInitial = false) {
                 document.documentElement.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
                 const isDark = theme === 'dark';
-                themeIcons.forEach(icon => {
-                    if(icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-                });
+
                 allThemeToggles.forEach(toggle => {
-                    if(toggle) toggle.setAttribute('aria-pressed', isDark);
+                    if (!toggle) return;
+                    toggle.setAttribute('aria-pressed', isDark);
+                    const icon = toggle.querySelector('i');
+                    if (isInitial) {
+                        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                    } else {
+                        toggle.classList.add('rotating');
+                        setTimeout(() => {
+                            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                            toggle.classList.remove('rotating');
+                        }, 200);
+                    }
                 });
-                
+
                 // Update Vanta.js colors
                 if (vantaEffect) {
                     vantaEffect.setOptions({
-                        // "Cosmic Purple" (Dark) and "Golden Hour Sunset" (Light) palettes
-                        skyColor: isDark ? 0x1a0b2e : 0xffcc80, // Deep Eggplant / Soft Orange
-                        cloudColor: isDark ? 0x3a2d4d : 0xffe0e0, // Muted Purple-Grey / Pinkish White
-                        cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8, // Black / Warm Gray
-                        sunColor: isDark ? 0xab47bc : 0xffeb3b, // Medium Purple / Golden Yellow
-                        sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1, // Light Purple / Rose Gold
-                        sunlightColor: isDark ? 0x8e24aa : 0xfff59d // Vibrant Purple / Soft Yellow
+                        skyColor: isDark ? 0x1a0b2e : 0xffcc80,
+                        cloudColor: isDark ? 0x3a2d4d : 0xffe0e0,
+                        cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8,
+                        sunColor: isDark ? 0xab47bc : 0xffeb3b,
+                        sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1,
+                        sunlightColor: isDark ? 0x8e24aa : 0xfff59d
                     });
                 }
             }
@@ -1766,7 +1801,7 @@
                 applyTheme(newTheme);
             }
             
-            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light mode
+            const savedTheme = localStorage.getItem('theme') || 'light';
             
             allThemeToggles.forEach(toggle => {
                 if(toggle) toggle.addEventListener('click', toggleTheme);
@@ -1775,41 +1810,6 @@
             if (!contentScroller) {
                 console.error('Content scroller not found');
                 return;
-            }
-
-            // --- NEW: MAGNETIC ICONS LOGIC ---
-            function initMagneticIcons() {
-                const icons = document.querySelectorAll('.social-link');
-
-                icons.forEach(icon => {
-                    if (icon.dataset.magneticApplied) return; // Prevent re-applying listeners
-                    icon.dataset.magneticApplied = 'true';
-
-                    icon.addEventListener('mousemove', (e) => {
-                        const rect = icon.getBoundingClientRect();
-                        const iconX = rect.left + rect.width / 2;
-                        const iconY = rect.top + rect.height / 2;
-                        const mouseX = e.clientX;
-                        const mouseY = e.clientY;
-                        const deltaX = mouseX - iconX;
-                        const deltaY = mouseY - iconY;
-                        
-                        // A smaller pull factor creates a gentler "magnetic" feel
-                        const pullFactor = 0.4;
-                        const translateX = deltaX * pullFactor;
-                        const translateY = deltaY * pullFactor;
-
-                        // Apply a quick, linear transition during movement for smoothness
-                        icon.style.transition = 'transform 0.1s linear';
-                        icon.style.transform = `translate(${translateX}px, ${translateY}px)`;
-                    });
-
-                    icon.addEventListener('mouseleave', () => {
-                        // Use a more natural, smoother easing function to return to the original position
-                        icon.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                        icon.style.transform = 'translate(0, 0)';
-                    });
-                });
             }
 
             function initFoldableSkills() {
@@ -1835,6 +1835,44 @@
                 }
             }
 
+            function initStaggeredList() {
+                const lists = document.querySelectorAll('.details ul');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const listItems = entry.target.querySelectorAll('li');
+                            listItems.forEach((item, index) => {
+                                item.style.transitionDelay = `${index * 100}ms`;
+                                item.classList.add('visible');
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                lists.forEach(list => {
+                    observer.observe(list);
+                });
+            }
+
+            function init3DTilt() {
+                const skillCards = document.querySelectorAll('.skill-card');
+                skillCards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const { width, height } = rect;
+                        const rotateX = (y / height - 0.5) * -15; // Invert for natural feel
+                        const rotateY = (x / width - 0.5) * 15;
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                    });
+                });
+            }
+
             function loadSection(sectionId) {
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
@@ -1851,10 +1889,9 @@
                     
                     initFoldableSkills();
                     initPagePeelCards();
+                    initStaggeredList();
+                    init3DTilt();
                     if (sectionId === 'contact') initContactForm();
-                    
-                    // Initialize magnetic effect for any social icons in the newly loaded content
-                    initMagneticIcons();
 
                 } else {
                     console.error('Section data not found for:', sectionId);
@@ -1974,17 +2011,33 @@
                       gyroControls: false,
                       minHeight: 200.00,
                       minWidth: 200.00,
-                      // "Cosmic Purple" (Dark) and "Golden Hour Sunset" (Light) palettes
-                      skyColor: isDark ? 0x1a0b2e : 0xffcc80, // Deep Eggplant / Soft Orange
-                      cloudColor: isDark ? 0x3a2d4d : 0xffe0e0, // Muted Purple-Grey / Pinkish White
-                      cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8, // Black / Warm Gray
-                      sunColor: isDark ? 0xab47bc : 0xffeb3b, // Medium Purple / Golden Yellow
-                      sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1, // Light Purple / Rose Gold
-                      sunlightColor: isDark ? 0x8e24aa : 0xfff59d // Vibrant Purple / Soft Yellow
+                      skyColor: isDark ? 0x1a0b2e : 0xffcc80,
+                      cloudColor: isDark ? 0x3a2d4d : 0xffe0e0,
+                      cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8,
+                      sunColor: isDark ? 0xab47bc : 0xffeb3b,
+                      sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1,
+                      sunlightColor: isDark ? 0x8e24aa : 0xfff59d
                     });
                 } else {
                     console.warn('Vanta.js CLOUDS is not loaded.');
                 }
+            }
+
+            function initMagneticIcons() {
+                const icons = document.querySelectorAll('.social-link');
+                icons.forEach(icon => {
+                    icon.addEventListener('mousemove', (e) => {
+                        const rect = icon.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        icon.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                        icon.style.transition = 'transform 0.1s ease-out';
+                    });
+                    icon.addEventListener('mouseleave', () => {
+                        icon.style.transform = 'translate(0,0)';
+                        icon.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    });
+                });
             }
 
 
@@ -2003,9 +2056,9 @@
 
             try {
                 initVanta();
-                applyTheme(savedTheme);
+                applyTheme(savedTheme, true);
+                initMagneticIcons();
 
-                // Load initial section based on URL hash or default to 'summary'
                 const initialSection = window.location.hash.substring(1) || 'summary';
                 loadSection(initialSection);
                 setActiveLink(initialSection);
