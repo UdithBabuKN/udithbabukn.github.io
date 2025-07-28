@@ -144,7 +144,7 @@
             --bg-sidebar: rgba(20, 18, 50, 0.85); /* Dark Blue-Purple with alpha */
             --bg-card: rgba(20, 18, 50, 0.9); /* Dark Blue-Purple with alpha */
             --border-color: rgba(156, 39, 176, 0.3); /* Faint Purple Border */
-            --transition: all 0.3s ease;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing function */
             --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --sidebar-width: 280px;
             --error-color: #ef4444; /* Red 500 */
@@ -1777,6 +1777,41 @@
                 return;
             }
 
+            // --- NEW: MAGNETIC ICONS LOGIC ---
+            function initMagneticIcons() {
+                const icons = document.querySelectorAll('.social-link');
+
+                icons.forEach(icon => {
+                    if (icon.dataset.magneticApplied) return; // Prevent re-applying listeners
+                    icon.dataset.magneticApplied = 'true';
+
+                    icon.addEventListener('mousemove', (e) => {
+                        const rect = icon.getBoundingClientRect();
+                        const iconX = rect.left + rect.width / 2;
+                        const iconY = rect.top + rect.height / 2;
+                        const mouseX = e.clientX;
+                        const mouseY = e.clientY;
+                        const deltaX = mouseX - iconX;
+                        const deltaY = mouseY - iconY;
+                        
+                        // A smaller pull factor creates a gentler "magnetic" feel
+                        const pullFactor = 0.4;
+                        const translateX = deltaX * pullFactor;
+                        const translateY = deltaY * pullFactor;
+
+                        // Apply a quick, linear transition during movement for smoothness
+                        icon.style.transition = 'transform 0.1s linear';
+                        icon.style.transform = `translate(${translateX}px, ${translateY}px)`;
+                    });
+
+                    icon.addEventListener('mouseleave', () => {
+                        // Use a more natural, smoother easing function to return to the original position
+                        icon.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                        icon.style.transform = 'translate(0, 0)';
+                    });
+                });
+            }
+
             function initFoldableSkills() {
                 const foldableCategories = document.querySelectorAll('.skill-category-foldable');
                 foldableCategories.forEach(category => {
@@ -1817,6 +1852,9 @@
                     initFoldableSkills();
                     initPagePeelCards();
                     if (sectionId === 'contact') initContactForm();
+                    
+                    // Initialize magnetic effect for any social icons in the newly loaded content
+                    initMagneticIcons();
 
                 } else {
                     console.error('Section data not found for:', sectionId);
