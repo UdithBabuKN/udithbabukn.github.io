@@ -141,16 +141,16 @@
     <style>
         /* CSS styles are unchanged as requested */
         :root {
-            --primary-color: #00e5ff; /* Ethereal Cyan */
-            --secondary-color: #9c27b0; /* Vibrant Purple */
-            --accent-color: linear-gradient(45deg, #00e5ff, #e91e63);
-            /* Dark Mode ("Aurora Borealis") */
-            --text-color: #ffffff; /* Pure White */
-            --text-muted: #cccccc; /* Bright Gray */
-            --bg-color: #0c0a24; /* Deep Space Blue */
-            --bg-sidebar: rgba(20, 18, 50, 0.85); /* Dark Blue-Purple with alpha */
-            --bg-card: rgba(20, 18, 50, 0.9); /* Dark Blue-Purple with alpha */
-            --border-color: rgba(156, 39, 176, 0.3); /* Faint Purple Border */
+            /* Dark Mode ("Electric Night") */
+            --primary-color: #00E5FF; /* Electric Cyan */
+            --secondary-color: #9C27B0; /* Vibrant Purple */
+            --accent-color: linear-gradient(45deg, #00E5FF, #9C27B0);
+            --text-color: #E2E8F0; /* Cool Gray */
+            --text-muted: #A0AEC0; /* Lighter Cool Gray */
+            --bg-color: #0A0A1A; /* Near Black */
+            --bg-sidebar: rgba(18, 18, 30, 0.8);
+            --bg-card: rgba(22, 22, 40, 0.85);
+            --border-color: rgba(0, 229, 255, 0.2); /* Faint Cyan Border */
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --sidebar-width: 280px;
@@ -158,17 +158,17 @@
         }
         
         [data-theme="light"] {
-            --primary-color: #ff9800; /* Warm Orange */
-            --secondary-color: #f48fb1; /* Rose Gold */
-            --accent-color: linear-gradient(45deg, #ff9800, #f48fb1);
-            /* Light Mode ("High Contrast") */
-            --text-color: #000000; /* Pure Black */
-            --text-muted: #333333; /* Dark Gray */
+            /* Light Mode ("Fresh & Vibrant") */
+            --primary-color: #00BFFF; /* DeepSkyBlue */
+            --secondary-color: #20C997; /* Teal */
+            --accent-color: linear-gradient(45deg, #00BFFF, #20C997);
+            --text-color: #1a202c; /* Dark Slate Gray */
+            --text-muted: #4a5568; /* Lighter Slate Gray */
             --text-hover: #000000; /* Pure Black */
-            --bg-color: #ffffff; /* Pure White */
-            --bg-sidebar: rgba(245, 245, 245, 0.95); /* Off-white */
-            --bg-card: #ffffff;
-            --border-color: rgba(0, 0, 0, 0.1); /* Soft Black Border */
+            --bg-color: #F7FAFC; /* Very Light Gray */
+            --bg-sidebar: rgba(255, 255, 255, 0.85);
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --border-color: rgba(0, 0, 0, 0.08); /* Soft Black Border */
             --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
             --error-color: #dc2626; /* Red 600 */
         }
@@ -210,7 +210,43 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            position: relative;
         }
+        
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: opacity 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        body::before {
+            /* Light theme image with overlay */
+            background-image: linear-gradient(rgba(247, 250, 252, 0.8), rgba(247, 250, 252, 0.8)), url('sun.png');
+            opacity: 0;
+        }
+
+        body::after {
+            /* Dark theme image with overlay */
+            background-image: linear-gradient(rgba(10, 10, 26, 0.8), rgba(10, 10, 26, 0.8)), url('moon.png');
+            opacity: 0;
+        }
+
+        [data-theme="light"] body::before {
+            opacity: 1;
+        }
+
+        [data-theme="dark"] body::after {
+            opacity: 1;
+        }
+
         body.mobile-menu-open {
             overflow: hidden;
         }
@@ -234,14 +270,7 @@
         .form-control:focus-visible {
             box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
         }
-        #vanta-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+        
         .container {
             display: flex;
             position: relative;
@@ -1251,9 +1280,6 @@
 </head>
 
 <body>
-    <!-- Vanta.js background container -->
-    <div id="vanta-bg"></div>
-
     <div class="container">
         <!-- Sidebar Navigation (Desktop) -->
         <aside class="sidebar" aria-label="Sidebar Navigation">
@@ -1391,10 +1417,6 @@
         <p id="copyright-year"></p>
     </footer>
 
-    <!-- Vanta.js and dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js" defer></script>
-    
     <!-- LinkedIn Badge Script -->
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
@@ -1774,8 +1796,6 @@
             if(mobileMenuToggle && mobileNavMenu) {
                 mobileMenuToggle.addEventListener('click', toggleMobileMenu);
             }
-            
-            let vantaEffect;
 
             function applyTheme(theme, isInitial = false) {
                 document.documentElement.setAttribute('data-theme', theme);
@@ -1796,17 +1816,6 @@
                         }, 200);
                     }
                 });
-
-                if (vantaEffect) {
-                    vantaEffect.setOptions({
-                        skyColor: isDark ? 0x1a0b2e : 0xffcc80,
-                        cloudColor: isDark ? 0x3a2d4d : 0xffe0e0,
-                        cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8,
-                        sunColor: isDark ? 0xab47bc : 0xffeb3b,
-                        sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1,
-                        sunlightColor: isDark ? 0x8e24aa : 0xfff59d
-                    });
-                }
             }
 
             function toggleTheme() {
@@ -2021,28 +2030,6 @@
                 });
             }
             
-            function initVanta() {
-                if (typeof VANTA !== 'undefined' && VANTA.CLOUDS) {
-                    const isDark = savedTheme === 'dark';
-                    vantaEffect = VANTA.CLOUDS({
-                      el: "#vanta-bg",
-                      mouseControls: true,
-                      touchControls: true,
-                      gyroControls: false,
-                      minHeight: 200.00,
-                      minWidth: 200.00,
-                      skyColor: isDark ? 0x1a0b2e : 0xffcc80,
-                      cloudColor: isDark ? 0x3a2d4d : 0xffe0e0,
-                      cloudShadowColor: isDark ? 0x000000 : 0xd7ccc8,
-                      sunColor: isDark ? 0xab47bc : 0xffeb3b,
-                      sunGlareColor: isDark ? 0xce93d8 : 0xf48fb1,
-                      sunlightColor: isDark ? 0x8e24aa : 0xfff59d
-                    });
-                } else {
-                    console.warn('Vanta.js CLOUDS is not loaded.');
-                }
-            }
-
             function initMagneticIcons() {
                 const icons = document.querySelectorAll('.social-link');
                 icons.forEach(icon => {
@@ -2075,7 +2062,6 @@
             });
 
             try {
-                initVanta();
                 applyTheme(savedTheme, true);
                 initMagneticIcons();
 
