@@ -1198,15 +1198,14 @@
         }
 
         .bottom-nav-link {
-            flex: 1; /* This ensures each link container takes up equal width */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0.75rem 0; /* Increased vertical padding and removed horizontal padding */
+            padding: 0.75rem 0.25rem; /* Adjusted padding */
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.7rem; /* Slightly increased font size */
+            font-size: 0.7rem;
             text-align: center;
             transition: color 0.3s ease, transform 0.3s ease;
         }
@@ -1216,7 +1215,6 @@
             margin-bottom: 0.25rem;
         }
         
-        /* FIX: Prevents text from wrapping on mobile nav */
         .bottom-nav-link span {
             white-space: nowrap;
         }
@@ -1246,12 +1244,12 @@
             .content {
                 margin-left: 0;
                 width: 100%;
-                /* FIX: Increased padding to prevent content being obscured by bottom nav */
                 padding: 1.5rem 1rem 90px 1rem;
             }
             /* Show the new bottom nav bar */
             .bottom-nav {
                 display: flex;
+                justify-content: space-around; /* Evenly space nav items */
             }
             .section-header {
                 font-size: 1.75rem;
