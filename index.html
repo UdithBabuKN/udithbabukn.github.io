@@ -1209,12 +1209,16 @@
             font-size: 0.7rem; /* Slightly increased font size */
             text-align: center;
             transition: color 0.3s ease, transform 0.3s ease;
-            word-break: break-word;
         }
 
         .bottom-nav-link i {
             font-size: 1.2rem;
             margin-bottom: 0.25rem;
+        }
+        
+        /* FIX: Prevents text from wrapping on mobile nav */
+        .bottom-nav-link span {
+            white-space: nowrap;
         }
 
         .bottom-nav-link.active {
@@ -1242,8 +1246,8 @@
             .content {
                 margin-left: 0;
                 width: 100%;
-                /* Adjust padding to account for bottom nav bar */
-                padding: 1.5rem 1rem 80px 1rem;
+                /* FIX: Increased padding to prevent content being obscured by bottom nav */
+                padding: 1.5rem 1rem 90px 1rem;
             }
             /* Show the new bottom nav bar */
             .bottom-nav {
