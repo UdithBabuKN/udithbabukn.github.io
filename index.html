@@ -134,7 +134,7 @@
             "name": "Udith Babu K N"
         },
         "datePublished": "2024-01-01",
-        "dateModified": "2024-07-29"
+        "dateModified": "2024-07-31"
     }
     </script>
 
@@ -387,21 +387,36 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+            flex-shrink: 0; /* Prevents image from shrinking */
+        }
+
         .logo {
             background: var(--accent-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.75rem;
+            font-size: 1.5rem; /* Adjusted for better fit */
+            white-space: nowrap; /* Ensures name stays on one line */
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin: 0;
             position: relative;
-            display: inline-block;
+            line-height: 1.2;
+            flex-grow: 1;
         }
-        [data-theme="light"] .logo:hover {
-            background: none;
-            -webkit-background-clip: initial;
-            -webkit-text-fill-color: var(--text-hover);
-        }
+
         .logo::after {
             content: '';
             position: absolute;
@@ -473,11 +488,39 @@
             text-decoration: none;
             position: relative;
         }
+        
+        /* Theme-aware social icons */
+        .social-link i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease-in-out;
+        }
+        .social-link .icon-dark {
+            opacity: 1;
+            color: #E2E8F0; /* Cool Gray for dark theme */
+        }
+        .social-link .icon-light {
+            opacity: 0;
+            color: #4a5568; /* Lighter Slate Gray for light theme */
+        }
+        [data-theme="light"] .social-link .icon-dark {
+            opacity: 0;
+        }
+        [data-theme="light"] .social-link .icon-light {
+            opacity: 1;
+        }
+
         .social-link:hover {
             background: var(--accent-color);
             transform: translateY(-3px) scale(1.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
+        .social-link:hover i {
+            color: #fff !important; /* Ensure hover color is consistent */
+        }
+
         [data-theme="light"] .social-link:hover {
             color: var(--text-hover);
         }
@@ -1190,21 +1233,33 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .mobile-nav-menu .mobile-theme-toggle {
-            margin-top: 2rem;
+        /* Mobile header styles */
+        .mobile-header {
+            display: none; /* Hidden by default on desktop */
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mobile-header .social-links {
+            margin-bottom: 0;
+        }
+        
+        .mobile-header .theme-toggle {
+            margin-bottom: 0;
         }
 
         .mobile-contact-info {
             display: none;
-        }
-        
-        .mobile-social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-color);
         }
 
         @media (max-width: 992px) {
@@ -1260,6 +1315,26 @@
             .footer {
                 display: none;
             }
+            
+            /* Show and style mobile header */
+            .mobile-header {
+                display: flex;
+            }
+
+            .mobile-header .profile-header {
+                margin-bottom: 0;
+            }
+
+            .mobile-header .logo {
+                font-size: 1.2rem;
+                white-space: normal;
+            }
+
+            .mobile-header .social-links {
+                justify-content: flex-start;
+                margin-bottom: 0;
+            }
+            
             .mobile-contact-info {
                 display: block;
                 background-color: var(--bg-card);
@@ -1285,7 +1360,10 @@
         <aside class="sidebar" aria-label="Sidebar Navigation">
             <div class="sidebar-indicator">
             </div>
-            <h1 class="logo">Udith Babu K N</h1>
+            <div class="profile-header">
+                <img src="picofme.jpg" alt="A profile picture of Udith Babu K N" class="profile-pic">
+                <h1 class="logo">Udith Babu K N</h1>
+            </div>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
                 <i class="fas fa-moon"></i>
             </button>
@@ -1305,18 +1383,25 @@
             </div>
 
             <div class="social-links">
-                <!-- SEO Enhancement: Added rel="noopener noreferrer" to all external links for security and performance -->
                 <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn Profile</span>
+                    <i class="fab fa-linkedin-in icon-light" aria-hidden="true"></i>
+                    <i class="fab fa-linkedin-in icon-dark" aria-hidden="true"></i>
+                    <span class="sr-only">LinkedIn Profile</span>
                 </a>
                 <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile">
-                    <i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram Profile</span>
+                    <i class="fab fa-instagram icon-light" aria-hidden="true"></i>
+                    <i class="fab fa-instagram icon-dark" aria-hidden="true"></i>
+                    <span class="sr-only">Instagram Profile</span>
                 </a>
                 <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Medium Blog">
-                    <i class="fab fa-medium" aria-hidden="true"></i><span class="sr-only">Medium Blog</span>
+                    <i class="fab fa-medium icon-light" aria-hidden="true"></i>
+                    <i class="fab fa-medium icon-dark" aria-hidden="true"></i>
+                    <span class="sr-only">Medium Blog</span>
                 </a>
                 <a href="https://pin.it/4uRzYJXFB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Pinterest Profile">
-                    <i class="fab fa-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest Profile</span>
+                    <i class="fab fa-pinterest icon-light" aria-hidden="true"></i>
+                    <i class="fab fa-pinterest icon-dark" aria-hidden="true"></i>
+                    <span class="sr-only">Pinterest Profile</span>
                 </a>
             </div>
             
@@ -1368,6 +1453,47 @@
 
         <!-- Main Content Area -->
         <main class="content" aria-label="Main Content">
+            <!-- Header for Mobile View -->
+            <header class="mobile-header">
+                <div class="profile-header">
+                    <img src="picofme.jpg" alt="A profile picture of Udith Babu K N" class="profile-pic">
+                    <h1 class="logo">Udith Babu K N</h1>
+                </div>
+                <div class="mobile-header-actions">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin-in icon-light" aria-hidden="true"></i>
+                            <i class="fab fa-linkedin-in icon-dark" aria-hidden="true"></i>
+                            <span class="sr-only">LinkedIn Profile</span>
+                        </a>
+                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile">
+                            <i class="fab fa-instagram icon-light" aria-hidden="true"></i>
+                            <i class="fab fa-instagram icon-dark" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram Profile</span>
+                        </a>
+                    </div>
+                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Contact Info for Mobile View -->
+            <div class="mobile-contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <a href="mailto:udithbabuvarrier@gmail.com" aria-label="Email Udith Babu">udithbabuvarrier@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>Thalassery, Kerala, India</span>
+                </div>
+            </div>
+
             <!-- SEO Enhancement: Pre-rendering the initial 'summary' section for crawlers and faster initial paint. -->
             <!-- The JavaScript will take over and manage this content dynamically for user interactions. -->
             <div class="content-scroller">
@@ -1403,12 +1529,9 @@
              <li class="nav-item"><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
              <li class="nav-item"><a href="#education" class="nav-link" data-section="education">Education</a></li>
              <li class="nav-item"><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
-             <li class="nav-item"><a href="#certifications" class="nav-link" data-section="certifications">Certs</a></li>
+             <li class="nav-item"><a href="#certifications" class="nav-link" data-section="certifications">Certifications</a></li>
              <li class="nav-item"><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
         </ul>
-        <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
-            <i class="fas fa-moon"></i>
-        </button>
     </nav>
 
 
@@ -1697,34 +1820,6 @@
                     metaDescription: "Connect with Udith Babu K N for opportunities in IT Business Analysis, Project Coordination, and Product Management. Let's build innovative solutions together.",
                     content: `
                         <article class="content-box lazy-load" lang="en">
-                            <div class="mobile-contact-info">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                                    <a href="mailto:udithbabuvarrier@gmail.com" aria-label="Email Udith Babu">udithbabuvarrier@gmail.com</a>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-phone" aria-hidden="true"></i>
-                                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                    <span>Thalassery, Kerala, India</span>
-                                </div>
-                                <div class="mobile-social-links">
-                                    <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
-                                        <i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn Profile</span>
-                                    </a>
-                                    <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile">
-                                        <i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram Profile</span>
-                                    </a>
-                                    <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Medium Blog">
-                                        <i class="fab fa-medium" aria-hidden="true"></i><span class="sr-only">Medium Blog</span>
-                                    </a>
-                                    <a href="https://pin.it/4uRzYJXFB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Pinterest Profile">
-                                        <i class="fab fa-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest Profile</span>
-                                    </a>
-                                </div>
-                            </div>
                             <p>Looking to drive IT projects to success? Connect to explore my expertise in Agile, business analysis, and product analysis.</p>
                             <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST" aria-label="Contact Form" novalidate>
                                 <input type="hidden" name="_subject" value="New portfolio contact submission">
@@ -2055,10 +2150,17 @@
                     const sectionId = link.getAttribute('data-section');
                     loadSection(sectionId);
                     setActiveLink(sectionId);
-                    if (isMobile && mobileNavMenu.classList.contains('open')) {
+                    if (mobileNavMenu.classList.contains('open')) {
                        toggleMobileMenu();
                     }
                 });
+            });
+
+            // BUG FIX: Add resize listener to handle view changes
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && mobileNavMenu.classList.contains('open')) {
+                    toggleMobileMenu();
+                }
             });
 
             try {
