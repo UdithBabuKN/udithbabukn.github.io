@@ -1457,7 +1457,7 @@
             <header class="mobile-header">
                 <div class="profile-header">
                     <img src="picofme.jpg" alt="A profile picture of Udith Babu K N" class="profile-pic">
-                    <h1 class="logo">Udith Babu K N</h1>
+                    <div class="logo">Udith Babu K N</div>
                 </div>
                 <div class="mobile-header-actions">
                     <div class="social-links">
@@ -1482,7 +1482,7 @@
             <div class="mobile-contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <a href="mailto:udithbabuvarrier@gmail.com" aria-label="Email Udith Babu">udithbabuvarrier@gmail.com</a>
+                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading email...</span></a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone" aria-hidden="true"></i>
@@ -1851,20 +1851,20 @@
             };
 
             // --- CORE LOGIC ---
-            const isMobile = window.innerWidth <= 768;
-
             const copyrightElement = document.getElementById('copyright-year');
             if (copyrightElement) {
                 copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
             }
 
-            const emailLink = document.querySelector('.email-link');
-            const emailPlaceholder = document.querySelector('.email-placeholder');
+            const emailLinks = document.querySelectorAll('.email-link');
             const emailAddress = 'udithbabuvarrier@gmail.com';
-            if (emailLink && emailPlaceholder) {
-                emailLink.href = `mailto:${emailAddress}`;
-                emailPlaceholder.textContent = emailAddress;
-            }
+            emailLinks.forEach(link => {
+                const placeholder = link.querySelector('.email-placeholder');
+                if (placeholder) {
+                    link.href = `mailto:${emailAddress}`;
+                    placeholder.textContent = emailAddress;
+                }
+            });
 
             const contentScroller = document.querySelector('.content-scroller');
             const desktopNavLinks = document.querySelectorAll('.sidebar .nav-link');
@@ -1934,7 +1934,7 @@
                 const foldableCategories = document.querySelectorAll('.skill-category-foldable');
                 foldableCategories.forEach(category => {
                     const title = category.querySelector('.skill-category-title');
-                     if (isMobile) {
+                     if (window.innerWidth <= 768) {
                         title.addEventListener('click', () => {
                             category.classList.toggle('expanded');
                         });
@@ -1944,7 +1944,7 @@
             
             function initPagePeelCards() {
                 const cards = document.querySelectorAll('.page-peel-card');
-                if(isMobile) {
+                if(window.innerWidth <= 768) {
                     cards.forEach(card => {
                         card.addEventListener('click', () => {
                             card.classList.toggle('expanded');
