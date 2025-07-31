@@ -1198,18 +1198,18 @@
         }
 
         .bottom-nav-link {
-            flex: 1; /* Allow items to grow and fill the space */
+            flex: 1; /* This ensures each link container takes up equal width */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0.5rem 2px; /* Adjusted padding for smaller screens */
+            padding: 0.75rem 0; /* Increased vertical padding and removed horizontal padding */
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.65rem; /* Slightly reduced font size to prevent wrapping */
-            text-align: center; /* Center text if it wraps */
+            font-size: 0.7rem; /* Slightly increased font size */
+            text-align: center;
             transition: color 0.3s ease, transform 0.3s ease;
-            word-break: break-word; /* Ensure long words don't overflow */
+            word-break: break-word;
         }
 
         .bottom-nav-link i {
