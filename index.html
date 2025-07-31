@@ -247,9 +247,6 @@
             opacity: 1;
         }
 
-        body.mobile-menu-open {
-            overflow: hidden;
-        }
         .sr-only {
             position: absolute;
             width: 1px;
@@ -1156,83 +1153,6 @@
             transform: translateY(0);
         }
         
-        .mobile-menu-toggle {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1002;
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .mobile-nav-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-sidebar);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(20px);
-            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .mobile-nav-menu.open {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        .mobile-nav-menu .nav-list {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
-
-        .mobile-nav-menu .nav-item {
-            margin: 1rem 0;
-        }
-
-        .mobile-nav-menu .nav-link {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .mobile-nav-menu .nav-link:hover {
-            transform: scale(1.1);
-            background: var(--accent-color);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .mobile-nav-menu .nav-link.active {
-            font-weight: 700;
-            background: var(--accent-color);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
         /* Mobile header styles */
         .mobile-header {
             display: none; /* Hidden by default on desktop */
@@ -1262,6 +1182,50 @@
             display: none;
         }
 
+        /* UPDATED: Bottom Navigation Bar Styles */
+        .bottom-nav {
+            display: none; /* Hidden on desktop */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-sidebar);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-color);
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .bottom-nav-link {
+            flex: 1; /* Allow items to grow and fill the space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 2px; /* Adjusted padding for smaller screens */
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.65rem; /* Slightly reduced font size to prevent wrapping */
+            text-align: center; /* Center text if it wraps */
+            transition: color 0.3s ease, transform 0.3s ease;
+            word-break: break-word; /* Ensure long words don't overflow */
+        }
+
+        .bottom-nav-link i {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .bottom-nav-link.active {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        [data-theme="light"] .bottom-nav-link.active {
+             color: var(--secondary-color);
+        }
+
         @media (max-width: 992px) {
              .skills-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -1278,9 +1242,11 @@
             .content {
                 margin-left: 0;
                 width: 100%;
-                padding: 1.5rem 1rem 85px 1rem;
+                /* Adjust padding to account for bottom nav bar */
+                padding: 1.5rem 1rem 80px 1rem;
             }
-            .mobile-menu-toggle {
+            /* Show the new bottom nav bar */
+            .bottom-nav {
                 display: flex;
             }
             .section-header {
@@ -1518,20 +1484,36 @@
         </main>
     </div>
     
-    <!-- Mobile Full-Screen Navigation -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileNavMenu">
-        <i class="fas fa-bars"></i>
-    </button>
-    <nav class="mobile-nav-menu" id="mobileNavMenu" aria-label="Mobile Navigation">
-        <ul class="nav-list">
-             <li class="nav-item"><a href="#summary" class="nav-link" data-section="summary">Summary</a></li>
-             <li class="nav-item"><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-             <li class="nav-item"><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
-             <li class="nav-item"><a href="#education" class="nav-link" data-section="education">Education</a></li>
-             <li class="nav-item"><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
-             <li class="nav-item"><a href="#certifications" class="nav-link" data-section="certifications">Certifications</a></li>
-             <li class="nav-item"><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
-        </ul>
+    <!-- UPDATED: Bottom Navigation Bar for Mobile -->
+    <nav class="bottom-nav" id="bottomNav">
+        <a href="#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary">
+            <i class="fas fa-user"></i>
+            <span>Summary</span>
+        </a>
+        <a href="#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills">
+            <i class="fas fa-code"></i>
+            <span>Skills</span>
+        </a>
+        <a href="#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience">
+            <i class="fas fa-briefcase"></i>
+            <span>Experience</span>
+        </a>
+        <a href="#education" class="bottom-nav-link" data-section="education" aria-label="Education">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Education</span>
+        </a>
+        <a href="#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects">
+            <i class="fas fa-project-diagram"></i>
+            <span>Projects</span>
+        </a>
+        <a href="#certifications" class="bottom-nav-link" data-section="certifications" aria-label="Certifications">
+            <i class="fas fa-certificate"></i>
+            <span>Certs</span>
+        </a>
+        <a href="#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
     </nav>
 
 
@@ -1868,29 +1850,14 @@
 
             const contentScroller = document.querySelector('.content-scroller');
             const desktopNavLinks = document.querySelectorAll('.sidebar .nav-link');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu .nav-link');
-            const allNavLinks = [...desktopNavLinks, ...mobileNavLinks];
+            const bottomNavLinks = document.querySelectorAll('.bottom-nav .bottom-nav-link'); // New bottom nav links
+            const allNavLinks = [...desktopNavLinks, ...bottomNavLinks];
             const titleElement = document.querySelector('title');
             const metaDescription = document.querySelector('meta[name="description"]');
 
             const themeToggle = document.getElementById('themeToggle');
             const mobileThemeToggle = document.getElementById('mobileThemeToggle');
             const allThemeToggles = [themeToggle, mobileThemeToggle].filter(Boolean);
-
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const mobileNavMenu = document.getElementById('mobileNavMenu');
-            const mobileMenuIcon = mobileMenuToggle.querySelector('i');
-
-            function toggleMobileMenu() {
-                const isOpen = mobileNavMenu.classList.toggle('open');
-                document.body.classList.toggle('mobile-menu-open', isOpen);
-                mobileMenuToggle.setAttribute('aria-expanded', isOpen);
-                mobileMenuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-            }
-            
-            if(mobileMenuToggle && mobileNavMenu) {
-                mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-            }
 
             function applyTheme(theme, isInitial = false) {
                 document.documentElement.setAttribute('data-theme', theme);
@@ -1994,8 +1961,6 @@
             function loadSection(sectionId) {
                 const sectionData = contentData[sectionId];
                 if (sectionData) {
-                    // Do not clear the contentScroller if it's the initial load of the summary,
-                    // as it's already pre-rendered.
                     const isInitialSummaryLoad = sectionId === 'summary' && contentScroller.querySelector('#summary');
                     if (!isInitialSummaryLoad) {
                          contentScroller.innerHTML = `
@@ -2150,17 +2115,7 @@
                     const sectionId = link.getAttribute('data-section');
                     loadSection(sectionId);
                     setActiveLink(sectionId);
-                    if (mobileNavMenu.classList.contains('open')) {
-                       toggleMobileMenu();
-                    }
                 });
-            });
-
-            // BUG FIX: Add resize listener to handle view changes
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768 && mobileNavMenu.classList.contains('open')) {
-                    toggleMobileMenu();
-                }
             });
 
             try {
@@ -2168,7 +2123,6 @@
                 initMagneticIcons();
 
                 const initialSection = window.location.hash.substring(1) || 'summary';
-                // The initial section is already pre-rendered, so we just need to initialize its JS functionalities
                 loadSection(initialSection); 
                 setActiveLink(initialSection);
 
