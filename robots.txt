@@ -1,0 +1,10 @@
+# Allow all ethical crawlers to access the site
+User-agent: *
+Allow: /
+
+# Disallow access to nothing specific, but good practice to have the file
+# You could disallow specific directories here if needed in the future
+# e.g., Disallow: /private/
+
+# Location of sitemap file
+Sitemap: https://udithbabukn.github.io/sitemap.xml
