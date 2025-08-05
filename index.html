@@ -2052,21 +2052,23 @@
             }
 
             function init3DTilt() {
-                const cardsToTilt = document.querySelectorAll('.skill-card, .bento-card, .interactive-card, .page-peel-card, .content-box'); // UPDATED: Apply to all cards
-                cardsToTilt.forEach(card => {
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const { width, height } = rect;
-                        const rotateX = (y / height - 0.5) * -15;
-                        const rotateY = (x / width - 0.5) * 15;
-                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                if (window.innerWidth > 768) { // UPDATED: Only run on desktop
+                    const cardsToTilt = document.querySelectorAll('.skill-card, .bento-card, .interactive-card, .page-peel-card, .content-box');
+                    cardsToTilt.forEach(card => {
+                        card.addEventListener('mousemove', (e) => {
+                            const rect = card.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            const { width, height } = rect;
+                            const rotateX = (y / height - 0.5) * -15;
+                            const rotateY = (x / width - 0.5) * 15;
+                            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                        });
+                        card.addEventListener('mouseleave', () => {
+                            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                        });
                     });
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-                    });
-                });
+                }
             }
 
             function loadSection(sectionId) {
