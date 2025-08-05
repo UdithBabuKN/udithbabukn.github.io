@@ -607,6 +607,11 @@
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
         .section-header {
             font-size: 2rem;
             background: var(--accent-color);
@@ -630,55 +635,136 @@
         .section-header:hover::before {
             width: 100%;
         }
-        .content-box {
-            background-color: var(--bg-card);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .content-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
-        }
-
-        .creative-summary {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 2.5rem;
-            border: 1px solid var(--border-color);
+       
+        /* UPDATED: Unified card styling for aurora effect */
+        .content-box, .bento-card, .interactive-card, .page-peel-card {
+            --border-size: 1px;
             position: relative;
             overflow: hidden;
-            animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1;
+            background: var(--bg-card);
+            border-radius: 12px;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        [data-theme="light"] .creative-summary::before {
-            color: rgba(0, 0, 0, 0.05);
+        .content-box:hover, .bento-card:hover, .interactive-card:hover, .page-peel-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        .creative-summary h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.25rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+
+        .content-box::after, .bento-card::after, .interactive-card::after, .page-peel-card::after {
+            content: '';
+            position: absolute;
+            inset: var(--border-size);
+            background: var(--bg-card);
+            border-radius: calc(12px - var(--border-size));
+            z-index: -1;
+        }
+
+        .content-box::before, .bento-card::before, .interactive-card::before, .page-peel-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from var(--angle, 0deg),
+                transparent 0%,
+                var(--secondary-color) 10%,
+                transparent 25%,
+                var(--primary-color) 35%,
+                transparent 50%,
+                var(--secondary-color) 60%,
+                transparent 75%,
+                var(--primary-color) 85%,
+                transparent 100%
+            );
+            transform: translate(-50%, -50%) rotate(0deg);
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: animated-border 8s linear infinite;
+            opacity: 0;
+            z-index: -2;
+        }
+        
+        .content-box:hover::before, .bento-card:hover::before, .interactive-card:hover::before, .page-peel-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Original content-box styles */
+        .content-box {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: none; /* Removed border to avoid conflict */
+        }
+        
+        /* Bento Grid Summary Section */
+        .bento-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(150px, auto);
+            gap: 1rem;
+        }
+        
+        .bento-summary-grid.visible .bento-card {
+            animation: fadeSlideUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+        }
+
+        .bento-summary-grid.visible .bento-card:nth-child(1) { animation-delay: 0.1s; }
+        .bento-summary-grid.visible .bento-card:nth-child(2) { animation-delay: 0.2s; }
+        .bento-summary-grid.visible .bento-card:nth-child(3) { animation-delay: 0.3s; }
+        .bento-summary-grid.visible .bento-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .bento-card {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform-style: preserve-3d;
+            border: none; /* Removed border to avoid conflict */
+        }
+        
+        .bento-card.main-summary {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-card .bento-heading {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
             color: var(--text-color);
         }
-        .creative-summary .summary-subtitle {
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        .creative-summary .summary-description {
-            font-size: 1.05rem;
+
+        .bento-card .bento-description {
+            font-size: 1rem;
             line-height: 1.7;
-            position: relative;
-            z-index: 1;
+            color: var(--text-muted);
+        }
+        
+        .bento-card.highlight-card {
+            align-items: center;
+            text-align: center;
+        }
+
+        .bento-card .highlight-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--accent-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bento-card .highlight-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .bento-card .highlight-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         .skills-intro {
@@ -759,9 +845,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: float 4s ease-in-out infinite;
         }
         .skill-card:hover .skill-icon, .skill-card:focus .skill-icon {
             transform: scale(1.1) translateZ(20px);
+            animation-play-state: paused;
         }
         .skill-name {
             font-weight: 500;
@@ -794,15 +882,12 @@
         }
 
         .page-peel-card {
-            position: relative;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
             padding: 1.5rem;
             cursor: pointer;
+            border: none;
         }
 
-        .page-peel-card::before {
+        .page-peel-card .peel-effect { /* Renamed pseudo-element for clarity */
             content: '';
             position: absolute;
             bottom: 0;
@@ -815,7 +900,7 @@
             z-index: 2;
         }
 
-        .page-peel-card:hover::before {
+        .page-peel-card:hover .peel-effect {
             width: 75px;
             height: 75px;
         }
@@ -897,66 +982,16 @@
         }
 
         @keyframes animated-border {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         .interactive-card {
-            --border-size: 2px;
-            background: var(--bg-card);
-            border-radius: 12px;
             padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 1;
-        }
-
-        .interactive-card::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from var(--angle),
-                transparent 0%,
-                var(--secondary-color) 10%,
-                transparent 25%,
-                var(--primary-color) 35%,
-                transparent 50%,
-                var(--secondary-color) 60%,
-                transparent 75%,
-                var(--primary-color) 85%,
-                transparent 100%
-            );
-            transform: translate(-50%, -50%) rotate(0deg);
-            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            animation: animated-border 8s linear infinite;
-            opacity: 0;
-            z-index: -2;
-        }
-
-        .interactive-card:hover::before {
-            opacity: 1;
-        }
-
-        .interactive-card::after {
-            content: '';
-            position: absolute;
-            inset: var(--border-size);
-            background: var(--bg-card);
-            border-radius: calc(12px - var(--border-size));
-            z-index: -1;
-        }
-        
-        .interactive-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: none;
         }
 
         .interactive-card .interactive-card-heading {
@@ -1233,6 +1268,12 @@
             .skill-card {
                 min-height: 180px;
             }
+            .bento-summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-card.main-summary {
+                grid-column: span 2;
+            }
         }
         @media (max-width: 768px) {
             .sidebar {
@@ -1251,12 +1292,22 @@
             .section-header {
                 font-size: 1.75rem;
             }
-            .creative-summary h3 {
-                font-size: 1.75rem;
+            
+            /* Responsive adjustments for bento grid */
+            .bento-summary-grid {
+                grid-template-columns: 1fr;
             }
-             .creative-summary .summary-description {
-                font-size: 1rem;
+            .bento-card.main-summary {
+                grid-column: span 1;
+                grid-row: span 1; /* Reset row span */
             }
+            .bento-card .bento-heading {
+                font-size: 1.25rem;
+            }
+            .bento-card .bento-description {
+                font-size: 0.95rem;
+            }
+
             .content-box {
                 padding: 1.25rem;
             }
@@ -1463,11 +1514,27 @@
             <div class="content-scroller">
                 <section class="section" id="summary" lang="en">
                     <h2 class="section-header">Professional Summary</h2>
-                     <article class="interactive-card lazy-load visible" lang="en" style="--angle: 45deg; opacity: 1; transform: translateY(0px);">
-                        <h3 class="interactive-card-heading" style="font-size: 2.25rem; font-family: 'Playfair Display', serif;">Dynamic Business Development Executive, IT Business Analyst &amp; Project Coordinator</h3>
-                        <p class="summary-subtitle" style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1rem;">MBA in Operations Management and B.Tech in Information Technology.</p>
-                        <p class="summary-description" style="font-size: 1.1rem; line-height: 1.7;">As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
-                    </article>
+                    <div class="bento-summary-grid lazy-load visible">
+                        <div class="bento-card main-summary" style="--angle: 0deg;">
+                            <h3 class="bento-heading">Dynamic Business Analyst &amp; BDE</h3>
+                            <p class="bento-description">As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
+                        </div>
+                        <div class="bento-card highlight-card" style="--angle: 90deg;">
+                            <i class="fas fa-graduation-cap highlight-icon"></i>
+                            <h4 class="highlight-title">Dual Specialization</h4>
+                            <p class="highlight-subtitle">MBA Operations & B.Tech IT</p>
+                        </div>
+                        <div class="bento-card highlight-card" style="--angle: 180deg;">
+                            <i class="fas fa-tasks highlight-icon"></i>
+                            <h4 class="highlight-title">Agile & Scrum</h4>
+                            <p class="highlight-subtitle">Expert in Agile Methodologies</p>
+                        </div>
+                        <div class="bento-card highlight-card" style="--angle: 270deg;">
+                            <i class="fas fa-chart-line highlight-icon"></i>
+                            <h4 class="highlight-title">Data-Driven</h4>
+                            <p class="highlight-subtitle">Python, MySQL & Analysis</p>
+                        </div>
+                    </div>
                 </section>
             </div>
             <!-- SEO Enhancement: Comprehensive noscript tag for non-JS users and basic crawlers -->
@@ -1535,11 +1602,27 @@
                     title: "Professional Summary",
                     metaDescription: "Portfolio of Udith Babu K N, a results-driven Business Development Executive and IT Business Analyst specializing in Agile, data analysis, and delivering high-impact tech solutions.",
                     content: `
-                        <article class="interactive-card lazy-load" lang="en" style="--angle: 45deg;">
-                            <h3 class="interactive-card-heading" style="font-size: 2.25rem; font-family: 'Playfair Display', serif;">Dynamic Business Development Executive, IT Business Analyst &amp; Project Coordinator</h3>
-                            <p class="summary-subtitle" style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1rem;">MBA in Operations Management and B.Tech in Information Technology.</p>
-                            <p class="summary-description" style="font-size: 1.1rem; line-height: 1.7;">As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
-                        </article>`
+                        <div class="bento-summary-grid lazy-load">
+                            <div class="bento-card main-summary" style="--angle: 0deg;">
+                                <h3 class="bento-heading">Dynamic Business Analyst &amp; BDE</h3>
+                                <p class="bento-description">As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
+                            </div>
+                            <div class="bento-card highlight-card" style="--angle: 90deg;">
+                                <i class="fas fa-graduation-cap highlight-icon"></i>
+                                <h4 class="highlight-title">Dual Specialization</h4>
+                                <p class="highlight-subtitle">MBA Operations & B.Tech IT</p>
+                            </div>
+                            <div class="bento-card highlight-card" style="--angle: 180deg;">
+                                <i class="fas fa-tasks highlight-icon"></i>
+                                <h4 class="highlight-title">Agile & Scrum</h4>
+                                <p class="highlight-subtitle">Expert in Agile Methodologies</p>
+                            </div>
+                            <div class="bento-card highlight-card" style="--angle: 270deg;">
+                                <i class="fas fa-chart-line highlight-icon"></i>
+                                <h4 class="highlight-title">Data-Driven</h4>
+                                <p class="highlight-subtitle">Python, MySQL & Analysis</p>
+                            </div>
+                        </div>`
                 },
                 skills: {
                     title: "Technical Skills",
@@ -1659,7 +1742,8 @@
                     content: `
                         <article class="lazy-load" lang="en">
                             <div class="page-peel-timeline">
-                                <div class="page-peel-card">
+                                <div class="page-peel-card" style="--angle: 0deg;">
+                                    <div class="peel-effect"></div>
                                     <p class="card-date">May 2025 – Present</p>
                                     <h3>Business Development Executive</h3>
                                     <p class="company">Accelgrowth Technology Pvt. Ltd.</p>
@@ -1676,7 +1760,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="page-peel-card">
+                                <div class="page-peel-card" style="--angle: 120deg;">
+                                    <div class="peel-effect"></div>
                                     <p class="card-date">Sep 2024 – Dec 2024</p>
                                     <h3>Business Analyst Intern</h3>
                                     <p class="company">CST - Cyber Sapient</p>
@@ -1690,7 +1775,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="page-peel-card">
+                                <div class="page-peel-card" style="--angle: 240deg;">
+                                    <div class="peel-effect"></div>
                                     <p class="card-date">Aug 2023 – Sep 2023</p>
                                     <h3>Operations Intern</h3>
                                     <p class="company">Techmindz</p>
@@ -1712,7 +1798,8 @@
                     content: `
                         <article class="lazy-load" lang="en">
                             <div class="page-peel-timeline">
-                                <div class="page-peel-card">
+                                <div class="page-peel-card" style="--angle: 60deg;">
+                                    <div class="peel-effect"></div>
                                     <p class="card-date">2022 – 2024</p>
                                     <h3>MBA (Operations & Marketing)</h3>
                                     <p class="company">College of Engineering Thalassery</p>
@@ -1725,7 +1812,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="page-peel-card">
+                                <div class="page-peel-card" style="--angle: 180deg;">
+                                    <div class="peel-effect"></div>
                                     <p class="card-date">2018 – 2022</p>
                                     <h3>B.Tech (Information Technology)</h3>
                                     <p class="company">College of Engineering Thalassery</p>
@@ -1964,8 +2052,8 @@
             }
 
             function init3DTilt() {
-                const skillCards = document.querySelectorAll('.skill-card');
-                skillCards.forEach(card => {
+                const cardsToTilt = document.querySelectorAll('.skill-card, .bento-card, .interactive-card, .page-peel-card, .content-box'); // UPDATED: Apply to all cards
+                cardsToTilt.forEach(card => {
                     card.addEventListener('mousemove', (e) => {
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
@@ -2040,7 +2128,7 @@
             }
             
             function initLazyLoad() {
-                const lazyElements = document.querySelectorAll('.lazy-load, .creative-summary, .interactive-card');
+                const lazyElements = document.querySelectorAll('.lazy-load, .bento-summary-grid, .interactive-card');
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver((entries, observer) => {
                         entries.forEach(entry => {
