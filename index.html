@@ -681,6 +681,11 @@
             z-index: 1;
         }
 
+        /* REMOVED: Typing Animation Styles */
+        .summary-description {
+            min-height: 150px; /* Prevents layout shift */
+        }
+
         .skills-intro {
             text-align: center;
             color: var(--text-muted);
@@ -1464,8 +1469,9 @@
                 <section class="section" id="summary" lang="en">
                     <h2 class="section-header">Professional Summary</h2>
                      <article class="interactive-card lazy-load visible" lang="en" style="--angle: 45deg; opacity: 1; transform: translateY(0px);">
-                        <h3 class="interactive-card-heading" style="font-size: 2.25rem; font-family: 'Playfair Display', serif;">Dynamic Business Development Executive, IT Business Analyst &amp; Project Coordinator</h3>
+                        <h3 class="interactive-card-heading" style="font-size: 2.25rem;">Dynamic Business Development Executive, IT Business Analyst &amp; Project Coordinator</h3>
                         <p class="summary-subtitle" style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1rem;">MBA in Operations Management and B.Tech in Information Technology.</p>
+                        <!-- MODIFIED: Added summary text directly and removed animation -->
                         <p class="summary-description" style="font-size: 1.1rem; line-height: 1.7;">As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
                     </article>
                 </section>
@@ -1530,14 +1536,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- DYNAMIC DATA ---
+            // REMOVED: Text for the typewriter animation is no longer needed here.
+
             const contentData = {
                 summary: {
                     title: "Professional Summary",
                     metaDescription: "Portfolio of Udith Babu K N, a results-driven Business Development Executive and IT Business Analyst specializing in Agile, data analysis, and delivering high-impact tech solutions.",
                     content: `
                         <article class="interactive-card lazy-load" lang="en" style="--angle: 45deg;">
-                            <h3 class="interactive-card-heading" style="font-size: 2.25rem; font-family: 'Playfair Display', serif;">Dynamic Business Development Executive, IT Business Analyst &amp; Project Coordinator</h3>
+                            <h3 class="interactive-card-heading" style="font-size: 2.25rem;">Dynamic Business Development Executive, IT Business Analyst &amp; Project Coordinator</h3>
                             <p class="summary-subtitle" style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1rem;">MBA in Operations Management and B.Tech in Information Technology.</p>
+                            <!-- MODIFIED: Added summary text directly -->
                             <p class="summary-description" style="font-size: 1.1rem; line-height: 1.7;">As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
                         </article>`
                 },
@@ -1920,6 +1929,8 @@
                 return;
             }
 
+            // REMOVED: Typewriter function and initSummaryAnimation function are no longer needed.
+
             function initFoldableSkills() {
                 const foldableCategories = document.querySelectorAll('.skill-category-foldable');
                 foldableCategories.forEach(category => {
@@ -2020,6 +2031,7 @@
                         initStaggeredList();
                         init3DTilt();
                         if (sectionId === 'contact') initContactForm();
+                        // REMOVED: Call to summary animation function is no longer needed.
                     }, 200);
 
                 } else {
@@ -2184,6 +2196,7 @@
                     initPagePeelCards();
                     initStaggeredList();
                     init3DTilt();
+                    // REMOVED: Call to summary animation function is no longer needed.
                 }
                 
                 setActiveLink(initialSectionId);
