@@ -21,29 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
             metaDescription: "Explore the technical skills of Udith Babu K N, showcasing expertise in Python, MySQL, Figma, Jira, and Agile methodologies for advanced business analysis and project management.",
             content: `
                 <article class="content-box lazy-load" lang="en">
-                    <p class="skills-intro">I focus on a curated set of tools and methodologies to deliver efficient and effective solutions. Tap a category to expand.</p>
+                    <p class="skills-intro">I focus on a curated set of tools and methodologies to deliver efficient and effective solutions. Tap or focus on a category to expand.</p>
                     
-                    <div class="skill-category-foldable">
-                        <h3 class="skill-category-title"><span>Core Technologies</span><i class="fas fa-chevron-down category-chevron"></i></h3>
-                        <div class="skills-grid">
+                    <div class="skill-category-foldable" tabindex="0">
+                        <h3 class="skill-category-title" id="core-tech-heading" aria-expanded="false" aria-controls="core-tech-grid"><span>Core Technologies</span><i class="fas fa-chevron-down category-chevron"></i></h3>
+                        <div class="skills-grid" id="core-tech-grid" role="region" aria-labelledby="core-tech-heading">
                             <div class="skill-card" tabindex="0"><i class="fab fa-python skill-icon"></i><span class="skill-name">Python</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fas fa-database skill-icon"></i><span class="skill-name">MySQL</span><div class="skill-details"><span class="skill-level">Intermediate</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fab fa-js-square skill-icon"></i><span class="skill-name">JavaScript</span><div class="skill-details"><span class="skill-level">Intermediate</span></div></div>
                         </div>
                     </div>
 
-                    <div class="skill-category-foldable">
-                        <h3 class="skill-category-title"><span>Project Management & Design</span><i class="fas fa-chevron-down category-chevron"></i></h3>
-                        <div class="skills-grid">
+                    <div class="skill-category-foldable" tabindex="0">
+                        <h3 class="skill-category-title" id="pm-design-heading" aria-expanded="false" aria-controls="pm-design-grid"><span>Project Management & Design</span><i class="fas fa-chevron-down category-chevron"></i></h3>
+                        <div class="skills-grid" id="pm-design-grid" role="region" aria-labelledby="pm-design-heading">
                             <div class="skill-card" tabindex="0"><i class="fab fa-jira skill-icon"></i><span class="skill-name">Jira</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fab fa-trello skill-icon"></i><span class="skill-name">Trello</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fab fa-figma skill-icon"></i><span class="skill-name">Figma</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                         </div>
                     </div>
 
-                    <div class="skill-category-foldable">
-                        <h3 class="skill-category-title"><span>Business & Analysis</span><i class="fas fa-chevron-down category-chevron"></i></h3>
-                        <div class="skills-grid">
+                    <div class="skill-category-foldable" tabindex="0">
+                        <h3 class="skill-category-title" id="biz-analysis-heading" aria-expanded="false" aria-controls="biz-analysis-grid"><span>Business & Analysis</span><i class="fas fa-chevron-down category-chevron"></i></h3>
+                        <div class="skills-grid" id="biz-analysis-grid" role="region" aria-labelledby="biz-analysis-heading">
                             <div class="skill-card" tabindex="0"><i class="fas fa-users skill-icon"></i><span class="skill-name">Stakeholder Negotiation</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fas fa-tasks skill-icon"></i><span class="skill-name">Scrum Facilitation</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fas fa-sitemap skill-icon"></i><span class="skill-name">Root-Cause Analysis</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
@@ -59,9 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
             content: `
                 <article class="lazy-load" lang="en">
                     <div class="page-peel-timeline">
-                        <div class="page-peel-card"><p class="card-date">May 2025 – Present</p><h3>Business Development Executive</h3><p class="company">Accelgrowth Technology Pvt. Ltd.</p><div class="details"><h4>Key Responsibilities</h4><ul><li>Conducted market research and gathered client requirements for strategic planning.</li><li>Analyzed customer data to identify trends and support decisions.</li><li>Collaborated with tech teams to align business needs with functional requirements.</li><li>Prepared business cases, proposals, and stakeholder reports.</li><li>Coordinated UAT by managing client feedback and validating requirements.</li><li>Used Excel, Trello, and CRM tools for lead management and KPI tracking.</li><li>Built strong client relationships through consultative solutions and support.</li></ul></div></div>
-                        <div class="page-peel-card"><p class="card-date">Sep 2024 – Dec 2024</p><h3>Business Analyst Intern</h3><p class="company">CST - Cyber Sapient</p><div class="details"><h4>Achievements</h4><ul><li>Gathered and documented 100+ business requirements.</li><li>Designed 10+ functional specifications and wireframes in Figma.</li><li>Analysed 50+ datasets using Python, improving sprint outcomes by 15%.</li><li>Coordinated and executed UAT for three key features with 98% compliance.</li></ul></div></div>
-                        <div class="page-peel-card"><p class="card-date">Aug 2023 – Sep 2023</p><h3>Operations Intern</h3><p class="company">Techmindz</p><div class="details"><h4>Achievements</h4><ul><li>Automated customer service processes using AI, reducing response time by 30%.</li><li>Analysed customer data to improve service strategies (15% satisfaction increase).</li><li>Collaborated with development team to integrate AI tools.</li></ul></div></div>
+                        <div class="page-peel-card" tabindex="0"><p class="card-date">May 2025 – Present</p><h3>Business Development Executive</h3><p class="company">Accelgrowth Technology Pvt. Ltd.</p><div class="details"><h4>Key Responsibilities</h4><ul><li>Conducted market research and gathered client requirements for strategic planning.</li><li>Analyzed customer data to identify trends and support decisions.</li><li>Collaborated with tech teams to align business needs with functional requirements.</li><li>Prepared business cases, proposals, and stakeholder reports.</li><li>Coordinated UAT by managing client feedback and validating requirements.</li><li>Used Excel, Trello, and CRM tools for lead management and KPI tracking.</li><li>Built strong client relationships through consultative solutions and support.</li></ul></div></div>
+                        <div class="page-peel-card" tabindex="0"><p class="card-date">Sep 2024 – Dec 2024</p><h3>Business Analyst Intern</h3><p class="company">CST - Cyber Sapient</p><div class="details"><h4>Achievements</h4><ul><li>Gathered and documented 100+ business requirements.</li><li>Designed 10+ functional specifications and wireframes in Figma.</li><li>Analysed 50+ datasets using Python, improving sprint outcomes by 15%.</li><li>Coordinated and executed UAT for three key features with 98% compliance.</li></ul></div></div>
+                        <div class="page-peel-card" tabindex="0"><p class="card-date">Aug 2023 – Sep 2023</p><h3>Operations Intern</h3><p class="company">Techmindz</p><div class="details"><h4>Achievements</h4><ul><li>Automated customer service processes using AI, reducing response time by 30%.</li><li>Analysed customer data to improve service strategies (15% satisfaction increase).</li><li>Collaborated with development team to integrate AI tools.</li></ul></div></div>
                     </div>
                 </article>`
         },
@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             content: `
                 <article class="lazy-load" lang="en">
                     <div class="page-peel-timeline">
-                        <div class="page-peel-card"><p class="card-date">2022 – 2024</p><h3>MBA (Operations & Marketing)</h3><p class="company">College of Engineering Thalassery</p><div class="details"><h4>Details</h4><ul><li>Specialized in Operations Management and Marketing.</li><li>Graduated with 7.29 CGPA (72.90%).</li><li>Gained expertise in supply chain, project management, and marketing strategies.</li></ul></div></div>
-                        <div class="page-peel-card"><p class="card-date">2018 – 2022</p><h3>B.Tech (Information Technology)</h3><p class="company">College of Engineering Thalassery</p><div class="details"><h4>Details</h4><ul><li>Specialized in Information Technology.</li><li>Graduated with 7.84 CGPA (78.40%).</li><li>Developed a strong foundation in software development, database management, and networking.</li></ul></div></div>
+                        <div class="page-peel-card" tabindex="0"><p class="card-date">2022 – 2024</p><h3>MBA (Operations & Marketing)</h3><p class="company">College of Engineering Thalassery</p><div class="details"><h4>Details</h4><ul><li>Specialized in Operations Management and Marketing.</li><li>Graduated with 7.29 CGPA (72.90%).</li><li>Gained expertise in supply chain, project management, and marketing strategies.</li></ul></div></div>
+                        <div class="page-peel-card" tabindex="0"><p class="card-date">2018 – 2022</p><h3>B.Tech (Information Technology)</h3><p class="company">College of Engineering Thalassery</p><div class="details"><h4>Details</h4><ul><li>Specialized in Information Technology.</li><li>Graduated with 7.84 CGPA (78.40%).</li><li>Developed a strong foundation in software development, database management, and networking.</li></ul></div></div>
                     </div>
                 </article>`
         },
@@ -188,13 +188,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initFoldableSkills() {
         const foldableCategories = document.querySelectorAll('.skill-category-foldable');
+        
+        const toggleCategory = (category) => {
+            const isExpanded = category.classList.toggle('expanded');
+            const title = category.querySelector('.skill-category-title');
+            title.setAttribute('aria-expanded', isExpanded);
+        };
+
         foldableCategories.forEach(category => {
             const title = category.querySelector('.skill-category-title');
-            if (window.innerWidth <= 768) {
-                title.addEventListener('click', () => {
-                    category.classList.toggle('expanded');
-                });
-            }
+            title.addEventListener('click', () => toggleCategory(category));
+            
+            // Allow keyboard activation with Enter/Space
+            category.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleCategory(category);
+                }
+            });
         });
     }
     
@@ -401,6 +412,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Personalized Welcome Message ---
+    function showPersonalizedWelcome() {
+        const toast = document.getElementById('welcome-toast');
+        if (!toast) return;
+
+        const referrer = document.referrer;
+        let message = '';
+
+        if (referrer.includes('linkedin.com')) {
+            message = 'Welcome, visitor from LinkedIn!';
+        } else if (referrer.includes('cethalassery.ac.in')) {
+            message = 'Welcome, fellow CETian!';
+        } else if (referrer.includes('github.com')) {
+            message = 'Thanks for checking out my code on GitHub!';
+        }
+
+        if (message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000); // Hide after 5 seconds
+        }
+    }
+
+
     // --- INITIALIZATION ---
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -422,12 +459,14 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         applyTheme(savedTheme, true);
         initMagneticIcons();
+        showPersonalizedWelcome(); // Call the new function
 
         const initialSectionId = window.location.hash.substring(1) || 'summary';
 
         if (initialSectionId !== 'summary') {
             loadSection(initialSectionId);
         } else {
+            // These need to be called for the default-loaded summary page
             initLazyLoad();
             initFoldableSkills();
             initPagePeelCards();

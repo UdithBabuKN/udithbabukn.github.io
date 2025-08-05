@@ -29,7 +29,15 @@
     <link rel="canonical" href="https://udithbabukn.github.io/">
     <!-- SEO: Link to sitemap for better crawlability -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Favicon: Updated to use a multi-resolution .ico file for broader compatibility -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Add additional PNG sizes for other devices if needed -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> -->
+
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Udith Babu K N | BDE, IT Business Analyst & Project Coordinator Portfolio">
@@ -51,7 +59,9 @@
 
     <!-- Performance: Asynchronously load CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Performance: Updated Font Awesome loading to be non-blocking -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <!-- Performance: External stylesheet for better caching -->
@@ -74,7 +84,9 @@
             "image": {
                 "@type": "ImageObject",
                 "url": "https://udithbabukn.github.io/picofme.webp",
-                "caption": "Udith Babu K N"
+                "caption": "Udith Babu K N",
+                "width": "512",
+                "height": "512"
             },
             "sameAs": [
                 "https://www.linkedin.com/in/udith-babu-k-n-607b131a1/",
@@ -125,10 +137,13 @@
 </head>
 
 <body>
+    <!-- Personalized Welcome Message Container -->
+    <div id="welcome-toast" class="welcome-toast" aria-live="polite"></div>
+
     <!-- SEO: Use of semantic HTML5 tags like <aside>, <main>, <nav>, <footer> -->
     <div class="container">
         <!-- Sidebar Navigation (Desktop) -->
-        <aside class="sidebar" aria-label="Sidebar Navigation">
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
             <div class="sidebar-indicator"></div>
             <div class="profile-header">
                 <!-- Performance: Lazy loading for below-the-fold images -->
@@ -229,16 +244,31 @@
             </div>
             <!-- SEO Enhancement: Comprehensive noscript tag for non-JS users and basic crawlers -->
             <noscript>
-                <section id="summary-noscript" class="section" style="padding: 2rem;">
-                     <h2 class="section-header">Professional Summary</h2>
-                     <p>As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
-                     
-                     <h2 class="section-header">Technical Skills</h2>
-                     <p>Core Technologies: Python, MySQL, JavaScript. Project Management & Design: Jira, Trello, Figma. Business & Analysis: Stakeholder Negotiation, Scrum Facilitation, Root-Cause Analysis.</p>
-                     
-                     <h2 class="section-header">Contact</h2>
-                     <p>Email: udithbabuvarrier@gmail.com | Phone: +91 8301993853 | Location: Thalassery, Kerala, India</p>
-                </section>
+                <div style="padding: 2rem; text-align: center;">
+                    <h1>Udith Babu K N</h1>
+                    <p>Business Development Executive, IT Business Analyst & Project Coordinator</p>
+                    <hr>
+                    <section id="summary-noscript" class="section">
+                         <h2 class="section-header">Professional Summary</h2>
+                         <p>As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
+                    </section>
+                    <hr>
+                    <section id="experience-noscript" class="section">
+                        <h2 class="section-header">Experience</h2>
+                        <p><strong>Business Development Executive at Accelgrowth Technology Pvt. Ltd.</strong> (May 2025 – Present)</p>
+                        <p><strong>Business Analyst Intern at CST - Cyber Sapient</strong> (Sep 2024 – Dec 2024)</p>
+                    </section>
+                    <hr>
+                     <section id="skills-noscript" class="section">
+                        <h2 class="section-header">Technical Skills</h2>
+                        <p>Core Technologies: Python, MySQL, JavaScript. Project Management & Design: Jira, Trello, Figma. Business & Analysis: Stakeholder Negotiation, Scrum Facilitation, Root-Cause Analysis.</p>
+                    </section>
+                    <hr>
+                     <section id="contact-noscript" class="section">
+                        <h2 class="section-header">Contact</h2>
+                        <p>Email: udithbabuvarrier@gmail.com | Phone: +91 8301993853 | Location: Thalassery, Kerala, India</p>
+                    </section>
+                </div>
             </noscript>
         </main>
     </div>

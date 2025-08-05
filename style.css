@@ -226,10 +226,10 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     transition: var(--transition);
     text-decoration: none;
     cursor: pointer;
-    margin-bottom: 1rem;
     border: none;
     overflow: hidden;
     position: relative;
+    margin-bottom: 1rem;
 }
 .theme-toggle i {
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
@@ -519,6 +519,7 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     font-size: 1.1rem;
     line-height: 1.7;
     min-height: 150px; /* Prevents layout shift */
+    max-width: 75ch; /* Improves readability */
 }
 
 .skills-intro {
@@ -560,15 +561,18 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     margin-top: 0;
 }
 
+/* Accessibility: Expand on focus-within for keyboard users */
 .skill-category-foldable.expanded .skills-grid,
-.skill-category-foldable:hover .skills-grid {
+.skill-category-foldable:hover .skills-grid,
+.skill-category-foldable:focus-within .skills-grid {
     max-height: 600px;
     opacity: 1;
     margin-top: 1.5rem;
 }
 
 .skill-category-foldable.expanded .category-chevron,
-.skill-category-foldable:hover .category-chevron {
+.skill-category-foldable:hover .category-chevron,
+.skill-category-foldable:focus-within .category-chevron {
     transform: rotate(180deg);
 }
 
@@ -655,7 +659,9 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     z-index: 2;
 }
 
-.page-peel-card:hover::before {
+/* Accessibility: Trigger page peel on focus for keyboard users */
+.page-peel-card:hover::before,
+.page-peel-card:focus-within::before {
     width: 75px;
     height: 75px;
 }
@@ -686,8 +692,10 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), margin-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* Accessibility: Expand details on focus for keyboard users */
 .page-peel-card.expanded .details,
-.page-peel-card:hover .details {
+.page-peel-card:hover .details,
+.page-peel-card:focus-within .details {
     max-height: 500px;
     opacity: 1;
     margin-top: 1rem;
@@ -1063,6 +1071,29 @@ textarea.form-control {
     color: var(--text-muted);
     margin-top: auto;
 }
+
+/* Personalized Welcome Toast */
+.welcome-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    background: var(--accent-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 2000;
+    font-weight: 500;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+}
+
+.welcome-toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
 
 @media (max-width: 992px) {
      .skills-grid {
