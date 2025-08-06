@@ -202,23 +202,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initFoldableSkills() {
         const foldableCategories = document.querySelectorAll('.skill-category-foldable');
-        
-        const toggleCategory = (category) => {
-            const isExpanded = category.classList.toggle('expanded');
-            const title = category.querySelector('.skill-category-title');
-            title.setAttribute('aria-expanded', isExpanded);
-        };
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
         foldableCategories.forEach(category => {
             const title = category.querySelector('.skill-category-title');
-            title.addEventListener('click', () => toggleCategory(category));
-            
-            category.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleCategory(category);
-                }
-            });
+
+            if (isTouchDevice) {
+                // --- Touch Device Logic: Tap title to toggle ---
+                title.addEventListener('click', () => {
+                    const isExpanded = category.classList.toggle('expanded');
+                    title.setAttribute('aria-expanded', isExpanded);
+                });
+            } else {
+                // --- Desktop Logic: Hover category to expand/collapse ---
+                category.addEventListener('mouseenter', () => {
+                    category.classList.add('expanded');
+                    title.setAttribute('aria-expanded', 'true');
+                });
+                category.addEventListener('mouseleave', () => {
+                    category.classList.remove('expanded');
+                    title.setAttribute('aria-expanded', 'false');
+                });
+                
+                // --- Keyboard Accessibility for Desktop ---
+                category.addEventListener('focusin', () => {
+                    category.classList.add('expanded');
+                    title.setAttribute('aria-expanded', 'true');
+                });
+                category.addEventListener('focusout', (e) => {
+                    // Check if the new focused element is still inside the category
+                    if (!category.contains(e.relatedTarget)) {
+                        category.classList.remove('expanded');
+                        title.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
         });
     }
     
