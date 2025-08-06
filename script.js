@@ -109,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <form class="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST" aria-label="Contact Form" novalidate>
                         <input type="hidden" name="_subject" value="New portfolio contact submission">
                         <input type="hidden" name="_captcha" value="false">
-                        <div class="form-group"><label for="name" class="form-label">Your Name</label><input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required aria-required="true" autocomplete="name"><span class="error-message" id="nameError">Please enter your name</span></div>
-                        <div class="form-group"><label for="email" class="form-label">Your Email</label><input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required aria-required="true" autocomplete="email"><span class="error-message" id="emailError">Please enter a valid email address</span></div>
+                        <div class="form-group"><label for="name" class="form-label">Your Name</label><input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required aria-required="true" autocomplete="name"><span class="error-message" id="nameError"></span></div>
+                        <div class="form-group"><label for="email" class="form-label">Your Email</label><input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required aria-required="true" autocomplete="email"><span class="error-message" id="emailError"></span></div>
                         <div class="form-group"><label for="company" class="form-label">Company</label><input type="text" id="company" name="company" class="form-control" placeholder="Enter your company name" autocomplete="organization"></div>
-                        <div class="form-group"><label for="message" class="form-label">Message</label><textarea id="message" name="message" class="form-control" placeholder="Enter your message" required aria-required="true"></textarea><span class="error-message" id="messageError">Please enter a message</span></div>
+                        <div class="form-group"><label for="message" class="form-label">Message</label><textarea id="message" name="message" class="form-control" placeholder="Enter your message" required aria-required="true"></textarea><span class="error-message" id="messageError"></span></div>
                         <button type="submit" class="btn" aria-label="Send Message" id="submitButton">Send Message</button>
                         <span class="error-message" id="formError" style="display: none;" aria-live="polite">An error occurred. Please try again or contact me directly.</span>
                     </form>
@@ -153,6 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', theme);
         const isDark = theme === 'dark';
 
+        // Control background image opacity
+        document.body.style.setProperty('--sun-opacity', isDark ? '0' : '1');
+        document.body.style.setProperty('--moon-opacity', isDark ? '1' : '0');
+
         allThemeToggles.forEach(toggle => {
             if (!toggle) return;
             toggle.setAttribute('aria-pressed', isDark);
@@ -169,13 +173,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function setDynamicTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme, true);
+        } else {
+            const hour = new Date().getHours();
+            const isDay = hour >= 6 && hour < 18;
+            const theme = isDay ? 'light' : 'dark';
+            applyTheme(theme, true);
+        }
+    }
+
     function toggleTheme() {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         applyTheme(newTheme);
     }
-    
-    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
     allThemeToggles.forEach(toggle => {
         if(toggle) toggle.addEventListener('click', toggleTheme);
@@ -199,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = category.querySelector('.skill-category-title');
             title.addEventListener('click', () => toggleCategory(category));
             
-            // Allow keyboard activation with Enter/Space
             category.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -211,7 +224,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function initPagePeelCards() {
         const cards = document.querySelectorAll('.page-peel-card');
-        if(window.innerWidth <= 768) {
+        
+        // Enhanced peel for desktop
+        if(window.innerWidth > 768) {
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    // Create a peel effect from the corner
+                    const peelAmount = Math.min(x, y, 75);
+                    card.style.setProperty('--peel-size', `${peelAmount}px`);
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.setProperty('--peel-size', '0px');
+                });
+            });
+        } else { // Simple expand for mobile
             cards.forEach(card => {
                 card.addEventListener('click', () => {
                     card.classList.toggle('expanded');
@@ -337,19 +366,57 @@ document.addEventListener('DOMContentLoaded', () => {
             email: form.querySelector('#email'),
             message: form.querySelector('#message')
         };
+        const errorSpans = {
+            name: document.getElementById('nameError'),
+            email: document.getElementById('emailError'),
+            message: document.getElementById('messageError')
+        };
 
         const validators = {
-            name: value => value.trim() !== '',
-            email: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-            message: value => value.trim() !== ''
+            name: (value) => {
+                if (value.trim() === '') {
+                    errorSpans.name.textContent = 'Please enter your name.';
+                    return false;
+                }
+                errorSpans.name.textContent = '';
+                return true;
+            },
+            email: (value) => {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    // Check for common typos
+                    if (value.includes('@') && value.endsWith('.com')) {
+                        const domain = value.split('@')[1];
+                        if (['gmil.com', 'gail.com', 'gnail.com'].includes(domain)) {
+                            errorSpans.email.textContent = 'Did you mean @gmail.com?';
+                            return false;
+                        }
+                    }
+                    errorSpans.email.textContent = 'Please enter a valid email address.';
+                    return false;
+                }
+                errorSpans.email.textContent = '';
+                return true;
+            },
+            message: (value) => {
+                if (value.trim() === '') {
+                    errorSpans.message.textContent = 'Please enter a message.';
+                    return false;
+                }
+                errorSpans.message.textContent = '';
+                return true;
+            }
         };
 
         const validateField = (fieldName) => {
             const input = inputs[fieldName];
             const isValid = validators[fieldName](input.value);
             const group = input.closest('.form-group');
-            if (isValid) group.classList.remove('invalid');
-            else group.classList.add('invalid');
+            if (isValid) {
+                group.classList.remove('invalid');
+            } else {
+                group.classList.add('invalid');
+            }
             return isValid;
         };
 
@@ -361,9 +428,14 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             formError.style.display = 'none';
 
-            const isValid = Object.keys(inputs).every(validateField);
+            let isFormValid = true;
+            Object.keys(inputs).forEach(fieldName => {
+                if (!validateField(fieldName)) {
+                    isFormValid = false;
+                }
+            });
 
-            if (isValid) {
+            if (isFormValid) {
                 submitButton.disabled = true;
                 submitButton.textContent = 'Sending...';
                 try {
@@ -402,17 +474,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rect = icon.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                icon.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                // Increased multiplier for a stronger effect
+                icon.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.15)`;
                 icon.style.transition = 'transform 0.1s ease-out';
             });
             icon.addEventListener('mouseleave', () => {
-                icon.style.transform = 'translate(0,0)';
+                icon.style.transform = 'translate(0,0) scale(1)';
                 icon.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             });
         });
     }
 
-    // --- Personalized Welcome Message ---
     function showPersonalizedWelcome() {
         const toast = document.getElementById('welcome-toast');
         if (!toast) return;
@@ -433,10 +505,9 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 5000); // Hide after 5 seconds
+            }, 5000);
         }
     }
-
 
     // --- INITIALIZATION ---
     allNavLinks.forEach(link => {
@@ -457,16 +528,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     try {
-        applyTheme(savedTheme, true);
+        setDynamicTheme();
         initMagneticIcons();
-        showPersonalizedWelcome(); // Call the new function
+        showPersonalizedWelcome();
 
         const initialSectionId = window.location.hash.substring(1) || 'summary';
 
         if (initialSectionId !== 'summary') {
             loadSection(initialSectionId);
         } else {
-            // These need to be called for the default-loaded summary page
             initLazyLoad();
             initFoldableSkills();
             initPagePeelCards();
@@ -478,5 +548,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (error) {
         console.error('Error during initialization:', error);
+    }
+
+    // --- SERVICE WORKER REGISTRATION ---
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        });
     }
 });
