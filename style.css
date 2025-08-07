@@ -101,6 +101,13 @@ body::after {
     opacity: var(--moon-opacity, 0); /* Controlled by JS */
 }
 
+/* ADDED: Best practice for responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -457,7 +464,8 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     to { opacity: 1; transform: scale(1); }
 }
 .section-header {
-    font-size: 2rem;
+    /* UPDATED: Fluid Typography */
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
     background: var(--accent-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -496,7 +504,8 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
 }
 
 .interactive-card .interactive-card-heading {
-    font-size: 1.5rem;
+    /* UPDATED: Fluid Typography */
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
     font-weight: 600;
     color: var(--text-color);
 }
@@ -505,10 +514,12 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     font-weight: 500;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    /* UPDATED: Fluid Typography */
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 .summary-description {
-    font-size: 1.1rem;
+    /* UPDATED: Fluid Typography */
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     line-height: 1.7;
     min-height: 150px; /* Prevents layout shift */
     max-width: 75ch; /* Improves readability */
@@ -1046,9 +1057,12 @@ textarea.form-control {
     white-space: nowrap;
 }
 
+/* UPDATED: Enhanced active state for mobile navigation */
 .bottom-nav-link.active {
     color: var(--primary-color);
     transform: translateY(-3px);
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 [data-theme="light"] .bottom-nav-link.active {
@@ -1101,6 +1115,7 @@ textarea.form-control {
     .content {
         margin-left: 0;
         width: 100%;
+        /* UPDATED: Refined padding for mobile */
         padding: 1.5rem 1rem 90px 1rem;
     }
     .bottom-nav {
@@ -1117,6 +1132,7 @@ textarea.form-control {
         font-size: 1rem;
     }
     .content-box {
+        /* UPDATED: Refined padding for mobile */
         padding: 1.25rem;
     }
     .card-grid {
