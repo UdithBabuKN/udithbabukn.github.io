@@ -1057,8 +1057,6 @@ textarea.form-control {
 .bottom-nav-link.active {
     color: var(--primary-color);
     transform: translateY(-3px);
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
 }
 
 [data-theme="light"] .bottom-nav-link.active {
@@ -1184,3 +1182,4 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+s
