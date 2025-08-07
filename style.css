@@ -91,17 +91,18 @@ body::before, body::after {
     z-index: -1;
 }
 
+/* UPDATED: Made the light theme overlay more transparent */
 body::before {
-    background-image: linear-gradient(rgba(247, 250, 252, 0.6), rgba(247, 250, 252, 0.6)), url('sun.webp');
+    background-image: linear-gradient(rgba(247, 250, 252, 0.3), rgba(247, 250, 252, 0.3)), url('sun.webp');
     opacity: var(--sun-opacity, 0); /* Controlled by JS */
 }
 
+/* UPDATED: Made the dark theme overlay more transparent */
 body::after {
-    background-image: linear-gradient(rgba(10, 10, 26, 0.7), rgba(10, 10, 26, 0.7)), url('moon.webp');
+    background-image: linear-gradient(rgba(10, 10, 26, 0.5), rgba(10, 10, 26, 0.5)), url('moon.webp');
     opacity: var(--moon-opacity, 0); /* Controlled by JS */
 }
 
-/* ADDED: Best practice for responsive images */
 img {
     max-width: 100%;
     height: auto;
@@ -464,7 +465,6 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     to { opacity: 1; transform: scale(1); }
 }
 .section-header {
-    /* UPDATED: Fluid Typography */
     font-size: clamp(1.75rem, 5vw, 2.25rem);
     background: var(--accent-color);
     -webkit-background-clip: text;
@@ -504,7 +504,6 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
 }
 
 .interactive-card .interactive-card-heading {
-    /* UPDATED: Fluid Typography */
     font-size: clamp(1.25rem, 4vw, 1.5rem);
     font-weight: 600;
     color: var(--text-color);
@@ -514,11 +513,9 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     font-weight: 500;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    /* UPDATED: Fluid Typography */
     font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 .summary-description {
-    /* UPDATED: Fluid Typography */
     font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     line-height: 1.7;
     min-height: 150px; /* Prevents layout shift */
@@ -1057,7 +1054,6 @@ textarea.form-control {
     white-space: nowrap;
 }
 
-/* UPDATED: Enhanced active state for mobile navigation */
 .bottom-nav-link.active {
     color: var(--primary-color);
     transform: translateY(-3px);
@@ -1115,7 +1111,6 @@ textarea.form-control {
     .content {
         margin-left: 0;
         width: 100%;
-        /* UPDATED: Refined padding for mobile */
         padding: 1.5rem 1rem 90px 1rem;
     }
     .bottom-nav {
@@ -1132,7 +1127,6 @@ textarea.form-control {
         font-size: 1rem;
     }
     .content-box {
-        /* UPDATED: Refined padding for mobile */
         padding: 1.25rem;
     }
     .card-grid {
