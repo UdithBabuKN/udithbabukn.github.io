@@ -87,21 +87,43 @@ body::before, body::after {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    transition: opacity 0.8s ease-in-out; /* Slower transition for background */
+    transition: opacity 0.8s ease-in-out;
     z-index: -1;
 }
 
-/* UPDATED: Made the light theme overlay more transparent */
 body::before {
     background-image: linear-gradient(rgba(247, 250, 252, 0.3), rgba(247, 250, 252, 0.3)), url('sun.webp');
     opacity: var(--sun-opacity, 0); /* Controlled by JS */
 }
 
-/* UPDATED: Made the dark theme overlay more transparent */
 body::after {
     background-image: linear-gradient(rgba(10, 10, 26, 0.5), rgba(10, 10, 26, 0.5)), url('moon.webp');
     opacity: var(--moon-opacity, 0); /* Controlled by JS */
 }
+
+/* New styles for the mobile-specific backgrounds */
+.mobile-bg {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -2; /* Behind other content */
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.mobile-bg-sun {
+    background-image: url('sunmob.webp');
+}
+
+.mobile-bg-moon {
+    background-image: url('moonmob.webp');
+}
+
 
 img {
     max-width: 100%;
@@ -1103,6 +1125,24 @@ textarea.form-control {
     }
 }
 @media (max-width: 768px) {
+    /* Hide desktop backgrounds */
+    body::before, body::after {
+        display: none;
+    }
+
+    /* Show the correct mobile background based on theme */
+    .mobile-bg {
+        display: block; /* Make the containers active */
+    }
+
+    [data-theme="light"] .mobile-bg-sun {
+        opacity: 1;
+    }
+
+    [data-theme="dark"] .mobile-bg-moon {
+        opacity: 1;
+    }
+
     .sidebar {
         display: none;
     }
