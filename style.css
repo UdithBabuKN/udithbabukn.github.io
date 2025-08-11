@@ -1197,8 +1197,8 @@ textarea.form-control {
     }
 
     .mobile-header .logo {
-        font-size: 1.2rem;
-        white-space: normal;
+        font-size: 1.1rem; /* Reduced from 1.2rem */
+        white-space: nowrap; /* Prevents the name from wrapping */
     }
 
     .mobile-header .social-links {
