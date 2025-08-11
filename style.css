@@ -1197,17 +1197,7 @@ textarea.form-control {
     }
 
     .mobile-header .logo {
-        font-size: 1.2rem;
-        line-height: 1.2;
-        flex-grow: 1;
-        flex-shrink: 1;
-        min-width: 0;
-        overflow: hidden;
-        visibility: hidden; /* Hide by default to prevent flicker */
-    }
-
-    .mobile-header .logo.logo-fit {
-        visibility: visible; /* JS will add this class if the name fits */
+        display: none;
     }
 
     .mobile-header .social-links {
