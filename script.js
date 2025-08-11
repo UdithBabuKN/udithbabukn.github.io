@@ -527,6 +527,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- NEW LOGIC FOR ADAPTIVE LOGO ---
+    function handleMobileLogoDisplay() {
+        const mobileLogo = document.querySelector('.mobile-header .logo');
+        if (!mobileLogo) return;
+
+        mobileLogo.classList.remove('wrapped');
+
+        requestAnimationFrame(() => {
+            const isWrapping = mobileLogo.scrollHeight > mobileLogo.clientHeight + 2;
+            if (isWrapping) {
+                mobileLogo.classList.add('wrapped');
+            }
+        });
+    }
+
+    function debounce(func, wait = 50) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
     // --- INITIALIZATION ---
     allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -563,6 +587,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         setActiveLink(initialSectionId);
+
+        // Additions for the adaptive logo
+        handleMobileLogoDisplay(); // Check on initial load
+        window.addEventListener('resize', debounce(handleMobileLogoDisplay));
+
 
     } catch (error) {
         console.error('Error during initialization:', error);
