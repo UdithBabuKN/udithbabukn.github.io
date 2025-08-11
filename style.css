@@ -1203,10 +1203,11 @@ textarea.form-control {
         flex-shrink: 1;
         min-width: 0;
         overflow: hidden;
+        visibility: hidden; /* Hide by default to prevent flicker */
     }
 
-    .mobile-header .logo.wrapped {
-        display: none;
+    .mobile-header .logo.logo-fit {
+        visibility: visible; /* JS will add this class if the name fits */
     }
 
     .mobile-header .social-links {

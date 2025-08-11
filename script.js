@@ -527,17 +527,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- NEW LOGIC FOR ADAPTIVE LOGO ---
+    // --- ADAPTIVE LOGO LOGIC ---
     function handleMobileLogoDisplay() {
         const mobileLogo = document.querySelector('.mobile-header .logo');
-        if (!mobileLogo) return;
+        if (!mobileLogo || window.innerWidth > 768) return;
 
-        mobileLogo.classList.remove('wrapped');
-
+        // Use requestAnimationFrame to ensure the check happens after layout is calculated
         requestAnimationFrame(() => {
             const isWrapping = mobileLogo.scrollHeight > mobileLogo.clientHeight + 2;
+
             if (isWrapping) {
-                mobileLogo.classList.add('wrapped');
+                mobileLogo.classList.remove('logo-fit');
+            } else {
+                mobileLogo.classList.add('logo-fit');
             }
         });
     }
