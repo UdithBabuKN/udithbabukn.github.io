@@ -121,9 +121,30 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- CORE LOGIC ---
-    const copyrightElement = document.getElementById('copyright-year');
-    if (copyrightElement) {
-        copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
+    function getCurrentDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    function updateDates() {
+        const currentDate = getCurrentDate();
+        const schemaDataElement = document.getElementById('schema-data');
+        if (schemaDataElement) {
+            try {
+                const schemaData = JSON.parse(schemaDataElement.textContent);
+                schemaData.dateModified = currentDate;
+                schemaDataElement.textContent = JSON.stringify(schemaData, null, 4);
+            } catch (e) {
+                console.error("Could not parse or update schema data:", e);
+            }
+        }
+        const copyrightElement = document.getElementById('copyright-year');
+        if (copyrightElement) {
+            copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
+        }
     }
 
     const emailLinks = document.querySelectorAll('.email-link');
@@ -153,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', theme);
         const isDark = theme === 'dark';
 
-        // Control background image opacity
         document.body.style.setProperty('--sun-opacity', isDark ? '0' : '1');
         document.body.style.setProperty('--moon-opacity', isDark ? '1' : '0');
 
@@ -208,13 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = category.querySelector('.skill-category-title');
 
             if (isTouchDevice) {
-                // --- Touch Device Logic: Tap title to toggle ---
                 title.addEventListener('click', () => {
                     const isExpanded = category.classList.toggle('expanded');
                     title.setAttribute('aria-expanded', isExpanded);
                 });
             } else {
-                // --- Desktop Logic: Hover category to expand/collapse ---
                 category.addEventListener('mouseenter', () => {
                     category.classList.add('expanded');
                     title.setAttribute('aria-expanded', 'true');
@@ -224,13 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     title.setAttribute('aria-expanded', 'false');
                 });
                 
-                // --- Keyboard Accessibility for Desktop ---
                 category.addEventListener('focusin', () => {
                     category.classList.add('expanded');
                     title.setAttribute('aria-expanded', 'true');
                 });
                 category.addEventListener('focusout', (e) => {
-                    // Check if the new focused element is still inside the category
                     if (!category.contains(e.relatedTarget)) {
                         category.classList.remove('expanded');
                         title.setAttribute('aria-expanded', 'false');
@@ -243,14 +259,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function initPagePeelCards() {
         const cards = document.querySelectorAll('.page-peel-card');
         
-        // Enhanced peel for desktop
         if(window.innerWidth > 768) {
             cards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    // Create a peel effect from the corner
                     const peelAmount = Math.min(x, y, 75);
                     card.style.setProperty('--peel-size', `${peelAmount}px`);
                 });
@@ -258,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.setProperty('--peel-size', '0px');
                 });
             });
-        } else { // Simple expand for mobile
+        } else {
             cards.forEach(card => {
                 card.addEventListener('click', () => {
                     card.classList.toggle('expanded');
@@ -402,7 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
             email: (value) => {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(value)) {
-                    // Check for common typos
                     if (value.includes('@') && value.endsWith('.com')) {
                         const domain = value.split('@')[1];
                         if (['gmil.com', 'gail.com', 'gnail.com'].includes(domain)) {
@@ -492,7 +505,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rect = icon.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                // Increased multiplier for a stronger effect
                 icon.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.15)`;
                 icon.style.transition = 'transform 0.1s ease-out';
             });
@@ -546,6 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     try {
+        updateDates();
         setDynamicTheme();
         initMagneticIcons();
         showPersonalizedWelcome();
