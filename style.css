@@ -1092,6 +1092,11 @@ textarea.form-control {
     opacity: 1;
 }
 
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 @media (max-width: 992px) {
      .skills-grid {
@@ -1109,70 +1114,92 @@ textarea.form-control {
         display: none;
     }
 
-    /* Set body background for both themes */
-    body {
-        background-color: var(--bg-color);
+    /* --- ELEGANT & PROFESSIONAL DARK THEME --- */
+    [data-theme="dark"] body {
+        background-color: #010409; /* A deep, near-black for high contrast */
+        /* A subtle radial gradient to create a soft "spotlight" effect */
+        background-image: radial-gradient(circle at top, #161b22, #010409);
         background-attachment: fixed;
     }
 
-    /* Specific background for light theme on mobile */
-    [data-theme="light"] body {
-        background-color: #eef2f9; /* Soft blueish white for light mode */
-        background-image:
-            radial-gradient(circle at 100% 0%, hsla(180, 70%, 80%, 0.5), transparent 40%),
-            radial-gradient(circle at 0% 100%, hsla(200, 80%, 80%, 0.5), transparent 40%);
-    }
-
-    /* Apply glass effect to cards and navs for dark theme */
+    /* Polished Glass UI for dark theme elements */
     [data-theme="dark"] .mobile-header,
     [data-theme="dark"] .mobile-contact-info,
     [data-theme="dark"] .content-box,
     [data-theme="dark"] .bottom-nav {
-        background-color: var(--bg-card);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--border-color);
+        background-color: rgba(22, 27, 34, 0.75); /* Dark, semi-transparent base */
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Soft, light border for a premium feel */
         border-radius: 16px;
-        box-shadow: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37); /* Deeper shadow for more depth */
     }
 
-    /* Styles for light theme glass effect */
+    /* Clean, professional interactions */
+    [data-theme="dark"] .mobile-header .social-link:hover,
+    [data-theme="dark"] .mobile-header .theme-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
+        transform: scale(1.1);
+        box-shadow: none;
+    }
+    
+    /* Elegant active state for Bottom Nav */
+    .bottom-nav-link.active {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        text-shadow: none;
+    }
+    .bottom-nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        width: 5px;
+        height: 5px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+    }
+
+    /* --- LIGHT THEME STYLES (Unchanged) --- */
+    [data-theme="light"] body {
+        background-color: #eef2f9;
+        background-image:
+            radial-gradient(circle at 100% 0%, hsla(180, 70%, 80%, 0.5), transparent 40%),
+            radial-gradient(circle at 0% 100%, hsla(200, 80%, 80%, 0.5), transparent 40%);
+        animation: none;
+    }
+
     [data-theme="light"] .mobile-header,
     [data-theme="light"] .mobile-contact-info,
     [data-theme="light"] .content-box,
     [data-theme="light"] .bottom-nav {
-        background-color: rgba(255, 255, 255, 0.6); /* Lighter semi-transparent base */
+        background-color: rgba(255, 255, 255, 0.6);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(0, 0, 0, 0.08);
         border-radius: 16px;
         box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.2);
     }
-
+    
+    /* --- GENERAL MOBILE LAYOUT (Unchanged) --- */
     .mobile-header .social-link, .mobile-header .theme-toggle {
-        border-radius: 50%; /* Circular social icons */
+        border-radius: 50%;
     }
-
     .sidebar {
         display: none;
     }
     .content {
         margin-left: 0;
         width: 100%;
-        padding: 1rem 1rem 90px 1rem; /* Adjusted top padding */
+        padding: 1rem 1rem 90px 1rem;
     }
     .bottom-nav {
         display: flex;
         justify-content: space-around;
-        border-top: 1px solid var(--border-color);
     }
-    .section-header {
+    .section-header, .interactive-card .interactive-card-heading {
         font-size: 1.75rem;
     }
-    .interactive-card .interactive-card-heading {
-        font-size: 1.75rem;
-    }
-     .summary-description {
+    .summary-description {
         font-size: 1rem;
     }
     .content-box {
@@ -1181,7 +1208,7 @@ textarea.form-control {
     .card-grid {
         grid-template-columns: 1fr;
     }
-     .skills-grid {
+    .skills-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 1rem;
     }
@@ -1196,37 +1223,31 @@ textarea.form-control {
         font-size: 0.9rem;
     }
     .footer {
-        padding-bottom: 80px; /* Space for bottom nav */
+        padding-bottom: 80px;
     }
-
     .mobile-header {
         display: flex;
-        padding: 1rem; /* Added padding */
-        margin-bottom: 1rem; /* Adjusted margin */
+        padding: 1rem;
+        margin-bottom: 1rem;
     }
-
     .mobile-header .profile-header {
         margin-bottom: 0;
-        flex-grow: 1; /* Allow profile info to take space */
+        flex-grow: 1;
     }
-
     .mobile-header .logo {
         display: none;
     }
-
     .mobile-header .social-links {
-        justify-content: flex-end; /* Align to the right */
+        justify-content: flex-end;
         margin-bottom: 0;
         gap: 0.75rem;
     }
-
     .mobile-header-actions {
         gap: 0.75rem;
     }
-
     .mobile-contact-info {
         display: block;
-        padding: 1rem; /* Added padding */
+        padding: 1rem;
     }
 }
 ::-webkit-scrollbar {
