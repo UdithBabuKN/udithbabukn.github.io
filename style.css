@@ -141,7 +141,7 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     width: var(--sidebar-width);
     height: 100vh;
     position: fixed;
-    background-color: transparent; 
+    background-color: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-right: none;
@@ -154,8 +154,8 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
 
 .sidebar:hover {
     transform: translateX(0);
-    background-color: var(--bg-sidebar); 
-    border-right: 1px solid var(--border-color); 
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
 }
 
 .sidebar > *:not(.sidebar-indicator) {
@@ -1063,9 +1063,9 @@ textarea.form-control {
      color: var(--secondary-color);
 }
 .footer {
-    background-color: transparent; 
-    padding: 2rem 1rem; 
-    text-align: center; 
+    background-color: transparent;
+    padding: 2rem 1rem;
+    text-align: center;
     color: var(--text-muted);
     margin-top: auto;
 }
@@ -1102,51 +1102,50 @@ textarea.form-control {
         min-height: 180px;
     }
 }
+
 @media (max-width: 768px) {
     /* Hide the desktop background pseudo-elements */
     body::before, body::after {
         display: none;
     }
-    
-    /* Apply the new animated background to the body on mobile dark theme */
+
+    /* Set body background for both themes */
     body {
-        background: linear-gradient(230deg, #0a1a0a, #111, #000, #111);
-        background-size: 400% 400%;
-        animation: gradientAnimation 20s ease infinite;
+        background-color: var(--bg-color);
         background-attachment: fixed;
     }
 
-    @keyframes gradientAnimation {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
+    /* Specific background for light theme on mobile */
     [data-theme="light"] body {
-        /* This will override the animated background for light mode */
         background-color: #eef2f9; /* Soft blueish white for light mode */
-        background-image: 
+        background-image:
             radial-gradient(circle at 100% 0%, hsla(180, 70%, 80%, 0.5), transparent 40%),
             radial-gradient(circle at 0% 100%, hsla(200, 80%, 80%, 0.5), transparent 40%);
-        animation: none;
     }
 
-    /* Apply glass effect to cards and navs */
-    .mobile-header, .mobile-contact-info, .content-box, .bottom-nav {
-        background-color: rgba(18, 26, 18, 0.7); /* Dark green-tinted glass */
+    /* Apply glass effect to cards and navs for dark theme */
+    [data-theme="dark"] .mobile-header,
+    [data-theme="dark"] .mobile-contact-info,
+    [data-theme="dark"] .content-box,
+    [data-theme="dark"] .bottom-nav {
+        background-color: var(--bg-card);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.08); /* Slightly subtler border */
-        border-radius: 16px; /* Curved borders */
-        box-shadow: none; /* Removing inner glow for a flatter look */
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        box-shadow: none;
     }
 
+    /* Styles for light theme glass effect */
     [data-theme="light"] .mobile-header,
     [data-theme="light"] .mobile-contact-info,
     [data-theme="light"] .content-box,
     [data-theme="light"] .bottom-nav {
         background-color: rgba(255, 255, 255, 0.6); /* Lighter semi-transparent base */
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
         box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.2);
     }
 
@@ -1165,7 +1164,7 @@ textarea.form-control {
     .bottom-nav {
         display: flex;
         justify-content: space-around;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid var(--border-color);
     }
     .section-header {
         font-size: 1.75rem;
@@ -1199,7 +1198,7 @@ textarea.form-control {
     .footer {
         padding-bottom: 80px; /* Space for bottom nav */
     }
-    
+
     .mobile-header {
         display: flex;
         padding: 1rem; /* Added padding */
@@ -1224,7 +1223,7 @@ textarea.form-control {
     .mobile-header-actions {
         gap: 0.75rem;
     }
-    
+
     .mobile-contact-info {
         display: block;
         padding: 1rem; /* Added padding */
@@ -1237,5 +1236,3 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
-s
-
