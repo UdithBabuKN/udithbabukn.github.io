@@ -175,10 +175,15 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     width: 24px;
     height: 24px;
     opacity: 1;
-    transition: opacity 0.3s ease, right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 0.3s ease, right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s ease;
     z-index: 11;
     animation: subtle-slide 2s infinite ease-in-out;
 }
+
+.sidebar-indicator.interactive-hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
 .sidebar-indicator::before {
     content: '';
     border: solid var(--primary-color);
@@ -603,7 +608,17 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+    animation-play-state: paused;
 }
+.skill-card.visible .skill-icon {
+    animation-play-state: running;
+}
+@keyframes bounce-in {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 .skill-card:hover .skill-icon, .skill-card:focus .skill-icon {
     transform: scale(1.1) translateZ(20px);
 }
@@ -872,16 +887,16 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
     width: 100%;
     height: 2px;
     background: var(--accent-color);
-    transform: scaleX(0);
+    transform: scaleX(0) translateX(-50%);
     transform-origin: center;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .form-group:focus-within::after {
-    transform: scaleX(1);
+    transform: scaleX(1) translateX(-50%);
 }
 .form-label {
     display: block;

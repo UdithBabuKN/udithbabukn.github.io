@@ -93,10 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
             content: `
                 <section class="lazy-load" lang="en">
                     <div class="card-grid">
-                        <article class="interactive-card" style="--angle: 0deg;"><h3 class="interactive-card-heading">Web Analyzer Pro</h3><div class="card-meta">JavaScript, HTML, CSS, Chart.js</div><p class="card-description">Advanced tool to analyze any website's design system, extracting colors, typography, and CSS stats with visualizations. Provides in-depth design and code analysis.</p><div class="card-footer"><a href="https://udithkn.github.io/Web-Analyzer-Pro/" target="_blank" rel="noopener noreferrer" class="card-link">View Live Project <i class="fas fa-arrow-right"></i></a></div></article>
-                        <article class="interactive-card" style="--angle: 90deg;"><h3 class="interactive-card-heading">Advanced Web Security Chrome Extension</h3><div class="card-meta">Python, JavaScript, HTML, CSS, Machine Learning</div><p class="card-description">Chrome extension for detecting malicious JPEG images during browsing, enhancing web security. Used machine learning to identify malicious patterns with 25% improved accuracy.</p><div class="card-footer"><a href="https://github.com/udithkn/maljpeg_project" target="_blank" rel="noopener noreferrer" class="card-link">View on GitHub <i class="fab fa-github"></i></a></div></article>
-                        <article class="interactive-card" style="--angle: 180deg;"><h3 class="interactive-card-heading">Free LinkedIn Banner Premium Collection</h3><div class="card-meta">HTML, CSS, JavaScript</div><p class="card-description">A collection of 50+ free, premium, and customizable LinkedIn banners to help users make a great first impression.</p><div class="card-footer"><a href="https://udithkn.github.io/Free-LinkedIn-Banner-Premium-Collection/" target="_blank" rel="noopener noreferrer" class="card-link">View Live Project <i class="fas fa-arrow-right"></i></a></div></article>
-                        <article class="interactive-card" style="--angle: 270deg;"><h3 class="interactive-card-heading">ImageForge</h3><div class="card-meta">HTML, CSS, JavaScript</div><p class="card-description">A free-to-use, innovative image converting tool designed to help users avoid ads and login/sign-up requirements. Seamlessly convert images from one format to another, such as JPG to PNG, hassle-free.</p><div class="card-footer"><a href="https://udithkn.github.io/ImageForge/" target="_blank" rel="noopener noreferrer" class="card-link">View Live Project <i class="fas fa-arrow-right"></i></a></div></article>
+                        <article class="interactive-card" style="--angle: 0deg;"><h3 class="interactive-card-heading">Web Analyzer Pro</h3><div class="card-meta">JavaScript, HTML, CSS, Chart.js</div><p class="card-description">Advanced tool to analyze any website's design system, extracting colors, typography, and CSS stats with visualizations. Provides in-depth design and code analysis.</p><div class="card-footer"><a href="https://udithkn.github.io/Web-Analyzer-Pro/" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fas fa-bolt"></i> View Live Project</a></div></article>
+                        <article class="interactive-card" style="--angle: 90deg;"><h3 class="interactive-card-heading">Advanced Web Security Chrome Extension</h3><div class="card-meta">Python, JavaScript, HTML, CSS, Machine Learning</div><p class="card-description">Chrome extension for detecting malicious JPEG images during browsing, enhancing web security. Used machine learning to identify malicious patterns with 25% improved accuracy.</p><div class="card-footer"><a href="https://github.com/udithkn/maljpeg_project" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> View on GitHub</a></div></article>
+                        <article class="interactive-card" style="--angle: 180deg;"><h3 class="interactive-card-heading">Free LinkedIn Banner Premium Collection</h3><div class="card-meta">HTML, CSS, JavaScript</div><p class="card-description">A collection of 50+ free, premium, and customizable LinkedIn banners to help users make a great first impression.</p><div class="card-footer"><a href="https://udithkn.github.io/Free-LinkedIn-Banner-Premium-Collection/" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fas fa-bolt"></i> View Live Project</a></div></article>
+                        <article class="interactive-card" style="--angle: 270deg;"><h3 class="interactive-card-heading">ImageForge</h3><div class="card-meta">HTML, CSS, JavaScript</div><p class="card-description">A free-to-use, innovative image converting tool designed to help users avoid ads and login/sign-up requirements. Seamlessly convert images from one format to another, such as JPG to PNG, hassle-free.</p><div class="card-footer"><a href="https://udithkn.github.io/ImageForge/" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fas fa-bolt"></i> View Live Project</a></div></article>
                     </div>
                 </section>`
         },
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function initLazyLoad() {
-        const lazyElements = document.querySelectorAll('.lazy-load, .creative-summary, .interactive-card');
+        const lazyElements = document.querySelectorAll('.lazy-load, .skill-card, .interactive-card');
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -531,21 +531,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    function initMagneticIcons() {
-        const icons = document.querySelectorAll('.social-link');
-        icons.forEach(icon => {
-            icon.addEventListener('mousemove', (e) => {
-                const rect = icon.getBoundingClientRect();
+    function initMagneticElements(selector) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                icon.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.15)`;
-                icon.style.transition = 'transform 0.1s ease-out';
+                el.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.15)`;
+                el.style.transition = 'transform 0.1s ease-out';
             });
-            icon.addEventListener('mouseleave', () => {
-                icon.style.transform = 'translate(0,0) scale(1)';
-                icon.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0,0) scale(1)';
+                el.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             });
         });
+    }
+
+    function initInteractiveSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const indicator = document.querySelector('.sidebar-indicator');
+        if (sidebar && indicator) {
+            sidebar.addEventListener('mouseenter', () => {
+                indicator.classList.add('interactive-hover');
+            });
+            sidebar.addEventListener('mouseleave', () => {
+                indicator.classList.remove('interactive-hover');
+            });
+        }
     }
 
     function showPersonalizedWelcome() {
@@ -593,7 +606,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         updateDates();
         setDynamicTheme();
-        initMagneticIcons();
+        initMagneticElements('.social-link');
+        initInteractiveSidebar();
         showPersonalizedWelcome();
 
         const initialSectionId = window.location.hash.substring(1) || 'summary';
