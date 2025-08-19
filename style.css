@@ -1129,31 +1129,32 @@ textarea.form-control {
         display: none;
     }
 
-    /* --- ELEGANT & PROFESSIONAL DARK THEME --- */
+    /* --- PREMIUM DARK THEME (MOBILE) --- */
     [data-theme="dark"] body {
-        background-color: #010409; /* A deep, near-black for high contrast */
-        /* A subtle radial gradient to create a soft "spotlight" effect */
-        background-image: radial-gradient(circle at top, #161b22, #010409);
+        background-color: #02040a; /* Premium Midnight Blue */
+        background-image:
+            radial-gradient(circle at 15% 20%, hsla(190, 80%, 50%, 0.1), transparent 40%),
+            radial-gradient(circle at 85% 70%, hsla(280, 50%, 50%, 0.1), transparent 40%);
         background-attachment: fixed;
     }
 
-    /* Polished Glass UI for dark theme elements */
+    /* Matched Glass UI for dark theme elements */
     [data-theme="dark"] .mobile-header,
     [data-theme="dark"] .mobile-contact-info,
     [data-theme="dark"] .content-box,
     [data-theme="dark"] .bottom-nav {
-        background-color: rgba(22, 27, 34, 0.75); /* Dark, semi-transparent base */
-        -webkit-backdrop-filter: blur(16px);
-        backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.1); /* Soft, light border for a premium feel */
+        background-color: rgba(22, 27, 34, 0.6);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37); /* Deeper shadow for more depth */
+        box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.05);
     }
-
+    
     /* Clean, professional interactions */
     [data-theme="dark"] .mobile-header .social-link:hover,
     [data-theme="dark"] .mobile-header .theme-toggle:hover {
-        background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
+        background-color: rgba(255, 255, 255, 0.1);
         transform: scale(1.1);
         box-shadow: none;
     }
