@@ -101,22 +101,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 </section>`
         },
         blog: {
-            title: "Blog & Case Studies",
+            title: "Blog & Insights",
             metaDescription: "Explore insightful articles and case studies by Udith Babu K N on SEO, digital marketing, and tech industry trends in India.",
             content: `
                 <section class="lazy-load" lang="en">
                     <p class="skills-intro">Here I share insights on digital marketing, SEO, and technology trends, demonstrating my expertise and approach to solving complex challenges.</p>
                     <div class="card-grid">
                         <article class="interactive-card" style="--angle: 45deg;">
-                            <h3 class="interactive-card-heading">Case Study: Keyword Research for Tech Startups in India</h3>
-                            <div class="card-meta">SEO Strategy | Market Analysis</div>
-                            <p class="card-description">A deep dive into the methodology for identifying high-impact, low-competition keywords tailored for the Indian tech startup ecosystem. This case study covers competitor analysis, user intent mapping, and leveraging long-tail keywords to drive organic growth.</p>
+                            <h3 class="interactive-card-heading">Advanced SEO Techniques for 2025</h3>
+                            <div class="card-meta">SEO Strategy | Technical SEO</div>
+                            <p class="card-description">A deep dive into the future of search, covering topics like AI-driven content optimization, the evolution of Core Web Vitals, and strategies for building topical authority in a competitive digital landscape.</p>
                             <div class="card-footer"><a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="card-link">Read on Medium <i class="fab fa-medium"></i></a></div>
                         </article>
                         <article class="interactive-card" style="--angle: 135deg;">
-                            <h3 class="interactive-card-heading">Article: How Core Web Vitals Impact Your SEO Rankings</h3>
-                            <div class="card-meta">Technical SEO | Web Performance</div>
-                            <p class="card-description">An analysis of Google's Core Web Vitals (LCP, FID, CLS) and their direct impact on search engine rankings. This article provides actionable tips for developers and marketers to optimize their websites for a better user experience and improved SEO performance.</p>
+                            <h3 class="interactive-card-heading">The Evolving Role of the IT Business Analyst</h3>
+                            <div class="card-meta">Business Analysis | Agile Methodologies</div>
+                            <p class="card-description">An analysis of how the IT Business Analyst role is adapting to new technologies like AI and low-code platforms. This article explores the shift from requirement gathering to strategic partnership and value creation.</p>
                             <div class="card-footer"><a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="card-link">Read on Medium <i class="fab fa-medium"></i></a></div>
                         </article>
                     </div>
