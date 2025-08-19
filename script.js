@@ -8,21 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentData = {
         summary: {
             title: "Professional Summary",
-            metaDescription: "Portfolio of Udith Babu K N, a results-driven Business Development Executive and IT Business Analyst specializing in Agile, data analysis, and delivering high-impact tech solutions.",
+            metaDescription: "Portfolio of Udith Babu K N, a results-driven Executive – Marketing and Sales in Kerala, India. Expert in developing marketing strategies, lead generation, and client relationship management, leveraging a unique background in IT Business Analysis and Agile methodologies.",
             content: `
                 <article class="interactive-card lazy-load" lang="en" style="--angle: 45deg;">
-                    <h3 class="interactive-card-heading">Dynamic Business Development Executive, IT Business Analyst &amp; Project Coordinator</h3>
-                    <p class="summary-subtitle">MBA in Operations Management and B.Tech in Information Technology.</p>
-                    <p class="summary-description">As a dynamic Business Development Executive and IT Business Analyst, I excel at bridging the gap between technical solutions and strategic business growth. My expertise in market research, client requirement analysis, and Agile methodologies allows me to drive impactful IT projects and foster strong stakeholder relationships. Based in Kerala, India, I leverage skills in Python, MySQL, and Figma to deliver comprehensive solutions.</p>
+                    <h3 class="interactive-card-heading">Expert Executive – Marketing and Sales | IT Business Analyst</h3>
+                    <p class="summary-subtitle">MBA in Operations & Marketing | B.Tech in Information Technology</p>
+                    <p class="summary-description">As a forward-thinking Executive in Marketing and Sales, I specialize in creating and executing data-driven strategies that boost brand visibility and drive revenue growth. With a strong foundation as an IT Business Analyst, I bring a unique analytical perspective to market research, lead generation, and client engagement. Based in Kerala, India, I am adept at using tools like Python and MySQL for market analysis and Figma for crafting compelling marketing materials, ensuring every campaign is both innovative and effective.</p>
                 </article>`
         },
         skills: {
-            title: "Technical Skills",
-            metaDescription: "Explore the technical skills of Udith Babu K N, showcasing expertise in Python, MySQL, Figma, Jira, and Agile methodologies for advanced business analysis and project management.",
+            title: "Skills",
+            metaDescription: "Explore the technical and marketing skills of Udith Babu K N, showcasing expertise in SEO Strategy, Google Analytics, Content Marketing, Python, MySQL, and Agile project management.",
             content: `
                 <article class="content-box lazy-load" lang="en">
                     <p class="skills-intro">I focus on a curated set of tools and methodologies to deliver efficient and effective solutions. Tap or focus on a category to expand.</p>
                     
+                    <div class="skill-category-foldable" tabindex="0">
+                        <h3 class="skill-category-title" id="marketing-seo-heading" aria-expanded="false" aria-controls="marketing-seo-grid"><span>Marketing & SEO</span><i class="fas fa-chevron-down category-chevron"></i></h3>
+                        <div class="skills-grid" id="marketing-seo-grid" role="region" aria-labelledby="marketing-seo-heading">
+                            <div class="skill-card" tabindex="0"><i class="fas fa-search-dollar skill-icon"></i><span class="skill-name">SEO Strategy</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-chart-line skill-icon"></i><span class="skill-name">Google Analytics</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-bullhorn skill-icon"></i><span class="skill-name">Content Marketing</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-key skill-icon"></i><span class="skill-name">Keyword Research</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
+                        </div>
+                    </div>
+
                     <div class="skill-category-foldable" tabindex="0">
                         <h3 class="skill-category-title" id="core-tech-heading" aria-expanded="false" aria-controls="core-tech-grid"><span>Core Technologies</span><i class="fas fa-chevron-down category-chevron"></i></h3>
                         <div class="skills-grid" id="core-tech-grid" role="region" aria-labelledby="core-tech-heading">
@@ -59,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             content: `
                 <article class="lazy-load" lang="en">
                     <div class="page-peel-timeline">
-                        <div class="page-peel-card" tabindex="0"><p class="card-date">May 2025 – Present</p><h3>Business Development Executive</h3><p class="company">Accelgrowth Technology Pvt. Ltd.</p><div class="details"><h4>Key Responsibilities</h4><ul><li>Conducted market research and gathered client requirements for strategic planning.</li><li>Analyzed customer data to identify trends and support decisions.</li><li>Collaborated with tech teams to align business needs with functional requirements.</li><li>Prepared business cases, proposals, and stakeholder reports.</li><li>Coordinated UAT by managing client feedback and validating requirements.</li><li>Used Excel, Trello, and CRM tools for lead management and KPI tracking.</li><li>Built strong client relationships through consultative solutions and support.</li></ul></div></div>
+                        <div class="page-peel-card" tabindex="0"><p class="card-date">Aug 2025 – Present</p><h3>Executive – Marketing and Sales</h3><p class="company">Rêve</p><div class="details"><h4>Key Responsibilities</h4><ul><li>Developing and implementing marketing and sales strategies.</li><li>Building and maintaining strong client relationships.</li><li>Executing on-page and off-page SEO strategies to improve organic search rankings.</li><li>Conducting keyword research and competitor analysis to inform content strategy.</li><li>Analyzing website traffic and user engagement using Google Analytics to optimize campaigns.</li><li>Managing technical SEO audits to enhance site performance and crawlability.</li></ul></div></div>
+                        <div class="page-peel-card" tabindex="0"><p class="card-date">May 2025 – Aug 2025</p><h3>Business Development Executive</h3><p class="company">Accelgrowth Technology Pvt. Ltd.</p><div class="details"><h4>Key Responsibilities</h4><ul><li>Conducted market research and gathered client requirements for strategic planning.</li><li>Analyzed customer data to identify trends and support decisions.</li><li>Collaborated with tech teams to align business needs with functional requirements.</li><li>Prepared business cases, proposals, and stakeholder reports.</li><li>Coordinated UAT by managing client feedback and validating requirements.</li><li>Used Excel, Trello, and CRM tools for lead management and KPI tracking.</li><li>Built strong client relationships through consultative solutions and support.</li></ul></div></div>
                         <div class="page-peel-card" tabindex="0"><p class="card-date">Sep 2024 – Dec 2024</p><h3>Business Analyst Intern</h3><p class="company">CST - Cyber Sapient</p><div class="details"><h4>Achievements</h4><ul><li>Gathered and documented 100+ business requirements.</li><li>Designed 10+ functional specifications and wireframes in Figma.</li><li>Analysed 50+ datasets using Python, improving sprint outcomes by 15%.</li><li>Coordinated and executed UAT for three key features with 98% compliance.</li></ul></div></div>
                         <div class="page-peel-card" tabindex="0"><p class="card-date">Aug 2023 – Sep 2023</p><h3>Operations Intern</h3><p class="company">Techmindz</p><div class="details"><h4>Achievements</h4><ul><li>Automated customer service processes using AI, reducing response time by 30%.</li><li>Analysed customer data to improve service strategies (15% satisfaction increase).</li><li>Collaborated with development team to integrate AI tools.</li></ul></div></div>
                     </div>
@@ -86,6 +97,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         <article class="interactive-card" style="--angle: 90deg;"><h3 class="interactive-card-heading">Advanced Web Security Chrome Extension</h3><div class="card-meta">Python, JavaScript, HTML, CSS, Machine Learning</div><p class="card-description">Chrome extension for detecting malicious JPEG images during browsing, enhancing web security. Used machine learning to identify malicious patterns with 25% improved accuracy.</p><div class="card-footer"><a href="https://github.com/udithkn/maljpeg_project" target="_blank" rel="noopener noreferrer" class="card-link">View on GitHub <i class="fab fa-github"></i></a></div></article>
                         <article class="interactive-card" style="--angle: 180deg;"><h3 class="interactive-card-heading">Free LinkedIn Banner Premium Collection</h3><div class="card-meta">HTML, CSS, JavaScript</div><p class="card-description">A collection of 50+ free, premium, and customizable LinkedIn banners to help users make a great first impression.</p><div class="card-footer"><a href="https://udithkn.github.io/Free-LinkedIn-Banner-Premium-Collection/" target="_blank" rel="noopener noreferrer" class="card-link">View Live Project <i class="fas fa-arrow-right"></i></a></div></article>
                         <article class="interactive-card" style="--angle: 270deg;"><h3 class="interactive-card-heading">ImageForge</h3><div class="card-meta">HTML, CSS, JavaScript</div><p class="card-description">A free-to-use, innovative image converting tool designed to help users avoid ads and login/sign-up requirements. Seamlessly convert images from one format to another, such as JPG to PNG, hassle-free.</p><div class="card-footer"><a href="https://udithkn.github.io/ImageForge/" target="_blank" rel="noopener noreferrer" class="card-link">View Live Project <i class="fas fa-arrow-right"></i></a></div></article>
+                    </div>
+                </section>`
+        },
+        blog: {
+            title: "Blog & Case Studies",
+            metaDescription: "Explore insightful articles and case studies by Udith Babu K N on SEO, digital marketing, and tech industry trends in India.",
+            content: `
+                <section class="lazy-load" lang="en">
+                    <p class="skills-intro">Here I share insights on digital marketing, SEO, and technology trends, demonstrating my expertise and approach to solving complex challenges.</p>
+                    <div class="card-grid">
+                        <article class="interactive-card" style="--angle: 45deg;">
+                            <h3 class="interactive-card-heading">Case Study: Keyword Research for Tech Startups in India</h3>
+                            <div class="card-meta">SEO Strategy | Market Analysis</div>
+                            <p class="card-description">A deep dive into the methodology for identifying high-impact, low-competition keywords tailored for the Indian tech startup ecosystem. This case study covers competitor analysis, user intent mapping, and leveraging long-tail keywords to drive organic growth.</p>
+                            <div class="card-footer"><a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="card-link">Read on Medium <i class="fab fa-medium"></i></a></div>
+                        </article>
+                        <article class="interactive-card" style="--angle: 135deg;">
+                            <h3 class="interactive-card-heading">Article: How Core Web Vitals Impact Your SEO Rankings</h3>
+                            <div class="card-meta">Technical SEO | Web Performance</div>
+                            <p class="card-description">An analysis of Google's Core Web Vitals (LCP, FID, CLS) and their direct impact on search engine rankings. This article provides actionable tips for developers and marketers to optimize their websites for a better user experience and improved SEO performance.</p>
+                            <div class="card-footer"><a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="card-link">Read on Medium <i class="fab fa-medium"></i></a></div>
+                        </article>
                     </div>
                 </section>`
         },
@@ -564,17 +597,9 @@ document.addEventListener('DOMContentLoaded', () => {
         showPersonalizedWelcome();
 
         const initialSectionId = window.location.hash.substring(1) || 'summary';
-
-        if (initialSectionId !== 'summary') {
-            loadSection(initialSectionId);
-        } else {
-            initLazyLoad();
-            initFoldableSkills();
-            initPagePeelCards();
-            initStaggeredList();
-            init3DTilt();
-        }
         
+        // Always load the section from JS to ensure it's up to date
+        loadSection(initialSectionId);
         setActiveLink(initialSectionId);
 
     } catch (error) {
