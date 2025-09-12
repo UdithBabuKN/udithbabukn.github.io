@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentData = {
         summary: {
             title: "Professional Summary",
-            metaDescription: "Portfolio of Udith Babu K N, a results-driven Executive – Marketing and Sales in Kerala, India. Expert in developing marketing strategies, lead generation, and client relationship management, leveraging a unique background in IT Business Analysis and Agile methodologies.",
+            metaDescription: "Portfolio of Udith Babu K N, a Marketing & Sales Executive in Kerala, India. Expert in data-driven marketing, lead generation, and client management.",
             content: `
                 <article class="interactive-card lazy-load" lang="en" style="--angle: 45deg;">
-                    <h3 class="interactive-card-heading">Expert Executive – Marketing and Sales | IT Business Analyst</h3>
+                    <h2 class="interactive-card-heading">Expert Executive – Marketing and Sales | IT Business Analyst</h2>
                     <p class="summary-subtitle">MBA in Operations & Marketing | B.Tech in Information Technology</p>
                     <p class="summary-description">As a forward-thinking Executive in Marketing and Sales, I specialize in creating and executing data-driven strategies that boost brand visibility and drive revenue growth. With a strong foundation as an IT Business Analyst, I bring a unique analytical perspective to market research, lead generation, and client engagement. Based in Kerala, India, I am adept at using tools like Python and MySQL for market analysis and Figma for crafting compelling marketing materials, ensuring every campaign is both innovative and effective.</p>
                 </article>`
         },
         skills: {
             title: "Skills",
-            metaDescription: "Explore the technical and marketing skills of Udith Babu K N, showcasing expertise in SEO Strategy, Google Analytics, Content Marketing, Python, MySQL, and Agile project management.",
+            metaDescription: "Explore the skills of Udith Babu K N, including SEO Strategy, Google Analytics, Content Marketing, Python, MySQL, and Agile project management.",
             content: `
                 <article class="content-box lazy-load" lang="en">
                     <p class="skills-intro">I focus on a curated set of tools and methodologies to deliver efficient and effective solutions. Tap or focus on a category to expand.</p>
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         experience: {
             title: "Professional Experience",
-            metaDescription: "Review the professional experience of Udith Babu K N, highlighting key achievements in marketing, sales, IT business analysis, and Agile project coordination at top firms.",
+            metaDescription: "Review Udith Babu K N's professional experience, highlighting achievements in marketing, sales, business analysis, and Agile project coordination.",
             content: `
                 <article class="lazy-load" lang="en">
                     <div class="page-peel-timeline">
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         education: {
             title: "Education",
-            metaDescription: "Educational background of Udith Babu K N, featuring an MBA in Operations & Marketing and a B.Tech in Information Technology from the College of Engineering Thalassery.",
+            metaDescription: "Educational background of Udith Babu K N, with an MBA in Operations & Marketing and a B.Tech in IT from College of Engineering Thalassery.",
             content: `
                 <article class="lazy-load" lang="en">
                     <div class="page-peel-timeline">
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         projects: {
             title: "Projects",
-            metaDescription: "Discover innovative projects by Udith Babu K N, including a real-time Web Analyzer and an ML-powered Web Security Chrome Extension. Explore live demos and GitHub repositories.",
+            metaDescription: "Discover innovative projects by Udith Babu K N, including a Web Analyzer and an ML-powered Web Security Chrome Extension. See live demos & code.",
             content: `
                 <section class="lazy-load" lang="en">
                     <div class="card-grid">
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         certifications: {
             title: "Certifications",
-            metaDescription: "View professional certifications of Udith Babu K N, including credentials in Agile methodologies from JPMorgan Chase & Co. and a Business Analyst certification from micro1.",
+            metaDescription: "View Udith Babu K N's certifications, including credentials in Agile from JPMorgan Chase & Co. and a Business Analyst cert from micro1.",
             content: `
                 <section class="lazy-load" lang="en">
                     <div class="card-grid">
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         contact: {
             title: "Contact Me",
-            metaDescription: "Connect with Udith Babu K N for opportunities in IT Business Analysis, Project Coordination, and Product Management. Let's build innovative solutions together.",
+            metaDescription: "Connect with Udith Babu K N for opportunities in IT Business Analysis, Project Coordination, and Product Management. Let's build innovative solutions.",
             content: `
                 <article class="content-box lazy-load" lang="en">
                     <p>Looking to drive IT projects to success? Connect to explore my expertise in Agile, business analysis, and product analysis.</p>
