@@ -100,28 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </section>`
         },
-        blog: {
-            title: "Blog & Insights",
-            metaDescription: "Explore insightful articles and case studies by Udith Babu K N on SEO, digital marketing, and tech industry trends in India.",
-            content: `
-                <section class="lazy-load" lang="en">
-                    <p class="skills-intro">Here I share insights on digital marketing, SEO, and technology trends, demonstrating my expertise and approach to solving complex challenges.</p>
-                    <div class="card-grid">
-                        <article class="interactive-card" style="--angle: 45deg;">
-                            <h3 class="interactive-card-heading">Advanced SEO Techniques for 2025</h3>
-                            <div class="card-meta">SEO Strategy | Technical SEO</div>
-                            <p class="card-description">A deep dive into the future of search, covering topics like AI-driven content optimization, the evolution of Core Web Vitals, and strategies for building topical authority in a competitive digital landscape.</p>
-                            <div class="card-footer"><a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="card-link">Read on Medium <i class="fab fa-medium"></i></a></div>
-                        </article>
-                        <article class="interactive-card" style="--angle: 135deg;">
-                            <h3 class="interactive-card-heading">The Evolving Role of the IT Business Analyst</h3>
-                            <div class="card-meta">Business Analysis | Agile Methodologies</div>
-                            <p class="card-description">An analysis of how the IT Business Analyst role is adapting to new technologies like AI and low-code platforms. This article explores the shift from requirement gathering to strategic partnership and value creation.</p>
-                            <div class="card-footer"><a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="card-link">Read on Medium <i class="fab fa-medium"></i></a></div>
-                        </article>
-                    </div>
-                </section>`
-        },
         certifications: {
             title: "Certifications",
             metaDescription: "View Udith Babu K N's certifications, including credentials in Agile from JPMorgan Chase & Co. and a Business Analyst cert from micro1.",
@@ -249,7 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (!contentScroller) {
-        console.error('Content scroller not found');
+        // This might be the blog page, which has a different structure.
+        // console.log('Content scroller not found, assuming blog page.');
         return;
     }
 
@@ -353,6 +332,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadSection(sectionId) {
+        if (sectionId === 'blog') {
+            window.location.href = 'blog.html';
+            return;
+        }
+
         const sectionData = contentData[sectionId];
         if (sectionData) {
             const newSection = document.createElement('section');
@@ -587,14 +571,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- INITIALIZATION ---
     allNavLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const sectionId = link.getAttribute('data-section');
-            if (contentData[sectionId]) {
-                loadSection(sectionId);
-                setActiveLink(sectionId);
-            }
-        });
+        const navLinkSection = link.getAttribute('data-section');
+        if (navLinkSection !== 'blog') {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (contentData[navLinkSection]) {
+                    loadSection(navLinkSection);
+                    setActiveLink(navLinkSection);
+                }
+            });
+        }
     });
     
     window.addEventListener('popstate', () => {
