@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en-IN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,8 @@
     
     <!-- SEO: Canonical URL for the main blog page -->
     <link rel="canonical" href="https://udithbabukn.github.io/blog.html">
+     <!-- SEO: Hreflang tag for language and region targeting -->
+    <link rel="alternate" hreflang="en-in" href="https://udithbabukn.github.io/blog.html" />
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -34,14 +36,19 @@
     <meta property="og:title" content="Digital Marketing & Sales Blog | Insights by Udith Babu K N">
     <meta property="og:description" content="Explore in-depth articles on digital marketing, SEO, sales strategies, and content creation from Udith Babu K N.">
     <meta property="og:image" content="https://udithbabukn.github.io/images/portfolio-thumbnail.jpg">
+    <meta property="og:image:alt" content="A thumbnail for the Digital Marketing & Sales Blog by Udith Babu K N">
     <meta property="og:url" content="https://udithbabukn.github.io/blog.html">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_IN">
+
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Digital Marketing & Sales Blog | Insights by Udith Babu K N">
     <meta name="twitter:description" content="Explore in-depth articles on digital marketing, SEO, sales strategies, and content creation from Udith Babu K N.">
     <meta name="twitter:image" content="https://udithbabukn.github.io/images/portfolio-thumbnail.jpg">
+    <meta name="twitter:image:alt" content="A thumbnail for the Digital Marketing & Sales Blog by Udith Babu K N">
+
 
     <!-- Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -154,6 +161,32 @@
             font-weight: 600;
         }
     </style>
+    <!-- SEO: Schema for Blog and ItemList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Digital Marketing & Sales Insights",
+      "description": "A comprehensive library of articles on digital marketing, SEO, sales strategies, and content creation by Udith Babu K N.",
+      "url": "https://udithbabukn.github.io/blog.html",
+      "publisher": {
+        "@type": "Person",
+        "name": "Udith Babu K N"
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "What is Digital Marketing? A Beginner's Guide",
+          "url": "https://udithbabukn.github.io/blog/what-is-digital-marketing.html"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "What is SEO? Your Guide to Ranking on Google",
+          "url": "https://udithbabukn.github.io/blog/what-is-seo.html"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="content">
     <header class="blog-header">
@@ -174,7 +207,7 @@
     </main>
 
     <footer class="footer">
-        <p id="copyright-year"></p>
+        <p id="copyright-year">© 2025 Udith Babu K N. All rights reserved.</p>
     </footer>
 
     <script>
