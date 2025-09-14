@@ -74,7 +74,7 @@
         }
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
             padding: 2rem 1rem;
             max-width: 1200px;
@@ -188,35 +188,115 @@
     }
     </script>
 </head>
-<body class="content">
-    <header class="blog-header">
-        <h1 class="section-header">Digital Marketing & Sales Insights</h1>
-        <p>A comprehensive library of 50 articles designed to guide you from foundational knowledge to advanced growth strategies in the digital landscape.</p>
-        <div class="back-to-home">
-            <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-        </div>
-    </header>
+<body>
 
-    <main>
-        <div id="blog-grid" class="blog-grid">
-            <!-- Blog cards will be dynamically inserted here by JavaScript -->
-        </div>
-        <nav id="pagination" class="pagination" aria-label="Blog post navigation">
-            <!-- Pagination links will be dynamically inserted here -->
-        </nav>
-    </main>
+    <div class="container">
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-indicator"></div>
+            <div class="profile-header">
+                <img src="picofme.webp" alt="Headshot of Udith Babu K N, Marketing and Sales Executive" class="profile-pic" loading="lazy" width="50" height="50">
+                <div class="logo">Udith Babu K N</div>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading email...</span></a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>Thalassery, Kerala, India</span>
+                </div>
+            </div>
 
+            <div class="social-links">
+                 <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                 <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Instagram Profile"><i class="fab fa-instagram"></i></a>
+                 <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"></i></a>
+                 <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"></i></a>
+            </div>
+            
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#summary" class="nav-link" data-section="summary"><i class="fas fa-user" aria-hidden="true"></i>Summary</a></li>
+                    <li class="nav-item"><a href="index.html#skills" class="nav-link" data-section="skills"><i class="fas fa-cogs" aria-hidden="true"></i>Skills</a></li>
+                    <li class="nav-item"><a href="index.html#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a></li>
+                    <li class="nav-item"><a href="index.html#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a></li>
+                    <li class="nav-item"><a href="index.html#projects" class="nav-link" data-section="projects"><i class="fas fa-project-diagram" aria-hidden="true"></i>Projects</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link" data-section="blog" aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
+                    <li class="nav-item"><a href="index.html#certifications" class="nav-link" data-section="certifications"><i class="fas fa-certificate" aria-hidden="true"></i>Certifications</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link" data-section="contact"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Me</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content" id="main-content" aria-label="Main Content">
+            
+            <!-- Header for Mobile View -->
+            <header class="mobile-header">
+                <div class="profile-header">
+                    <img src="picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic" loading="lazy" width="50" height="50">
+                    <div class="logo">Udith Babu K N</div>
+                </div>
+                <div class="mobile-header-actions">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium" aria-hidden="true"></i></a>
+                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest" aria-hidden="true"></i></a>
+                    </div>
+                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Original Blog Content Starts Here -->
+            <header class="blog-header">
+                <h1 class="section-header">Digital Marketing & Sales Insights</h1>
+                <p>A comprehensive library of 50 articles designed to guide you from foundational knowledge to advanced growth strategies in the digital landscape.</p>
+            </header>
+    
+            <div id="blog-grid" class="blog-grid">
+                <!-- Blog cards will be dynamically inserted here by JavaScript -->
+            </div>
+            <nav id="pagination" class="pagination" aria-label="Blog post navigation">
+                <!-- Pagination links will be dynamically inserted here -->
+            </nav>
+            <!-- Original Blog Content Ends Here -->
+
+        </main>
+    </div>
+    
+    <!-- Bottom Navigation Bar for Mobile -->
+    <nav class="bottom-nav" id="bottomNav" aria-label="Mobile Navigation">
+        <a href="index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i class="fas fa-user"></i><span>Summary</span></a>
+        <a href="index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i class="fas fa-cogs"></i><span>Skills</span></a>
+        <a href="index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+        <a href="index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
+        <a href="index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+        <a href="blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i class="fas fa-feather-alt"></i><span>Blog</span></a>
+        <a href="index.html#certifications" class="bottom-nav-link" data-section="certifications" aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
+        <a href="index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    </nav>
+
+
+    <!-- Footer -->
     <footer class="footer">
-        <p id="copyright-year">© 2025 Udith Babu K N. All rights reserved.</p>
+        <p id="copyright-year"></p>
     </footer>
 
+    <!-- Inline script for blog pagination -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const copyrightElement = document.getElementById('copyright-year');
-            if (copyrightElement) {
-                copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
-            }
-
             const blogPosts = [
                 // Cluster 1: The Foundation Series
                 { title: "What is Digital Marketing? A Beginner's Guide", category: "Foundations", excerpt: "A comprehensive introduction to the world of digital marketing, contrasting it with traditional methods and breaking down the eight primary categories.", slug:"what-is-digital-marketing" },
@@ -279,7 +359,7 @@
 
             const blogGrid = document.getElementById('blog-grid');
             const paginationContainer = document.getElementById('pagination');
-            const postsPerPage = 10;
+            const postsPerPage = 12;
             let currentPage = 1;
 
             function displayPosts(page) {
@@ -333,5 +413,7 @@
             setupPagination();
         });
     </script>
+    <script src="blog_script.js" defer></script>
 </body>
 </html>
+

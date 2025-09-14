@@ -34,48 +34,132 @@
         .back-to-blog a:hover { background: var(--accent-color); color: white; border-color: transparent; }
     </style>
 </head>
-<body class="content">
-    <main>
-        <article>
-            <header class="article-header">
-                <h1 class="section-header">How to Handle Sales Objections: A Guide for New Reps</h1>
-                <p class="article-meta">Published on September 15, 2025 by Udith Babu K N</p>
-            </header>
-            <div class="article-content">
-                <p>For a new sales representative, hearing a "no" or a "not right now" can feel like hitting a wall. But experienced reps know the truth: sales objections aren't roadblocks; they're opportunities. An objection is a sign of engagement. It means the prospect is listening and thinking critically, giving you a chance to address their concerns and guide them toward a solution.</p>
-                
-                
-
-                <h2>The Most Common Sales Objections (and How to Approach Them)</h2>
-                <p>While every conversation is unique, most objections fall into a few common categories. Here’s how to prepare for them:</p>
-                
-                <h3>1. The Price Objection: "It's too expensive."</h3>
-                <p>This is often a knee-jerk reaction or a request for more information about value. Instead of defending the price, your goal is to re-frame the conversation around return on investment (ROI). Ask questions to uncover the true cost of the problem they're facing without your solution.</p>
-
-                <h3>2. The Timing Objection: "I need to think about it." or "Call me next quarter."</h3>
-                <p>This can be a polite way of saying "no," or it could be a genuine request for time. It's your job to find out which it is. Create a sense of urgency by highlighting the cost of inaction or a time-sensitive offer. Ask, "What information would help you make a decision today?"</p>
-                
-                <h3>3. The Authority Objection: "I have to talk to my boss."</h3>
-                <p>This reveals you may not be speaking with the final decision-maker. This is a great opportunity to learn more about the internal buying process. Respond with, "That makes sense. Could we schedule a brief call with you and your boss next week so I can answer any questions they might have?"</p>
-
-                <h2>A Framework for Responding: The LAIR Method</h2>
-                <p>Instead of improvising, use a proven framework to structure your responses. The LAIR method is simple, effective, and keeps the conversation constructive.</p>
-                <ul>
-                    <li><strong>Listen:</strong> Let the prospect finish their entire thought without interrupting. Give them your full attention. Often, simply being heard can de-escalate the situation.</li>
-                    <li><strong>Acknowledge:</strong> Show empathy and validate their concern. Use phrases like, "I understand why you'd feel that way," or "That's a valid point." This builds rapport and shows you're on their side.</li>
-                    <li><strong>Identify:</strong> Ask probing questions to get to the root cause of the objection. Is the price objection really about budget, or is it about perceived value? Is the timing objection about a busy schedule, or a lack of trust in the solution?</li>
-                    <li><strong>Reverse:</strong> Once you understand the real issue, offer a solution or a new perspective that reverses their concern. This could be a case study demonstrating ROI, a trial offer to de-risk the decision, or providing more information to build trust.</li>
-                </ul>
-                <blockquote>By mastering a simple framework and preparing for common objections, you can turn moments of friction into productive conversations that build trust and close deals.</blockquote>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-indicator"></div>
+            <div class="profile-header">
+                <img src="../picofme.webp" alt="Headshot of Udith Babu K N, Marketing and Sales Executive" class="profile-pic" loading="lazy" width="50" height="50">
+                <div class="logo">Udith Babu K N</div>
             </div>
-        </article>
-        <div class="back-to-blog">
-            <a href="../blog.html"><i class="fas fa-arrow-left"></i> Back to All Articles</a>
-        </div>
-    </main>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading email...</span></a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>Thalassery, Kerala, India</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                 <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                 <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Instagram Profile"><i class="fab fa-instagram"></i></a>
+                 <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"></i></a>
+                 <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"></i></a>
+            </div>
+            
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html#summary" class="nav-link" data-section="summary"><i class="fas fa-user" aria-hidden="true"></i>Summary</a></li>
+                    <li class="nav-item"><a href="../index.html#skills" class="nav-link" data-section="skills"><i class="fas fa-cogs" aria-hidden="true"></i>Skills</a></li>
+                    <li class="nav-item"><a href="../index.html#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a></li>
+                    <li class="nav-item"><a href="../index.html#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a></li>
+                    <li class="nav-item"><a href="../index.html#projects" class="nav-link" data-section="projects"><i class="fas fa-project-diagram" aria-hidden="true"></i>Projects</a></li>
+                    <li class="nav-item"><a href="../blog.html" class="nav-link" data-section="blog" aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
+                    <li class="nav-item"><a href="../index.html#certifications" class="nav-link" data-section="certifications"><i class="fas fa-certificate" aria-hidden="true"></i>Certifications</a></li>
+                    <li class="nav-item"><a href="../index.html#contact" class="nav-link" data-section="contact"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Me</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content" id="main-content" aria-label="Main Content">
+            
+            <!-- Header for Mobile View -->
+            <header class="mobile-header">
+                <div class="profile-header">
+                    <img src="../picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic" loading="lazy" width="50" height="50">
+                    <div class="logo">Udith Babu K N</div>
+                </div>
+                <div class="mobile-header-actions">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium" aria-hidden="true"></i></a>
+                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest" aria-hidden="true"></i></a>
+                    </div>
+                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <article>
+                <header class="article-header">
+                    <h1 class="section-header">How to Handle Sales Objections: A Guide for New Reps</h1>
+                    <p class="article-meta">Published on September 15, 2025 by Udith Babu K N</p>
+                </header>
+                <div class="article-content">
+                    <p>For a new sales representative, hearing a "no" or a "not right now" can feel like hitting a wall. But experienced reps know the truth: sales objections aren't roadblocks; they're opportunities. An objection is a sign of engagement. It means the prospect is listening and thinking critically, giving you a chance to address their concerns and guide them toward a solution.</p>
+                    
+                    <h2>The Most Common Sales Objections (and How to Approach Them)</h2>
+                    <p>While every conversation is unique, most objections fall into a few common categories. Here’s how to prepare for them:</p>
+                    
+                    <h3>1. The Price Objection: "It's too expensive."</h3>
+                    <p>This is often a knee-jerk reaction or a request for more information about value. Instead of defending the price, your goal is to re-frame the conversation around return on investment (ROI). Ask questions to uncover the true cost of the problem they're facing without your solution.</p>
+
+                    <h3>2. The Timing Objection: "I need to think about it." or "Call me next quarter."</h3>
+                    <p>This can be a polite way of saying "no," or it could be a genuine request for time. It's your job to find out which it is. Create a sense of urgency by highlighting the cost of inaction or a time-sensitive offer. Ask, "What information would help you make a decision today?"</p>
+                    
+                    <h3>3. The Authority Objection: "I have to talk to my boss."</h3>
+                    <p>This reveals you may not be speaking with the final decision-maker. This is a great opportunity to learn more about the internal buying process. Respond with, "That makes sense. Could we schedule a brief call with you and your boss next week so I can answer any questions they might have?"</p>
+
+                    <h2>A Framework for Responding: The LAIR Method</h2>
+                    <p>Instead of improvising, use a proven framework to structure your responses. The LAIR method is simple, effective, and keeps the conversation constructive.</p>
+                    <ul>
+                        <li><strong>Listen:</strong> Let the prospect finish their entire thought without interrupting. Give them your full attention. Often, simply being heard can de-escalate the situation.</li>
+                        <li><strong>Acknowledge:</strong> Show empathy and validate their concern. Use phrases like, "I understand why you'd feel that way," or "That's a valid point." This builds rapport and shows you're on their side.</li>
+                        <li><strong>Identify:</strong> Ask probing questions to get to the root cause of the objection. Is the price objection really about budget, or is it about perceived value? Is the timing objection about a busy schedule, or a lack of trust in the solution?</li>
+                        <li><strong>Reverse:</strong> Once you understand the real issue, offer a solution or a new perspective that reverses their concern. This could be a case study demonstrating ROI, a trial offer to de-risk the decision, or providing more information to build trust.</li>
+                    </ul>
+                    <blockquote>By mastering a simple framework and preparing for common objections, you can turn moments of friction into productive conversations that build trust and close deals.</blockquote>
+                </div>
+            </article>
+
+            <div class="back-to-blog">
+                <a href="../blog.html"><i class="fas fa-arrow-left"></i> Back to All Articles</a>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Bottom Navigation Bar for Mobile -->
+    <nav class="bottom-nav" id="bottomNav" aria-label="Mobile Navigation">
+        <a href="../index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i class="fas fa-user"></i><span>Summary</span></a>
+        <a href="../index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i class="fas fa-cogs"></i><span>Skills</span></a>
+        <a href="../index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+        <a href="../index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
+        <a href="../index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+        <a href="../blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i class="fas fa-feather-alt"></i><span>Blog</span></a>
+        <a href="../index.html#certifications" class="bottom-nav-link" data-section="certifications" aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
+        <a href="../index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    </nav>
+
+
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 Udith Babu K N. All rights reserved.</p>
+        <p id="copyright-year"></p>
     </footer>
+
+    <script src="../blog_script.js" defer></script>
 </body>
 </html>
-
