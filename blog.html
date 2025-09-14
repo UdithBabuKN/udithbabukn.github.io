@@ -59,7 +59,7 @@
         /* Additional styles specific to the blog page */
         .blog-header {
             text-align: center;
-            padding: 4rem 1rem 2rem;
+            padding-bottom: 2rem;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -74,9 +74,8 @@
         }
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
-            padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -135,7 +134,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem 1rem 4rem;
+            padding: 2rem 0;
             gap: 0.5rem;
         }
         .pagination-link {
@@ -189,7 +188,6 @@
     </script>
 </head>
 <body>
-
     <div class="container">
         <!-- Sidebar Navigation (Desktop) -->
         <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
@@ -230,7 +228,7 @@
                     <li class="nav-item"><a href="index.html#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a></li>
                     <li class="nav-item"><a href="index.html#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a></li>
                     <li class="nav-item"><a href="index.html#projects" class="nav-link" data-section="projects"><i class="fas fa-project-diagram" aria-hidden="true"></i>Projects</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link" data-section="blog" aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link active" data-section="blog" aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
                     <li class="nav-item"><a href="index.html#certifications" class="nav-link" data-section="certifications"><i class="fas fa-certificate" aria-hidden="true"></i>Certifications</a></li>
                     <li class="nav-item"><a href="index.html#contact" class="nav-link" data-section="contact"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Me</a></li>
                 </ul>
@@ -258,21 +256,25 @@
                     </button>
                 </div>
             </header>
-
-            <!-- Original Blog Content Starts Here -->
-            <header class="blog-header">
-                <h1 class="section-header">Digital Marketing & Sales Insights</h1>
-                <p>A comprehensive library of 50 articles designed to guide you from foundational knowledge to advanced growth strategies in the digital landscape.</p>
-            </header>
-    
-            <div id="blog-grid" class="blog-grid">
-                <!-- Blog cards will be dynamically inserted here by JavaScript -->
+            
+            <div class="content-scroller">
+                <header class="blog-header">
+                    <h1 class="section-header">Blogs</h1>
+                </header>
+        
+                <div id="blog-grid" class="blog-grid">
+                    <!-- Blog cards will be dynamically inserted here by JavaScript -->
+                </div>
+                <nav id="pagination" class="pagination" aria-label="Blog post navigation">
+                    <!-- Pagination links will be dynamically inserted here -->
+                </nav>
             </div>
-            <nav id="pagination" class="pagination" aria-label="Blog post navigation">
-                <!-- Pagination links will be dynamically inserted here -->
-            </nav>
-            <!-- Original Blog Content Ends Here -->
-
+            
+            <div class="article-footer">
+                <footer class="footer">
+                    <p id="copyright-year"></p>
+                </footer>
+            </div>
         </main>
     </div>
     
@@ -288,15 +290,13 @@
         <a href="index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
     </nav>
 
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p id="copyright-year"></p>
-    </footer>
-
-    <!-- Inline script for blog pagination -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
+            }
+
             const blogPosts = [
                 // Cluster 1: The Foundation Series
                 { title: "What is Digital Marketing? A Beginner's Guide", category: "Foundations", excerpt: "A comprehensive introduction to the world of digital marketing, contrasting it with traditional methods and breaking down the eight primary categories.", slug:"what-is-digital-marketing" },
@@ -359,7 +359,8 @@
 
             const blogGrid = document.getElementById('blog-grid');
             const paginationContainer = document.getElementById('pagination');
-            const postsPerPage = 12;
+            const contentScroller = document.querySelector('.content-scroller');
+            const postsPerPage = 10;
             let currentPage = 1;
 
             function displayPosts(page) {
@@ -403,7 +404,9 @@
                         
                         document.querySelector('.pagination-link.active').classList.remove('active');
                         link.classList.add('active');
-                        window.scrollTo(0, 0);
+                        if (contentScroller) {
+                            contentScroller.scrollTo(0, 0);
+                        }
                     });
                     paginationContainer.appendChild(link);
                 }

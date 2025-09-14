@@ -213,6 +213,8 @@ a:focus-visible, button:focus-visible, [tabindex]:not([tabindex="-1"]):focus-vis
     width: calc(100% - 40px);
     padding: 3rem 2rem;
     transition: margin-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .sidebar:hover ~ .content {
@@ -1207,6 +1209,8 @@ textarea.form-control {
         margin-left: 0;
         width: 100%;
         padding: 1rem 1rem 90px 1rem;
+        height: auto; /* Revert for mobile to allow natural scroll */
+        overflow-y: visible;
     }
     .bottom-nav {
         display: flex;
@@ -1273,3 +1277,4 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+
