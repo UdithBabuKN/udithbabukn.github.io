@@ -57,6 +57,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     setDynamicTheme();
 
+    // --- INTERACTIVE SIDEBAR & MAGNETIC EFFECTS ---
+    function initMagneticElements(selector) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.15)`;
+                el.style.transition = 'transform 0.1s ease-out';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0,0) scale(1)';
+                el.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+        });
+    }
+
+    function initInteractiveSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const indicator = document.querySelector('.sidebar-indicator');
+        if (sidebar && indicator) {
+            sidebar.addEventListener('mouseenter', () => {
+                indicator.classList.add('interactive-hover');
+            });
+            sidebar.addEventListener('mouseleave', () => {
+                indicator.classList.remove('interactive-hover');
+            });
+        }
+    }
+
+    initMagneticElements('.social-link');
+    initInteractiveSidebar();
+
+
+    // --- LAZY LOAD ANIMATION FOR ARTICLE CONTENT ---
+    const lazyElements = document.querySelectorAll('.lazy-load');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -50px 0px' });
+        lazyElements.forEach(element => observer.observe(element));
+    } else {
+        lazyElements.forEach(element => element.classList.add('visible'));
+    }
+
     // --- EMAIL DEOBFUSCATION ---
     const emailLinks = document.querySelectorAll('.email-link');
     const emailAddress = 'udithbabuvarrier@gmail.com';
@@ -86,3 +137,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
