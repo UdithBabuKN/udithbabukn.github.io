@@ -274,6 +274,12 @@
         <a href="index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
     </nav>
 
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p id="copyright-year"></p>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const copyrightElement = document.getElementById('copyright-year');
@@ -347,11 +353,10 @@
             const postsPerPage = 10;
             let currentPage = 1;
 
+            // Function to display a specific page of posts
             function displayPosts(page) {
                 blogGrid.innerHTML = '';
-                page--; //
-                
-                const start = postsPerPage * page;
+                const start = postsPerPage * (page - 1);
                 const end = start + postsPerPage;
                 const paginatedPosts = blogPosts.slice(start, end);
 
@@ -368,8 +373,10 @@
                     `;
                     blogGrid.appendChild(card);
                 }
+                attachLinkListeners(); // Attach event listeners to new links
             }
 
+            // Function to set up the pagination links
             function setupPagination() {
                 paginationContainer.innerHTML = '';
                 const pageCount = Math.ceil(blogPosts.length / postsPerPage);
@@ -396,11 +403,51 @@
                 }
             }
 
-            displayPosts(currentPage);
+            // Function to save the current scroll position and page to sessionStorage
+            function saveState() {
+                sessionStorage.setItem('blogPage', currentPage);
+                sessionStorage.setItem('blogScrollPosition', contentScroller.scrollTop);
+            }
+
+            // Function to restore the saved state on page load
+            function restoreState() {
+                const savedPage = sessionStorage.getItem('blogPage');
+                const savedScrollPosition = sessionStorage.getItem('blogScrollPosition');
+
+                if (savedPage) {
+                    currentPage = parseInt(savedPage, 10);
+                    displayPosts(currentPage);
+                    const activeLink = document.querySelector(`.pagination-link:nth-child(${currentPage})`);
+                    if (activeLink) {
+                        document.querySelector('.pagination-link.active').classList.remove('active');
+                        activeLink.classList.add('active');
+                    }
+                    if (savedScrollPosition) {
+                        requestAnimationFrame(() => {
+                           contentScroller.scrollTo(0, parseInt(savedScrollPosition, 10));
+                        });
+                    }
+                    sessionStorage.removeItem('blogPage');
+                    sessionStorage.removeItem('blogScrollPosition');
+                } else {
+                    displayPosts(currentPage);
+                }
+            }
+
+            // Function to attach event listeners to all blog post links
+            function attachLinkListeners() {
+                const blogLinks = document.querySelectorAll('.blog-card-link');
+                blogLinks.forEach(link => {
+                    link.removeEventListener('click', saveState); // Prevent duplicate listeners
+                    link.addEventListener('click', saveState);
+                });
+            }
+
+            // Initial setup
+            restoreState();
             setupPagination();
         });
     </script>
     <script src="blog_script.js" defer></script>
 </body>
 </html>
-
