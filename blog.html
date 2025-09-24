@@ -57,14 +57,18 @@
 
     <style>
         /* Additional styles specific to the blog page */
+        .blog-header {
+            text-align: center;
+            padding: 2rem 1rem 3rem;
+        }
+
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
-            padding: 0 1rem; /* Adjust padding for grid layout */
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 0 1rem;
         }
+        
         .blog-card {
             background-color: var(--bg-card);
             border-radius: 12px;
@@ -74,36 +78,55 @@
             flex-direction: column;
             transition: var(--transition);
             box-shadow: var(--box-shadow);
+            opacity: 0;
+            transform: translateY(20px);
         }
+
+        .blog-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
         .blog-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.2);
         }
+        
         .blog-card-content {
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
+        .blog-card-category {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            background-color: var(--category-color, var(--primary-color));
+            color: #0A0A1A;
+            margin-bottom: 1rem;
+        }
+        [data-theme="light"] .blog-card-category {
+            color: #fff;
+        }
+
         .blog-card-title {
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--text-color);
         }
-        .blog-card-meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        
         .blog-card-excerpt {
             font-size: 0.95rem;
             color: var(--text-muted);
             flex-grow: 1;
             margin-bottom: 1.5rem;
         }
+
         .blog-card-link {
             display: inline-flex;
             align-items: center;
@@ -113,14 +136,16 @@
             font-weight: 600;
             margin-top: auto;
         }
+
         .blog-card-link:hover {
             text-decoration: underline;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
             gap: 0.5rem;
         }
         .pagination-link {
@@ -224,9 +249,9 @@
                 <div class="mobile-header-actions">
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium" aria-hidden="true"></i></a>
-                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"></i></a>
+                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"></i></a>
                     </div>
                     <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
                         <i class="fas fa-moon"></i>
@@ -242,13 +267,14 @@
             </div>
             
             <div class="content-scroller">
-                <section class="section">
-                    <h2 class="section-header">Blogs</h2>
+                <section class="section blog-header">
+                    <h1 class="section-header">Blogs</h1>
                 </section>
         
                 <div id="blog-grid" class="blog-grid">
-                    <!-- Blog cards will be dynamically inserted here by JavaScript -->
+                    <!-- Blog cards will be dynamically inserted here -->
                 </div>
+                
                 <nav id="pagination" class="pagination" aria-label="Blog post navigation">
                     <!-- Pagination links will be dynamically inserted here -->
                 </nav>
@@ -288,8 +314,8 @@
             }
 
             const blogPosts = [
-                // Cluster 1: The Foundation Series
-                { title: "What is Digital Marketing? A Beginner's Guide", category: "Foundations", excerpt: "A comprehensive introduction to the world of digital marketing, contrasting it with traditional methods and breaking down the eight primary categories.", slug:"what-is-digital-marketing" },
+                 // Cluster 1: The Foundation Series
+                 { title: "What is Digital Marketing? A Beginner's Guide", category: "Foundations", excerpt: "A comprehensive introduction to the world of digital marketing, contrasting it with traditional methods and breaking down the eight primary categories.", slug:"what-is-digital-marketing" },
                 { title: "What is SEO? Your Guide to Ranking on Google", category: "Foundations", excerpt: "Demystify Search Engine Optimization. Learn the three fundamental pillars: on-page, off-page, and technical SEO.", slug:"what-is-seo" },
                 { title: "What is Content Marketing and Why is it King?", category: "Foundations", excerpt: "Discover the strategic creation and distribution of valuable content to attract and engage your target audience online.", slug:"what-is-content-marketing" },
                 { title: "What is a Sales Funnel? Mapping the Customer Journey", category: "Foundations", excerpt: "A clear and simple explanation of the sales funnel concept using the classic AIDA model to walk through the customer journey.", slug:"what-is-a-sales-funnel" },
@@ -350,33 +376,56 @@
             const blogGrid = document.getElementById('blog-grid');
             const paginationContainer = document.getElementById('pagination');
             const contentScroller = document.querySelector('.content-scroller');
-            const postsPerPage = 10;
+            
             let currentPage = 1;
+            const postsPerPage = 10; 
 
-            // Function to display a specific page of posts
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            function getCategoryColor(category) {
+                switch(category) {
+                    case 'Foundations': return '#00E5FF'; // Cyan
+                    case 'Playbook': return '#76FF03'; // Lime Green
+                    case 'Sales Excellence': return '#FF4081'; // Pink
+                    case 'Growth & Analytics': return '#FFC107'; // Amber
+                    default: return '#9C27B0'; // Purple
+                }
+            }
+
             function displayPosts(page) {
                 blogGrid.innerHTML = '';
-                const start = postsPerPage * (page - 1);
+                const start = (page - 1) * postsPerPage;
                 const end = start + postsPerPage;
                 const paginatedPosts = blogPosts.slice(start, end);
 
-                for (const post of paginatedPosts) {
+                paginatedPosts.forEach(post => {
                     const card = document.createElement('article');
                     card.className = 'blog-card';
+                    const categoryColor = getCategoryColor(post.category);
+                    card.style.setProperty('--category-color', categoryColor);
+
                     card.innerHTML = `
                         <div class="blog-card-content">
-                            <p class="blog-card-meta">${post.category}</p>
-                            <h2 class="blog-card-title">${post.title}</h2>
+                            <span class="blog-card-category">${post.category}</span>
+                            <h3 class="blog-card-title">${post.title}</h3>
                             <p class="blog-card-excerpt">${post.excerpt}</p>
                             <a href="blog/${post.slug}.html" class="blog-card-link">Read More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     `;
                     blogGrid.appendChild(card);
-                }
-                attachLinkListeners(); // Attach event listeners to new links
+                    observer.observe(card);
+                });
+                attachLinkListeners();
             }
 
-            // Function to set up the pagination links
             function setupPagination() {
                 paginationContainer.innerHTML = '';
                 const pageCount = Math.ceil(blogPosts.length / postsPerPage);
@@ -393,7 +442,9 @@
                         currentPage = i;
                         displayPosts(currentPage);
                         
-                        document.querySelector('.pagination-link.active').classList.remove('active');
+                        const currentActive = document.querySelector('.pagination-link.active');
+                        if(currentActive) currentActive.classList.remove('active');
+                        
                         link.classList.add('active');
                         if (contentScroller) {
                             contentScroller.scrollTo(0, 0);
@@ -403,47 +454,45 @@
                 }
             }
 
-            // Function to save the current scroll position and page to sessionStorage
             function saveState() {
                 sessionStorage.setItem('blogPage', currentPage);
-                sessionStorage.setItem('blogScrollPosition', contentScroller.scrollTop);
+                if (contentScroller) {
+                    sessionStorage.setItem('blogScrollPosition', contentScroller.scrollTop);
+                }
             }
 
-            // Function to restore the saved state on page load
             function restoreState() {
                 const savedPage = sessionStorage.getItem('blogPage');
                 const savedScrollPosition = sessionStorage.getItem('blogScrollPosition');
 
-                if (savedPage) {
-                    currentPage = parseInt(savedPage, 10);
-                    displayPosts(currentPage);
-                    const activeLink = document.querySelector(`.pagination-link:nth-child(${currentPage})`);
-                    if (activeLink) {
-                        document.querySelector('.pagination-link.active').classList.remove('active');
-                        activeLink.classList.add('active');
-                    }
-                    if (savedScrollPosition) {
-                        requestAnimationFrame(() => {
-                           contentScroller.scrollTo(0, parseInt(savedScrollPosition, 10));
-                        });
-                    }
-                    sessionStorage.removeItem('blogPage');
-                    sessionStorage.removeItem('blogScrollPosition');
-                } else {
-                    displayPosts(currentPage);
+                if (savedPage) currentPage = parseInt(savedPage, 10);
+                
+                displayPosts(currentPage);
+                
+                const activeLink = document.querySelector(`.pagination-link:nth-child(${currentPage})`);
+                if (activeLink) {
+                    const currentActive = document.querySelector('.pagination-link.active');
+                    if(currentActive) currentActive.classList.remove('active');
+                    activeLink.classList.add('active');
                 }
+                
+                if (savedScrollPosition && contentScroller) {
+                    requestAnimationFrame(() => {
+                        contentScroller.scrollTo(0, parseInt(savedScrollPosition, 10));
+                    });
+                }
+                sessionStorage.removeItem('blogPage');
+                sessionStorage.removeItem('blogScrollPosition');
             }
 
-            // Function to attach event listeners to all blog post links
             function attachLinkListeners() {
                 const blogLinks = document.querySelectorAll('.blog-card-link');
                 blogLinks.forEach(link => {
-                    link.removeEventListener('click', saveState); // Prevent duplicate listeners
+                    link.removeEventListener('click', saveState);
                     link.addEventListener('click', saveState);
                 });
             }
 
-            // Initial setup
             restoreState();
             setupPagination();
         });
@@ -451,3 +500,4 @@
     <script src="blog_script.js" defer></script>
 </body>
 </html>
+
