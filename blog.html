@@ -127,6 +127,45 @@
             margin-bottom: 1.5rem;
         }
 
+        .blog-card-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        .author-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .read-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
         .blog-card-link {
             display: inline-flex;
             align-items: center;
@@ -134,7 +173,6 @@
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
-            margin-top: auto;
         }
 
         .blog-card-link:hover {
@@ -315,62 +353,62 @@
 
             const blogPosts = [
                  // Cluster 1: The Foundation Series
-                 { title: "What is Digital Marketing? A Beginner's Guide", category: "Foundations", excerpt: "A comprehensive introduction to the world of digital marketing, contrasting it with traditional methods and breaking down the eight primary categories.", slug:"what-is-digital-marketing" },
-                { title: "What is SEO? Your Guide to Ranking on Google", category: "Foundations", excerpt: "Demystify Search Engine Optimization. Learn the three fundamental pillars: on-page, off-page, and technical SEO.", slug:"what-is-seo" },
-                { title: "What is Content Marketing and Why is it King?", category: "Foundations", excerpt: "Discover the strategic creation and distribution of valuable content to attract and engage your target audience online.", slug:"what-is-content-marketing" },
-                { title: "What is a Sales Funnel? Mapping the Customer Journey", category: "Foundations", excerpt: "A clear and simple explanation of the sales funnel concept using the classic AIDA model to walk through the customer journey.", slug:"what-is-a-sales-funnel" },
-                { title: "What is a CRM? The Ultimate Guide for Small Businesses", category: "Foundations", excerpt: "Define Customer Relationship Management (CRM) as both a strategy and a technology for managing customer interactions.", slug:"what-is-a-crm" },
-                { title: "B2B vs. B2C Marketing: What's the Difference?", category: "Foundations", excerpt: "Clearly delineate the fundamental differences between Business-to-Business (B2B) and Business-to-Consumer (B2C) marketing.", slug:"b2b-vs-b2c-marketing" },
-                { title: "What is Lead Generation? A Simple Introduction", category: "Foundations", excerpt: "Define lead generation as the process of attracting and converting strangers into someone who has indicated interest in your product or service.", slug:"what-is-lead-generation" },
-                { title: "What is PPC? A Guide to Pay-Per-Click Advertising", category: "Foundations", excerpt: "Define Pay-Per-Click (PPC) as an online advertising model where an advertiser pays a fee each time one of their ads is clicked.", slug:"what-is-ppc" },
-                { title: "What is Social Media Marketing? More Than Just Posting", category: "Foundations", excerpt: "Define social media marketing as the use of social media platforms to connect with an audience to build a brand and drive sales.", slug:"what-is-social-media-marketing" },
-                { title: "What is Sales Enablement? Empowering Your Team", category: "Foundations", excerpt: "Introduce sales enablement as a strategic process that equips sales teams with the resources they need to sell more effectively.", slug:"what-is-sales-enablement" },
+                 { title: "What is Digital Marketing? A Beginner's Guide", category: "Foundations", excerpt: "A comprehensive introduction to the world of digital marketing, contrasting it with traditional methods and breaking down the eight primary categories.", slug:"what-is-digital-marketing", readTime: "4 min read" },
+                { title: "What is SEO? Your Guide to Ranking on Google", category: "Foundations", excerpt: "Demystify Search Engine Optimization. Learn the three fundamental pillars: on-page, off-page, and technical SEO.", slug:"what-is-seo", readTime: "3 min read" },
+                { title: "What is Content Marketing and Why is it King?", category: "Foundations", excerpt: "Discover the strategic creation and distribution of valuable content to attract and engage your target audience online.", slug:"what-is-content-marketing", readTime: "3 min read" },
+                { title: "What is a Sales Funnel? Mapping the Customer Journey", category: "Foundations", excerpt: "A clear and simple explanation of the sales funnel concept using the classic AIDA model to walk through the customer journey.", slug:"what-is-a-sales-funnel", readTime: "3 min read" },
+                { title: "What is a CRM? The Ultimate Guide for Small Businesses", category: "Foundations", excerpt: "Define Customer Relationship Management (CRM) as both a strategy and a technology for managing customer interactions.", slug:"what-is-a-crm", readTime: "2 min read" },
+                { title: "B2B vs. B2C Marketing: What's the Difference?", category: "Foundations", excerpt: "Clearly delineate the fundamental differences between Business-to-Business (B2B) and Business-to-Consumer (B2C) marketing.", slug:"b2b-vs-b2c-marketing", readTime: "3 min read" },
+                { title: "What is Lead Generation? A Simple Introduction", category: "Foundations", excerpt: "Define lead generation as the process of attracting and converting strangers into someone who has indicated interest in your product or service.", slug:"what-is-lead-generation", readTime: "2 min read" },
+                { title: "What is PPC? A Guide to Pay-Per-Click Advertising", category: "Foundations", excerpt: "Define Pay-Per-Click (PPC) as an online advertising model where an advertiser pays a fee each time one of their ads is clicked.", slug:"what-is-ppc", readTime: "2 min read" },
+                { title: "What is Social Media Marketing? More Than Just Posting", category: "Foundations", excerpt: "Define social media marketing as the use of social media platforms to connect with an audience to build a brand and drive sales.", slug:"what-is-social-media-marketing", readTime: "2 min read" },
+                { title: "What is Sales Enablement? Empowering Your Team", category: "Foundations", excerpt: "Introduce sales enablement as a strategic process that equips sales teams with the resources they need to sell more effectively.", slug:"what-is-sales-enablement", readTime: "3 min read" },
 
                 // Cluster 2: The Digital Marketing Playbook
-                { title: "How to Create a Content Marketing Strategy in 8 Steps", category: "Playbook", excerpt: "A comprehensive, step-by-step playbook for developing a content marketing strategy from goals to measurement.", slug:"how-to-create-content-marketing-strategy" },
-                { title: "SEO for Beginners: Get on the First Page of Google", category: "Playbook", excerpt: "A practical checklist of foundational SEO tasks for beginners to improve their search visibility.", slug:"seo-for-beginners" },
-                { title: "How to Build an Email List From Scratch: 7 Proven Tactics", category: "Playbook", excerpt: "Detailing seven effective and proven strategies for building an email list from zero using lead magnets and sign-up forms.", slug:"how-to-build-an-email-list" },
-                { title: "How to Create a Social Media Marketing Plan That Gets Results", category: "Playbook", excerpt: "A structured framework for creating a strategic social media plan, from setting SMART goals to creating a content calendar.", slug:"how-to-create-social-media-plan" },
-                { title: "Your First PPC Campaign: A Step-by-Step Guide", category: "Playbook", excerpt: "A beginner's walkthrough of setting up a PPC campaign on Google Ads, from keyword research to conversion tracking.", slug:"your-first-ppc-campaign" },
-                { title: "Long-Tail Keywords: The Secret to High-Converting Traffic", category: "Playbook", excerpt: "A deep dive into the strategy of targeting long-tail keywords to capture users with higher, more specific intent.", slug:"long-tail-keywords-strategy" },
-                { title: "How to Write a Blog Post That Ranks: A 10-Point Checklist", category: "Playbook", excerpt: "A practical, actionable checklist for creating blog content that is optimized for both search engines and human readers.", slug:"how-to-write-a-blog-post" },
-                { title: "Affiliate Marketing for Beginners: How to Earn Passive Income", category: "Playbook", excerpt: "Explaining the affiliate marketing business model and the steps for a beginner to get started, from choosing a niche to creating content.", slug:"affiliate-marketing-for-beginners" },
-                { title: "How to Create a Mobile Marketing Strategy for 2025", category: "Playbook", excerpt: "A framework for developing a modern mobile marketing strategy, from understanding the mobile customer to optimizing for voice search.", slug:"mobile-marketing-strategy-2025" },
-                { title: "How to Use Marketing Analytics to Prove Your ROI", category: "Playbook", excerpt: "A guide on the practical application of marketing analytics to demonstrate the value of marketing efforts using KPIs and tools like Google Analytics.", slug:"how-to-use-marketing-analytics" },
-                { title: "Beginner's Guide to A/B Testing in Marketing", category: "Playbook", excerpt: "Introducing A/B testing as the process of comparing two versions of a marketing asset to determine which one performs better.", slug:"beginners-guide-to-ab-testing" },
-                { title: "How to Use Local SEO to Get More Customers", category: "Playbook", excerpt: "A checklist of actionable tips for improving local search visibility, including optimizing Google Business Profile and building local citations.", slug:"how-to-use-local-seo" },
-                { title: "Video Marketing 101: How to Get Started on YouTube", category: "Playbook", excerpt: "Covering the fundamentals of launching a video marketing effort on YouTube, from content creation to YouTube SEO.", slug:"video-marketing-101-youtube" },
-                { title: "Influencer Marketing: A Step-by-Step Guide for Brands", category: "Playbook", excerpt: "A structured process for brands to plan and execute an influencer marketing campaign, from defining goals to tracking metrics.", slug:"influencer-marketing-guide" },
-                { title: "A Beginner's Guide to Using Google Keyword Planner", category: "Playbook", excerpt: "A practical, screen-shot-rich walkthrough of Google's free keyword research tool for SEO and PPC campaigns.", slug:"guide-to-google-keyword-planner" },
+                { title: "How to Create a Content Marketing Strategy in 8 Steps", category: "Playbook", excerpt: "A comprehensive, step-by-step playbook for developing a content marketing strategy from goals to measurement.", slug:"how-to-create-content-marketing-strategy", readTime: "5 min read" },
+                { title: "SEO for Beginners: Get on the First Page of Google", category: "Playbook", excerpt: "A practical checklist of foundational SEO tasks for beginners to improve their search visibility.", slug:"seo-for-beginners", readTime: "4 min read" },
+                { title: "How to Build an Email List From Scratch: 7 Proven Tactics", category: "Playbook", excerpt: "Detailing seven effective and proven strategies for building an email list from zero using lead magnets and sign-up forms.", slug:"how-to-build-an-email-list", readTime: "4 min read" },
+                { title: "How to Create a Social Media Marketing Plan That Gets Results", category: "Playbook", excerpt: "A structured framework for creating a strategic social media plan, from setting SMART goals to creating a content calendar.", slug:"how-to-create-social-media-plan", readTime: "4 min read" },
+                { title: "Your First PPC Campaign: A Step-by-Step Guide", category: "Playbook", excerpt: "A beginner's walkthrough of setting up a PPC campaign on Google Ads, from keyword research to conversion tracking.", slug:"your-first-ppc-campaign", readTime: "5 min read" },
+                { title: "Long-Tail Keywords: The Secret to High-Converting Traffic", category: "Playbook", excerpt: "A deep dive into the strategy of targeting long-tail keywords to capture users with higher, more specific intent.", slug:"long-tail-keywords-strategy", readTime: "3 min read" },
+                { title: "How to Write a Blog Post That Ranks: A 10-Point Checklist", category: "Playbook", excerpt: "A practical, actionable checklist for creating blog content that is optimized for both search engines and human readers.", slug:"how-to-write-a-blog-post", readTime: "5 min read" },
+                { title: "Affiliate Marketing for Beginners: How to Earn Passive Income", category: "Playbook", excerpt: "Explaining the affiliate marketing business model and the steps for a beginner to get started, from choosing a niche to creating content.", slug:"affiliate-marketing-for-beginners", readTime: "4 min read" },
+                { title: "How to Create a Mobile Marketing Strategy for 2025", category: "Playbook", excerpt: "A framework for developing a modern mobile marketing strategy, from understanding the mobile customer to optimizing for voice search.", slug:"mobile-marketing-strategy-2025", readTime: "4 min read" },
+                { title: "How to Use Marketing Analytics to Prove Your ROI", category: "Playbook", excerpt: "A guide on the practical application of marketing analytics to demonstrate the value of marketing efforts using KPIs and tools like Google Analytics.", slug:"how-to-use-marketing-analytics", readTime: "4 min read" },
+                { title: "Beginner's Guide to A/B Testing in Marketing", category: "Playbook", excerpt: "Introducing A/B testing as the process of comparing two versions of a marketing asset to determine which one performs better.", slug:"beginners-guide-to-ab-testing", readTime: "3 min read" },
+                { title: "How to Use Local SEO to Get More Customers", category: "Playbook", excerpt: "A checklist of actionable tips for improving local search visibility, including optimizing Google Business Profile and building local citations.", slug:"how-to-use-local-seo", readTime: "4 min read" },
+                { title: "Video Marketing 101: How to Get Started on YouTube", category: "Playbook", excerpt: "Covering the fundamentals of launching a video marketing effort on YouTube, from content creation to YouTube SEO.", slug:"video-marketing-101-youtube", readTime: "4 min read" },
+                { title: "Influencer Marketing: A Step-by-Step Guide for Brands", category: "Playbook", excerpt: "A structured process for brands to plan and execute an influencer marketing campaign, from defining goals to tracking metrics.", slug:"influencer-marketing-guide", readTime: "4 min read" },
+                { title: "A Beginner's Guide to Using Google Keyword Planner", category: "Playbook", excerpt: "A practical, screen-shot-rich walkthrough of Google's free keyword research tool for SEO and PPC campaigns.", slug:"guide-to-google-keyword-planner", readTime: "3 min read" },
 
                 // Cluster 3: The Sales Excellence Series
-                { title: "How to Build a Sales Funnel That Converts: A 7-Step Guide", category: "Sales Excellence", excerpt: "A comprehensive, step-by-step guide to creating and optimizing a sales funnel, from audience understanding to post-sale communication.", slug:"how-to-build-a-sales-funnel" },
-                { title: "10 Ways to Generate High-Quality B2B Sales Leads", category: "Sales Excellence", excerpt: "A listicle of ten proven and effective tactics for B2B lead generation, including referrals, cold emails, and content marketing.", slug:"generate-b2b-sales-leads" },
-                { title: "A Guide to SPIN Selling: 4 Types of Questions to Close More Deals", category: "Sales Excellence", excerpt: "A detailed explanation of the SPIN selling methodology, a consultative approach focused on asking strategic questions.", slug:"guide-to-spin-selling" },
-                { title: "How to Use a CRM for Sales: A Practical Guide", category: "Sales Excellence", excerpt: "Focusing on the practical, day-to-day application of a CRM system for salespeople, covering data input, pipeline management, and reporting.", slug:"how-to-use-crm-for-sales" },
-                { title: "The Challenger Sale Explained: Teach, Tailor, and Take Control", category: "Sales Excellence", excerpt: "Explaining the core principles of The Challenger Sale methodology, which posits that the most successful salespeople challenge their customers' thinking.", slug:"the-challenger-sale-explained" },
-                { title: "How to Create a Sales Enablement Plan That Actually Works", category: "Sales Excellence", excerpt: "A structured, six-step process for creating an effective sales enablement plan, from building a charter to ongoing iteration.", slug:"create-sales-enablement-plan" },
-                { title: "50+ Open-Ended Sales Questions to Uncover Customer Needs", category: "Sales Excellence", excerpt: "A comprehensive, categorized list of open-ended questions designed to facilitate deeper sales conversations.", slug:"open-ended-sales-questions" },
-                { title: "Lead Qualification: How to Use the BANT Framework", category: "Sales Excellence", excerpt: "A detailed guide to using the BANT framework (Budget, Authority, Need, and Timeline) for qualifying leads effectively.", slug:"lead-qualification-bant-framework" },
-                { title: "The 7 Stages of a Sales Process (and How to Master Each One)", category: "Sales Excellence", excerpt: "Detailing a 7-stage sales process, providing a clear roadmap from prospecting to closing and follow-up.", slug:"7-stages-of-sales-process" },
-                { title: "Solution Selling 101: Stop Selling Products, Start Solving Problems", category: "Sales Excellence", excerpt: "Introducing the core philosophy of solution selling: focusing on a customer's specific business problems rather than product features.", slug:"solution-selling-101" },
-                { title: "How to Write a Sales Playbook Your Team Will Actually Use", category: "Sales Excellence", excerpt: "A practical guide for creating a comprehensive sales playbook, detailing essential sections from company overview to sales collateral.", slug:"how-to-write-sales-playbook" },
-                { title: "Top 10 Sales Blogs Every Rep Should Be Reading in 2025", category: "Sales Excellence", excerpt: "A curated list of the top 10 most valuable sales blogs for professional development, with descriptions and highlights.", slug:"top-10-sales-blogs-2025" },
-                { title: "How to Handle Sales Objections: A Guide for New Reps", category: "Sales Excellence", excerpt: "Reframing sales objections as opportunities and providing a framework for responding to common concerns.", slug:"handle-sales-objections" },
-                { title: "Sales vs. Marketing: How to Align Your Teams for Growth", category: "Sales Excellence", excerpt: "Introducing the concept of a Service-Level Agreement (SLA) to establish clear deliverables and mutual accountability between sales and marketing.", slug:"sales-vs-marketing-alignment" },
-                { title: "What is a Sales Cadence? How to Build a Follow-Up Sequence", category: "Sales Excellence", excerpt: "Defining a sales cadence as a structured sequence of touchpoints and providing an example multi-channel follow-up sequence.", slug:"what-is-a-sales-cadence" },
+                { title: "How to Build a Sales Funnel That Converts: A 7-Step Guide", category: "Sales Excellence", excerpt: "A comprehensive, step-by-step guide to creating and optimizing a sales funnel, from audience understanding to post-sale communication.", slug:"how-to-build-a-sales-funnel", readTime: "5 min read" },
+                { title: "10 Ways to Generate High-Quality B2B Sales Leads", category: "Sales Excellence", excerpt: "A listicle of ten proven and effective tactics for B2B lead generation, including referrals, cold emails, and content marketing.", slug:"generate-b2b-sales-leads", readTime: "5 min read" },
+                { title: "A Guide to SPIN Selling: 4 Types of Questions to Close More Deals", category: "Sales Excellence", excerpt: "A detailed explanation of the SPIN selling methodology, a consultative approach focused on asking strategic questions.", slug:"guide-to-spin-selling", readTime: "4 min read" },
+                { title: "How to Use a CRM for Sales: A Practical Guide", category: "Sales Excellence", excerpt: "Focusing on the practical, day-to-day application of a CRM system for salespeople, covering data input, pipeline management, and reporting.", slug:"how-to-use-crm-for-sales", readTime: "4 min read" },
+                { title: "The Challenger Sale Explained: Teach, Tailor, and Take Control", category: "Sales Excellence", excerpt: "Explaining the core principles of The Challenger Sale methodology, which posits that the most successful salespeople challenge their customers' thinking.", slug:"the-challenger-sale-explained", readTime: "4 min read" },
+                { title: "How to Create a Sales Enablement Plan That Actually Works", category: "Sales Excellence", excerpt: "A structured, six-step process for creating an effective sales enablement plan, from building a charter to ongoing iteration.", slug:"create-sales-enablement-plan", readTime: "5 min read" },
+                { title: "50+ Open-Ended Sales Questions to Uncover Customer Needs", category: "Sales Excellence", excerpt: "A comprehensive, categorized list of open-ended questions designed to facilitate deeper sales conversations.", slug:"open-ended-sales-questions", readTime: "6 min read" },
+                { title: "Lead Qualification: How to Use the BANT Framework", category: "Sales Excellence", excerpt: "A detailed guide to using the BANT framework (Budget, Authority, Need, and Timeline) for qualifying leads effectively.", slug:"lead-qualification-bant-framework", readTime: "3 min read" },
+                { title: "The 7 Stages of a Sales Process (and How to Master Each One)", category: "Sales Excellence", excerpt: "Detailing a 7-stage sales process, providing a clear roadmap from prospecting to closing and follow-up.", slug:"7-stages-of-sales-process", readTime: "4 min read" },
+                { title: "Solution Selling 101: Stop Selling Products, Start Solving Problems", category: "Sales Excellence", excerpt: "Introducing the core philosophy of solution selling: focusing on a customer's specific business problems rather than product features.", slug:"solution-selling-101", readTime: "3 min read" },
+                { title: "How to Write a Sales Playbook Your Team Will Actually Use", category: "Sales Excellence", excerpt: "A practical guide for creating a comprehensive sales playbook, detailing essential sections from company overview to sales collateral.", slug:"how-to-write-sales-playbook", readTime: "5 min read" },
+                { title: "Top 10 Sales Blogs Every Rep Should Be Reading in 2025", category: "Sales Excellence", excerpt: "A curated list of the top 10 most valuable sales blogs for professional development, with descriptions and highlights.", slug:"top-10-sales-blogs-2025", readTime: "5 min read" },
+                { title: "How to Handle Sales Objections: A Guide for New Reps", category: "Sales Excellence", excerpt: "Reframing sales objections as opportunities and providing a framework for responding to common concerns.", slug:"handle-sales-objections", readTime: "4 min read" },
+                { title: "Sales vs. Marketing: How to Align Your Teams for Growth", category: "Sales Excellence", excerpt: "Introducing the concept of a Service-Level Agreement (SLA) to establish clear deliverables and mutual accountability between sales and marketing.", slug:"sales-vs-marketing-alignment", readTime: "4 min read" },
+                { title: "What is a Sales Cadence? How to Build a Follow-Up Sequence", category: "Sales Excellence", excerpt: "Defining a sales cadence as a structured sequence of touchpoints and providing an example multi-channel follow-up sequence.", slug:"what-is-a-sales-cadence", readTime: "3 min read" },
 
                 // Cluster 4: The Growth & Analytics Hub
-                { title: "15 Beginner SEO Questions Answered by Experts", category: "Growth & Analytics", excerpt: "A Q&A format addressing the most common questions beginners have about SEO, from Domain Authority to measuring success.", slug:"beginner-seo-questions-answered" },
-                { title: "15 Beginner Email Marketing Questions Answered", category: "Growth & Analytics", excerpt: "A Q&A format tackling fundamental questions about email marketing, including platform choice, open rates, and send times.", slug:"beginner-email-marketing-questions" },
-                { title: "15 Common Social Media Marketing Questions Answered", category: "Growth & Analytics", excerpt: "A Q&A-style article addressing frequent questions about social media for business, from platform selection to ROI measurement.", slug:"social-media-marketing-questions" },
-                { title: "A Guide to Top Digital Marketing Blogs to Follow", category: "Growth & Analytics", excerpt: "A curated and annotated resource list of the most reputable digital marketing blogs, categorized by specialty.", slug:"top-digital-marketing-blogs" },
-                { title: "10 Common CRM Questions Every Sales Manager Asks", category: "Growth & Analytics", excerpt: "Addressing common questions about CRM from a sales management perspective, covering scalability, data migration, and team adoption.", slug:"common-crm-questions" },
-                { title: "10 Common Lead Generation Questions for Startups", category: "Growth & Analytics", excerpt: "Focusing on foundational lead generation challenges faced by new businesses, from defining an ideal lead to tracking progress.", slug:"lead-generation-questions-for-startups" },
-                { title: "How to Conduct a Simple Content Audit", category: "Growth & Analytics", excerpt: "Explaining the value of auditing existing website content and providing a simple process for small businesses to categorize and improve content.", slug:"how-to-conduct-content-audit" },
-                { title: "Understanding Marketing Attribution: First-Touch vs. Last-Touch", category: "Growth & Analytics", excerpt: "Explaining the concept of marketing attribution and contrasting the two most basic models: First-Touch and Last-Touch.", slug:"understanding-marketing-attribution" },
-                { title: "How to Create a Buyer Persona", category: "Growth & Analytics", excerpt: "Guiding the reader through the process of creating a semi-fictional, detailed representation of an ideal customer based on research and data.", slug:"how-to-create-buyer-persona" },
-                { title: "The Ultimate Glossary of 50+ Digital Marketing and Sales Terms", category: "Growth & Analytics", excerpt: "A comprehensive, A-to-Z reference guide for the most important terminology in the digital marketing and sales industries.", slug:"digital-marketing-sales-glossary" }
+                { title: "15 Beginner SEO Questions Answered by Experts", category: "Growth & Analytics", excerpt: "A Q&A format addressing the most common questions beginners have about SEO, from Domain Authority to measuring success.", slug:"beginner-seo-questions-answered", readTime: "5 min read" },
+                { title: "15 Beginner Email Marketing Questions Answered", category: "Growth & Analytics", excerpt: "A Q&A format tackling fundamental questions about email marketing, including platform choice, open rates, and send times.", slug:"beginner-email-marketing-questions", readTime: "5 min read" },
+                { title: "15 Common Social Media Marketing Questions Answered", category: "Growth & Analytics", excerpt: "A Q&A-style article addressing frequent questions about social media for business, from platform selection to ROI measurement.", slug:"social-media-marketing-questions", readTime: "5 min read" },
+                { title: "A Guide to Top Digital Marketing Blogs to Follow", category: "Growth & Analytics", excerpt: "A curated and annotated resource list of the most reputable digital marketing blogs, categorized by specialty.", slug:"top-digital-marketing-blogs", readTime: "4 min read" },
+                { title: "10 Common CRM Questions Every Sales Manager Asks", category: "Growth & Analytics", excerpt: "Addressing common questions about CRM from a sales management perspective, covering scalability, data migration, and team adoption.", slug:"common-crm-questions", readTime: "5 min read" },
+                { title: "10 Common Lead Generation Questions for Startups", category: "Growth & Analytics", excerpt: "Focusing on foundational lead generation challenges faced by new businesses, from defining an ideal lead to tracking progress.", slug:"lead-generation-questions-for-startups", readTime: "5 min read" },
+                { title: "How to Conduct a Simple Content Audit", category: "Growth & Analytics", excerpt: "Explaining the value of auditing existing website content and providing a simple process for small businesses to categorize and improve content.", slug:"how-to-conduct-content-audit", readTime: "3 min read" },
+                { title: "Understanding Marketing Attribution: First-Touch vs. Last-Touch", category: "Growth & Analytics", excerpt: "Explaining the concept of marketing attribution and contrasting the two most basic models: First-Touch and Last-Touch.", slug:"understanding-marketing-attribution", readTime: "3 min read" },
+                { title: "How to Create a Buyer Persona", category: "Growth & Analytics", excerpt: "Guiding the reader through the process of creating a semi-fictional, detailed representation of an ideal customer based on research and data.", slug:"how-to-create-buyer-persona", readTime: "4 min read" },
+                { title: "The Ultimate Glossary of 50+ Digital Marketing and Sales Terms", category: "Growth & Analytics", excerpt: "A comprehensive, A-to-Z reference guide for the most important terminology in the digital marketing and sales industries.", slug:"digital-marketing-sales-glossary", readTime: "7 min read" }
             ];
 
             const blogGrid = document.getElementById('blog-grid');
@@ -417,7 +455,16 @@
                             <span class="blog-card-category">${post.category}</span>
                             <h3 class="blog-card-title">${post.title}</h3>
                             <p class="blog-card-excerpt">${post.excerpt}</p>
-                            <a href="blog/${post.slug}.html" class="blog-card-link">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="blog-card-footer">
+                                <div class="author-info">
+                                    <img src="picofme.webp" alt="Udith Babu K N" class="author-image">
+                                    <div class="author-details">
+                                        <span class="author-name">Udith Babu K N</span>
+                                        <span class="read-time">${post.readTime}</span>
+                                    </div>
+                                </div>
+                                <a href="blog/${post.slug}.html" class="blog-card-link">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     `;
                     blogGrid.appendChild(card);
