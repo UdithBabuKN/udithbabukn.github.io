@@ -58,61 +58,15 @@
     <meta name="twitter:image:alt" content="A professional portfolio thumbnail for Udith Babu K N, Marketing and Sales Executive">
     <meta name="twitter:creator" content="@udithbabuvarrier">
 
-    <!-- Performance: Asynchronously load fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
-    <!-- Performance: Updated Font Awesome loading to be non-blocking -->
+    <!-- Performance: Asynchronously load fonts and styles -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <!--
-      PERFORMANCE OPTIMIZATION: Inlined Critical CSS
-      The styles below are essential for rendering the initial viewport (above-the-fold content)
-      without waiting for the external stylesheet to load. This significantly improves the
-      First Contentful Paint (FCP) metric. The full stylesheet is loaded asynchronously.
-    -->
-    <style>
-      :root { --sidebar-width: 280px; }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { font-family: 'Inter', sans-serif; background-color: #0A0A1A; color: #E2E8F0; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
-      [data-theme="light"] body { background-color: #F7FAFC; color: #1a202c; }
-      .container { display: flex; position: relative; z-index: 1; flex-grow: 1; }
-      .sidebar { width: var(--sidebar-width); height: 100vh; position: fixed; background-color: transparent; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 2rem 1.5rem; z-index: 10; transform: translateX(calc(-100% + 40px)); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.4s ease; }
-      .sidebar:hover { transform: translateX(0); background-color: rgba(18, 18, 30, 0.8); border-right: 1px solid rgba(0, 229, 255, 0.2); }
-      [data-theme="light"] .sidebar:hover { background-color: rgba(255, 255, 255, 0.85); border-right-color: rgba(0, 0, 0, 0.08); }
-      .sidebar > *:not(.sidebar-indicator) { transition: opacity 0.3s ease; opacity: 0; }
-      .sidebar:hover > * { opacity: 1; }
-      .sidebar-indicator { position: absolute; top: 50%; right: 12px; transform: translateY(-50%); width: 24px; height: 24px; opacity: 1; transition: opacity 0.3s ease, right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 11; }
-      .sidebar-indicator::before { content: ''; border: solid #00E5FF; border-width: 0 4px 4px 0; display: inline-block; padding: 8px; transform: rotate(-45deg); opacity: 0.6; }
-      [data-theme="light"] .sidebar-indicator::before { border-color: #00BFFF; }
-      .sidebar:hover .sidebar-indicator { opacity: 0; }
-      .content { margin-left: 40px; width: calc(100% - 40px); padding: 3rem 2rem; transition: margin-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-      .sidebar:hover ~ .content { margin-left: var(--sidebar-width); width: calc(100% - var(--sidebar-width)); }
-      .profile-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
-      .profile-pic { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #00E5FF; flex-shrink: 0; }
-      [data-theme="light"] .profile-pic { border-color: #00BFFF; }
-      .logo { background: linear-gradient(45deg, #00E5FF, #9C27B0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.5rem; white-space: nowrap; font-weight: 700; margin: 0; line-height: 1.2; }
-      [data-theme="light"] .logo { background: linear-gradient(45deg, #00BFFF, #20C997); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-      .section { max-width: 800px; margin: 0 auto; }
-      .section-header { font-size: clamp(1.75rem, 5vw, 2.25rem); background: linear-gradient(45deg, #00E5FF, #9C27B0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; padding-bottom: 0.5rem; display: inline-block; position: relative; }
-      [data-theme="light"] .section-header { background: linear-gradient(45deg, #00BFFF, #20C997); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-      .mobile-header, .mobile-contact-info, .bottom-nav { display: none; }
-      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
-      @media (max-width: 768px) {
-        .sidebar { display: none; }
-        .content { margin-left: 0; width: 100%; padding: 1rem 1rem 90px 1rem; }
-        .mobile-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; margin-bottom: 1rem; background-color: rgba(22, 27, 34, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; }
-        .mobile-header .profile-header { margin-bottom: 0; flex-grow: 1; }
-        .mobile-contact-info { display: block; padding: 1rem; background-color: rgba(22, 27, 34, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; }
-        .bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgba(22, 27, 34, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid rgba(255, 255, 255, 0.1); z-index: 1000; justify-content: space-around; }
-        [data-theme="light"] .mobile-header, [data-theme="light"] .mobile-contact-info, [data-theme="light"] .bottom-nav { background-color: rgba(255, 255, 255, 0.6); border-color: rgba(0, 0, 0, 0.08); }
-      }
-    </style>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
-    <!-- Performance: Full stylesheet is preloaded and applied after page render -->
-    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="stylesheet" href="style.css">
 
     <!-- SEO: Advanced Structured Data (Schema.org) for E-E-A-T -->
     <script type="application/ld+json" id="schema-data">
@@ -120,7 +74,7 @@
         "@context": "https://schema.org",
         "@type": "ProfilePage",
         "datePublished": "2024-01-01",
-        "dateModified": "2025-09-13",
+        "dateModified": "2025-09-28",
         "mainEntity": {
             "@type": "Person",
             "name": "Udith Babu K N",
