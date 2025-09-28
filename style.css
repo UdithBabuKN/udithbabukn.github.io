@@ -77,14 +77,6 @@ body {
     position: relative;
 }
 
-body::before {
-    opacity: var(--sun-opacity, 1);
-}
-
-body::after {
-    opacity: var(--moon-opacity, 0);
-}
-
 /* Deferred background images for performance - DESKTOP ONLY */
 @media (min-width: 769px) {
     body::before, body::after {
@@ -99,6 +91,14 @@ body::after {
         background-attachment: fixed;
         transition: opacity 0.8s ease-in-out;
         z-index: -1;
+    }
+
+    body::before {
+        opacity: var(--sun-opacity, 1);
+    }
+
+    body::after {
+        opacity: var(--moon-opacity, 0);
     }
 
     body.backgrounds-loaded::before {
@@ -1213,6 +1213,7 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+
 
 
 
