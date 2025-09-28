@@ -637,9 +637,17 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error during initialization:', error);
     }
 
-    // --- SERVICE WORKER REGISTRATION ---
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
+    // --- DEFER & SERVICE WORKER ---
+    window.addEventListener('load', () => {
+        // Defer non-critical background images ONLY on desktop
+        if (window.innerWidth > 768) {
+            setTimeout(() => {
+                document.body.classList.add('backgrounds-loaded');
+            }, 500); // Delay slightly to prioritize critical content
+        }
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
                 .then(registration => {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -647,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(err => {
                     console.log('ServiceWorker registration failed: ', err);
                 });
-        });
-    }
+        }
+    });
 });
 
