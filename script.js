@@ -230,6 +230,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // This might be the blog page, which has a different structure.
         return;
     }
+    
+    // --- BEST PRACTICES FIX ---
+    function secureExternalLinks() {
+        const links = document.querySelectorAll('a[target="_blank"]');
+        links.forEach(link => {
+            if (!link.rel.includes('noopener')) {
+                // Combine with existing rels if they exist
+                link.rel = link.rel ? `${link.rel} noopener` : 'noopener';
+            }
+        });
+    }
+
 
     function initFoldableSkills() {
         const foldableCategories = document.querySelectorAll('.skill-category-foldable');
@@ -367,6 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 initStaggeredList();
                 init3DTilt();
                 if (sectionId === 'contact') initContactForm();
+                
+                // Secure links in the newly added content
+                secureExternalLinks();
             }, 200);
 
         } else {
@@ -602,6 +617,9 @@ document.addEventListener('DOMContentLoaded', () => {
         initLazyLoad();
         initPagePeelCards();
         initStaggeredList();
+        
+        // Secure any external links present on initial load
+        secureExternalLinks();
 
         // Set the active link based on the initial hash
         const initialSectionId = window.location.hash.substring(1) || 'summary';
