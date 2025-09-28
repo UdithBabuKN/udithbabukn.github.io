@@ -1,7 +1,7 @@
 /*
     script.js
     This file contains all the JavaScript logic for the portfolio.
-    It now assumes the 'summary' section is already in the HTML and handles navigation correctly.
+    This version contains corrected logic for deferred background loading.
 */
 document.addEventListener('DOMContentLoaded', () => {
     // --- DYNAMIC DATA ---
@@ -629,6 +629,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (initialSectionId !== 'summary' && contentData[initialSectionId]) {
             loadSection(initialSectionId);
         }
+
+        // Defer non-critical background images ONLY on desktop
+        if (window.innerWidth > 768) {
+            setTimeout(() => {
+                document.body.classList.add('backgrounds-loaded');
+            }, 500); // Delay slightly to prioritize critical content
+        }
     }
 
     try {
@@ -637,16 +644,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error during initialization:', error);
     }
 
-    // --- DEFER & SERVICE WORKER ---
+    // --- SERVICE WORKER REGISTRATION ---
     window.addEventListener('load', () => {
-        // Defer non-critical background images ONLY on desktop
-        if (window.innerWidth > 768) {
-            setTimeout(() => {
-                document.body.classList.add('backgrounds-loaded');
-            }, 500); // Delay slightly to prioritize critical content
-        }
-
-        // Register Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
                 .then(registration => {
