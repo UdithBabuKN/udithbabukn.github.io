@@ -1,7 +1,7 @@
 /*
     script.js
     This file contains all the JavaScript logic for the portfolio.
-    Moving JS to an external file improves performance by allowing caching and enabling deferred, non-blocking script loading.
+    It now assumes the 'summary' section is already in the HTML and handles navigation correctly.
 */
 document.addEventListener('DOMContentLoaded', () => {
     // --- DYNAMIC DATA ---
@@ -228,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!contentScroller) {
         // This might be the blog page, which has a different structure.
-        // console.log('Content scroller not found, assuming blog page.');
         return;
     }
 
@@ -374,6 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Section data not found for:', sectionId);
         }
     }
+
 
     function setActiveLink(sectionId) {
         allNavLinks.forEach(link => {
@@ -570,38 +570,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- INITIALIZATION ---
-    allNavLinks.forEach(link => {
-        const navLinkSection = link.getAttribute('data-section');
-        if (navLinkSection !== 'blog') {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (contentData[navLinkSection]) {
-                    loadSection(navLinkSection);
-                    setActiveLink(navLinkSection);
-                }
-            });
-        }
-    });
-    
-    window.addEventListener('popstate', () => {
-         const sectionId = window.location.hash.substring(1) || 'summary';
-         loadSection(sectionId);
-         setActiveLink(sectionId);
-    });
-
-    try {
+    function initializePage() {
         updateDates();
         setDynamicTheme();
         initMagneticElements('.social-link');
         initInteractiveSidebar();
         showPersonalizedWelcome();
 
-        const initialSectionId = window.location.hash.substring(1) || 'summary';
+        // Attach listeners to nav links
+        allNavLinks.forEach(link => {
+            const navLinkSection = link.getAttribute('data-section');
+            if (navLinkSection !== 'blog') {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (contentData[navLinkSection]) {
+                        loadSection(navLinkSection);
+                        setActiveLink(navLinkSection);
+                    }
+                });
+            }
+        });
         
-        // Always load the section from JS to ensure it's up to date
-        loadSection(initialSectionId);
+        // Handle back/forward browser buttons
+        window.addEventListener('popstate', () => {
+             const sectionId = window.location.hash.substring(1) || 'summary';
+             loadSection(sectionId);
+             setActiveLink(sectionId);
+        });
+
+        // Initialize elements that are already on the page
+        initLazyLoad();
+        initPagePeelCards();
+        initStaggeredList();
+
+        // Set the active link based on the initial hash
+        const initialSectionId = window.location.hash.substring(1) || 'summary';
         setActiveLink(initialSectionId);
 
+        // If hash is not summary, load that section
+        if (initialSectionId !== 'summary' && contentData[initialSectionId]) {
+            loadSection(initialSectionId);
+        }
+    }
+
+    try {
+        initializePage();
     } catch (error) {
         console.error('Error during initialization:', error);
     }
@@ -619,3 +632,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

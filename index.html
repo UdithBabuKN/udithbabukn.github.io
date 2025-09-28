@@ -58,7 +58,7 @@
     <meta name="twitter:image:alt" content="A professional portfolio thumbnail for Udith Babu K N, Marketing and Sales Executive">
     <meta name="twitter:creator" content="@udithbabuvarrier">
 
-    <!-- Performance: Asynchronously load fonts and styles -->
+    <!-- Performance: Preload fonts and load stylesheets asynchronously -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
@@ -66,7 +66,61 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </noscript>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+
+    <style>
+      /* --- CRITICAL CSS --- */
+      :root {
+        --primary-color: #00E5FF;
+        --secondary-color: #9C27B0;
+        --accent-color: linear-gradient(45deg, #00E5FF, #9C27B0);
+        --text-color: #E2E8F0;
+        --text-muted: #A0AEC0;
+        --bg-color: #0A0A1A;
+        --bg-sidebar: rgba(18, 18, 30, 0.8);
+        --bg-card: rgba(22, 22, 40, 0.85);
+        --border-color: rgba(0, 229, 255, 0.2);
+        --sidebar-width: 280px;
+      }
+      [data-theme="light"] {
+        --primary-color: #00BFFF;
+        --secondary-color: #20C997;
+        --accent-color: linear-gradient(45deg, #00BFFF, #20C997);
+        --text-color: #1a202c;
+        --text-muted: #4a5568;
+        --bg-color: #F7FAFC;
+        --bg-sidebar: rgba(255, 255, 255, 0.85);
+        --bg-card: rgba(255, 255, 255, 0.9);
+        --border-color: rgba(0, 0, 0, 0.08);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; overflow-x: hidden; }
+      .container { display: flex; }
+      .sidebar { width: var(--sidebar-width); height: 100vh; position: fixed; padding: 2rem 1.5rem; z-index: 10; transform: translateX(calc(-100% + 40px)); }
+      .content { margin-left: 40px; width: calc(100% - 40px); padding: 3rem 2rem; height: 100vh; overflow-y: auto; }
+      .profile-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+      .profile-pic { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); }
+      .logo { background: var(--accent-color); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.5rem; font-weight: 700; }
+      .section { max-width: 800px; margin: 0 auto; }
+      .section-header { font-size: clamp(1.75rem, 5vw, 2.25rem); background: var(--accent-color); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; padding-bottom: 0.5rem; display: inline-block; position: relative; }
+      .interactive-card { background: var(--bg-card); border-radius: 12px; padding: 1.5rem; }
+      .interactive-card .interactive-card-heading { font-size: clamp(1.25rem, 4vw, 1.5rem); font-weight: 600; color: var(--text-color); }
+      .summary-subtitle { font-weight: 500; color: var(--text-muted); margin-bottom: 1.5rem; font-size: clamp(1rem, 2.5vw, 1.1rem); }
+      .summary-description { font-size: clamp(0.95rem, 2.5vw, 1.1rem); line-height: 1.7; min-height: 150px; max-width: 75ch; }
+      .mobile-header, .mobile-contact-info, .bottom-nav { display: none; }
+      @media (max-width: 768px) {
+        .sidebar { display: none; }
+        .content { margin-left: 0; width: 100%; padding: 1rem 1rem 90px 1rem; height: auto; overflow-y: visible; }
+        .mobile-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); margin-bottom: 1.5rem; }
+        .mobile-header-actions { display: flex; align-items: center; gap: 1rem; }
+        .mobile-contact-info { display: block; }
+        .bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--bg-sidebar); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); z-index: 1000; }
+        .bottom-nav-link { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.75rem 0.25rem; color: var(--text-muted); text-decoration: none; font-size: 0.7rem; text-align: center; flex-grow: 1; }
+        .bottom-nav-link i { font-size: 1.2rem; margin-bottom: 0.25rem; }
+      }
+    </style>
 
     <!-- SEO: Advanced Structured Data (Schema.org) for E-E-A-T -->
     <script type="application/ld+json" id="schema-data">
@@ -212,7 +266,7 @@
             <!-- Header for Mobile View -->
             <header class="mobile-header">
                 <div class="profile-header">
-                    <img src="picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic" loading="lazy" width="50" height="50">
+                    <img src="picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic" width="50" height="50">
                     <div class="logo">Udith Babu K N</div>
                 </div>
                 <div class="mobile-header-actions">
@@ -237,9 +291,17 @@
 
             <!-- Content is now loaded dynamically by script.js -->
             <div class="content-scroller">
-                <!-- This will be populated by script.js -->
+                 <!-- Initial content is now static -->
+                <section id="summary" class="section">
+                    <h2 class="section-header">Professional Summary</h2>
+                    <article class="interactive-card lazy-load" lang="en" style="--angle: 45deg;">
+                        <h2 class="interactive-card-heading">Expert Executive – Marketing and Sales | IT Business Analyst</h2>
+                        <p class="summary-subtitle">MBA in Operations & Marketing | B.Tech in Information Technology</p>
+                        <p class="summary-description">As a forward-thinking Executive in Marketing and Sales, I specialize in creating and executing data-driven strategies that boost brand visibility and drive revenue growth. With a strong foundation as an IT Business Analyst, I bring a unique analytical perspective to market research, lead generation, and client engagement. Based in Kerala, India, I am adept at using tools like Python and MySQL for market analysis and Figma for crafting compelling marketing materials, ensuring every campaign is both innovative and effective.</p>
+                    </article>
+                </section>
             </div>
-            <!-- SEO Enhancement: Comprehensive noscript tag for non-JS users and basic crawlers -->
+            
             <noscript>
                 <div style="padding: 2rem; text-align: center;">
                     <h1>Udith Babu K N</h1>
@@ -317,3 +379,4 @@
 
 </body>
 </html>
+
