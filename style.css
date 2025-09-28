@@ -1,6 +1,6 @@
 /* style.css
     This file contains all the styles for the portfolio.
-    Moving CSS to an external file improves performance by allowing the browser to cache it.
+    It includes a modification to defer loading of large background images.
 */
 
 :root {
@@ -77,29 +77,43 @@ body {
     position: relative;
 }
 
-/* Desktop background images */
-body::before, body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    transition: opacity 0.8s ease-in-out;
-    z-index: -1;
+/* Deferred background images for performance */
+@media (min-width: 769px) {
+    body::before, body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        transition: opacity 0.8s ease-in-out;
+        z-index: -1;
+    }
+
+    body.backgrounds-loaded::before {
+        background-image: linear-gradient(rgba(247, 250, 252, 0.3), rgba(247, 250, 252, 0.3)), url('sun.webp');
+    }
+
+    body.backgrounds-loaded::after {
+        background-image: linear-gradient(rgba(10, 10, 26, 0.5), rgba(10, 10, 26, 0.5)), url('moon.webp');
+    }
 }
 
 body::before {
-    background-image: linear-gradient(rgba(247, 250, 252, 0.3), rgba(247, 250, 252, 0.3)), url('sun.webp');
     opacity: var(--sun-opacity, 1);
+    content: ''; /* Ensure pseudo-element exists for opacity transition */
+    position: fixed;
+    z-index: -1;
 }
 
 body::after {
-    background-image: linear-gradient(rgba(10, 10, 26, 0.5), rgba(10, 10, 26, 0.5)), url('moon.webp');
     opacity: var(--moon-opacity, 0);
+    content: ''; /* Ensure pseudo-element exists for opacity transition */
+    position: fixed;
+    z-index: -1;
 }
 
 
@@ -1126,78 +1140,6 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-    /* Hide the desktop background pseudo-elements */
-    body::before, body::after {
-        display: none;
-    }
-
-    /* --- PREMIUM DARK THEME (MOBILE) --- */
-    [data-theme="dark"] body {
-        background-color: #02040a; /* Premium Midnight Blue */
-        background-image:
-            radial-gradient(circle at 15% 20%, hsla(190, 80%, 50%, 0.1), transparent 40%),
-            radial-gradient(circle at 85% 70%, hsla(280, 50%, 50%, 0.1), transparent 40%);
-        background-attachment: fixed;
-    }
-
-    /* Matched Glass UI for dark theme elements */
-    [data-theme="dark"] .mobile-header,
-    [data-theme="dark"] .mobile-contact-info,
-    [data-theme="dark"] .content-box,
-    [data-theme="dark"] .bottom-nav {
-        background-color: rgba(22, 27, 34, 0.6);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.05);
-    }
-    
-    /* Clean, professional interactions */
-    [data-theme="dark"] .mobile-header .social-link:hover,
-    [data-theme="dark"] .mobile-header .theme-toggle:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        transform: scale(1.1);
-        box-shadow: none;
-    }
-    
-    /* Elegant active state for Bottom Nav */
-    .bottom-nav-link.active {
-        color: var(--primary-color);
-        transform: translateY(-3px);
-        text-shadow: none;
-    }
-    .bottom-nav-link.active::after {
-        content: '';
-        position: absolute;
-        bottom: 5px;
-        width: 5px;
-        height: 5px;
-        background-color: var(--primary-color);
-        border-radius: 50%;
-    }
-
-    /* --- LIGHT THEME STYLES (Unchanged) --- */
-    [data-theme="light"] body {
-        background-color: #eef2f9;
-        background-image:
-            radial-gradient(circle at 100% 0%, hsla(180, 70%, 80%, 0.5), transparent 40%),
-            radial-gradient(circle at 0% 100%, hsla(200, 80%, 80%, 0.5), transparent 40%);
-        animation: none;
-    }
-
-    [data-theme="light"] .mobile-header,
-    [data-theme="light"] .mobile-contact-info,
-    [data-theme="light"] .content-box,
-    [data-theme="light"] .bottom-nav {
-        background-color: rgba(255, 255, 255, 0.6);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 16px;
-        box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.2);
-    }
-    
     /* --- GENERAL MOBILE LAYOUT (Unchanged) --- */
     .mobile-header .social-link, .mobile-header .theme-toggle {
         border-radius: 50%;
@@ -1277,3 +1219,5 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+
+
