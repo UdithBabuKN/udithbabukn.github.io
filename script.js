@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         links.forEach(link => {
             if (!link.rel.includes('noopener')) {
                 // Combine with existing rels if they exist
-                link.rel = link.rel ? `${link.rel} noopener` : 'noopener';
+                link.rel = link.rel ? `${link.rel} noopener noreferrer` : 'noopener noreferrer';
             }
         });
     }
