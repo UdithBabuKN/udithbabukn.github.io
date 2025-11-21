@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-IN" data-theme="light">
 
 <head>
@@ -27,6 +27,20 @@
     <link rel="canonical" href="https://udithbabukn.github.io/blog.html">
     <!-- SEO: Hreflang tag for language and region targeting -->
     <link rel="alternate" hreflang="en-in" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-us" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-gb" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-jp" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-cn" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-de" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-ru" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-sg" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-my" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-ca" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-au" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-ae" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-fr" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="en-it" href="https://udithbabukn.github.io/blog.html" />
+    <link rel="alternate" hreflang="x-default" href="https://udithbabukn.github.io/blog.html" />
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -34,6 +48,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Performance: Preload main profile image -->
+    <link rel="preload" as="image" href="picofme.webp">
+
+    <!-- Theme Color for Browser UI -->
+    <meta name="theme-color" content="#0A0A1A">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Digital Marketing & Sales Blog | Insights by Udith Babu K N">
@@ -44,6 +64,7 @@
     <meta property="og:url" content="https://udithbabukn.github.io/blog.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="Udith Babu K N Portfolio">
 
 
     <!-- Twitter -->
@@ -54,6 +75,25 @@
     <meta name="twitter:image" content="https://udithbabukn.github.io/images/portfolio-thumbnail.jpg">
     <meta name="twitter:image:alt" content="A thumbnail for the Digital Marketing & Sales Blog by Udith Babu K N">
 
+
+    <!-- SEO: BreadcrumbList Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://udithbabukn.github.io/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://udithbabukn.github.io/blog.html"
+      }]
+    }
+    </script>
 
     <!-- Stylesheets -->
     <link
@@ -398,7 +438,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const copyrightElement = document.getElementById('copyright-year');
             if (copyrightElement) {
-                copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
+                copyrightElement.textContent = `\u00A9 ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
             }
 
             const blogPosts = [
@@ -595,6 +635,21 @@
         });
     </script>
     <script src="blog_script.js" defer></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>

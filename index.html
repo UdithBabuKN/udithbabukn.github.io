@@ -76,9 +76,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Udith Babu K N | Marketing and Sales Executive Portfolio">
     <meta name="twitter:description"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap">
+        content="Portfolio of Udith Babu K N, a Marketing & Sales Executive and IT Business Analyst from Kerala, India, skilled in data-driven strategy and technical SEO.">
+    <meta name="twitter:image" content="https://udithbabukn.github.io/images/portfolio-thumbnail.jpg">
+    <meta name="twitter:image:alt"
+        content="A professional portfolio thumbnail for Udith Babu K N, Marketing and Sales Executive">
+
+    <!-- Theme Color for Browser UI -->
+    <meta name="theme-color" content="#0A0A1A">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </noscript>
 
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
     <noscript>
@@ -563,6 +573,21 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-WK70SLBZH3');
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
     </script>
 
     <!-- Google Ads - Asynchronous script -->
