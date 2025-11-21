@@ -1,41 +1,182 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lead Qualification: How to Use the BANT Framework | Udith Babu K N</title>
-    <link rel="canonical" href="https://udithbabukn.github.io/blog/lead-qualification-bant-framework.html">
-    <meta name="description" content="A detailed guide to using the BANT framework (Budget, Authority, Need, and Timeline) for effective lead qualification to prevent wasted time on poor-fit prospects.">
-    <meta name="keywords" content="lead qualification, BANT framework, how to qualify leads, BANT sales">
+
+    <!-- SEO: Optimized Title for the Article -->
+    <title>BANT Framework: How to Qualify Leads Like a Pro (2025 Guide) | Udith Babu K N</title>
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- SEO: Meta Description for the Article -->
+    <meta name="description"
+        content="Master lead qualification with BANT framework (Budget, Authority, Need, Timeline). Learn questions to ask, scoring methods, and when to disqualify leads.">
+
+    <!-- SEO: Keywords for the Article -->
+    <meta name="keywords"
+        content="BANT framework, lead qualification, how to qualify leads, BANT sales, sales qualification">
     <meta name="author" content="Udith Babu K N">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- SEO: Canonical URL for the article page -->
+    <link rel="canonical" href="https://udithbabukn.github.io/blog/lead-qualification-bant-framework.html">
+
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="manifest" href="../site.webmanifest">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="BANT Framework: How to Qualify Leads Like a Pro (2025 Guide) | Udith Babu K N">
+    <meta property="og:description" content="Master leadqualification with BANT framework.">
+    <meta property="og:image" content="https://udithbabukn.github.io/images/portfolio-thumbnail.jpg">
+    <meta property="og:url" content="https://udithbabukn.github.io/blog/lead-qualification-bant-framework.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2025-09-15T08:00:00+05:30">
+    <meta property="article:author" content="Udith Babu K N">
+
+    <!-- Stylesheets -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
+
     <style>
-        .article-header { text-align: center; padding: 4rem 1rem 2rem; max-width: 800px; margin: 0 auto; }
-        .article-header .section-header { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.2; }
-        .article-meta { color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem; }
-        .article-content { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; font-size: 1.1rem; line-height: 1.8; }
-        .article-content h2 { font-size: 1.75rem; margin-top: 2.5rem; margin-bottom: 1rem; background: var(--accent-color); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .article-content p { margin-bottom: 1.5rem; }
-        .back-to-blog { text-align: center; margin: 3rem 0; }
-        .back-to-blog a { color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 1.1rem; padding: 0.75rem 1.5rem; border: 2px solid var(--primary-color); border-radius: 8px; transition: var(--transition); }
-        .back-to-blog a:hover { background: var(--accent-color); color: white; border-color: transparent; }
+        .article-header {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-header .section-header {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .article-content h2 {
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-color);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .back-to-blog {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .back-to-blog a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .back-to-blog a:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: transparent;
+        }
     </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Sidebar Navigation (Desktop) -->
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://udithbabukn.github.io/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://udithbabukn.github.io/blog.html"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "BANT Framework Guide",
+        "item": "https://udithbabukn.github.io/blog/lead-qualification-bant-framework.html"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://udithbabukn.github.io/blog/lead-qualification-bant-framework.html"
+      },
+      "headline": "BANT Framework: How to Qualify Leads Like a Pro (2025 Guide)",
+      "description": "Master lead qualification with BANT framework (Budget, Authority, Need, Timeline). Learn questions to ask, scoring methods, and when to disqualify leads.",
+      "image": "https://udithbabukn.github.io/images/portfolio-thumbnail.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Udith Babu K N",
+        "url": "https://udithbabukn.github.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Udith Babu K N",
+        "logo": {
         <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
             <div class="sidebar-indicator"></div>
             <div class="profile-header">
-                <img src="../picofme.webp" alt="Headshot of Udith Babu K N, Marketing and Sales Executive" class="profile-pic" loading="lazy" width="50" height="50">
+                <img src="../picofme.webp" alt="Headshot of Udith Babu K N, Marketing and Sales Executive"
+                    class="profile-pic" loading="lazy" width="50" height="50">
                 <div class="logo">Udith Babu K N</div>
             </div>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
@@ -44,7 +185,8 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading email...</span></a>
+                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading
+                            email...</span></a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone" aria-hidden="true"></i>
@@ -57,55 +199,242 @@
             </div>
 
             <div class="social-links">
-                 <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                 <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Instagram Profile"><i class="fab fa-instagram"></i></a>
-                 <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"></i></a>
-                 <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank"
+                    rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's LinkedIn Profile"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer"
+                    class="social-link" aria-label="View Udith Babu K N's Instagram Profile"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer"
+                    class="social-link" aria-label="Read Ud
+
+ith Babu K N's Medium Blog"><i class="fab fa-medium"></i></a>
+                <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link"
+                    aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"></i></a>
             </div>
-            
+
             <nav class="main-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="../index.html#summary" class="nav-link" data-section="summary"><i class="fas fa-user" aria-hidden="true"></i>Summary</a></li>
-                    <li class="nav-item"><a href="../index.html#skills" class="nav-link" data-section="skills"><i class="fas fa-cogs" aria-hidden="true"></i>Skills</a></li>
-                    <li class="nav-item"><a href="../index.html#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a></li>
-                    <li class="nav-item"><a href="../index.html#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a></li>
-                    <li class="nav-item"><a href="../index.html#projects" class="nav-link" data-section="projects"><i class="fas fa-project-diagram" aria-hidden="true"></i>Projects</a></li>
-                    <li class="nav-item"><a href="../blog.html" class="nav-link" data-section="blog" aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
-                    <li class="nav-item"><a href="../index.html#certifications" class="nav-link" data-section="certifications"><i class="fas fa-certificate" aria-hidden="true"></i>Certifications</a></li>
-                    <li class="nav-item"><a href="../index.html#contact" class="nav-link" data-section="contact"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Me</a></li>
+                    <li class="nav-item"><a href="../index.html#summary" class="nav-link" data-section="summary"><i
+                                class="fas fa-user" aria-hidden="true"></i>Summary</a></li>
+                    <li class="nav-item"><a href="../index.html#skills" class="nav-link" data-section="skills"><i
+                                class="fas fa-cogs" aria-hidden="true"></i>Skills</a></li>
+                    <li class="nav-item"><a href="../index.html#experience" class="nav-link"
+                            data-section="experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a>
+                    </li>
+                    <li class="nav-item"><a href="../index.html#education" class="nav-link" data-section="education"><i
+                                class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a></li>
+                    <li class="nav-item"><a href="../index.html#projects" class="nav-link" data-section="projects"><i
+                                class="fas fa-project-diagram" aria-hidden="true"></i>Projects</a></li>
+                    <li class="nav-item"><a href="../blog.html" class="nav-link" data-section="blog"
+                            aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
+                    <li class="nav-item"><a href="../index.html#certifications" class="nav-link"
+                            data-section="certifications"><i class="fas fa-certificate"
+                                aria-hidden="true"></i>Certifications</a></li>
+                    <li class="nav-item"><a href="../index.html#contact" class="nav-link" data-section="contact"><i
+                                class="fas fa-envelope" aria-hidden="true"></i>Contact Me</a></li>
                 </ul>
             </nav>
         </aside>
 
         <!-- Main Content Area -->
         <main class="content" id="main-content" aria-label="Main Content">
-            
+
             <!-- Header for Mobile View -->
             <header class="mobile-header">
                 <div class="profile-header">
-                    <img src="../picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic" loading="lazy" width="50" height="50">
+                    <img src="../picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic"
+                        loading="lazy" width="50" height="50">
                     <div class="logo">Udith Babu K N</div>
                 </div>
                 <div class="mobile-header-actions">
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium" aria-hidden="true"></i></a>
-                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank"
+                            rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i
+                                class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram"
+                                aria-hidden="true"></i></a>
+                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"
+                                aria-hidden="true"></i></a>
+                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"
+                                aria-hidden="true"></i></a>
                     </div>
-                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme"
+                        aria-pressed="false">
                         <i class="fas fa-moon"></i>
                     </button>
                 </div>
             </header>
-            
+
+            <!-- Breadcrumbs -->
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+                <a href="../index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="../blog.html">Blog</a>
+                <span class="separator">/</span>
+                <span class="current">BANT Framework Guide</span>
+            </nav>
             <article>
                 <header class="article-header">
-                    <h1 class="section-header">Lead Qualification: How to Use the BANT Framework</h1>
+                    <h1 class="section-header">BANT Framework: How to Qualify Leads Like a Pro</h1>
                     <p class="article-meta">Published on September 15, 2025 by Udith Babu K N</p>
                 </header>
                 <div class="article-content">
-                    <p>This article will explain the critical importance of lead qualification in preventing wasted time on poor-fit prospects. It will provide a detailed guide to using the BANT framework, a classic and effective method for qualifying leads. The article will break down each component of the acronym—Budget, Authority, Need, and Timeline—and for each one, it will provide a list of key questions that a salesperson should ask to determine if a prospect is a qualified opportunity.</p>
+                    <p>Stop wasting time on leads who'll never buy. BANT tells you who's worth pursuing in 5 minutes.
+                    </p>
+
+                    <h2>Why Lead Qualification Matters</h2>
+                    <p><strong>The cost of bad leads:</strong></p>
+                    <ul>
+                        <li>Average sales rep spends 30% of time on unqualified leads</li>
+                        <li>That's 12 hours/week = 624 hours/year wasted</li>
+                        <li>Result: Missed quota, burnout, low morale</li>
+                    </ul>
+                    <p><strong>Solution:</strong> Qualify early. Disqualify fast.</p>
+
+                    <h2>What Is BANT?</h2>
+                    <p><strong>BANT = Budget + Authority + Need + Timeline</strong></p>
+                    <p>Created by IBM in the 1960s, still the gold standard for B2B lead qualification.</p>
+
+                    <h2>B = Budget</h2>
+                    <p><strong>Question:</strong> Can they afford it?</p>
+
+                    <h3>Questions to Ask:</h3>
+                    <ul>
+                        <li>"Have you allocated budget for this?"</li>
+                        <li>"What's your budget range for solving this problem?"</li>
+                        <li>"How do you typically budget for tools like this?"</li>
+                        <li>"Where does this rank in your budget priorities?"</li>
+                    </ul>
+
+                    <p><strong>Red flags:</strong></p>
+                    <ul>
+                        <li>"We don't have budget" (and won't get it)</li>
+                        <li>"We're just exploring options" (not serious)</li>
+                        <li>"We need to see ROI first" (backwards)</li>
+                    </ul>
+
+                    <p><strong>Pro tip:</strong> If they don't have budget NOW, nurture them. Check back in 3 months.
+                    </p>
+
+                    <h2>A = Authority</h2>
+                    <p><strong>Question:</strong> Are they the decision-maker?</p>
+
+                    <h3>Questions to Ask:</h3>
+                    <ul>
+                        <li>"Who else is involved in this decision?"</li>
+                        <li>"What's your decision-making process?"</li>
+                        <li>"Do you have final approval, or does this go to your boss?"</li>
+                        <li>"Who has to sign off on this purchase?"</li>
+                    </ul>
+
+                    <p><strong>Decision-maker types:</strong></p>
+                    <ul>
+                        <li><strong>Champion:</strong> Advocates for you internally (good to have)</li>
+                        <li><strong>Decision-maker:</strong> Signs the contract (must have access)</li>
+                        <li><strong>Influencer:</strong> Advises the decision-maker (helpful)</li>
+                        <li><strong is><strong>Gatekeeper:</strong> Blocks access (avoid)</li>
+                    </ul>
+
+                    <p><strong>Rule:</strong> If you can't get to the decision-maker within 2 meetings, disqualify.</p>
+
+                    <h2>N = Need</h2>
+                    <p><strong>Question:</strong> Do they actually have the problem you solve?</p>
+
+                    <h3>Questions to Ask:</h3>
+                    <ul>
+                        <li>"What's the biggest challenge you're facing right now?"</li>
+                        <li>"How is this problem affecting your business?"</li>
+                        <li>"What happens if you don't solve this?"</li>
+                        <li>"What have you tried so far?"</li>
+                        <li>"Why isn't your current solution working?"</li>
+                    </ul>
+
+                    <p><strong>Need vs. Want:</strong></p>
+                    <ul>
+                        <li><strong>Need:</strong> "We're losing $10K/month to this problem"</li>
+                        <li><strong>Want:</strong> "It would be nice to have"</li>
+                    </ul>
+
+                    <p><strong>Only sell to needs, not wants.</strong></p>
+
+                    <h2>T = Timeline</h2>
+                    <p><strong>Question:</strong> When do they need it?</p>
+
+                    <h3>Questions to Ask:</h3>
+                    <ul>
+                        <li>"When do you need this implemented?"</li>
+                        <li>"What happens if you don't solve this by [date]?"</li>
+                        <li>"What's driving your timeline?"</li>
+                        <li>"Are there any upcoming deadlines we should be aware of?"</li>
+                    </ul>
+
+                    <p><strong>Timeline tiers:</strong></p>
+                    <ul>
+                        <li><strong>Immediate (0-30 days):</strong> Hot lead, prioritize</li>
+                        <li><strong>Near-term (1-3 months):</strong> Qualified, stay engaged</li>
+                        <li><strong>Long-term (3+ months):</strong> Nurture, check in later</li>
+                        <li><strong>No timeline:</strong> Not a real lead</li>
+                    </ul>
+
+                    <h2>BANT Scoring System</h2>
+                    <p><strong>Rate each criterion 0-2:</strong></p>
+                    <ul>
+                        <li><strong>2 points:</strong> Strong fit</li>
+                        <li><strong>1 point:</strong> Possible fit</li>
+                        <li><strong>0 points:</strong> Not a fit</li>
+                    </ul>
+
+                    <p><strong>Qualification thresholds:</strong></p>
+                    <ul>
+                        <li><strong>6-8 points:</strong> Highly qualified, pursue aggressively</li>
+                        <li><strong>4-5 points:</strong> Qualified, pursue</li>
+                        <li><strong>2-3 points:</strong> Marginally qualified, nurture</li>
+                        <li><strong>0-1 points:</strong> Disqualify</li>
+                    </ul>
+
+                    <h2>When to Disqualify a Lead</h2>
+                    <p><strong>Disqualify immediately if:</strong></p>
+                    <ul>
+                        <li>Zero budget and no path to budget</li>
+                        <li>Can't access the decision-maker</li>
+                        <li>No real pain point</li>
+                        <li>Timeline is "someday"</li>
+                        <li>They want features you don't have (and won't build)</li>
+                    </ul>
+
+                    <p><strong>It's okay to say no.</strong> Your time is valuable.</p>
+
+                    <h2>BANT Limitations</h2>
+                    <p><strong>BANT doesn't account for:</strong></p>
+                    <ul>
+                        <li><strong>Fit:</strong> Are they your ideal customer?</li>
+                        <li><strong>Urgency:</strong> How badly do they need it?</li>
+                        <li><strong>Competition:</strong> Who else are they evaluating?</li>
+                    </ul>
+
+                    <p><strong>Solution:</strong> Use BANT as a baseline, add custom criteria as needed.</p>
+
+                    <h2>BANT in Action: Example</h2>
+                    <p><strong>Lead:</strong> Marketing director at a 50-person SaaS company</p>
+
+                    <p><strong>Budget (2 points):</strong> "$20K allocated for marketing automation"<br>
+                        <strong>Authority (1 point):</strong> "I recommend, but VP approves"<br>
+                        <strong>Need (2 points):</strong> "We're losing 15 hours/week on manual email campaigns"<br>
+                        <strong>Timeline (2 points):</strong> "Need it running by Q1"
+                    </p>
+
+                    <p><strong>Score: 7/8</strong> = Highly qualified. Pursue.</p>
+
+                    <h2>Conclusion</h2>
+                    <p>BANT is simple but powerful. Use it on every first call. Qualify ruthlessly. Your quota depends
+                        on it.</p>
+                    <p><strong>Formula:</strong> Right leads + right timing = closed deals.</p>
+                    <p>Want to generate more qualified leads? Read <a
+                            href="lead-generation-questions-for-startups.html">Lead Generation for Startups</a>.</p>
                 </div>
             </article>
 
@@ -114,17 +443,25 @@
             </div>
         </main>
     </div>
-    
+
     <!-- Bottom Navigation Bar for Mobile -->
     <nav class="bottom-nav" id="bottomNav" aria-label="Mobile Navigation">
-        <a href="../index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i class="fas fa-user"></i><span>Summary</span></a>
-        <a href="../index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i class="fas fa-cogs"></i><span>Skills</span></a>
-        <a href="../index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
-        <a href="../index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
-        <a href="../index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
-        <a href="../blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i class="fas fa-feather-alt"></i><span>Blog</span></a>
-        <a href="../index.html#certifications" class="bottom-nav-link" data-section="certifications" aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
-        <a href="../index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+        <a href="../index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i
+                class="fas fa-user"></i><span>Summary</span></a>
+        <a href="../index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i
+                class="fas fa-cogs"></i><span>Skills</span></a>
+        <a href="../index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i
+                class="fas fa-briefcase"></i><span>Experience</span></a>
+        <a href="../index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i
+                class="fas fa-graduation-cap"></i><span>Education</span></a>
+        <a href="../index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i
+                class="fas fa-project-diagram"></i><span>Projects</span></a>
+        <a href="../blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i
+                class="fas fa-feather-alt"></i><span>Blog</span></a>
+        <a href="../index.html#certifications" class="bottom-nav-link" data-section="certifications"
+            aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
+        <a href="../index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i
+                class="fas fa-envelope"></i><span>Contact</span></a>
     </nav>
 
 
@@ -134,5 +471,6 @@
     </footer>
 
     <script src="../blog_script.js" defer></script>
-</body>
+    </body>
+
 </html>

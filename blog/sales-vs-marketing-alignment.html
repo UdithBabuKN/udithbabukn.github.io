@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -31,6 +31,57 @@
         .back-to-blog a { color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 1.1rem; padding: 0.75rem 1.5rem; border: 2px solid var(--primary-color); border-radius: 8px; transition: var(--transition); }
         .back-to-blog a:hover { background: var(--accent-color); color: white; border-color: transparent; }
     </style>
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://udithbabukn.github.io/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://udithbabukn.github.io/blog.html"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Sales vs. Marketing: Align Your Teams for Growth (SLA Guide)",
+        "item": "https://udithbabukn.github.io/blog/sales-vs-marketing-alignment.html"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://udithbabukn.github.io/blog/sales-vs-marketing-alignment.html"
+      },
+      "headline": "Sales vs. Marketing: Align Your Teams for Growth (SLA Guide)",
+      "description": "Learn how to align your sales and marketing teams for explosive growth by creating a Service-Level Agreement (SLA) that establishes clear goals and mutual accountability.",
+      "image": "https://udithbabukn.github.io/images/portfolio-thumbnail.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Udith Babu K N",
+        "url": "https://udithbabukn.github.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Udith Babu K N",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://udithbabukn.github.io/picofme.webp"
+        }
+      },
+      "datePublished": "2025-11-20",
+      "dateModified": "2025-11-20"
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -102,6 +153,14 @@
                 </div>
             </header>
 
+                        <!-- Breadcrumbs -->
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+                <a href="../index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="../blog.html">Blog</a>
+                <span class="separator">/</span>
+                <span class="current">Sales vs. Marketing: Align Your Teams for Growth (SLA Guide)</span>
+            </nav>
             <article>
                 <header class="article-header">
                     <h1 class="section-header">Sales vs. Marketing: How to Align Your Teams for Growth</h1>
@@ -160,3 +219,4 @@
     <script src="../blog_script.js" defer></script>
 </body>
 </html>
+

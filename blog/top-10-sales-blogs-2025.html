@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +32,57 @@
         .back-to-blog a { color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 1.1rem; padding: 0.75rem 1.5rem; border: 2px solid var(--primary-color); border-radius: 8px; transition: var(--transition); }
         .back-to-blog a:hover { background: var(--accent-color); color: white; border-color: transparent; }
     </style>
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://udithbabukn.github.io/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://udithbabukn.github.io/blog.html"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Top 10 Sales Blogs Every Rep Should Be Reading in 2025",
+        "item": "https://udithbabukn.github.io/blog/top-10-sales-blogs-2025.html"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://udithbabukn.github.io/blog/top-10-sales-blogs-2025.html"
+      },
+      "headline": "Top 10 Sales Blogs Every Rep Should Be Reading in 2025",
+      "description": "A curated list of the top 10 most valuable sales blogs for professional development in 2025, featuring data-driven insights, practical tips, and expert advice.",
+      "image": "https://udithbabukn.github.io/images/portfolio-thumbnail.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Udith Babu K N",
+        "url": "https://udithbabukn.github.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Udith Babu K N",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://udithbabukn.github.io/picofme.webp"
+        }
+      },
+      "datePublished": "2025-11-20",
+      "dateModified": "2025-11-20"
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -103,6 +154,14 @@
                 </div>
             </header>
             
+                        <!-- Breadcrumbs -->
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+                <a href="../index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="../blog.html">Blog</a>
+                <span class="separator">/</span>
+                <span class="current">Top 10 Sales Blogs Every Rep Should Be Reading in 2025</span>
+            </nav>
             <article>
                 <header class="article-header">
                     <h1 class="section-header">Top 10 Sales Blogs Every Rep Should Be Reading in 2025</h1>
@@ -184,3 +243,4 @@
     <script src="../blog_script.js" defer></script>
 </body>
 </html>
+

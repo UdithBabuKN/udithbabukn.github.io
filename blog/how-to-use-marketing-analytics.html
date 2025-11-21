@@ -1,42 +1,195 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Use Marketing Analytics to Prove Your ROI | Udith Babu K N</title>
-    <link rel="canonical" href="https://udithbabukn.github.io/blog/how-to-use-marketing-analytics.html">
-    <meta name="description" content="A guide on the practical application of marketing analytics to demonstrate the value of marketing efforts using KPIs and tools like Google Analytics.">
-    <meta name="keywords" content="how to use marketing analytics, marketing KPIs, measure marketing ROI, data driven marketing">
+
+    <!-- SEO: Optimized Title for the Article -->
+    <title>How to Use Marketing Analytics to Prove ROI (2025 Guide) | Udith Babu K N</title>
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- SEO: Meta Description for the Article -->
+    <meta name="description"
+        content="Learn how to use marketing analytics to prove ROI. Track the right KPIs, build dashboards, and show stakeholders the value of your marketing efforts.">
+
+    <!-- SEO: Keywords for the Article -->
+    <meta name="keywords"
+        content="marketing analytics, how to measure marketing ROI, marketing KPIs, data-driven marketing, Google Analytics guide, marketing dashboards, conversion tracking">
     <meta name="author" content="Udith Babu K N">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- SEO: Canonical URL for the article page -->
+    <link rel="canonical" href="https://udithbabukn.github.io/blog/how-to-use-marketing-analytics.html">
+
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="manifest" href="../site.webmanifest">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="How to Use Marketing Analytics to Prove ROI (2025 Guide) | Udith Babu K N">
+    <meta property="og:description"
+        content="Learn how to use marketing analytics to prove ROI. Track KPIs, build dashboards, and show value.">
+    <meta property="og:image" content="https://udithbabukn.github.io/images/portfolio-thumbnail.jpg">
+    <meta property="og:url" content="https://udithbabukn.github.io/blog/how-to-use-marketing-analytics.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2025-09-14T08:00:00+05:30">
+    <meta property="article:author" content="Udith Babu K N">
+
+    <!-- Stylesheets -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
+
     <style>
-        .article-header { text-align: center; padding: 4rem 1rem 2rem; max-width: 800px; margin: 0 auto; }
-        .article-header .section-header { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.2; }
-        .article-meta { color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem; }
-        .article-content { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; font-size: 1.1rem; line-height: 1.8; }
-        .article-content h2 { font-size: 1.75rem; margin-top: 2.5rem; margin-bottom: 1rem; background: var(--accent-color); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .article-content p, .article-content ol { margin-bottom: 1.5rem; }
-        .article-content ol { padding-left: 2rem; }
-        .back-to-blog { text-align: center; margin: 3rem 0; }
-        .back-to-blog a { color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 1.1rem; padding: 0.75rem 1.5rem; border: 2px solid var(--primary-color); border-radius: 8px; transition: var(--transition); }
-        .back-to-blog a:hover { background: var(--accent-color); color: white; border-color: transparent; }
+        .article-header {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-header .section-header {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .article-content h2 {
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .back-to-blog {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .back-to-blog a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .back-to-blog a:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: transparent;
+        }
     </style>
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://udithbabukn.github.io/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://udithbabukn.github.io/blog.html"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Use Marketing Analytics",
+        "item": "https://udithbabukn.github.io/blog/how-to-use-marketing-analytics.html"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://udithbabukn.github.io/blog/how-to-use-marketing-analytics.html"
+      },
+      "headline": "How to Use Marketing Analytics to Prove ROI (2025 Guide)",
+      "description": "Learn how to use marketing analytics to prove ROI. Track the right KPIs, build dashboards, and show stakeholders the value of your marketing efforts.",
+      "image": "https://udithbabukn.github.io/images/portfolio-thumbnail.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Udith Babu K N",
+        "url": "https://udithbabukn.github.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Udith Babu K N",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://udithbabukn.github.io/picofme.webp"
+        }
+      },
+      "datePublished": "2025-09-14T08:00:00+05:30",
+      "dateModified": "2025-11-20T20:50:00+05:30"
+    }
+    </script>
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar Navigation (Desktop) -->
         <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
             <div class="sidebar-indicator"></div>
             <div class="profile-header">
-                <img src="../picofme.webp" alt="Headshot of Udith Babu K N, Marketing and Sales Executive" class="profile-pic" loading="lazy" width="50" height="50">
+                <img src="../picofme.webp" alt="Headshot of Udith Babu K N, Marketing and Sales Executive"
+                    class="profile-pic" loading="lazy" width="50" height="50">
                 <div class="logo">Udith Babu K N</div>
             </div>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
@@ -45,7 +198,8 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading email...</span></a>
+                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading
+                            email...</span></a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone" aria-hidden="true"></i>
@@ -58,63 +212,154 @@
             </div>
 
             <div class="social-links">
-                 <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                 <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Instagram Profile"><i class="fab fa-instagram"></i></a>
-                 <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"></i></a>
-                 <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank"
+                    rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's LinkedIn Profile"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer"
+                    class="social-link" aria-label="View Udith Babu K N's Instagram Profile"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer"
+                    class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"></i></a>
+                <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link"
+                    aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"></i></a>
             </div>
-            
+
             <nav class="main-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="../index.html#summary" class="nav-link" data-section="summary"><i class="fas fa-user" aria-hidden="true"></i>Summary</a></li>
-                    <li class="nav-item"><a href="../index.html#skills" class="nav-link" data-section="skills"><i class="fas fa-cogs" aria-hidden="true"></i>Skills</a></li>
-                    <li class="nav-item"><a href="../index.html#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a></li>
-                    <li class="nav-item"><a href="../index.html#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a></li>
-                    <li class="nav-item"><a href="../index.html#projects" class="nav-link" data-section="projects"><i class="fas fa-project-diagram" aria-hidden="true"></i>Projects</a></li>
-                    <li class="nav-item"><a href="../blog.html" class="nav-link" data-section="blog" aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
-                    <li class="nav-item"><a href="../index.html#certifications" class="nav-link" data-section="certifications"><i class="fas fa-certificate" aria-hidden="true"></i>Certifications</a></li>
-                    <li class="nav-item"><a href="../index.html#contact" class="nav-link" data-section="contact"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Me</a></li>
+                    <li class="nav-item"><a href="../index.html#summary" class="nav-link" data-section="summary"><i
+                                class="fas fa-user" aria-hidden="true"></i>Summary</a></li>
+                    <li class="nav-item"><a href="../index.html#skills" class="nav-link" data-section="skills"><i
+                                class="fas fa-cogs" aria-hidden="true"></i>Skills</a></li>
+                    <li class="nav-item"><a href="../index.html#experience" class="nav-link"
+                            data-section="experience"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a>
+                    </li>
+                    <li class="nav-item"><a href="../index.html#education" class="nav-link" data-section="education"><i
+                                class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a></li>
+                    <li class="nav-item"><a href="../index.html#projects" class="nav-link" data-section="projects"><i
+                                class="fas fa-project-diagram" aria-hidden="true"></i>Projects</a></li>
+                    <li class="nav-item"><a href="../blog.html" class="nav-link" data-section="blog"
+                            aria-current="page"><i class="fas fa-feather-alt" aria-hidden="true"></i>Blog</a></li>
+                    <li class="nav-item"><a href="../index.html#certifications" class="nav-link"
+                            data-section="certifications"><i class="fas fa-certificate"
+                                aria-hidden="true"></i>Certifications</a></li>
+                    <li class="nav-item"><a href="../index.html#contact" class="nav-link" data-section="contact"><i
+                                class="fas fa-envelope" aria-hidden="true"></i>Contact Me</a></li>
                 </ul>
             </nav>
         </aside>
 
         <!-- Main Content Area -->
         <main class="content" id="main-content" aria-label="Main Content">
-            
+
             <!-- Header for Mobile View -->
             <header class="mobile-header">
                 <div class="profile-header">
-                    <img src="../picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic" loading="lazy" width="50" height="50">
+                    <img src="../picofme.webp" alt="Profile picture of Udith Babu K N" class="profile-pic"
+                        loading="lazy" width="50" height="50">
                     <div class="logo">Udith Babu K N</div>
                 </div>
                 <div class="mobile-header-actions">
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium" aria-hidden="true"></i></a>
-                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/udith-babu-k-n-607b131a1/" target="_blank"
+                            rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i
+                                class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/udith_babu_k_n/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram Profile"><i class="fab fa-instagram"
+                                aria-hidden="true"></i></a>
+                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="fab fa-medium"
+                                aria-hidden="true"></i></a>
+                        <a href="https://pin.it/2XH7LPbTB" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="View Udith Babu K N's Pinterest Profile"><i class="fab fa-pinterest"
+                                aria-hidden="true"></i></a>
                     </div>
-                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme"
+                        aria-pressed="false">
                         <i class="fas fa-moon"></i>
                     </button>
                 </div>
             </header>
 
+            <!-- Breadcrumbs -->
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+                <a href="../index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="../blog.html">Blog</a>
+                <span class="separator">/</span>
+                <span class="current">How to Use Marketing Analytics</span>
+            </nav>
             <article>
                 <header class="article-header">
-                    <h1 class="section-header">How to Use Marketing Analytics to Prove Your ROI</h1>
+                    <h1 class="section-header">How to Use Marketing Analytics to Prove ROI (2025 Guide)</h1>
                     <p class="article-meta">Published on September 14, 2025 by Udith Babu K N</p>
                 </header>
                 <div class="article-content">
-                    <p>This guide will focus on the practical application of marketing analytics to demonstrate the value of marketing efforts.</p>
-                    <h2>The process will be outlined as:</h2>
-                    <ol>
-                        <li><strong>Set clear objectives</strong> for what needs to be measured (e.g., lead generation, sales, brand awareness).</li>
-                        <li><strong>Identify the Key Performance Indicators (KPIs)</strong> that align with those objectives, such as page views, bounce rate, conversion rate, and email click-through rate.</li>
-                        <li><strong>Use accessible tools like Google Analytics</strong> to collect and centralize data.</li>
-                        <li><strong>Build simple dashboards</strong> to visualize the data and track trends over time.</li>
-                        <li><strong>Use the data to refine marketing strategies</strong> in real-time and create reports that clearly communicate the Return on Investment (ROI) of marketing campaigns to stakeholders.</li>
-                    </ol>
+                    <p>"How do we know this is working?" If you can't answer that question with data, you're guessing.
+                        Marketing analytics turns guesses into proof.</p>
+                    <p>Here's how to use it properly.</p>
+
+                    <h2>Step 1: Define What Success Looks Like</h2>
+                    <p>Before you dive into data, decide what you're actually trying to achieve. Common objectives:</p>
+                    <ul>
+                        <li><strong>Lead generation:</strong> Number of qualified leads per month</li>
+                        <li><strong>Sales:</strong> Revenue generated from marketing channels</li>
+                        <li><strong>Brand awareness:</strong> Impressions, reach, engagement</li>
+                        <li><strong>Customer retention:</strong> Repeat purchase rate</li>
+                    </ul>
+
+                    <h2>Step 2: Pick the Right KPIs</h2>
+                    <p>Not all metrics matter. Focus on metrics that tie directly to business goals:</p>
+                    <ul>
+                        <li><strong>Conversion rate:</strong> % of visitors who take action</li>
+                        <li><strong>Cost per acquisition (CPA):</strong> How much to acquire one customer</li>
+                        <li><strong>Return on ad spend (ROAS):</strong> Revenue / Ad spend</li>
+                        <li><strong>Customer lifetime value (CLV):</strong> Total revenue from a customer over time</li>
+                    </ul>
+                    <p>Vanity metrics like "page views" are meaningless unless they convert.</p>
+
+                    <h2>Step 3: Set Up Proper Tracking</h2>
+                    <p>Use Google Analytics 4 (GA4) to track everything:</p>
+                    <ul>
+                        <li><strong>Set up goals:</strong> Track form submissions, purchases, downloads</li>
+                        <li><strong>Enable eCommerce tracking:</strong> Track revenue by source</li>
+                        <li><strong>Use UTM parameters:</strong> Tag all campaigns to know what's driving traffic</li>
+                    </ul>
+                    <p>Without proper tracking, you're flying blind.</p>
+
+                    <h2>Step 4: Build a Dashboard</h2>
+                    <p>Don't waste time digging through reports. Build a dashboard with your key metrics in Google Data
+                        Studio or Looker Studio (free):</p>
+                    <ul>
+                        <li>Real-time traffic</li>
+                        <li>Conversion by channel (organic, paid, social)</li>
+                        <li>Revenue trends</li>
+                        <li>Top-performing content</li>
+                    </ul>
+                    <p>Check it weekly. Make decisions based on trends, not daily fluctuations.</p>
+
+                    <h2>Step 5: Calculate ROI</h2>
+                    <p>The formula executives care about:</p>
+                    <p><strong>ROI = (Revenue - Cost) / Cost x 100</strong></p>
+                    <p>Example: You spent $10,000 on ads and generated $50,000 in revenue.</p>
+                    <p>ROI = ($50,000 - $10,000) / $10,000 x 100 = <strong>400% ROI</strong></p>
+                    <p>That's the language stakeholders understand.</p>
+
+                    <h2>Step 6: Report Results (The Right Way)</h2>
+                    <p>When presenting to stakeholders:</p>
+                    <ul>
+                        <li>Start with the bottom line (revenue, leads)</li>
+                        <li>Show trends over time (month-over-month, year-over-year)</li>
+                        <li>Highlight wins AND areas for improvement</li>
+                        <li>Recommend next steps based on data</li>
+                    </ul>
+                    <p>Understanding <a href="understanding-marketing-attribution.html">marketing attribution</a> will
+                        help you assign credit accurately across channels.</p>
+
+                    <h2>Conclusion</h2>
+                    <p>Marketing analytics isn't about collecting data—it's about using data to make better decisions.
+                        Track the right metrics, build dashboards, and prove your value with ROI.</p>
+                    <p>Ready to dive deeper? Learn <a href="what-is-digital-marketing.html">the fundamentals of digital
+                            marketing</a>.</p>
                 </div>
             </article>
 
@@ -123,17 +368,25 @@
             </div>
         </main>
     </div>
-    
+
     <!-- Bottom Navigation Bar for Mobile -->
     <nav class="bottom-nav" id="bottomNav" aria-label="Mobile Navigation">
-        <a href="../index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i class="fas fa-user"></i><span>Summary</span></a>
-        <a href="../index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i class="fas fa-cogs"></i><span>Skills</span></a>
-        <a href="../index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
-        <a href="../index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
-        <a href="../index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
-        <a href="../blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i class="fas fa-feather-alt"></i><span>Blog</span></a>
-        <a href="../index.html#certifications" class="bottom-nav-link" data-section="certifications" aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
-        <a href="../index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+        <a href="../index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i
+                class="fas fa-user"></i><span>Summary</span></a>
+        <a href="../index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i
+                class="fas fa-cogs"></i><span>Skills</span></a>
+        <a href="../index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i
+                class="fas fa-briefcase"></i><span>Experience</span></a>
+        <a href="../index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i
+                class="fas fa-graduation-cap"></i><span>Education</span></a>
+        <a href="../index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i
+                class="fas fa-project-diagram"></i><span>Projects</span></a>
+        <a href="../blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i
+                class="fas fa-feather-alt"></i><span>Blog</span></a>
+        <a href="../index.html#certifications" class="bottom-nav-link" data-section="certifications"
+            aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
+        <a href="../index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i
+                class="fas fa-envelope"></i><span>Contact</span></a>
     </nav>
 
 
@@ -144,4 +397,5 @@
 
     <script src="../blog_script.js" defer></script>
 </body>
+
 </html>
