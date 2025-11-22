@@ -65,7 +65,7 @@
     },
     {
         "category":  "Foundations",
-        "title":  "Unknown Title",
+        "title":  "50+ Digital Marketing & Sales Terms: Complete Glossary (2025)",
         "excerpt":  "Complete A-Z glossary of 50+ essential digital marketing and sales terms. Quick reference guide with clear definitions and examples.",
         "readTime":  "8 min read",
         "slug":  "digital-marketing-sales-glossary",

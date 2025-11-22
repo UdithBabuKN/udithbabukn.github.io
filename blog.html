@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-IN" data-theme="light">
 
 <head>
@@ -404,102 +404,109 @@
                 <section class="section blog-header">
                     <h1 class="section-header">Blogs</h1>
                 </section>
+<div id="blog-grid" class="blog-grid">
+    <!-- Blog cards will be dynamically inserted here -->
+</div>
 
-                <div id="blog-grid" class="blog-grid">
-                    <!-- Blog cards will be dynamically inserted here -->
-                </div>
+<nav id="pagination" class="pagination" aria-label="Blog post navigation">
+    <!-- Pagination links will be dynamically inserted here -->
+</nav>
+</div>
 
-                <nav id="pagination" class="pagination" aria-label="Blog post navigation">
-                    <!-- Pagination links will be dynamically inserted here -->
-                </nav>
-            </div>
-
-            <div class="article-footer">
-                <footer class="footer">
-                    <p id="copyright-year"></p>
-                </footer>
-            </div>
-        </main>
-    </div>
-
-    <!-- Bottom Navigation Bar for Mobile -->
-    <nav class="bottom-nav" id="bottomNav" aria-label="Mobile Navigation">
-        <a href="index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i
-                class="fas fa-user"></i><span>Summary</span></a>
-        <a href="index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i
-                class="fas fa-cogs"></i><span>Skills</span></a>
-        <a href="index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i
-                class="fas fa-briefcase"></i><span>Experience</span></a>
-        <a href="index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i
-                class="fas fa-graduation-cap"></i><span>Education</span></a>
-        <a href="index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i
-                class="fas fa-project-diagram"></i><span>Projects</span></a>
-        <a href="blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i
-                class="fas fa-feather-alt"></i><span>Blog</span></a>
-        <a href="index.html#certifications" class="bottom-nav-link" data-section="certifications"
-            aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
-        <a href="index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i
-                class="fas fa-envelope"></i><span>Contact</span></a>
-    </nav>
-
-    <!-- Footer -->
+<div class="article-footer">
     <footer class="footer">
         <p id="copyright-year"></p>
     </footer>
+</div>
+</main>
+</div>
 
-    <script src="blog_posts_data.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("Script started");
-            if (typeof blogPosts !== 'undefined') {
-                console.log("blogPosts length:", blogPosts.length);
-            } else {
-                console.error("blogPosts is undefined!");
+<!-- Bottom Navigation Bar for Mobile -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Mobile Navigation">
+    <a href="index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i
+            class="fas fa-user"></i><span>Summary</span></a>
+    <a href="index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i
+            class="fas fa-cogs"></i><span>Skills</span></a>
+    <a href="index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i
+            class="fas fa-briefcase"></i><span>Experience</span></a>
+    <a href="index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i
+            class="fas fa-graduation-cap"></i><span>Education</span></a>
+    <a href="index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i
+            class="fas fa-project-diagram"></i><span>Projects</span></a>
+    <a href="blog.html" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i
+            class="fas fa-feather-alt"></i><span>Blog</span></a>
+    <a href="index.html#certifications" class="bottom-nav-link" data-section="certifications"
+        aria-label="Certifications"><i class="fas fa-certificate"></i><span>Certs</span></a>
+    <a href="index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i
+            class="fas fa-envelope"></i><span>Contact</span></a>
+</nav>
+
+<!-- Footer -->
+<footer class="footer">
+    <p id="copyright-year"></p>
+</footer>
+
+<script src="blog_posts_data.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("Script started");
+        if (typeof blogPosts !== 'undefined') {
+            console.log("blogPosts length:", blogPosts.length);
+        } else {
+            console.error("blogPosts is undefined!");
+        }
+
+        const copyrightElement = document.getElementById('copyright-year');
+        let currentPage = 1;
+        const postsPerPage = 10;
+        const blogGrid = document.getElementById('blog-grid');
+        const paginationContainer = document.getElementById('pagination');
+        const contentScroller = document.querySelector('.content-scroller');
+
+        // Fallback check for data
+        if (typeof blogPosts === 'undefined' || !blogPosts || blogPosts.length === 0) {
+            blogGrid.innerHTML = '<p style="text-align:center; color: var(--error-color);">Unable to load blog posts. Please try refreshing the page.</p>';
+            console.error('blogPosts data is missing or empty.');
+            return;
+        }
+
+        function getCategoryColor(category) {
+            switch (category) {
+                case 'Foundations': return '#00E5FF'; // Cyan
+                case 'Playbook': return '#76FF03'; // Lime Green
+                case 'Sales Excellence': return '#FF4081'; // Pink
+                case 'Growth & Analytics': return '#FFC107'; // Amber
+                default: return '#9C27B0'; // Purple
             }
+        }
 
-            const copyrightElement = document.getElementById('copyright-year');
-            let currentPage = 1;
-            const postsPerPage = 10;
-            const blogGrid = document.getElementById('blog-grid');
-            const paginationContainer = document.getElementById('pagination');
-            const contentScroller = document.querySelector('.content-scroller');
+        function displayPosts(page) {
+            blogGrid.innerHTML = '';
+            const start = (page - 1) * postsPerPage;
+            const end = start + postsPerPage;
+            const paginatedPosts = blogPosts.slice(start, end);
 
-            // Fallback check for data
-            if (typeof blogPosts === 'undefined' || !blogPosts || blogPosts.length === 0) {
-                blogGrid.innerHTML = '<p style="text-align:center; color: var(--error-color);">Unable to load blog posts. Please try refreshing the page.</p>';
-                console.error('blogPosts data is missing or empty.');
-                return;
-            }
+            paginatedPosts.forEach(post => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                const categoryColor = getCategoryColor(post.category);
+                card.style.setProperty('--category-color', categoryColor);
 
-            function getCategoryColor(category) {
-                switch (category) {
-                    case 'Foundations': return '#00E5FF'; // Cyan
-                    case 'Playbook': return '#76FF03'; // Lime Green
-                    case 'Sales Excellence': return '#FF4081'; // Pink
-                    case 'Growth & Analytics': return '#FFC107'; // Amber
-                    default: return '#9C27B0'; // Purple
+                // Dynamic Year Logic
+                const currentYear = new Date().getFullYear();
+                const yearToReplace = '2025';
+                let displayTitle = post.title;
+                if (currentYear.toString() !== yearToReplace && displayTitle.includes(yearToReplace)) {
+                    displayTitle = displayTitle.replace(yearToReplace, currentYear);
                 }
-            }
 
-            function displayPosts(page) {
-                blogGrid.innerHTML = '';
-                const start = (page - 1) * postsPerPage;
-                const end = start + postsPerPage;
-                const paginatedPosts = blogPosts.slice(start, end);
-
-                paginatedPosts.forEach(post => {
-                    const card = document.createElement('article');
-                    card.className = 'blog-card';
-                    const categoryColor = getCategoryColor(post.category);
-                    card.style.setProperty('--category-color', categoryColor);
-
-                    card.innerHTML = `
+                card.innerHTML = `
                         <div class="blog-card-image-container">
-                            <img src="images/blogimages/${post.image}" alt="${post.title}" class="blog-card-image" loading="lazy">
+                            <img src="images/blogimages/${post.image}" alt="${displayTitle}" class="blog-card-image" loading="lazy">
                         </div>
                         <div class="blog-card-content">
                             <span class="blog-card-category">${post.category}</span>
-                            <h3 class="blog-card-title">${post.title}</h3>
+                            <h3 class="blog-card-title">${displayTitle}</h3>
                             <p class="blog-card-excerpt">${post.excerpt}</p>
                             <div class="blog-card-footer">
                                 <div class="author-info">
@@ -513,98 +520,98 @@
                             </div>
                         </div>
                     `;
-                    blogGrid.appendChild(card);
-                });
-                attachLinkListeners();
-            }
+                blogGrid.appendChild(card);
+            });
+            attachLinkListeners();
+        }
 
-            function setupPagination() {
-                paginationContainer.innerHTML = '';
-                const pageCount = Math.ceil(blogPosts.length / postsPerPage);
-                for (let i = 1; i <= pageCount; i++) {
-                    const link = document.createElement('a');
-                    link.href = '#';
-                    link.innerText = i;
-                    link.className = 'pagination-link';
-                    if (i === currentPage) {
-                        link.classList.add('active');
-                    }
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        currentPage = i;
-                        displayPosts(currentPage);
-
-                        const currentActive = document.querySelector('.pagination-link.active');
-                        if (currentActive) currentActive.classList.remove('active');
-
-                        link.classList.add('active');
-                        if (contentScroller) {
-                            contentScroller.scrollTo(0, 0);
-                        }
-                    });
-                    paginationContainer.appendChild(link);
+        function setupPagination() {
+            paginationContainer.innerHTML = '';
+            const pageCount = Math.ceil(blogPosts.length / postsPerPage);
+            for (let i = 1; i <= pageCount; i++) {
+                const link = document.createElement('a');
+                link.href = '#';
+                link.innerText = i;
+                link.className = 'pagination-link';
+                if (i === currentPage) {
+                    link.classList.add('active');
                 }
-            }
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    displayPosts(currentPage);
 
-            function saveState() {
-                sessionStorage.setItem('blogPage', currentPage);
-                if (contentScroller) {
-                    sessionStorage.setItem('blogScrollPosition', contentScroller.scrollTop);
-                }
-            }
-
-            function restoreState() {
-                const savedPage = sessionStorage.getItem('blogPage');
-                const savedScrollPosition = sessionStorage.getItem('blogScrollPosition');
-
-                if (savedPage) currentPage = parseInt(savedPage, 10);
-
-                displayPosts(currentPage);
-
-                const activeLink = document.querySelector(`.pagination-link:nth-child(${currentPage})`);
-                if (activeLink) {
                     const currentActive = document.querySelector('.pagination-link.active');
                     if (currentActive) currentActive.classList.remove('active');
-                    activeLink.classList.add('active');
-                }
 
-                if (savedScrollPosition && contentScroller) {
-                    requestAnimationFrame(() => {
-                        contentScroller.scrollTo(0, parseInt(savedScrollPosition, 10));
-                    });
-                }
-                sessionStorage.removeItem('blogPage');
-                sessionStorage.removeItem('blogScrollPosition');
+                    link.classList.add('active');
+                    if (contentScroller) {
+                        contentScroller.scrollTo(0, 0);
+                    }
+                });
+                paginationContainer.appendChild(link);
+            }
+        }
+
+        function saveState() {
+            sessionStorage.setItem('blogPage', currentPage);
+            if (contentScroller) {
+                sessionStorage.setItem('blogScrollPosition', contentScroller.scrollTop);
+            }
+        }
+
+        function restoreState() {
+            const savedPage = sessionStorage.getItem('blogPage');
+            const savedScrollPosition = sessionStorage.getItem('blogScrollPosition');
+
+            if (savedPage) currentPage = parseInt(savedPage, 10);
+
+            displayPosts(currentPage);
+
+            const activeLink = document.querySelector(`.pagination-link:nth-child(${currentPage})`);
+            if (activeLink) {
+                const currentActive = document.querySelector('.pagination-link.active');
+                if (currentActive) currentActive.classList.remove('active');
+                activeLink.classList.add('active');
             }
 
-            function attachLinkListeners() {
-                const blogLinks = document.querySelectorAll('.blog-card-link');
-                blogLinks.forEach(link => {
-                    link.removeEventListener('click', saveState);
-                    link.addEventListener('click', saveState);
+            if (savedScrollPosition && contentScroller) {
+                requestAnimationFrame(() => {
+                    contentScroller.scrollTo(0, parseInt(savedScrollPosition, 10));
                 });
             }
+            sessionStorage.removeItem('blogPage');
+            sessionStorage.removeItem('blogScrollPosition');
+        }
 
-            restoreState();
-            setupPagination();
-        });
-    </script>
-    <script src="blog_script.js" defer></script>
-
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
+        function attachLinkListeners() {
+            const blogLinks = document.querySelectorAll('.blog-card-link');
+            blogLinks.forEach(link => {
+                link.removeEventListener('click', saveState);
+                link.addEventListener('click', saveState);
             });
         }
-    </script>
+
+        restoreState();
+        setupPagination();
+    });
+</script>
+<script src="blog_script.js" defer></script>
+
+<!-- Service Worker Registration -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        });
+    }
+</script>
 </body>
 
 </html>

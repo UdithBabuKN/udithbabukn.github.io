@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         applyTheme(newTheme);
     }
-    
+
     allThemeToggles.forEach(toggle => {
-        if(toggle) toggle.addEventListener('click', toggleTheme);
+        if (toggle) toggle.addEventListener('click', toggleTheme);
     });
     setDynamicTheme();
 
@@ -136,4 +136,38 @@ document.addEventListener('DOMContentLoaded', () => {
             link.removeAttribute('aria-current');
         }
     });
+    // --- DYNAMIC YEAR UPDATE ---
+    function updateYear() {
+        const currentYear = new Date().getFullYear();
+        const yearToReplace = '2025';
+
+        if (currentYear.toString() === yearToReplace) return;
+
+        // Update document title
+        if (document.title.includes(yearToReplace)) {
+            document.title = document.title.replace(yearToReplace, currentYear);
+        }
+
+        // Update H1 and section headers
+        const headers = document.querySelectorAll('h1, .section-header');
+        headers.forEach(header => {
+            if (header.textContent.includes(yearToReplace)) {
+                header.textContent = header.textContent.replace(yearToReplace, currentYear);
+            }
+        });
+
+        // Update Published Date
+        if (currentYear > 2025) {
+            const metaElements = document.querySelectorAll('.article-meta');
+            metaElements.forEach(meta => {
+                if (meta.textContent.includes('Published on') && meta.textContent.includes('2025')) {
+                    // Replace the date part with "January 1, [CurrentYear]"
+                    // Preserves "by Author" if it exists after the date
+                    meta.innerHTML = meta.innerHTML.replace(/Published on .*? 2025/, `Published on January 1, ${currentYear}`);
+                }
+            });
+        }
+    }
+
+    updateYear();
 });
