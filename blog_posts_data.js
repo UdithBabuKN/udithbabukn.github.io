@@ -1,7 +1,7 @@
 ﻿const blogPosts = [
     {
         "category":  "Sales Excellence",
-        "title":  "The 7 Stages of Sales Process: Master Each Step (20 25)",
+        "title":  "The 7 Stages of Sales Process: Master Each Step (2025)",
         "excerpt":  "Master all 7 stages of the sales process: prospecting, qualifying, researching, presenting, handling objections, closing, and following up.",
         "readTime":  "6 min read",
         "slug":  "7-stages-of-sales-process",
