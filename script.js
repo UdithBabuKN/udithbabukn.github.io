@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentScroller = document.querySelector('.content-scroller');
     const mainContent = document.getElementById('main-content');
     const desktopNavLinks = document.querySelectorAll('.sidebar .nav-link');
-    const bottomNavLinks = document.querySelectorAll('.bottom-nav .bottom-nav-link'); 
+    const bottomNavLinks = document.querySelectorAll('.bottom-nav .bottom-nav-link');
     const allNavLinks = [...desktopNavLinks, ...bottomNavLinks];
     const titleElement = document.querySelector('title');
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -221,16 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         applyTheme(newTheme);
     }
-    
+
     allThemeToggles.forEach(toggle => {
-        if(toggle) toggle.addEventListener('click', toggleTheme);
+        if (toggle) toggle.addEventListener('click', toggleTheme);
     });
 
     if (!contentScroller) {
         // This might be the blog page, which has a different structure.
         return;
     }
-    
+
     // --- BEST PRACTICES FIX ---
     function secureExternalLinks() {
         const links = document.querySelectorAll('a[target="_blank"]');
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     category.classList.remove('expanded');
                     title.setAttribute('aria-expanded', 'false');
                 });
-                
+
                 category.addEventListener('focusin', () => {
                     category.classList.add('expanded');
                     title.setAttribute('aria-expanded', 'true');
@@ -278,11 +278,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
+
     function initPagePeelCards() {
         const cards = document.querySelectorAll('.page-peel-card');
-        
-        if(window.innerWidth > 768) {
+
+        if (window.innerWidth > 768) {
             cards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
@@ -303,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
 
     function initStaggeredList() {
         const lists = document.querySelectorAll('.details ul');
@@ -362,12 +364,12 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 contentScroller.innerHTML = '';
                 contentScroller.appendChild(newSection);
-                
+
                 titleElement.textContent = `Udith Babu K N - ${sectionData.title}`;
                 if (sectionData.metaDescription) {
-                   metaDescription.setAttribute('content', sectionData.metaDescription);
+                    metaDescription.setAttribute('content', sectionData.metaDescription);
                 }
-                
+
                 history.pushState(null, '', `#${sectionId}`);
 
                 mainContent.style.opacity = '1';
@@ -379,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 initStaggeredList();
                 init3DTilt();
                 if (sectionId === 'contact') initContactForm();
-                
+
                 // Secure links in the newly added content
                 secureExternalLinks();
             }, 200);
@@ -401,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     function initLazyLoad() {
         const lazyElements = document.querySelectorAll('.lazy-load, .skill-card, .interactive-card');
         if ('IntersectionObserver' in window) {
@@ -529,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     function initMagneticElements(selector) {
         const elements = document.querySelectorAll(selector);
         elements.forEach(el => {
@@ -605,19 +607,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-        
+
         // Handle back/forward browser buttons
         window.addEventListener('popstate', () => {
-             const sectionId = window.location.hash.substring(1) || 'summary';
-             loadSection(sectionId);
-             setActiveLink(sectionId);
+            const sectionId = window.location.hash.substring(1) || 'summary';
+            loadSection(sectionId);
+            setActiveLink(sectionId);
         });
 
         // Initialize elements that are already on the page
         initLazyLoad();
         initPagePeelCards();
         initStaggeredList();
-        
+
         // Secure any external links present on initial load
         secureExternalLinks();
 

@@ -327,6 +327,7 @@ textarea:focus-visible {
 .logo {
     background: var(--accent-color);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 1.5rem;
     white-space: nowrap;
@@ -589,6 +590,7 @@ textarea:focus-visible {
     font-size: clamp(1.75rem, 5vw, 2.25rem);
     background: var(--accent-color);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
