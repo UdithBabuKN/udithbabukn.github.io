@@ -1,151 +1,84 @@
-/*
-    blog_script.js
-    This script contains the necessary JavaScript for the blog pages.
-    It handles theme switching, email deobfuscation, and sets the active navigation link
-    to create a consistent user experience with the main portfolio page.
-*/
 document.addEventListener('DOMContentLoaded', () => {
-    // --- THEME LOGIC ---
-    const themeToggle = document.getElementById('themeToggle');
-    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-    const allThemeToggles = [themeToggle, mobileThemeToggle].filter(Boolean);
+    // --- SIDEBAR & MOBILE MENU LOGIC ---
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.content'); // content area
+    const body = document.body;
 
-    function applyTheme(theme, isInitial = false) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        const isDark = theme === 'dark';
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    body.appendChild(overlay);
 
-        document.body.style.setProperty('--sun-opacity', isDark ? '0' : '1');
-        document.body.style.setProperty('--moon-opacity', isDark ? '1' : '0');
+    function toggleSidebar() {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.classList.toggle('sidebar-open');
+    }
 
-        allThemeToggles.forEach(toggle => {
-            if (!toggle) return;
-            toggle.setAttribute('aria-pressed', isDark);
-            const icon = toggle.querySelector('i');
-            if (isInitial) {
-                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-            } else {
-                toggle.classList.add('rotating');
-                setTimeout(() => {
-                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-                    toggle.classList.remove('rotating');
-                }, 200);
-            }
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleSidebar();
         });
     }
 
-    function setDynamicTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            applyTheme(savedTheme, true);
-        } else {
-            const hour = new Date().getHours();
-            const isDay = hour >= 6 && hour < 18;
-            const theme = isDay ? 'light' : 'dark';
-            applyTheme(theme, true);
+    // Close when clicking overlay
+    overlay.addEventListener('click', () => {
+        if (sidebar.classList.contains('active')) {
+            toggleSidebar();
         }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+            toggleSidebar();
+        }
+    });
+
+
+    // --- THEME TOGGLE LOGIC ---
+    const themeToggle = document.getElementById('themeToggle');
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle ? themeToggle.querySelector('i') : null;
+    const mobileIcon = mobileThemeToggle ? mobileThemeToggle.querySelector('i') : null;
+
+    // Check saved theme or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        htmlElement.dataset.theme = 'dark';
+        if (icon) icon.className = 'fas fa-sun';
+        if (mobileIcon) mobileIcon.className = 'fas fa-sun';
     }
 
     function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        applyTheme(newTheme);
+        const currentTheme = htmlElement.dataset.theme;
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        htmlElement.dataset.theme = newTheme;
+        localStorage.setItem('theme', newTheme);
+
+        const newIconClass = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        if (icon) icon.className = newIconClass;
+        if (mobileIcon) mobileIcon.className = newIconClass;
     }
 
-    allThemeToggles.forEach(toggle => {
-        if (toggle) toggle.addEventListener('click', toggleTheme);
-    });
-    setDynamicTheme();
-
-    // --- INTERACTIVE SIDEBAR & MAGNETIC EFFECTS ---
-    function initMagneticElements(selector) {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(el => {
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                el.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.15)`;
-                el.style.transition = 'transform 0.1s ease-out';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.transform = 'translate(0,0) scale(1)';
-                el.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            });
-        });
-    }
-
-    function initInteractiveSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const indicator = document.querySelector('.sidebar-indicator');
-        if (sidebar && indicator) {
-            sidebar.addEventListener('mouseenter', () => {
-                indicator.classList.add('interactive-hover');
-            });
-            sidebar.addEventListener('mouseleave', () => {
-                indicator.classList.remove('interactive-hover');
-            });
-        }
-    }
-
-    initMagneticElements('.social-link');
-    initInteractiveSidebar();
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
 
 
-    // --- LAZY LOAD ANIMATION FOR ARTICLE CONTENT ---
-    const lazyElements = document.querySelectorAll('.lazy-load');
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { rootMargin: '0px 0px -50px 0px' });
-        lazyElements.forEach(element => observer.observe(element));
-    } else {
-        lazyElements.forEach(element => element.classList.add('visible'));
-    }
-
-    // --- EMAIL DEOBFUSCATION ---
-    const emailLinks = document.querySelectorAll('.email-link');
-    const emailAddress = 'udithbabuvarrier@gmail.com';
-    emailLinks.forEach(link => {
-        const placeholder = link.querySelector('.email-placeholder');
-        if (placeholder) {
-            link.href = `mailto:${emailAddress}`;
-            placeholder.textContent = emailAddress;
-        }
-    });
-
-    // --- COPYRIGHT YEAR ---
-    const copyrightElement = document.getElementById('copyright-year');
-    if (copyrightElement) {
-        copyrightElement.textContent = `© ${new Date().getFullYear()} Udith Babu K N. All rights reserved.`;
-    }
-
-    // --- SET ACTIVE NAV LINK FOR BLOG ---
-    const allNavLinks = [...document.querySelectorAll('.sidebar .nav-link'), ...document.querySelectorAll('.bottom-nav .bottom-nav-link')];
-    allNavLinks.forEach(link => {
-        if (link.getAttribute('data-section') === 'blog') {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
-        } else {
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
-        }
-    });
     // --- DYNAMIC YEAR UPDATE ---
     function updateYear() {
         const currentYear = new Date().getFullYear();
-        const yearToReplace = '2025';
+        const yearToReplace = "2025";
+        const footerCopyright = document.getElementById('copyright-year');
 
-        if (currentYear.toString() === yearToReplace) return;
-
-        // Update document title
-        if (document.title.includes(yearToReplace)) {
-            document.title = document.title.replace(yearToReplace, currentYear);
+        if (footerCopyright) {
+            footerCopyright.innerHTML = `&copy; ${currentYear} Udith Babu K N. All Rights Reserved.`;
         }
 
         // Update H1 and section headers
@@ -197,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.createElement('div');
         container.className = 'reaction-system-container';
 
-        // View Stat
+        // View Stat (Initial placeholder '...')
         const viewDiv = document.createElement('div');
         viewDiv.className = 'view-stat';
         viewDiv.innerHTML = `
@@ -305,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isLiked = false;
                 localStorage.setItem(LS_LIKE, 'false');
                 decrement(KEY_LIKE);
-                // Optimistic UI update could be done here, but precise count requires re-fetch or manual adjustment
+                // Optimistic UI update
                 const current = parseInt(document.getElementById('count-like').textContent) || 0;
                 document.getElementById('count-like').textContent = Math.max(0, current - 1);
             } else {
