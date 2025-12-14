@@ -170,4 +170,134 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateYear();
+
+    // --- EXTENDED REACTION LOGIC ---
+    function initReactions() {
+        const articleContent = document.querySelector('.article-content');
+        if (!articleContent) return;
+
+        // 1. Generate IDs
+        const path = window.location.pathname;
+        const pageId = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
+        const likeKey = `blog_like_${pageId}`;
+        const dislikeKey = `blog_dislike_${pageId}`;
+        const viewKey = `blog_view_${pageId}`;
+
+        // 2. Increment View Count
+        let views = parseInt(localStorage.getItem(viewKey) || '0', 10);
+        // Only increment if not just reloaded in same session? For simplicity, we increment on load.
+        views++;
+        localStorage.setItem(viewKey, views.toString());
+
+        // 3. Create Container
+        const container = document.createElement('div');
+        container.className = 'reaction-system-container';
+
+        // -- View Stat --
+        const viewDiv = document.createElement('div');
+        viewDiv.className = 'view-stat';
+        viewDiv.innerHTML = `
+            <i class="far fa-eye view-icon"></i>
+            <span class="reaction-count">${views}</span>
+            <span class="reaction-label">Views</span>
+        `;
+
+        // -- Like Button --
+        const likeItem = document.createElement('div');
+        likeItem.className = 'reaction-item';
+        const likeBtn = document.createElement('button');
+        likeBtn.className = 'reaction-btn';
+        likeBtn.setAttribute('aria-label', 'Like');
+        likeBtn.innerHTML = '<i class="far fa-heart"></i>';
+        const likeLabel = document.createElement('span');
+        likeLabel.className = 'reaction-label';
+        likeLabel.textContent = '0';
+
+        likeItem.appendChild(likeBtn);
+        likeItem.appendChild(likeLabel);
+
+        // -- Dislike Button --
+        const dislikeItem = document.createElement('div');
+        dislikeItem.className = 'reaction-item';
+        const dislikeBtn = document.createElement('button');
+        dislikeBtn.className = 'reaction-btn';
+        dislikeBtn.setAttribute('aria-label', 'Dislike');
+        dislikeBtn.innerHTML = '<i class="far fa-thumbs-down"></i>';
+        const dislikeLabel = document.createElement('span');
+        dislikeLabel.className = 'reaction-label';
+        dislikeLabel.textContent = '0';
+
+        dislikeItem.appendChild(dislikeBtn);
+        dislikeItem.appendChild(dislikeLabel);
+
+        // Append all to container
+        container.appendChild(viewDiv);
+        container.appendChild(likeItem);
+        container.appendChild(dislikeItem);
+
+        // Inject
+        articleContent.after(container);
+
+        // 4. Initialize State
+        let isLiked = localStorage.getItem(likeKey) === 'true';
+        let isDisliked = localStorage.getItem(dislikeKey) === 'true';
+
+        function updateUI() {
+            // Like State
+            if (isLiked) {
+                likeBtn.classList.add('liked');
+                likeBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                likeLabel.textContent = '1';
+            } else {
+                likeBtn.classList.remove('liked');
+                likeBtn.innerHTML = '<i class="far fa-heart"></i>';
+                likeLabel.textContent = '0';
+            }
+
+            // Dislike State
+            if (isDisliked) {
+                dislikeBtn.classList.add('disliked');
+                dislikeBtn.innerHTML = '<i class="fas fa-thumbs-down"></i>'; // Solid/filled style if available, else same
+                dislikeLabel.textContent = '1';
+            } else {
+                dislikeBtn.classList.remove('disliked');
+                dislikeBtn.innerHTML = '<i class="far fa-thumbs-down"></i>';
+                dislikeLabel.textContent = '0';
+            }
+        }
+        updateUI();
+
+        // 5. Event Listeners (Mutually Exclusive)
+        likeBtn.addEventListener('click', () => {
+            if (isLiked) {
+                isLiked = false;
+                localStorage.setItem(likeKey, 'false');
+            } else {
+                isLiked = true;
+                localStorage.setItem(likeKey, 'true');
+                if (isDisliked) {
+                    isDisliked = false; // Remove dislike if liking
+                    localStorage.setItem(dislikeKey, 'false');
+                }
+            }
+            updateUI();
+        });
+
+        dislikeBtn.addEventListener('click', () => {
+            if (isDisliked) {
+                isDisliked = false;
+                localStorage.setItem(dislikeKey, 'false');
+            } else {
+                isDisliked = true;
+                localStorage.setItem(dislikeKey, 'true');
+                if (isLiked) {
+                    isLiked = false; // Remove like if disliking
+                    localStorage.setItem(likeKey, 'false');
+                }
+            }
+            updateUI();
+        });
+    }
+
+    initReactions();
 });

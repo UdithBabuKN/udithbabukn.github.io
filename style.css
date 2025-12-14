@@ -32,6 +32,138 @@
     --moon-opacity: 0;
 }
 
+/* Reaction System Styles */
+.reaction-system-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto 1rem;
+    padding: 1rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    max-width: 500px;
+}
+
+.reaction-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reaction-btn {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-muted);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.reaction-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: rgba(0, 229, 255, 0.05);
+}
+
+.reaction-btn:active {
+    transform: scale(0.95);
+}
+
+.reaction-btn.liked {
+    background: var(--accent-color);
+    color: white;
+    border-color: transparent;
+    animation: pulse 0.4s;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.reaction-btn.disliked {
+    background: var(--error-color);
+    color: white;
+    border-color: transparent;
+    animation: shake 0.4s;
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+}
+
+.reaction-count {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.reaction-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.view-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 1rem;
+    border-right: 1px solid var(--border-color);
+    margin-right: 1rem;
+}
+
+.view-icon {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Card Stats (Blog List) */
+.card-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.card-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.card-stat-item i.active-like {
+    color: #ef4444;
+    /* Red heart */
+}
+
 [data-theme="light"] {
     /* Light Mode ("Fresh & Vibrant") */
     --primary-color: #00BFFF;
