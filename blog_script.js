@@ -104,6 +104,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateYear();
 
+    // --- EMAIL LOADING LOGIC ---
+    const emailLinks = document.querySelectorAll('.email-link');
+    const emailAddress = 'udithbabuvarrier@gmail.com';
+    emailLinks.forEach(link => {
+        const placeholder = link.querySelector('.email-placeholder');
+        if (placeholder) {
+            link.href = `mailto:${emailAddress}`;
+            placeholder.textContent = emailAddress;
+        }
+    });
+
     // --- EXTENDED REACTION LOGIC (CounterAPI Integration) ---
     function initReactions() {
         const articleContent = document.querySelector('.article-content');
