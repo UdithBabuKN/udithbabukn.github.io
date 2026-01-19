@@ -45,12 +45,10 @@
     background: transparent;
     border: none;
     max-width: 500px;
-}
-
-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5),
-inset 0 0 20px rgba(0, 229, 255, 0.05);
-position: relative;
-overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(0, 229, 255, 0.05);
+    position: relative;
+    overflow: hidden;
 }
 
 /* Subtle Star/Space Effect */
@@ -560,8 +558,10 @@ textarea:focus-visible {
 }
 
 .social-links {
-    display: flex;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    row-gap: 0.75rem;
     margin-bottom: 2rem;
 }
 
@@ -1544,6 +1544,7 @@ textarea.form-control {
     }
 
     .mobile-header .social-links {
+        display: flex;
         justify-content: flex-end;
         margin-bottom: 0;
         gap: 0.75rem;
