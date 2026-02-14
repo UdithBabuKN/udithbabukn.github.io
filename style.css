@@ -1662,15 +1662,37 @@ textarea.form-control {
 
     .mobile-header {
         display: flex;
+        flex-wrap: wrap;
+        /* Allow wrapping */
+        align-items: center;
+        justify-content: space-between;
         padding: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        position: relative;
     }
 
     .mobile-header .profile-header {
         margin-bottom: 0;
         flex-grow: 1;
+        /* Takes available space */
+        min-width: 0;
+        /* Prevents flex item from overflowing */
     }
 
+    .mobile-header .logo {
+        display: block;
+        /* Show logo on mobile now? User said it's broken, maybe showing logo helps context. Or keep hidden if desired. */
+        font-size: 1.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Hide logo if it was hidden before, but checking current CSS: it says .mobile-header .logo { display: none; } at line 1674. 
+       Let's keep it hidden if that's the design, OR maybe the user WANTS it to look like a proper header. 
+       The previous code had .mobile-header .logo { display: none; }. 
+       I will respect that for now, but ensure the profile pic is there. 
+    */
     .mobile-header .logo {
         display: none;
     }
@@ -1711,9 +1733,44 @@ textarea.form-control {
         /* Circle looks better in dock */
     }
 
+    /* --- RESTRUCTURED MOBILE HEADER --- */
     .mobile-header-actions {
-        gap: 0.75rem;
+        display: contents;
+        /* MAGIC: Removes this wrapper from layout flow */
     }
+
+    /* Theme Toggle Position */
+    .mobile-header .theme-toggle {
+        margin-left: auto;
+        /* Push to right */
+        margin-bottom: 0;
+        order: 2;
+        /* After profile header */
+    }
+
+    /* Social Dock Position - Full Width Row */
+    .mobile-header .social-links {
+        order: 3;
+        /* Last */
+        width: 100%;
+        /* Full width */
+        margin-top: 0.5rem;
+        justify-content: flex-start;
+        /* Start align for scroll */
+        padding-left: 0;
+        padding-right: 0;
+        /* Keep existing scroll styles */
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 0.75rem;
+        padding: 0.5rem 0.25rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+    }
+
 
     .mobile-contact-info {
         display: block;
