@@ -587,66 +587,23 @@ textarea:focus-visible {
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     /* Subtle Border */
-    border-radius: 12px;
-    /* Modern Squircle */
+    border-radius: 50%;
+    /* Standard Circle */
     color: var(--text-muted);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: float 6s ease-in-out infinite;
-}
-
-/* Staggered Float Animation */
-.social-link:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.social-link:nth-child(2) {
-    animation-delay: 1s;
-}
-
-.social-link:nth-child(3) {
-    animation-delay: 2s;
-}
-
-.social-link:nth-child(4) {
-    animation-delay: 3s;
-}
-
-.social-link:nth-child(5) {
-    animation-delay: 4s;
-}
-
-.social-link:nth-child(6) {
-    animation-delay: 5s;
-}
-
-.social-link:nth-child(7) {
-    animation-delay: 0.5s;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
 }
 
 /* Hover State: "Wake Up" */
 .social-link:hover {
-    transform: translateY(-8px) scale(1.15) !important;
+    transform: translateY(-6px) scale(1.1);
     /* Override float */
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--hover-glow-color, rgba(255, 255, 255, 0.2));
-    animation-play-state: paused;
 }
 
 .social-link i {
@@ -1697,78 +1654,35 @@ textarea.form-control {
         display: none;
     }
 
-    /* --- MOBILE "SWIPEABLE DOCK" --- */
+    /* --- MOBILE SOCIAL LINKS --- */
     .mobile-header .social-links {
         display: flex;
-        flex-wrap: nowrap;
-        /* Force single row */
-        overflow-x: auto;
-        /* Allow horizontal scroll */
-        justify-content: flex-start;
-        /* Align left for scrolling */
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center;
         margin-bottom: 0;
         gap: 0.75rem;
-        padding: 0.5rem 1rem;
-        /* Padding for touch targets */
-        scroll-snap-type: x mandatory;
-        /* Snap effect */
-        -webkit-overflow-scrolling: touch;
-        /* Smooth scroll on iOS */
-        mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-        /* Fade edges */
-        -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-        width: 100%;
-        /* Full width for scrolling */
+        padding: 0.5rem 0; /* Normal padding */
+        width: 100%; /* Full width for wrapping */
     }
 
     .mobile-header .social-link {
-        flex-shrink: 0;
-        /* Prevent shrinking */
-        scroll-snap-align: center;
-        /* Snap to center */
-        width: 2.75rem;
-        /* Slightly larger on mobile */
+        width: 2.75rem; /* Slightly larger on mobile */
         height: 2.75rem;
-        border-radius: 50%;
-        /* Circle looks better in dock */
     }
 
-    /* --- RESTRUCTURED MOBILE HEADER --- */
+    /* --- RESTRUCTURED MOBILE HEADER ACTIONS --- */
     .mobile-header-actions {
-        display: contents;
-        /* MAGIC: Removes this wrapper from layout flow */
+        display: flex;
+        flex-direction: column; /* Stack theme toggle and social links */
+        align-items: center;
+        width: 100%;
     }
 
     /* Theme Toggle Position */
     .mobile-header .theme-toggle {
-        margin-left: auto;
-        /* Push to right */
-        margin-bottom: 0;
-        order: 2;
-        /* After profile header */
-    }
-
-    /* Social Dock Position - Full Width Row */
-    .mobile-header .social-links {
-        order: 3;
-        /* Last */
-        width: 100%;
-        /* Full width */
-        margin-top: 0.5rem;
-        justify-content: flex-start;
-        /* Start align for scroll */
-        padding-left: 0;
-        padding-right: 0;
-        /* Keep existing scroll styles */
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 0.75rem;
-        padding: 0.5rem 0.25rem;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+        margin-left: auto; /* Push to right */
+        margin-bottom: 0.5rem; /* Space below toggle */
+        order: -1; /* Keep above social links */
     }
 
 
