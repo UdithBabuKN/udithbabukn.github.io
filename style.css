@@ -4,29 +4,31 @@
 */
 
 :root {
-    /* Dark Mode ("Electric Night") */
-    --primary-color: #00E5FF;
-    /* Electric Cyan */
-    --secondary-color: #9C27B0;
-    /* Vibrant Purple */
-    --accent-color: linear-gradient(45deg, #00E5FF, #9C27B0);
-    --text-color: #E2E8F0;
-    /* Cool Gray */
-    --text-muted: #A0AEC0;
-    /* Lighter Cool Gray */
-    --bg-color: #0A0A1A;
-    /* Near Black */
-    --bg-sidebar: rgba(18, 18, 30, 0.8);
-    --bg-card: rgba(22, 22, 40, 0.85);
-    --border-color: rgba(0, 229, 255, 0.2);
-    /* Faint Cyan Border */
+    /* Dark Mode ("Anime Night") */
+    --primary-color: #FFD700;
+    /* Gold Yellow */
+    --secondary-color: #FF6B35;
+    /* Anime Orange */
+    --accent-color: linear-gradient(45deg, #FFD700, #FF6B35);
+    --text-color: #F5F5F5;
+    /* Near White */
+    --text-muted: #BDBDBD;
+    /* Light Gray */
+    --bg-color: #0D0D0D;
+    /* Deep Black */
+    --bg-sidebar: rgba(13, 13, 13, 0.9);
+    --bg-card: rgba(20, 20, 20, 0.95);
+    --border-color: #FFFFFF;
+    /* White Border - Manga Panel */
     --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --box-shadow: 6px 6px 0px #FFFFFF;
+    --box-shadow-hover: 10px 10px 0px #FFFFFF;
+    --anime-dot: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    --anime-dot-size: 12px 12px;
     --sidebar-width: 280px;
     --error-color: #ef4444;
     /* Red 500 */
     --peel-size: 0px;
-    /* New variable for page peel effect */
     /* Opacity variables for theme switching */
     --sun-opacity: 1;
     --moon-opacity: 0;
@@ -191,25 +193,28 @@
 }
 
 [data-theme="light"] {
-    /* Light Mode ("Fresh & Vibrant") */
-    --primary-color: #00BFFF;
-    /* DeepSkyBlue */
-    --secondary-color: #20C997;
-    /* Teal */
-    --accent-color: linear-gradient(45deg, #00BFFF, #20C997);
-    --text-color: #1a202c;
-    /* Dark Slate Gray */
-    --text-muted: #4a5568;
-    /* Lighter Slate Gray */
+    /* Light Mode ("Anime Day") */
+    --primary-color: #D4A800;
+    /* Darker Gold */
+    --secondary-color: #E05500;
+    /* Dark Orange */
+    --accent-color: linear-gradient(45deg, #D4A800, #E05500);
+    --text-color: #111111;
+    /* Near Black */
+    --text-muted: #444444;
+    /* Dark Gray */
     --text-hover: #000000;
     /* Pure Black */
-    --bg-color: #F7FAFC;
-    /* Very Light Gray */
-    --bg-sidebar: rgba(255, 255, 255, 0.85);
-    --bg-card: rgba(255, 255, 255, 0.9);
-    --border-color: rgba(0, 0, 0, 0.08);
-    /* Soft Black Border */
-    --box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    --bg-color: #FFFFFF;
+    /* Pure White */
+    --bg-sidebar: rgba(255, 255, 255, 0.95);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --border-color: #111111;
+    /* Solid Black Border - Manga Panel */
+    --box-shadow: 6px 6px 0px #111111;
+    --box-shadow-hover: 10px 10px 0px #111111;
+    --anime-dot: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    --anime-dot-size: 12px 12px;
     --error-color: #dc2626;
     /* Red 600 */
 }
@@ -833,44 +838,74 @@ textarea:focus-visible {
 }
 
 .section-header {
-    font-size: clamp(1.75rem, 5vw, 2.25rem);
-    color: var(--primary-color);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    color: var(--text-color);
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     display: inline-block;
     position: relative;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
 .section-header::before {
     content: '';
     position: absolute;
-    width: 30px;
-    height: 2px;
-    background: var(--accent-color);
+    width: 100%;
+    height: 4px;
+    background: var(--primary-color);
     bottom: -2px;
     left: 0;
-    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: skewX(-15deg);
 }
 
 .section-header:hover::before {
-    width: 100%;
+    animation: speed-flash 0.4s ease;
+}
+
+@keyframes speed-flash {
+    0% { transform: skewX(-15deg) scaleX(1); opacity: 1; }
+    50% { transform: skewX(-25deg) scaleX(1.3); opacity: 0.6; }
+    100% { transform: skewX(-15deg) scaleX(1); opacity: 1; }
 }
 
 .content-box {
     background-color: var(--bg-card);
+    background-image: var(--anime-dot);
+    background-size: var(--anime-dot-size);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: 8px;
+    border-radius: 0px;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
+    border: 3px solid var(--border-color);
     box-shadow: var(--box-shadow);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.content-box:hover::after {
+    left: 150%;
 }
 
 .content-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
+    transform: translate(-5px, -5px);
+    box-shadow: var(--box-shadow-hover);
 }
 
 .interactive-card .interactive-card-heading {
@@ -951,8 +986,10 @@ textarea:focus-visible {
 
 .skill-card {
     background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    background-image: var(--anime-dot);
+    background-size: var(--anime-dot-size);
+    border: 3px solid var(--border-color);
+    border-radius: 0px;
     padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
@@ -962,14 +999,32 @@ textarea:focus-visible {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     min-height: 200px;
     transform-style: preserve-3d;
 }
 
+.skill-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.skill-card:hover::after {
+    left: 150%;
+}
+
 .skill-card:hover,
 .skill-card:focus {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: translate(-5px, -5px);
+    box-shadow: var(--box-shadow-hover);
 }
 
 .skill-icon {
@@ -1040,11 +1095,15 @@ textarea:focus-visible {
 .page-peel-card {
     position: relative;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+    background-image: var(--anime-dot);
+    background-size: var(--anime-dot-size);
+    border: 3px solid var(--border-color);
+    border-radius: 0px;
     padding: 1.5rem;
     cursor: pointer;
-    transition: transform 0.4s ease;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
 }
 
 .page-peel-card::before {
@@ -1053,17 +1112,32 @@ textarea:focus-visible {
     bottom: 0;
     right: 0;
     width: var(--peel-size);
-    /* Controlled by JS */
     height: var(--peel-size);
-    /* Controlled by JS */
     background: linear-gradient(135deg, transparent 50%, var(--bg-color) 50.1%);
     box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.2);
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 2;
 }
 
+.page-peel-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.page-peel-card:hover::after {
+    left: 150%;
+}
+
 .page-peel-card:hover {
-    transform: scale(1.02);
+    transform: translate(-5px, -5px);
+    box-shadow: var(--box-shadow-hover);
 }
 
 .card-date {
@@ -1154,45 +1228,38 @@ textarea:focus-visible {
 }
 
 .interactive-card {
-    --border-size: 2px;
+    --border-size: 3px;
     background: var(--bg-card);
-    border-radius: 12px;
+    background-image: var(--anime-dot);
+    background-size: var(--anime-dot-size);
+    border-radius: 0px;
     padding: 1.5rem;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 3px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     z-index: 1;
 }
 
 .interactive-card::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from var(--angle),
-            transparent 0%,
-            var(--secondary-color) 10%,
-            transparent 25%,
-            var(--primary-color) 35%,
-            transparent 50%,
-            var(--secondary-color) 60%,
-            transparent 75%,
-            var(--primary-color) 85%,
-            transparent 100%);
-    transform: translate(-50%, -50%) rotate(0deg);
-    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: animated-border 8s linear infinite;
-    opacity: 0;
-    z-index: -2;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+    z-index: 5;
 }
 
 .interactive-card:hover::before {
-    opacity: 1;
+    left: 150%;
 }
 
 .interactive-card::after {
@@ -1200,13 +1267,15 @@ textarea:focus-visible {
     position: absolute;
     inset: var(--border-size);
     background: var(--bg-card);
-    border-radius: calc(12px - var(--border-size));
+    background-image: var(--anime-dot);
+    background-size: var(--anime-dot-size);
+    border-radius: 0px;
     z-index: -1;
 }
 
 .interactive-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translate(-5px, -5px);
+    box-shadow: var(--box-shadow-hover);
 }
 
 [data-theme="light"] .interactive-card .interactive-card-heading {
