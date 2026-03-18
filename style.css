@@ -1618,10 +1618,9 @@ textarea.form-control {
     .mobile-header {
         display: flex;
         flex-wrap: wrap;
-        /* Allow wrapping */
         align-items: center;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 0.5rem 0;
         margin-bottom: 0.5rem;
         position: relative;
     }
@@ -1629,9 +1628,8 @@ textarea.form-control {
     .mobile-header .profile-header {
         margin-bottom: 0;
         flex-grow: 1;
-        /* Takes available space */
         min-width: 0;
-        /* Prevents flex item from overflowing */
+        padding-right: 3rem;
     }
 
     .mobile-header .logo {
@@ -1645,38 +1643,41 @@ textarea.form-control {
     /* --- MOBILE SOCIAL LINKS --- */
     .mobile-header .social-links {
         display: flex;
-        flex-wrap: wrap; /* Allow wrapping */
+        flex-wrap: nowrap;
         justify-content: center;
         margin-bottom: 0;
-        gap: 0.75rem;
-        padding: 0.5rem 0; /* Normal padding */
-        width: 100%; /* Full width for wrapping */
+        gap: 0.4rem;
+        padding: 0.5rem 0 0 0;
+        width: 100%;
     }
 
     .mobile-header .social-link {
-        width: 2.75rem; /* Slightly larger on mobile */
-        height: 2.75rem;
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+    
+    .mobile-header .social-link i {
+        font-size: 1rem;
     }
 
     /* --- RESTRUCTURED MOBILE HEADER ACTIONS --- */
     .mobile-header-actions {
         display: flex;
-        flex-direction: column; /* Stack theme toggle and social links */
-        align-items: center;
         width: 100%;
     }
 
     /* Theme Toggle Position */
     .mobile-header .theme-toggle {
-        margin-left: auto; /* Push to right */
-        margin-bottom: 0.5rem; /* Space below toggle */
-        order: -1; /* Keep above social links */
+        position: absolute;
+        top: 0.5rem;
+        right: 0;
+        margin: 0;
     }
 
 
     .mobile-contact-info {
         display: block;
-        padding: 1rem;
+        padding: 0 0 1rem 0;
     }
 }
 
