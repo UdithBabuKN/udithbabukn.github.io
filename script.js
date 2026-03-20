@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h3 class="skill-category-title" id="marketing-seo-heading" aria-expanded="false" aria-controls="marketing-seo-grid"><span>Marketing & SEO</span><i class="fas fa-chevron-down category-chevron"></i></h3>
                         <div class="skills-grid" id="marketing-seo-grid" role="region" aria-labelledby="marketing-seo-heading">
                             <div class="skill-card" tabindex="0"><i class="fas fa-search-dollar skill-icon"></i><span class="skill-name">SEO Strategy</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-search-plus skill-icon"></i><span class="skill-name">AEO & GEO</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fas fa-chart-line skill-icon"></i><span class="skill-name">Google Analytics</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fas fa-bullhorn skill-icon"></i><span class="skill-name">Content Marketing</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fas fa-key skill-icon"></i><span class="skill-name">Keyword Research</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="skill-card" tabindex="0"><i class="fab fa-python skill-icon"></i><span class="skill-name">Python</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fas fa-database skill-icon"></i><span class="skill-name">MySQL</span><div class="skill-details"><span class="skill-level">Intermediate</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fab fa-js-square skill-icon"></i><span class="skill-name">JavaScript</span><div class="skill-details"><span class="skill-level">Intermediate</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-robot skill-icon"></i><span class="skill-name">Vibe Coding (Claude, Gemini, etc.)</span><div class="skill-details"><span class="skill-level">Advanced</span></div></div>
                         </div>
                     </div>
 
@@ -48,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="skill-card" tabindex="0"><i class="fab fa-jira skill-icon"></i><span class="skill-name">Jira</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fab fa-trello skill-icon"></i><span class="skill-name">Trello</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                             <div class="skill-card" tabindex="0"><i class="fab fa-figma skill-icon"></i><span class="skill-name">Figma</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-object-group skill-icon"></i><span class="skill-name">UI/UX Designing</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-video skill-icon"></i><span class="skill-name">AI Video Editing & Gen</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
+                            <div class="skill-card" tabindex="0"><i class="fas fa-paint-brush skill-icon"></i><span class="skill-name">Poster Design</span><div class="skill-details"><span class="skill-level">Proficient</span></div></div>
                         </div>
                     </div>
 
