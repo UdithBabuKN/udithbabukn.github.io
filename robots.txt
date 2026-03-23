@@ -11,3 +11,17 @@ Allow: /
 # Location of sitemap file
 
 Sitemap: https://udithbabukn.github.io/sitemap.xml
+
+# Allow GenAI Crawlers for Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO)
+User-agent: Google-Extended
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: cohere-ai
+Allow: /
