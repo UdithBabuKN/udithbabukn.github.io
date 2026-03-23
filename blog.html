@@ -248,6 +248,7 @@
             align-items: center;
             padding: 3rem 0;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .pagination-link {
@@ -257,6 +258,13 @@
             text-decoration: none;
             color: var(--text-color);
             transition: var(--transition);
+        }
+
+        @media (max-width: 480px) {
+            .pagination-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
         }
 
         .pagination-link:hover,
