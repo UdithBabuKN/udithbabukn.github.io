@@ -352,9 +352,6 @@
     </script>
     <!-- Model Viewer for 3D Background -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <!-- Pre-load offline 3D Models to avoid strict local CORS browser blocks -->
-    <script src="udith.js"></script>
-    <script src="udith1.js"></script>
 </head>
 
 <body>
@@ -376,17 +373,31 @@
 
             <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const viewer = document.getElementById('bg-model');
-            
-            const models = [udith_data, udith1_data];
-            let currentIndex = 0;
-            
-            viewer.src = models[0];
-            
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % models.length;
-                viewer.src = models[currentIndex];
-            }, 8000);
+            let modelsLoaded = false;
+            const load3DModels = () => {
+                if (modelsLoaded) return;
+                modelsLoaded = true;
+                const loadModel = (src) => new Promise(resolve => {
+                    const s = document.createElement('script');
+                    s.src = src;
+                    s.onload = resolve;
+                    document.body.appendChild(s);
+                });
+                Promise.all([loadModel('udith.js'), loadModel('udith1.js')]).then(() => {
+                    const viewer = document.getElementById('bg-model');
+                    if (viewer) {
+                        viewer.src = udith_data;
+                        setTimeout(() => {
+                            viewer.src = udith1_data;
+                        }, 4000);
+                    }
+                });
+            };
+            const userInteractions = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
+            userInteractions.forEach(event => {
+                window.addEventListener(event, load3DModels, { once: true, passive: true });
+            });
+            setTimeout(load3DModels, 8000);
         });
     </script>
 
@@ -694,20 +705,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

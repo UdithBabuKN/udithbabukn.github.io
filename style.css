@@ -1738,8 +1738,8 @@ body {
 /* On mobile/tablet screens */
 @media (max-width: 768px) {
     .bg-model-viewer {
-        left: -10vw;
-        right: auto;
+        left: auto;
+        right: -25vw;
         width: 100vw;
     }
 }
