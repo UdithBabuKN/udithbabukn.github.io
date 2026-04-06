@@ -14,10 +14,10 @@
     /* Near White */
     --text-muted: #BDBDBD;
     /* Light Gray */
-    --bg-color: #0D0D0D;
-    /* Deep Black */
-    --bg-sidebar: rgba(13, 13, 13, 0.9);
-    --bg-card: rgba(20, 20, 20, 0.95);
+    /* Dark mode background: Light dark gray */
+    --bg-color: #2B2D31;
+    --bg-sidebar: rgba(35, 36, 40, 0.9);
+    --bg-card: rgba(49, 51, 56, 0.95);
     --border-color: #FFFFFF;
     /* White Border - Manga Panel */
     --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -267,47 +267,8 @@ body {
     position: relative;
 }
 
-/* Base styles for pseudo-elements, without content or background */
-body::before,
-body::after {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: opacity 0.8s ease-in-out;
-    z-index: -1;
-    content: '';
-    /* Enable them by default but they will be empty */
-}
-
-body::before {
-    opacity: var(--sun-opacity);
-}
-
-body::after {
-    opacity: var(--moon-opacity);
-}
-
-/* DESKTOP-ONLY STYLES: Apply backgrounds only on larger screens */
-@media (min-width: 769px) {
-
-    body::before,
-    body::after {
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-    }
-
-    /* Load images only when the JS adds this class */
-    body.backgrounds-loaded::before {
-        background-image: linear-gradient(rgba(247, 250, 252, 0.3), rgba(247, 250, 252, 0.3)), url('sun.webp');
-    }
-
-    body.backgrounds-loaded::after {
-        background-image: linear-gradient(rgba(10, 10, 26, 0.5), rgba(10, 10, 26, 0.5)), url('moon.webp');
-    }
-}
+/* Base styles for pseudo-elements disabled since we use 3D model */
+/* Deserting sun/moon background logic */
 
 
 img {
@@ -1759,4 +1720,25 @@ textarea.form-control {
 body {
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+/* --- 3D Background Model Responsive Styles --- */
+.bg-model-viewer {
+    position: fixed; 
+    top: 0; 
+    right: -10vw; 
+    left: auto; 
+    width: 60vw; 
+    height: 100vh; 
+    z-index: 0; 
+    pointer-events: none; 
+    opacity: 1;
+    transition: width 0.3s, right 0.3s, opacity 0.3s ease;
+}
+
+/* On mobile/tablet screens */
+@media (max-width: 768px) {
+    .bg-model-viewer {
+        right: 0;
+        width: 100vw;
+    }
 }

@@ -291,9 +291,51 @@
       ]
     }
     </script>
+    <!-- Model Viewer for 3D Background -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- Pre-load offline 3D Models to avoid strict local CORS browser blocks -->
+    <script src="model0.js"></script>
+    <script src="model1.js"></script>
+    <script src="model2.js"></script>
+    <script src="model3.js"></script>
 </head>
 
 <body>
+    <!-- 3D Background Model -->
+    <model-viewer 
+        id="bg-model" 
+        src="" 
+        autoplay
+         
+        interaction-prompt="none" animation-crossfade-duration="800" 
+         
+         
+        shadow-intensity="1"
+        environment-image="neutral"
+        exposure="1"
+        class="bg-model-viewer">
+            </model-viewer>
+
+    
+
+            <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const viewer = document.getElementById('bg-model');
+            
+            const models = [model0_data, model1_data, model2_data, model3_data];
+            let currentIndex = 0;
+            
+            // Loop through the models every 8 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % models.length;
+                
+                // Optional: Fade out crossfade effect manually if needed, but model-viewer handles src changes smoothly
+                viewer.src = models[currentIndex];
+                
+            }, 8000);
+        });
+    </script>
+
     <div class="container">
         <!-- Sidebar Navigation (Desktop) -->
         <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
@@ -676,3 +718,18 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

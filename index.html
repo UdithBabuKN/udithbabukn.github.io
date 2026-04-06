@@ -86,9 +86,9 @@
             --accent-color: linear-gradient(45deg, #FFD700, #FF6B35);
             --text-color: #F5F5F5;
             --text-muted: #BDBDBD;
-            --bg-color: #0D0D0D;
-            --bg-sidebar: rgba(13, 13, 13, 0.9);
-            --bg-card: rgba(20, 20, 20, 0.95);
+            --bg-color: #2B2D31;
+            --bg-sidebar: rgba(35, 36, 40, 0.9);
+            --bg-card: rgba(49, 51, 56, 0.95);
             --border-color: #FFFFFF;
             --sidebar-width: 280px;
         }
@@ -350,9 +350,48 @@
         }
     }
     </script>
+    <!-- Model Viewer for 3D Background -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- Pre-load offline 3D Models to avoid strict local CORS browser blocks -->
+    <script src="model0.js"></script>
+    <script src="model1.js"></script>
+    <script src="model2.js"></script>
+        <script src="model3.js"></script>
 </head>
 
 <body>
+    <!-- 3D Background Model -->
+    <model-viewer 
+        id="bg-model" 
+        src="" 
+        autoplay
+         
+        interaction-prompt="none" animation-crossfade-duration="800" 
+        shadow-intensity="1"
+        environment-image="neutral"
+        exposure="1"
+        class="bg-model-viewer">
+            </model-viewer>
+
+    
+
+            <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const viewer = document.getElementById('bg-model');
+            
+            const models = [model0_data, model1_data, model2_data, model3_data];
+            let currentIndex = 0;
+            
+            // Set initial model
+            viewer.src = models[0];
+            
+            // Loop through the models every 8 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % models.length;
+                viewer.src = models[currentIndex];
+            }, 8000);
+        });
+    </script>
 
     <div class="container">
         <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
@@ -658,3 +697,19 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
