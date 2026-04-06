@@ -294,10 +294,8 @@
     <!-- Model Viewer for 3D Background -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <!-- Pre-load offline 3D Models to avoid strict local CORS browser blocks -->
-    <script src="model0.js"></script>
-    <script src="model1.js"></script>
-    <script src="model2.js"></script>
-    <script src="model3.js"></script>
+    <script src="udith.js"></script>
+    <script src="udith1.js"></script>
 </head>
 
 <body>
@@ -315,7 +313,7 @@
         exposure="1"
         class="bg-model-viewer">
             </model-viewer>
-    <div class="glass-overlay"></div>
+    
 
     
 
@@ -323,16 +321,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const viewer = document.getElementById('bg-model');
             
-            const models = [model0_data, model1_data, model2_data, model3_data];
+            const models = [udith_data, udith1_data];
             let currentIndex = 0;
             
-            // Loop through the models every 8 seconds
+            viewer.src = models[0];
+            
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % models.length;
-                
-                // Optional: Fade out crossfade effect manually if needed, but model-viewer handles src changes smoothly
                 viewer.src = models[currentIndex];
-                
             }, 8000);
         });
     </script>
