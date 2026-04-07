@@ -255,6 +255,9 @@ html {
 }
 
 body {
+    background-image: var(--anime-dot);
+    background-size: var(--anime-dot-size);
+    background-attachment: fixed;
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -1732,7 +1735,9 @@ body {
     z-index: 0; 
     pointer-events: none; 
     opacity: 1;
-    transition: width 0.3s, left 0.3s, opacity 0.3s ease;
+    transition: width 0.3s, left 0.3s, opacity 0.3s ease, filter 0.3s ease;
+    /* Anime shading effect */
+    filter: saturate(1.2) contrast(1.1);
 }
 
 /* On mobile/tablet screens */
