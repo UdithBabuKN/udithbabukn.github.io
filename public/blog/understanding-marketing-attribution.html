@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- SEO: Optimized Title for the Article -->
+    <title>Understanding Marketing Attribution: Complete Guide to Attribution Models | Udith Babu K N</title>
+
+    <!-- Preconnect to external domains -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- SEO: Meta Description for the Article -->
+    <meta name="description" content="Learn marketing attribution models: first-touch, last-touch, linear, time-decay, and data-driven. Understand which model accurately measures marketing ROI.">
+
+    <!-- SEO: Keywords for the Article -->
+    <meta name="keywords" content="marketing attribution, attribution models, first-touch attribution, last-touch attribution, multi-touch attribution, attribution modeling, marketing ROI tracking">
+    <meta name="author" content="Udith Babu K N">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- SEO: Canonical URL for the article page -->
+    <link rel="canonical" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <!-- SEO: Hreflang tags -->
+    <link rel="alternate" hreflang="en-in" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-us" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-gb" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-jp" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-cn" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-de" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-ru" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-sg" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-my" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-ca" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-au" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-ae" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-fr" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="en-it" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <link rel="alternate" hreflang="x-default" href="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Understanding Marketing Attribution: Complete Guide to Attribution Models | Udith Babu K N">
+    <meta property="og:description" content="Learn marketing attribution models and understand which one measures marketing ROI accurately.">
+    <meta property="og:image" content="https://udithbabukn.github.io/images/blogimages/marketing-attribution.webp">
+    <meta property="og:url" content="https://udithbabukn.github.io/blog/understanding-marketing-attribution.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Udith Babu K N">
+    <meta property="article:published_time" content="2025-09-16T08:00:00+05:30">
+    <meta property="article:author" content="Udith Babu K N">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@UdithBabuKN">
+    <meta name="twitter:title" content="Understanding Marketing Attribution: Complete Guide to Attribution Models | Udith Babu K N">
+    <meta name="twitter:description" content="Learn marketing attribution models and understand which one measures marketing ROI accurately.">
+    <meta name="twitter:image" content="https://udithbabukn.github.io/images/blogimages/marketing-attribution.webp">
+    <meta name="twitter:image:alt" content="Udith Babu K N - Digital Marketing Expert">
+
+    <!-- Stylesheets -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .article-header {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-header .section-header {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .article-content h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .back-to-blog {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .back-to-blog a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .back-to-blog a:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: transparent;
+        }
+    </style>
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://udithbabukn.github.io/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://udithbabukn.github.io/blog.html"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Understanding Marketing Attribution",
+        "item": "https://udithbabukn.github.io/blog/understanding-marketing-attribution.html"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://udithbabukn.github.io/blog/understanding-marketing-attribution.html"
+      },
+      "headline": "Understanding Marketing Attribution: Complete Guide to Attribution Models",
+      "description": "Learn marketing attribution models: first-touch, last-touch, linear, time-decay, and data-driven. Understand which model accurately measures marketing ROI.",
+      "image": "https://udithbabukn.github.io/images/portfolio-thumbnail.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Udith Babu K N",
+        "url": "https://udithbabukn.github.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Udith Babu K N",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://udithbabukn.github.io/picofme.webp"
+        }
+      },
+      "datePublished": "2025-09-16T08:00:00+05:30",
+      "dateModified": "2025-11-20T21:00:00+05:30"
+    }
+    </script>
+
+    <!-- AEO FAQ Schema automatically generated -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Marketing Attribution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Marketing attribution is the process of assigning credit for conversions to the touchpoints that\n                        influenced the customer journey. It answers the question: \"Which marketing channels actually\n                        drove this sale?\""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "1. First-Touch Attribution",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "What it is: Gives 100% credit to the first touchpoint."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2. Last-Touch Attribution",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "What it is: Gives 100% credit to the last touchpoint before conversion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "3. Linear Attribution",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "What it is: Splits credit equally across all touchpoints."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "4. Time-Decay Attribution",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "What it is: Gives more credit to touchpoints closer to the conversion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "5. Data-Driven Attribution (Algorithmic)",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "What it is: Uses machine learning to assign credit based on actual performance\n                        data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Model Should You Use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on your goals:"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "The Truth: No Model is Perfect",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every attribution model is a simplification. The real customer journey is messy. Instead of\n                        relying on one model, use multiple views:"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Conclusion",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Attribution isn't about finding the \"truth\"?it's about getting a better understanding of what's\n                        working. Start simple, then graduate to more advanced models as you scale."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+<!-- Sidebar Navigation (Desktop) -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-indicator"></div>
+            <div class="profile-header">
+                <img src="../picofme.webp" alt="Udith Babu K N - Digital Marketing Expert" class="profile-pic" loading="lazy" width="50" height="50">
+                <div class="logo">Udith Babu K N</div>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                <i class="ph-duotone ph-moon"></i>
+            </button>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="ph-duotone ph-envelope-simple" aria-hidden="true"></i>
+                    <a href="#" class="email-link" aria-label="Email Udith Babu"><span class="email-placeholder">Loading email...</span></a>
+                </div>
+                <div class="contact-item">
+                    <i class="ph-duotone ph-phone" aria-hidden="true"></i>
+                    <a href="tel:+918301993853" aria-label="Call Udith Babu">+91 8301993853</a>
+                </div>
+                <div class="contact-item">
+                    <i class="ph-duotone ph-map-pin" aria-hidden="true"></i>
+                    <span>Thalassery, Kerala, India</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/udith-babu-k-n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i class="ph-duotone ph-linkedin-logo" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/udith_babu_k_n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="ph-duotone ph-instagram-logo" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/darkHeavan" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook Profile"><i class="ph-duotone ph-facebook-logo" aria-hidden="true"></i></a>
+                <a href="https://x.com/dark_heavan7" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter) Profile"><i class="ph-duotone ph-x-logo" aria-hidden="true"></i></a>
+                <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="ph-duotone ph-medium-logo" aria-hidden="true"></i></a>
+                <a href="https://br.pinterest.com/udith_babu_k_n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="ph-duotone ph-pinterest-logo" aria-hidden="true"></i></a>
+                <a href="https://www.pexels.com/@udith-babu-k-n-288919024" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Pexels Profile"><i class="ph-duotone ph-camera" aria-hidden="true"></i></a>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html#summary" class="nav-link" data-section="summary"><i class="ph-duotone ph-user"></i><span>Summary</span></a>
+                <a href="../index.html#skills" class="nav-link" data-section="skills"><i class="ph-duotone ph-gear"></i><span>Skills</span></a>
+                <a href="../index.html#experience" class="nav-link" data-section="experience"><i class="ph-duotone ph-briefcase"></i><span>Experience</span></a>
+                <a href="../index.html#education" class="nav-link" data-section="education"><i class="ph-duotone ph-graduation-cap"></i><span>Education</span></a>
+                <a href="../index.html#projects" class="nav-link" data-section="projects"><i class="ph-duotone ph-tree-structure"></i><span>Projects</span></a>
+                <a href="../#blog" class="nav-link active" data-section="blog"><i class="ph-duotone ph-feather"></i><span>Blog</span></a>
+                <a href="../index.html#certifications" class="nav-link" data-section="certifications"><i class="ph-duotone ph-certificate"></i><span>Certifications</span></a>
+                <a href="../index.html#contact" class="nav-link" data-section="contact"><i class="ph-duotone ph-envelope-simple"></i><span>Contact</span></a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content" id="main-content" aria-label="Main Content">
+
+            <!-- Header for Mobile View -->
+            <header class="mobile-header">
+                <div class="profile-header">
+                    <img src="../picofme.webp" alt="Udith Babu K N - Digital Marketing Expert" class="profile-pic" loading="lazy" width="50" height="50">
+                    <div class="logo">Udith Babu K N</div>
+                </div>
+                <div class="mobile-header-actions">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/udith-babu-k-n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"><i class="ph-duotone ph-linkedin-logo" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/udith_babu_k_n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile"><i class="ph-duotone ph-instagram-logo" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/darkHeavan" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook Profile"><i class="ph-duotone ph-facebook-logo" aria-hidden="true"></i></a>
+                        <a href="https://x.com/dark_heavan7" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter) Profile"><i class="ph-duotone ph-x-logo" aria-hidden="true"></i></a>
+                        <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Read Udith Babu K N's Medium Blog"><i class="ph-duotone ph-medium-logo" aria-hidden="true"></i></a>
+                        <a href="https://br.pinterest.com/udith_babu_k_n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Udith Babu K N's Pinterest Profile"><i class="ph-duotone ph-pinterest-logo" aria-hidden="true"></i></a>
+                        <a href="https://www.pexels.com/@udith-babu-k-n-288919024" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Pexels Profile"><i class="ph-duotone ph-camera" aria-hidden="true"></i></a>
+                    </div>
+                    <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class="ph-duotone ph-moon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+                <a href="../index.html"><i class="ph-duotone ph-house"></i> Home</a>
+                <i class="ph-bold ph-caret-right separator"></i>
+                <a href="../#blog"><i class="ph-duotone ph-feather"></i> Blog</a>
+                <i class="ph-bold ph-caret-right separator"></i>
+                <span class="current"><i class="ph-duotone ph-text-align-left"></i> Understanding Marketing Attribution</span>
+            </nav>
+            <article>
+                
+                        <header class="article-header">
+                <h1 class="section-header">Understanding Marketing Attribution: Complete Guide to Attribution Models</h1>
+                
+                <img src="../images/blogimages/marketing-attribution.webp" alt="Understanding Marketing Attribution: Complete Guide to Attribution Models" class="blog-cover-image" loading="lazy" width="800" height="400">
+            </header>
+
+                <div class="article-content">
+                    <p>A customer sees your Facebook ad, clicks a Google ad, reads three blog posts, then finally
+                        converts. Which channel gets credit for the sale? That's where attribution comes in.</p>
+                    <p>Here's how to understand it.</p>
+
+                    <h2>What is Marketing Attribution?</h2>
+                    <p>Marketing attribution is the process of assigning credit for conversions to the touchpoints that
+                        influenced the customer journey. It answers the question: "Which marketing channels actually
+                        drove this sale?"</p>
+
+                    <h2>The 5 Main Attribution Models</h2>
+
+                    <h3>1. First-Touch Attribution</h3>
+                    <p><strong>What it is:</strong> Gives 100% credit to the first touchpoint.</p>
+                    <p><strong>Example:</strong> Customer sees a Facebook ad (first touch), then clicks a Google ad,
+                        then converts. Facebook gets all the credit.</p>
+                    <p><strong>Best for:</strong> Measuring awareness and top-of-funnel campaigns.</p>
+                    <p><strong>Problem:</strong> Ignores everything that happened after the first interaction.</p>
+
+                    <h3>2. Last-Touch Attribution</h3>
+                    <p><strong>What it is:</strong> Gives 100% credit to the last touchpoint before conversion.</p>
+                    <p><strong>Example:</strong> Customer sees a Facebook ad, reads a blog post, then clicks a Google ad
+                        and converts. Google gets all the credit.</p>
+                    <p><strong>Best for:</strong> Measuring bottom-of-funnel performance.</p>
+                    <p><strong>Problem:</strong> Overvalues the last click and ignores the journey.</p>
+
+                    <h3>3. Linear Attribution</h3>
+                    <p><strong>What it is:</strong> Splits credit equally across all touchpoints.</p>
+                    <p><strong>Example:</strong> Customer interacts with 4 channels. Each gets 25% credit.</p>
+                    <p><strong>Best for:</strong> Long sales cycles where every touchpoint matters.</p>
+                    <p><strong>Problem:</strong> Treats all interactions as equally valuable (they're not).</p>
+
+                    <h3>4. Time-Decay Attribution</h3>
+                    <p><strong>What it is:</strong> Gives more credit to touchpoints closer to the conversion.</p>
+                    <p><strong>Example:</strong> First touch gets 10%, second gets 20%, third gets 30%, last gets 40%.
+                    </p>
+                    <p><strong>Best for:</strong> Campaigns where urgency matters (sales, promotions).</p>
+                    <p><strong>Problem:</strong> Undervalues early-stage awareness efforts.</p>
+
+                    <h3>5. Data-Driven Attribution (Algorithmic)</h3>
+                    <p><strong>What it is:</strong> Uses machine learning to assign credit based on actual performance
+                        data.</p>
+                    <p><strong>Best for:</strong> Businesses with enough conversion data (Google Ads requires 15,000
+                        clicks + 600 conversions in 30 days).</p>
+                    <p><strong>Problem:</strong> A black box—you don't know exactly how credit is assigned.</p>
+
+                    <h2>Which Model Should You Use?</h2>
+                    <p>It depends on your goals:</p>
+                    <ul>
+                        <li><strong>Building awareness?</strong> First-touch.</li>
+                        <li><strong>Closing deals fast?</strong> Last-touch.</li>
+                        <li><strong>Long sales cycle?</strong> Linear or time-decay.</li>
+                        <li><strong>Enough data + want accuracy?</strong> Data-driven.</li>
+                    </ul>
+
+                    <h2>The Truth: No Model is Perfect</h2>
+                    <p>Every attribution model is a simplification. The real customer journey is messy. Instead of
+                        relying on one model, use multiple views:</p>
+                    <ul>
+                        <li>Check first-touch to see what's driving awareness</li>
+                        <li>Check last-touch to see what's closing deals</li>
+                        <li>Use data-driven if you have the volume</li>
+                    </ul>
+                    <p>Combine this with <a href="how-to-use-marketing-analytics.html">marketing analytics</a> to get a
+                        complete picture of ROI.</p>
+
+                    <h2>Conclusion</h2>
+                    <p>Attribution isn't about finding the "truth"?it's about getting a better understanding of what's
+                        working. Start simple, then graduate to more advanced models as you scale.</p>
+                    <p>Ready to build your strategy? Learn <a href="how-to-create-content-marketing-strategy.html">how
+                            to create a content marketing strategy</a>.</p>
+                </div>
+            </article>
+
+            <div class="back-to-blog">
+                <a href="../#blog"><i class="ph-duotone ph-arrow-left"></i> Back to All Articles</a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bottom Navigation Bar for Mobile -->
+    <nav class="bottom-nav" id="bottomNav" aria-label="Mobile Navigation">
+        <a href="../index.html#summary" class="bottom-nav-link" data-section="summary" aria-label="Summary"><i class="ph-duotone ph-user"></i><span>Summary</span></a>
+        <a href="../index.html#skills" class="bottom-nav-link" data-section="skills" aria-label="Skills"><i class="ph-duotone ph-gear"></i><span>Skills</span></a>
+        <a href="../index.html#experience" class="bottom-nav-link" data-section="experience" aria-label="Experience"><i class="ph-duotone ph-briefcase"></i><span>Experience</span></a>
+        <a href="../index.html#education" class="bottom-nav-link" data-section="education" aria-label="Education"><i class="ph-duotone ph-graduation-cap"></i><span>Education</span></a>
+        <a href="../index.html#projects" class="bottom-nav-link" data-section="projects" aria-label="Projects"><i class="ph-duotone ph-tree-structure"></i><span>Projects</span></a>
+        <a href="../#blog" class="bottom-nav-link" data-section="blog" aria-label="Blog"><i class="ph-duotone ph-feather"></i><span>Blog</span></a>
+        <a href="../index.html#certifications" class="bottom-nav-link" data-section="certifications" aria-label="Certifications"><i class="ph-duotone ph-certificate"></i><span>Certifications</span></a>
+        <a href="../index.html#contact" class="bottom-nav-link" data-section="contact" aria-label="Contact"><i class="ph-duotone ph-envelope-simple"></i><span>Contact</span></a>
+    </nav>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p id="copyright-year"></p>
+    </footer>
+
+    <script src="../blog_script.js" defer=""></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js");
+            });
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
