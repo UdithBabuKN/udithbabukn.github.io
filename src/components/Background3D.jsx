@@ -10,7 +10,7 @@ export default function Background3D({ activeSection }) {
             modelsLoaded = true;
             const viewer = document.getElementById('bg-model');
             if (viewer) {
-                viewer.src = '/3dudith.glb';
+                viewer.src = '/udith3d4k.glb';
             }
         };
         const userInteractions = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
