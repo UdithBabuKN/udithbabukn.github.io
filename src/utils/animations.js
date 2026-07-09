@@ -1,10 +1,7 @@
 export function initAllAnimations() {
     initLazyLoad();
-    initPagePeelCards();
     initStaggeredList();
-    init3DTilt();
     initContactForm();
-    initMagneticElements('.social-link');
     secureExternalLinks();
 }
 
@@ -15,32 +12,6 @@ function secureExternalLinks() {
             link.rel = link.rel ? `${link.rel} noopener noreferrer` : 'noopener noreferrer';
         }
     });
-}
-
-
-function initPagePeelCards() {
-    const cards = document.querySelectorAll('.page-peel-card');
-
-    if (window.innerWidth > 768) {
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const peelAmount = Math.min(x, y, 75);
-                card.style.setProperty('--peel-size', `${peelAmount}px`);
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.setProperty('--peel-size', '0px');
-            });
-        });
-    } else {
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                card.classList.toggle('expanded');
-            });
-        });
-    }
 }
 
 function initStaggeredList() {
@@ -60,24 +31,6 @@ function initStaggeredList() {
 
     lists.forEach(list => {
         observer.observe(list);
-    });
-}
-
-function init3DTilt() {
-    const cards = document.querySelectorAll('.interactive-card');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const { width, height } = rect;
-            const rotateX = (y / height - 0.5) * -15;
-            const rotateY = (x / width - 0.5) * 15;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        });
     });
 }
 
@@ -212,19 +165,3 @@ function initContactForm() {
     });
 }
 
-function initMagneticElements(selector) {
-    const elements = document.querySelectorAll(selector);
-    elements.forEach(el => {
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            el.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px) scale(1.15)`;
-            el.style.transition = 'transform 0.1s ease-out';
-        });
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = 'translate(0,0) scale(1)';
-            el.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        });
-    });
-}
