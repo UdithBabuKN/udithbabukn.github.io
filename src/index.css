@@ -1247,7 +1247,7 @@ textarea:focus-visible {
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
-    border-radius: 0px;
+    border-radius: 12px;
     padding: 1.5rem;
     cursor: pointer;
     box-shadow: var(--box-shadow);
