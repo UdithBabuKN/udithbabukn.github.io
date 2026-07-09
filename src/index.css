@@ -1042,111 +1042,148 @@ textarea:focus-visible {
 .skills-intro {
     text-align: center;
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-size: 1rem;
 }
 
-.skill-category-foldable {
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1rem;
-}
-
-.skill-category-title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    line-height: 1.3;
-}
-
-.category-chevron {
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.skills-grid {
+/* --- Bento Grid Layout --- */
+.skills-layout-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: 3fr 1fr;
     gap: 1.5rem;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), margin-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    margin-top: 0;
+    width: 100%;
 }
 
-/* Accessibility: Expand on focus-within for keyboard users */
-.skill-category-foldable.expanded .skills-grid,
-.skill-category-foldable:hover .skills-grid,
-.skill-category-foldable:focus-within .skills-grid {
-    max-height: 600px;
-    opacity: 1;
-    margin-top: 1.5rem;
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
 }
 
-.skill-category-foldable.expanded .category-chevron,
-.skill-category-foldable:hover .category-chevron,
-.skill-category-foldable:focus-within .category-chevron {
-    transform: rotate(180deg);
+.bento-chips.vertical {
+    flex-direction: column;
+    align-items: stretch;
 }
 
-.skill-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    background-image: var(--anime-dot);
-    background-size: var(--anime-dot-size);
-    border: 1px solid var(--border-color);
-    border-radius: 0px;
-    padding: 1.5rem 1rem;
+.bento-chips.vertical .bento-chip {
+    justify-content: flex-start;
+}
+
+@media (max-width: 992px) {
+    .skills-layout-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Bento Box Glassmorphism --- */
+.bento-box {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    gap: 1.5rem;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    min-height: 200px;
-    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.skill-card::after {
+.bento-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Subtle Gradient Glow inside Bento Boxes */
+.bento-box::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-    transition: left 0.5s ease;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
     pointer-events: none;
+    z-index: 0;
 }
 
-.skill-card:hover::after {
-    left: 150%;
+.bento-box:hover::before {
+    opacity: 1;
 }
 
-.skill-card:hover,
-.skill-card:focus {
-    transform: translate(-5px, -5px);
-    box-shadow: var(--box-shadow-hover);
+.bento-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    z-index: 1;
 }
 
-.skill-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    background: var(--accent-color);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
-    animation-play-state: paused;
+/* --- Bento Chips Layout --- */
+.bento-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    z-index: 1;
+}
+
+.bento-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: default;
+    transition: all 0.2s ease;
+}
+
+.bento-chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.skill-icon-small {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .bento-box {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .bento-box:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .bento-box::before {
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
+}
+
+[data-theme="light"] .bento-chip {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
+}
+
+[data-theme="light"] .bento-chip:hover {
+    background: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
 .skill-card.visible .skill-icon {

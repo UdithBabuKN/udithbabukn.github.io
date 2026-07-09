@@ -1,6 +1,5 @@
 export function initAllAnimations() {
     initLazyLoad();
-    initFoldableSkills();
     initPagePeelCards();
     initStaggeredList();
     init3DTilt();
@@ -18,48 +17,6 @@ function secureExternalLinks() {
     });
 }
 
-function initFoldableSkills() {
-    const foldableCategories = document.querySelectorAll('.skill-category-foldable');
-    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-
-    foldableCategories.forEach(category => {
-        const title = category.querySelector('.skill-category-title');
-        // Clear previous event listeners if any to avoid duplicates
-        const newTitle = title.cloneNode(true);
-        title.parentNode.replaceChild(newTitle, title);
-        const newCategory = category.cloneNode(true);
-        category.parentNode.replaceChild(newCategory, category);
-        
-        const currentTitle = newCategory.querySelector('.skill-category-title');
-
-        if (isTouchDevice) {
-            currentTitle.addEventListener('click', () => {
-                const isExpanded = newCategory.classList.toggle('expanded');
-                currentTitle.setAttribute('aria-expanded', isExpanded);
-            });
-        } else {
-            newCategory.addEventListener('mouseenter', () => {
-                newCategory.classList.add('expanded');
-                currentTitle.setAttribute('aria-expanded', 'true');
-            });
-            newCategory.addEventListener('mouseleave', () => {
-                newCategory.classList.remove('expanded');
-                currentTitle.setAttribute('aria-expanded', 'false');
-            });
-
-            newCategory.addEventListener('focusin', () => {
-                newCategory.classList.add('expanded');
-                currentTitle.setAttribute('aria-expanded', 'true');
-            });
-            newCategory.addEventListener('focusout', (e) => {
-                if (!newCategory.contains(e.relatedTarget)) {
-                    newCategory.classList.remove('expanded');
-                    currentTitle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-    });
-}
 
 function initPagePeelCards() {
     const cards = document.querySelectorAll('.page-peel-card');
@@ -107,8 +64,8 @@ function initStaggeredList() {
 }
 
 function init3DTilt() {
-    const skillCards = document.querySelectorAll('.skill-card');
-    skillCards.forEach(card => {
+    const cards = document.querySelectorAll('.interactive-card');
+    cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -125,7 +82,7 @@ function init3DTilt() {
 }
 
 function initLazyLoad() {
-    const lazyElements = document.querySelectorAll('.lazy-load, .skill-card, .interactive-card');
+    const lazyElements = document.querySelectorAll('.lazy-load, .bento-box, .interactive-card');
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {

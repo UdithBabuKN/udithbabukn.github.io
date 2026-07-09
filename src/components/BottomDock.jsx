@@ -81,6 +81,7 @@ function getIconForSection(key) {
         projects: 'tree-structure',
         blog: 'feather',
         certifications: 'certificate',
+        faq: 'question',
         contact: 'envelope-simple'
     };
     return map[key] || 'circle';

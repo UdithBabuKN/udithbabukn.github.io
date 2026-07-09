@@ -49,6 +49,7 @@ export default function Background3D({ activeSection }) {
             'education': '-55deg 70deg 100%',
             'projects': '-54deg 70deg 100%',
             'certifications': '-55deg 70deg 100%',
+            'faq': '-54deg 70deg 100%',
             'blog': '-56deg 70deg 100%',
             'contact': '-55deg 70deg 100%',
         };

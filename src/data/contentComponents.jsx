@@ -23,49 +23,68 @@ export const Skills = () => {
                 <article className="content-box lazy-load" lang="en">
                     <p className="skills-intro">I focus on a curated set of tools and methodologies to deliver efficient and effective solutions. Tap or focus on a category to expand.</p>
                     
-                    <div className="skill-category-foldable">
-                        <h3 className="skill-category-title" role="button" tabIndex="0" id="marketing-seo-heading" aria-expanded="false" aria-controls="marketing-seo-grid"><span>Marketing & SEO</span><i className="fas fa-chevron-down category-chevron"></i></h3>
-                        <div className="skills-grid" id="marketing-seo-grid" role="region" aria-labelledby="marketing-seo-heading">
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-search-dollar skill-icon"></i><span className="skill-name">SEO Strategy</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-search-plus skill-icon"></i><span className="skill-name">AEO & GEO</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-chart-line skill-icon"></i><span className="skill-name">Google Analytics</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-bullhorn skill-icon"></i><span className="skill-name">Content Marketing</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-key skill-icon"></i><span className="skill-name">Keyword Research</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
+                    <div className="skills-layout-wrapper">
+                        <div className="bento-grid">
+                        <div className="bento-box marketing-seo">
+                            <h3 className="bento-title">Marketing & SEO</h3>
+                            <div className="bento-chips">
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-search-dollar skill-icon-small"></i><span>SEO Strategy</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-search-plus skill-icon-small"></i><span>AEO & GEO</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-chart-line skill-icon-small"></i><span>Google Analytics</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-bullhorn skill-icon-small"></i><span>Content Marketing</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-key skill-icon-small"></i><span>Keyword Research</span></div>
+                            </div>
+                        </div>
+
+                        <div className="bento-box core-tech">
+                            <h3 className="bento-title">Core Technologies</h3>
+                            <div className="bento-chips">
+                                <div className="bento-chip" tabIndex="0"><i className="fab fa-python skill-icon-small"></i><span>Python</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-database skill-icon-small"></i><span>MySQL</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fab fa-js-square skill-icon-small"></i><span>JavaScript</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-robot skill-icon-small"></i><span>Vibe Coding</span></div>
+                            </div>
+                        </div>
+
+                        <div className="bento-box pm-design">
+                            <h3 className="bento-title">Project Management & Design</h3>
+                            <div className="bento-chips">
+                                <div className="bento-chip" tabIndex="0"><i className="fab fa-jira skill-icon-small"></i><span>Jira</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fab fa-trello skill-icon-small"></i><span>Trello</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fab fa-figma skill-icon-small"></i><span>Figma</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-object-group skill-icon-small"></i><span>UI/UX Designing</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-video skill-icon-small"></i><span>AI Video Editing & Gen</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-paint-brush skill-icon-small"></i><span>Poster Design</span></div>
+                            </div>
+                        </div>
+
+                        <div className="bento-box biz-analysis">
+                            <h3 className="bento-title">Business & Analysis</h3>
+                            <div className="bento-chips">
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-users skill-icon-small"></i><span>Stakeholder Negotiation</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-tasks skill-icon-small"></i><span>Scrum Facilitation</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-sitemap skill-icon-small"></i><span>Root-Cause Analysis</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-file-excel skill-icon-small"></i><span>Microsoft Office</span></div>
+                                <div className="bento-chip" tabIndex="0"><i className="fas fa-headset skill-icon-small"></i><span>CRM Handling</span></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="skill-category-foldable">
-                        <h3 className="skill-category-title" role="button" tabIndex="0" id="core-tech-heading" aria-expanded="false" aria-controls="core-tech-grid"><span>Core Technologies</span><i className="fas fa-chevron-down category-chevron"></i></h3>
-                        <div className="skills-grid" id="core-tech-grid" role="region" aria-labelledby="core-tech-heading">
-                            <div className="skill-card" tabIndex="0"><i className="fab fa-python skill-icon"></i><span className="skill-name">Python</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-database skill-icon"></i><span className="skill-name">MySQL</span><div className="skill-details"><span className="skill-level">Intermediate</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fab fa-js-square skill-icon"></i><span className="skill-name">JavaScript</span><div className="skill-details"><span className="skill-level">Intermediate</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-robot skill-icon"></i><span className="skill-name">Vibe Coding (Claude, Gemini, etc.)</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
+                    <div className="bento-box achievements-vertical">
+                        <h3 className="bento-title" style={{ fontSize: '1.1rem' }}>Google Search Impact</h3>
+                        <div className="bento-chips vertical">
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 10: 350 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 6: 300 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 4: 250 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 1: 200 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 30: 180 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 26: 150 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 25: 120 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 24: 100 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jun 5: 90 Clicks</span></div>
                         </div>
                     </div>
-
-                    <div className="skill-category-foldable">
-                        <h3 className="skill-category-title" role="button" tabIndex="0" id="pm-design-heading" aria-expanded="false" aria-controls="pm-design-grid"><span>Project Management & Design</span><i className="fas fa-chevron-down category-chevron"></i></h3>
-                        <div className="skills-grid" id="pm-design-grid" role="region" aria-labelledby="pm-design-heading">
-                            <div className="skill-card" tabIndex="0"><i className="fab fa-jira skill-icon"></i><span className="skill-name">Jira</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fab fa-trello skill-icon"></i><span className="skill-name">Trello</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fab fa-figma skill-icon"></i><span className="skill-name">Figma</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-object-group skill-icon"></i><span className="skill-name">UI/UX Designing</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-video skill-icon"></i><span className="skill-name">AI Video Editing & Gen</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-paint-brush skill-icon"></i><span className="skill-name">Poster Design</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                        </div>
-                    </div>
-
-                    <div className="skill-category-foldable">
-                        <h3 className="skill-category-title" role="button" tabIndex="0" id="biz-analysis-heading" aria-expanded="false" aria-controls="biz-analysis-grid"><span>Business & Analysis</span><i className="fas fa-chevron-down category-chevron"></i></h3>
-                        <div className="skills-grid" id="biz-analysis-grid" role="region" aria-labelledby="biz-analysis-heading">
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-users skill-icon"></i><span className="skill-name">Stakeholder Negotiation</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-tasks skill-icon"></i><span className="skill-name">Scrum Facilitation</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-sitemap skill-icon"></i><span className="skill-name">Root-Cause Analysis</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-file-excel skill-icon"></i><span className="skill-name">Microsoft Office</span><div className="skill-details"><span className="skill-level">Advanced</span></div></div>
-                            <div className="skill-card" tabIndex="0"><i className="fas fa-headset skill-icon"></i><span className="skill-name">CRM Handling</span><div className="skill-details"><span className="skill-level">Proficient</span></div></div>
-                        </div>
-                    </div>
+                </div>
                 </article>
         </section>
     );
@@ -277,3 +296,4 @@ export const FAQ = () => {
         </section>
     );
 };
+
