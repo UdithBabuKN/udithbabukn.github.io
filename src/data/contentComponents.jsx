@@ -165,23 +165,30 @@ export const Contact = () => {
         
         const form = e.target;
         const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
 
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
             });
             
-            if (response.ok) {
+            const jsonResponse = await response.json();
+            
+            if (response.ok && jsonResponse.success) {
                 setStatus('success');
             } else {
-                throw new Error('Form submission failed');
+                throw new Error(jsonResponse.message || 'Form submission failed');
             }
         } catch (error) {
             console.error('Form submission error:', error);
             setStatus('error');
-            setErrorMsg('An error occurred. Please try again or contact me directly.');
+            setErrorMsg(error.message || 'An error occurred. Please try again or contact me directly.');
         }
     };
 
@@ -199,9 +206,12 @@ export const Contact = () => {
                         <button className="btn" aria-label="Send Another Message" onClick={() => setStatus('idle')}>Send Another Message</button>
                     </div>
                 ) : (
-                    <form className="contact-form" id="contactForm" action="https://formsubmit.co/udithbabuvarrier@gmail.com" method="POST" onSubmit={handleSubmit} aria-label="Contact Form" noValidate>
-                        <input type="hidden" name="_subject" value="New portfolio contact submission" />
-                        <input type="hidden" name="_captcha" value="false" />
+                    <form className="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} aria-label="Contact Form">
+                        {/* Web3Forms access key */}
+                        <input type="hidden" name="access_key" value="87c7f836-6a95-44f3-8391-314433633006" />
+                        <input type="hidden" name="subject" value="New portfolio contact submission" />
+                        <input type="hidden" name="from_name" value="Portfolio Notification" />
+                        <input type="checkbox" name="botcheck" id="" style={{ display: 'none' }} />
                         
                         <div className="form-group">
                             <label htmlFor="name" className="form-label">Your Name</label>
