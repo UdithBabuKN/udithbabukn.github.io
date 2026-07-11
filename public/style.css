@@ -1931,7 +1931,7 @@ body {
     height: 100vh;
     z-index: -1;
     display: none;
-    background-image: url('/images/udibg.png');
+    background-image: url('/bgimage.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
