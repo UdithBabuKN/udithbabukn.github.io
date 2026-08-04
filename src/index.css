@@ -116,6 +116,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                background-image: none;
+            }
+            
             .sidebar {
                 display: none;
             }
