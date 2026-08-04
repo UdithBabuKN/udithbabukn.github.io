@@ -58,7 +58,7 @@ export default function Blog() {
                                     <p className="blog-card-excerpt">{post.excerpt}</p>
                                     <div className="blog-card-footer">
                                         <div className="author-info">
-                                            <img src="picofme.webp" alt="Udith Babu K N" className="author-image" width="40" height="40" />
+                                            <img src="picofme.webp" alt="Udith Babu K N" className="author-image" width="40" height="40" loading="lazy" />
                                             <div className="author-details">
                                                 <span className="author-name">Udith Babu K N</span>
                                                 <span className="read-time">{post.readTime}</span>
