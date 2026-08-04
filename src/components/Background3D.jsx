@@ -59,6 +59,16 @@ export default function Background3D({ activeSection }) {
         setCameraTarget('auto 1.0m auto');
     }, [activeSection]);
 
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsMobile(window.innerWidth <= 768);
+    }, []);
+
+    if (isMobile) {
+        return null;
+    }
+
     return (
         <>
             <model-viewer 
