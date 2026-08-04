@@ -57,7 +57,6 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>Udith Babu K N | {capitalize(activeSection)}</title>
         <meta name="description" content={`Udith Babu K N - ${capitalize(activeSection)} section. Marketing & Sales Executive and IT Business Analyst.`} />
         <meta property="og:title" content={`Udith Babu K N | ${capitalize(activeSection)}`} />
         <meta property="og:url" content={`https://udithbabukn.github.io/#${activeSection}`} />
