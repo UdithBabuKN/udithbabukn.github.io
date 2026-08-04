@@ -28,44 +28,44 @@ export const Skills = () => {
                         <div className="bento-box marketing-seo">
                             <h3 className="bento-title">Marketing & SEO</h3>
                             <div className="bento-chips">
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-search-dollar skill-icon-small"></i><span>SEO Strategy</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-search-plus skill-icon-small"></i><span>AEO & GEO</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-chart-line skill-icon-small"></i><span>Google Analytics</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-bullhorn skill-icon-small"></i><span>Content Marketing</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-key skill-icon-small"></i><span>Keyword Research</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-search-dollar skill-icon-small"></i><span>SEO Strategy</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-search-plus skill-icon-small"></i><span>AEO & GEO</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-chart-line skill-icon-small"></i><span>Google Analytics</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-bullhorn skill-icon-small"></i><span>Content Marketing</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-key skill-icon-small"></i><span>Keyword Research</span></div>
                             </div>
                         </div>
 
                         <div className="bento-box core-tech">
                             <h3 className="bento-title">Core Technologies</h3>
                             <div className="bento-chips">
-                                <div className="bento-chip" tabIndex="0"><i className="fab fa-python skill-icon-small"></i><span>Python</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-database skill-icon-small"></i><span>MySQL</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fab fa-js-square skill-icon-small"></i><span>JavaScript</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-robot skill-icon-small"></i><span>Vibe Coding</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fab fa-python skill-icon-small"></i><span>Python</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-database skill-icon-small"></i><span>MySQL</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fab fa-js-square skill-icon-small"></i><span>JavaScript</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-robot skill-icon-small"></i><span>Vibe Coding</span></div>
                             </div>
                         </div>
 
                         <div className="bento-box pm-design">
                             <h3 className="bento-title">Project Management & Design</h3>
                             <div className="bento-chips">
-                                <div className="bento-chip" tabIndex="0"><i className="fab fa-jira skill-icon-small"></i><span>Jira</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fab fa-trello skill-icon-small"></i><span>Trello</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fab fa-figma skill-icon-small"></i><span>Figma</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-object-group skill-icon-small"></i><span>UI/UX Designing</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-video skill-icon-small"></i><span>AI Video Editing & Gen</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-paint-brush skill-icon-small"></i><span>Poster Design</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fab fa-jira skill-icon-small"></i><span>Jira</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fab fa-trello skill-icon-small"></i><span>Trello</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fab fa-figma skill-icon-small"></i><span>Figma</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-object-group skill-icon-small"></i><span>UI/UX Designing</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-video skill-icon-small"></i><span>AI Video Editing & Gen</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-paint-brush skill-icon-small"></i><span>Poster Design</span></div>
                             </div>
                         </div>
 
                         <div className="bento-box biz-analysis">
                             <h3 className="bento-title">Business & Analysis</h3>
                             <div className="bento-chips">
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-users skill-icon-small"></i><span>Stakeholder Negotiation</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-tasks skill-icon-small"></i><span>Scrum Facilitation</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-sitemap skill-icon-small"></i><span>Root-Cause Analysis</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-file-excel skill-icon-small"></i><span>Microsoft Office</span></div>
-                                <div className="bento-chip" tabIndex="0"><i className="fas fa-headset skill-icon-small"></i><span>CRM Handling</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-users skill-icon-small"></i><span>Stakeholder Negotiation</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-tasks skill-icon-small"></i><span>Scrum Facilitation</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-sitemap skill-icon-small"></i><span>Root-Cause Analysis</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-file-excel skill-icon-small"></i><span>Microsoft Office</span></div>
+                                <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-headset skill-icon-small"></i><span>CRM Handling</span></div>
                             </div>
                         </div>
                     </div>
@@ -73,15 +73,15 @@ export const Skills = () => {
                     <div className="bento-box achievements-vertical">
                         <h3 className="bento-title" style={{ fontSize: '1.1rem' }}>Google Search Impact</h3>
                         <div className="bento-chips vertical">
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 10: 350 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 6: 300 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 4: 250 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 1: 200 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 30: 180 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 26: 150 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 25: 120 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 24: 100 Clicks</span></div>
-                            <div className="bento-chip" tabIndex="0"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jun 5: 90 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 10: 350 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 6: 300 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 4: 250 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Aug 1: 200 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 30: 180 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 26: 150 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 25: 120 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jul 24: 100 Clicks</span></div>
+                            <div className="bento-chip" tabIndex="0" role="region"><i className="fas fa-arrow-trend-up skill-icon-small"></i><span>Jun 5: 90 Clicks</span></div>
                         </div>
                     </div>
                 </div>
@@ -97,10 +97,10 @@ export const Experience = () => {
             
                 <article className="lazy-load" lang="en">
                     <div className="page-peel-timeline">
-                        <div className="page-peel-card" tabIndex="0"><p className="card-date">Aug 2025 – Present</p><h3>Executive – Marketing and Sales</h3><p className="company">Rêve</p><div className="details"><h4>Key Responsibilities</h4><ul><li>Developing and implementing marketing and sales strategies.</li><li>Building and maintaining strong client relationships.</li><li>Executing on-page and off-page SEO strategies to improve organic search rankings.</li><li>Conducting keyword research and competitor analysis to inform content strategy.</li><li>Analyzing website traffic and user engagement using Google Analytics to optimize campaigns.</li><li>Managing technical SEO audits to enhance site performance and crawlability.</li></ul></div></div>
-                        <div className="page-peel-card" tabIndex="0"><p className="card-date">May 2025 – Aug 2025</p><h3>Business Development Executive</h3><p className="company">Accelgrowth Technology Pvt. Ltd.</p><div className="details"><h4>Key Responsibilities</h4><ul><li>Conducted market research and gathered client requirements for strategic planning.</li><li>Analyzed customer data to identify trends and support decisions.</li><li>Collaborated with tech teams to align business needs with functional requirements.</li><li>Prepared business cases, proposals, and stakeholder reports.</li><li>Coordinated UAT by managing client feedback and validating requirements.</li><li>Used Excel, Trello, and CRM tools for lead management and KPI tracking.</li><li>Built strong client relationships through consultative solutions and support.</li></ul></div></div>
-                        <div className="page-peel-card" tabIndex="0"><p className="card-date">Sep 2024 – Dec 2024</p><h3>Business Analyst Intern</h3><p className="company">CST - Cyber Sapient</p><div className="details"><h4>Achievements</h4><ul><li>Gathered and documented 100+ business requirements.</li><li>Designed 10+ functional specifications and wireframes in Figma.</li><li>Analysed 50+ datasets using Python, improving sprint outcomes by 15%.</li><li>Coordinated and executed UAT for three key features with 98% compliance.</li></ul></div></div>
-                        <div className="page-peel-card" tabIndex="0"><p className="card-date">Aug 2023 – Sep 2023</p><h3>Operations Intern</h3><p className="company">Techmindz</p><div className="details"><h4>Achievements</h4><ul><li>Automated customer service processes using AI, reducing response time by 30%.</li><li>Analysed customer data to improve service strategies (15% satisfaction increase).</li><li>Collaborated with development team to integrate AI tools.</li></ul></div></div>
+                        <div className="page-peel-card" tabIndex="0" role="region"><p className="card-date">Aug 2025 – Present</p><h3>Executive – Marketing and Sales</h3><p className="company">Rêve</p><div className="details"><h4>Key Responsibilities</h4><ul><li>Developing and implementing marketing and sales strategies.</li><li>Building and maintaining strong client relationships.</li><li>Executing on-page and off-page SEO strategies to improve organic search rankings.</li><li>Conducting keyword research and competitor analysis to inform content strategy.</li><li>Analyzing website traffic and user engagement using Google Analytics to optimize campaigns.</li><li>Managing technical SEO audits to enhance site performance and crawlability.</li></ul></div></div>
+                        <div className="page-peel-card" tabIndex="0" role="region"><p className="card-date">May 2025 – Aug 2025</p><h3>Business Development Executive</h3><p className="company">Accelgrowth Technology Pvt. Ltd.</p><div className="details"><h4>Key Responsibilities</h4><ul><li>Conducted market research and gathered client requirements for strategic planning.</li><li>Analyzed customer data to identify trends and support decisions.</li><li>Collaborated with tech teams to align business needs with functional requirements.</li><li>Prepared business cases, proposals, and stakeholder reports.</li><li>Coordinated UAT by managing client feedback and validating requirements.</li><li>Used Excel, Trello, and CRM tools for lead management and KPI tracking.</li><li>Built strong client relationships through consultative solutions and support.</li></ul></div></div>
+                        <div className="page-peel-card" tabIndex="0" role="region"><p className="card-date">Sep 2024 – Dec 2024</p><h3>Business Analyst Intern</h3><p className="company">CST - Cyber Sapient</p><div className="details"><h4>Achievements</h4><ul><li>Gathered and documented 100+ business requirements.</li><li>Designed 10+ functional specifications and wireframes in Figma.</li><li>Analysed 50+ datasets using Python, improving sprint outcomes by 15%.</li><li>Coordinated and executed UAT for three key features with 98% compliance.</li></ul></div></div>
+                        <div className="page-peel-card" tabIndex="0" role="region"><p className="card-date">Aug 2023 – Sep 2023</p><h3>Operations Intern</h3><p className="company">Techmindz</p><div className="details"><h4>Achievements</h4><ul><li>Automated customer service processes using AI, reducing response time by 30%.</li><li>Analysed customer data to improve service strategies (15% satisfaction increase).</li><li>Collaborated with development team to integrate AI tools.</li></ul></div></div>
                     </div>
                 </article>
         </section>
@@ -114,8 +114,8 @@ export const Education = () => {
             
                 <article className="lazy-load" lang="en">
                     <div className="page-peel-timeline">
-                        <div className="page-peel-card" tabIndex="0"><p className="card-date">2022 – 2024</p><h3>MBA (Operations & Marketing)</h3><p className="company">College of Engineering Thalassery</p><div className="details"><h4>Details</h4><ul><li>Specialized in Operations Management and Marketing.</li><li>Graduated with 7.29 CGPA (72.90%).</li><li>Gained expertise in supply chain, project management, and marketing strategies.</li></ul></div></div>
-                        <div className="page-peel-card" tabIndex="0"><p className="card-date">2018 – 2022</p><h3>B.Tech (Information Technology)</h3><p className="company">College of Engineering Thalassery</p><div className="details"><h4>Details</h4><ul><li>Specialized in Information Technology.</li><li>Graduated with 7.84 CGPA (78.40%).</li><li>Developed a strong foundation in software development, database management, and networking.</li></ul></div></div>
+                        <div className="page-peel-card" tabIndex="0" role="region"><p className="card-date">2022 – 2024</p><h3>MBA (Operations & Marketing)</h3><p className="company">College of Engineering Thalassery</p><div className="details"><h4>Details</h4><ul><li>Specialized in Operations Management and Marketing.</li><li>Graduated with 7.29 CGPA (72.90%).</li><li>Gained expertise in supply chain, project management, and marketing strategies.</li></ul></div></div>
+                        <div className="page-peel-card" tabIndex="0" role="region"><p className="card-date">2018 – 2022</p><h3>B.Tech (Information Technology)</h3><p className="company">College of Engineering Thalassery</p><div className="details"><h4>Details</h4><ul><li>Specialized in Information Technology.</li><li>Graduated with 7.84 CGPA (78.40%).</li><li>Developed a strong foundation in software development, database management, and networking.</li></ul></div></div>
                     </div>
                 </article>
         </section>
@@ -207,7 +207,7 @@ export const Contact = () => {
                         <button className="btn" aria-label="Send Another Message" onClick={() => setStatus('idle')}>Send Another Message</button>
                     </div>
                 ) : (
-                    <form className="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} aria-label="Contact Form">
+                    <form className="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} aria-label="Contact Form" data-mcp-form="Contact Form">
                         {/* Web3Forms access key */}
                         <input type="hidden" name="access_key" value="87c7f836-6a95-44f3-8391-314433633006" />
                         <input type="hidden" name="subject" value="New portfolio contact submission" />
@@ -216,22 +216,22 @@ export const Contact = () => {
                         
                         <div className="form-group">
                             <label htmlFor="name" className="form-label">Your Name</label>
-                            <input type="text" id="name" name="name" className="form-control" placeholder="Enter your name" required aria-required="true" autoComplete="name" />
+                            <input type="text" id="name" name="name" className="form-control" placeholder="Enter your name" required aria-required="true" autoComplete="name" data-mcp-input="Name" />
                         </div>
                         
                         <div className="form-group">
                             <label htmlFor="email" className="form-label">Your Email</label>
-                            <input type="email" id="email" name="email" className="form-control" placeholder="Enter your email" required aria-required="true" autoComplete="email" />
+                            <input type="email" id="email" name="email" className="form-control" placeholder="Enter your email" required aria-required="true" autoComplete="email" data-mcp-input="Email" />
                         </div>
                         
                         <div className="form-group">
                             <label htmlFor="company" className="form-label">Company</label>
-                            <input type="text" id="company" name="company" className="form-control" placeholder="Enter your company name" autoComplete="organization" />
+                            <input type="text" id="company" name="company" className="form-control" placeholder="Enter your company name" autoComplete="organization" data-mcp-input="Company" />
                         </div>
                         
                         <div className="form-group">
                             <label htmlFor="message" className="form-label">Message</label>
-                            <textarea id="message" name="message" className="form-control" placeholder="Enter your message" required aria-required="true"></textarea>
+                            <textarea id="message" name="message" className="form-control" placeholder="Enter your message" required aria-required="true" data-mcp-input="Message"></textarea>
                         </div>
                         
                         <button type="submit" className="btn" aria-label="Send Message" id="submitButton" disabled={status === 'loading'}>

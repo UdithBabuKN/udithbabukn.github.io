@@ -1,0 +1,25 @@
+# Udith Babu K N - Professional Portfolio
+
+> Executive – Marketing and Sales | IT Business Analyst
+
+This is the professional portfolio of Udith Babu K N. It showcases my professional experience, skills, and projects in Marketing, Sales, and IT Business Analysis.
+
+## Professional Experience
+- **Executive – Marketing and Sales** at Rêve (Aug 2025 – Present)
+- **Business Development Executive** at Accelgrowth Technology Pvt. Ltd. (May 2025 – Aug 2025)
+- **Business Analyst Intern** at CST - Cyber Sapient (Sep 2024 – Dec 2024)
+- **Operations Intern** at Techmindz (Aug 2023 – Sep 2023)
+
+## Core Competencies
+- SEO Strategy, Content Marketing, Google Analytics, Market Research
+- Python, MySQL, JavaScript, Figma, Jira, Trello
+- Agile Methodologies, Scrum, Root-Cause Analysis
+
+## Projects
+- SEO & Analytics Dashboard
+- Web Analyzer Pro
+- Advanced Web Security Chrome Extension
+- Free LinkedIn Banner Premium Collection
+- ImageForge
+
+For more information, please explore the portfolio at [udithbabukn.github.io](https://udithbabukn.github.io) or contact me at udithbabuvarrier@gmail.com.
