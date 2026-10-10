@@ -1,5 +1,3 @@
-import { useState, useEffect, useRef } from 'react';
-
 export default function BottomDock({ activeSection, setActiveSection, SECTIONS }) {
     return (
         <nav className="bottom-dock" aria-label="Main Navigation">
@@ -46,7 +44,7 @@ export default function BottomDock({ activeSection, setActiveSection, SECTIONS }
                 <li className="dock-item desktop-only">
                     <a href="https://x.com/dark_heavan7" target="_blank" rel="noopener noreferrer" className="dock-link" title="X (Twitter)">
                         <i className="ph-duotone ph-x-logo" aria-hidden="true"></i>
-                        <span className="dock-tooltip">X (Twitter)</span>
+                        <span className="dock-tooltip">X</span>
                     </a>
                 </li>
                 <li className="dock-item desktop-only">

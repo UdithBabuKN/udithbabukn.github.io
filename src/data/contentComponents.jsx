@@ -6,11 +6,23 @@ export const Summary = () => {
         <section id="summary" className="section" lang="en">
             <h2 className="section-header">Professional Summary</h2>
             
-                <article className="interactive-card lazy-load" lang="en" style={{ '--angle': '45deg' }}>
-                    <h2 className="interactive-card-heading">Expert Executive – Marketing and Sales | IT Business Analyst</h2>
-                    <p className="summary-subtitle">MBA in Operations & Marketing | B.Tech in Information Technology</p>
-                    <p className="summary-description">As a forward-thinking Executive in Marketing and Sales, I specialize in creating and executing data-driven strategies that boost brand visibility and drive revenue growth. With a strong foundation as an IT Business Analyst, I bring a unique analytical perspective to market research, lead generation, and client engagement. Based in Kerala, India, I am adept at using tools like Python and MySQL for market analysis and Figma for crafting compelling marketing materials, ensuring every campaign is both innovative and effective.</p>
-                </article>
+            <article className="interactive-card lazy-load" lang="en">
+                <div className="summary-stamp-badge" aria-label="Authentic Seal" title="Verified Portfolio">
+                    <span>印</span>
+                    <small>PRO</small>
+                </div>
+                <h2 className="interactive-card-heading">Executive – Marketing and Sales | IT Business Analyst</h2>
+                <p className="summary-subtitle">MBA in Operations & Marketing • B.Tech in Information Technology</p>
+                <p className="summary-description">As a forward-thinking Executive in Marketing and Sales, I specialize in creating and executing data-driven strategies that boost brand visibility and drive revenue growth. With a strong foundation as an IT Business Analyst, I bring a unique analytical perspective to market research, lead generation, and client engagement. Based in Kerala, India, I am adept at using tools like Python and MySQL for market analysis and Figma for crafting compelling marketing materials, ensuring every campaign is both innovative and effective.</p>
+                
+                <div className="summary-highlights">
+                    <span className="summary-pill"><i className="ph-duotone ph-map-pin"></i> Kerala, India</span>
+                    <span className="summary-pill"><i className="ph-duotone ph-graduation-cap"></i> Dual Degree: MBA & B.Tech</span>
+                    <span className="summary-pill"><i className="ph-duotone ph-chart-line-up"></i> Technical SEO & GEO Strategy</span>
+                    <span className="summary-pill"><i className="ph-duotone ph-database"></i> Python & MySQL Analytics</span>
+                    <span className="summary-pill"><i className="ph-duotone ph-kanban"></i> Agile Scrum Facilitation</span>
+                </div>
+            </article>
         </section>
     );
 };

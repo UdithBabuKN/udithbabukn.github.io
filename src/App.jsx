@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { initAllAnimations } from './utils/animations';
 
@@ -6,8 +6,8 @@ import { Summary, Skills, Experience, Education, Projects, Certifications, Conta
 import Blog from './components/Blog';
 import BottomDock from './components/BottomDock';
 import MobileHeader from './components/MobileHeader';
-
-const Background3D = lazy(() => import('./components/Background3D'));
+import Background3D from './components/Background3D';
+import BackgroundReveal from './components/BackgroundReveal';
 
 const SECTIONS = {
   summary: Summary,
@@ -61,11 +61,22 @@ function App() {
         <meta property="og:title" content={`Udith Babu K N | ${capitalize(activeSection)}`} />
         <meta property="og:url" content={`https://udithbabukn.github.io/#${activeSection}`} />
       </Helmet>
+
+      {/* Tactile Washi Paper Texture Overlay */}
+      <div className="paper-texture-overlay" aria-hidden="true"></div>
+
+      {/* Background Split Reveal (Anime Zen Halfway Hover) */}
+      <BackgroundReveal />
+
       <div className="container">
-        <Suspense fallback={null}>
-          <Background3D activeSection={activeSection} />
-        </Suspense>
-        <BottomDock activeSection={activeSection} setActiveSection={setActiveSection} SECTIONS={SECTIONS} />
+        {/* 3D Model View Default */}
+        <Background3D activeSection={activeSection} />
+
+        <BottomDock 
+          activeSection={activeSection} 
+          setActiveSection={setActiveSection} 
+          SECTIONS={SECTIONS}
+        />
         <main className="content" id="main-content" aria-label="Main Content">
           <MobileHeader />
 
@@ -73,7 +84,8 @@ function App() {
               <ActiveComponent />
           </div>
           <footer className="footer">
-            <p>© {new Date().getFullYear()} Udith Babu K N. All Rights Reserved.</p>
+            <div className="footer-zen-divider" aria-hidden="true"></div>
+            <p className="footer-copyright">© {new Date().getFullYear()} Udith Babu K N. Crafted with mindfulness & precision.</p>
           </footer>
         </main>
       </div>

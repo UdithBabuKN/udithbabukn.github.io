@@ -3,11 +3,11 @@ import { blogPosts } from '../data/blogPostsData';
 
 function getCategoryColor(category) {
     switch (category) {
-        case 'Foundations': return '#7EBDC2'; // Soft Teal
-        case 'Playbook': return '#9DBA94'; // Soft Matcha
-        case 'Sales Excellence': return '#E5989B'; // Dusty Rose
-        case 'Growth & Analytics': return '#F4CB8C'; // Soft Peach
-        default: return '#B5A6C9'; // Muted Lavender
+        case 'Foundations': return '#4E6B66'; // Muted Slate Teal
+        case 'Playbook': return '#586E53';    // Serene Bamboo Matcha
+        case 'Sales Excellence': return '#A65D48'; // Earthy Cinnabar Terracotta
+        case 'Growth & Analytics': return '#B58742'; // Warm Ochre
+        default: return '#787368'; // River Pebble Stone
     }
 }
 
