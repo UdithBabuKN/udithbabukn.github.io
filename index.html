@@ -64,12 +64,14 @@
         content="A professional portfolio thumbnail for Udith Babu K N, Marketing and Sales Executive">
 
     <!-- Theme Color for Browser UI -->
-    <meta name="theme-color" content="#FAF8F3">
+    <meta name="theme-color" content="#FFFFFF">
 
-    <!-- Fonts: Instrument Serif, Young Serif, Nunito Sans, Outfit, Plus Jakarta Sans -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Young+Serif&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Fonts: Outfit, Plus Jakarta Sans, JetBrains Mono (Popular Modern Geometric Sans & Monospace) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Young+Serif&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
     </noscript>
     
     <!-- Phosphor Icons (Premium Minimal Icons) -->
@@ -175,7 +177,7 @@
                   height: 100vh;
                   display: flex;
                   flex-direction: column;
-                  background-color: #FAF8F3;
+                  background-color: #FFFFFF;
                   z-index: 9999;
                   font-family: 'Plus Jakarta Sans', sans-serif;
               }
@@ -186,10 +188,10 @@
                   transform: translateX(-50%);
                   width: 420px;
                   height: 52px;
-                  border-radius: 30px;
+                  border-radius: 4px;
                   box-sizing: border-box;
-                  border: 1px solid rgba(68, 58, 45, 0.1);
-                  background: rgba(253, 252, 248, 0.85);
+                  border: 1px solid rgba(20, 69, 47, 0.25);
+                  background: rgba(255, 255, 255, 0.95);
               }
               .skeleton-content {
                   flex: 1;
@@ -203,17 +205,17 @@
                   width: 100%;
               }
               .skeleton-pulse {
-                  background: linear-gradient(90deg, rgba(68, 58, 45, 0.04) 25%, rgba(68, 58, 45, 0.08) 50%, rgba(68, 58, 45, 0.04) 75%);
+                  background: linear-gradient(90deg, rgba(20, 69, 47, 0.04) 25%, rgba(20, 69, 47, 0.1) 50%, rgba(20, 69, 47, 0.04) 75%);
                   background-size: 200% 100%;
                   animation: pulse 1.6s infinite ease-in-out;
-                  border-radius: 8px;
+                  border-radius: 4px;
               }
               @keyframes pulse {
                   0% { background-position: 200% 0; }
                   100% { background-position: -200% 0; }
               }
-              .skeleton-title { height: 38px; width: 35%; margin: 0 auto 1.5rem auto; border-radius: 6px; }
-              .skeleton-card { height: 160px; width: 100%; border-radius: 12px; border: 1px solid rgba(68, 58, 45, 0.08); background: #FCFAF6; }
+              .skeleton-title { height: 38px; width: 35%; margin: 0 auto 1.5rem auto; border-radius: 4px; }
+              .skeleton-card { height: 160px; width: 100%; border-radius: 4px; border: 1px solid rgba(20, 69, 47, 0.2); background: #FFFFFF; }
               @media (max-width: 768px) {
                   .skeleton-dock {
                       top: auto;

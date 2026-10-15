@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { blogPosts } from '../data/blogPostsData';
+import AsciiBackground from './AsciiBackground';
 
 export default function ShelbyPortfolio({ onSwitchToClassic }) {
   const [minicomIndex, setMinicomIndex] = useState(0);
@@ -10,6 +11,8 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
   const [contactError, setContactError] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [visibleArticleCount, setVisibleArticleCount] = useState(6);
+  const [tosOpen, setTosOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   const minicomMessages = [
     "Hi! Step up to Udith's desk! Marketing & Sales Executive and IT Business Analyst.",
@@ -38,9 +41,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
   };
 
   const handleResetDesk = () => {
-    setDeskShaking(true);
     setMinicomIndex((prev) => (prev + 1) % minicomMessages.length);
-    setTimeout(() => setDeskShaking(false), 600);
   };
 
   const handleContactSubmit = async (e) => {
@@ -116,6 +117,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
 
   return (
     <div className="sk-page-wrapper">
+      <AsciiBackground />
       <Helmet>
         <title>Udith Babu K N | Marketing &amp; Sales Executive | IT Business Analyst</title>
         <meta name="description" content="Step up to Udith's desk! Marketing & Sales Executive and IT Business Analyst from Kerala, India. MBA in Operations & Marketing • B.Tech in IT." />
@@ -146,7 +148,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
           </div>
 
           {/* Interactive Illustrated Desk Mat */}
-          <div className={`sk-desk-stage ${deskShaking ? 'desk-shaking-anim' : ''}`}>
+          <div className="sk-desk-stage">
             
             {/* Top row: Minicom speech bubble + Focus Note */}
             <div className="sk-desk-top-row">
@@ -175,16 +177,8 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
               </div>
 
               {/* Status Note */}
-              <div style={{
-                background: 'var(--sk-yellow)',
-                border: '2px solid var(--sk-blue)',
-                borderRadius: '16px',
-                padding: '16px 20px',
-                boxShadow: '3px 3px 0px var(--sk-blue)',
-                maxWidth: '280px',
-                transform: 'rotate(2deg)'
-              }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              <div className="sk-status-note" style={{ maxWidth: '280px' }}>
+                <div style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--sk-accent)' }}>
                   📌 Current Focus
                 </div>
                 <div style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '1.25rem', marginTop: '4px' }}>
@@ -196,45 +190,41 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
             {/* Fidget & Desk Objects Row (Illustrated Cards) */}
             <div className="sk-desk-items-scene">
               {/* Item 1 */}
-              <div className="sk-desk-item-card item-tilt-left">
-                <div className="sk-pushpin sk-pushpin-blue"></div>
+              <div className="sk-desk-item-card">
                 <span className="sk-desk-item-detail">Google Search Console</span>
                 <div className="sk-metric-big">350+</div>
                 <div className="sk-desk-item-title">Daily Organic Clicks</div>
-                <p style={{ fontSize: '0.8rem', margin: 0 }}>
+                <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
                   Scaled organic search traffic from 90 to 350+ via technical crawl optimization.
                 </p>
               </div>
 
               {/* Item 2 */}
               <div className="sk-desk-item-card">
-                <div className="sk-pushpin sk-pushpin-yellow"></div>
                 <span className="sk-desk-item-detail">Academic Foundation</span>
                 <div className="sk-metric-big">MBA &amp; B.Tech</div>
                 <div className="sk-desk-item-title">Dual Degree Focus</div>
-                <p style={{ fontSize: '0.8rem', margin: 0 }}>
+                <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
                   Operations &amp; Marketing (72.9%) + Information Technology (78.4%).
                 </p>
               </div>
 
               {/* Item 3 */}
-              <div className="sk-desk-item-card item-tilt-right">
-                <div className="sk-pushpin sk-pushpin-forest"></div>
+              <div className="sk-desk-item-card">
                 <span className="sk-desk-item-detail">Quality &amp; Delivery</span>
                 <div className="sk-metric-big">98%</div>
                 <div className="sk-desk-item-title">UAT Compliance</div>
-                <p style={{ fontSize: '0.8rem', margin: 0 }}>
+                <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
                   100+ business requirements documented and approved at Cyber Sapient.
                 </p>
               </div>
 
               {/* Item 4 */}
               <div className="sk-desk-item-card">
-                <div className="sk-pushpin sk-pushpin-amber"></div>
                 <span className="sk-desk-item-detail">AI Automation</span>
                 <div className="sk-metric-big">-30%</div>
                 <div className="sk-desk-item-title">Triage Time</div>
-                <p style={{ fontSize: '0.8rem', margin: 0 }}>
+                <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
                   Streamlined customer service workflows using AI integrations at Techmindz.
                 </p>
               </div>
@@ -255,7 +245,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
 
           {/* Social Links Ribbon Under Desk */}
           <div style={{ marginTop: '36px', textAlign: 'center' }}>
-            <span style={{ fontSize: '0.82rem', fontWeight: '800', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--sk-blue)' }}>
+            <span style={{ fontSize: '0.82rem', fontWeight: '800', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
               Connect Across Channels
             </span>
             <div className="sk-socials-grid">
@@ -265,10 +255,10 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   href={item.url} 
                   target={item.url.startsWith('mailto') ? '_self' : '_blank'} 
                   rel="noopener noreferrer" 
-                  className={`sk-social-pill ${item.cls}`}
+                  className="sk-social-pill"
                   title={item.name}
                 >
-                  <i className={`ph-duotone ${item.icon}`} aria-hidden="true"></i>
+                  <i className={`ph ${item.icon}`} aria-hidden="true"></i>
                   <span>{item.name}</span>
                 </a>
               ))}
@@ -277,19 +267,19 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
         </div>
       </section>
 
-      {/* ABOUT SECTION (Polaroid Removed - Clean Pinned Memo Sheets) */}
+      {/* ABOUT SECTION */}
       <section id="about" className="sk-about-section">
-        <div className="sk-container" style={{ maxWidth: '980px' }}>
+        <div className="sk-container">
           <div style={{ textAlign: 'center', marginBottom: '36px' }}>
             <h2 className="sk-section-heading">About Me</h2>
-            <p style={{ fontSize: '1.05rem', color: 'var(--sk-blue)', marginTop: '8px' }}>
+            <p style={{ fontSize: '1.05rem', color: 'var(--sk-ink-muted)', marginTop: '8px' }}>
               Bridging business analysis, operations strategy, and algorithmic search growth.
             </p>
           </div>
 
           <div className="sk-pinned-sheets">
             {/* Sheet 1 */}
-            <div className="sk-memo-sheet" style={{ transform: 'rotate(0.5deg)' }}>
+            <div className="sk-memo-sheet">
               <h2 className="sk-memo-title">About me; the basics</h2>
               <div className="sk-memo-body">
                 <p>
@@ -302,7 +292,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
             </div>
 
             {/* Sheet 2 */}
-            <div className="sk-memo-sheet" style={{ transform: 'rotate(-0.8deg)', background: '#FFFEFA' }}>
+            <div className="sk-memo-sheet">
               <h2 className="sk-memo-title">A crush on data &amp; search architecture</h2>
               <div className="sk-memo-body">
                 <p>
@@ -315,7 +305,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
             </div>
 
             {/* Sheet 3 */}
-            <div className="sk-memo-sheet" style={{ transform: 'rotate(0.6deg)' }}>
+            <div className="sk-memo-sheet">
               <h2 className="sk-memo-title">Agile execution &amp; credentials</h2>
               <div className="sk-memo-body">
                 <p>
@@ -327,16 +317,14 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
         </div>
       </section>
 
-      {/* WORK & PROJECTS SECTION (View All on GitHub removed) */}
+      {/* WORK & PROJECTS SECTION */}
       <section id="work" className="sk-work-section">
         <div className="sk-container">
-          <div className="sk-section-header-row" style={{ marginBottom: '32px' }}>
-            <div>
-              <h2 className="sk-section-heading">Selected Projects &amp; Tools</h2>
-              <p style={{ fontSize: '1.05rem', color: 'var(--sk-blue)', marginTop: '8px' }}>
-                Tools and dashboards built to solve real problems in analytics, SEO, and web performance.
-              </p>
-            </div>
+          <div style={{ marginBottom: '32px' }}>
+            <h2 className="sk-section-heading">Selected Projects &amp; Tools</h2>
+            <p style={{ fontSize: '1.05rem', color: 'var(--sk-ink-muted)', marginTop: '8px' }}>
+              Tools and dashboards built to solve real problems in analytics, SEO, and web performance.
+            </p>
           </div>
 
           <div className="sk-projects-grid">
@@ -347,11 +335,11 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <h3 className="sk-project-title">{proj.title}</h3>
                   <p className="sk-project-desc">{proj.desc}</p>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '16px', borderTop: '1.5px solid var(--sk-blue)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '16px', borderTop: 'var(--sk-border-hairline)' }}>
                   <a href={proj.link} target="_blank" rel="noopener noreferrer" className="sk-project-link-btn">
                     Launch {proj.type} ↗
                   </a>
-                  <span style={{ fontSize: '0.75rem', fontWeight: '800', letterSpacing: '0.05em' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: '800', letterSpacing: '0.05em', color: 'var(--sk-ink-muted)' }}>
                     0{idx + 1}
                   </span>
                 </div>
@@ -366,13 +354,13 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
         <div className="sk-container">
           <div style={{ marginBottom: '36px' }}>
             <h2 className="sk-section-heading">Toolbox &amp; Methods</h2>
-            <p style={{ fontSize: '1.05rem', color: 'var(--sk-blue)', marginTop: '8px' }}>
+            <p style={{ fontSize: '1.05rem', color: 'var(--sk-ink-muted)', marginTop: '8px' }}>
               Hand-picked capabilities across growth marketing, technical analysis, and project execution.
             </p>
           </div>
 
           <div className="sk-sticky-grid">
-            <div className="sk-sticky-note sticky-yellow">
+            <div className="sk-sticky-note">
               <h3 className="sk-sticky-title">Marketing &amp; SEO</h3>
               <div className="sk-sticky-chips">
                 <span className="sk-sticky-chip">Technical SEO</span>
@@ -383,7 +371,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
               </div>
             </div>
 
-            <div className="sk-sticky-note sticky-cyan">
+            <div className="sk-sticky-note">
               <h3 className="sk-sticky-title">Core Technologies</h3>
               <div className="sk-sticky-chips">
                 <span className="sk-sticky-chip">Python</span>
@@ -394,7 +382,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
               </div>
             </div>
 
-            <div className="sk-sticky-note sticky-pink">
+            <div className="sk-sticky-note">
               <h3 className="sk-sticky-title">Project &amp; Design</h3>
               <div className="sk-sticky-chips">
                 <span className="sk-sticky-chip">Jira Sprints</span>
@@ -405,7 +393,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
               </div>
             </div>
 
-            <div className="sk-sticky-note sticky-lavender">
+            <div className="sk-sticky-note">
               <h3 className="sk-sticky-title">Business &amp; Analysis</h3>
               <div className="sk-sticky-chips">
                 <span className="sk-sticky-chip">Stakeholder Alignment</span>
@@ -431,7 +419,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">Aug 2025 – Present</div>
                   <h3 className="sk-timeline-role">Executive – Marketing &amp; Sales</h3>
                   <div className="sk-timeline-org">Rêve</div>
-                  <p style={{ fontSize: '0.84rem', marginTop: '6px' }}>
+                  <p style={{ fontSize: '0.86rem', marginTop: '6px', color: 'var(--sk-ink-muted)' }}>
                     Directing comprehensive marketing campaigns, SEO audits, and organic ranking growth.
                   </p>
                 </div>
@@ -440,7 +428,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">May 2025 – Aug 2025</div>
                   <h3 className="sk-timeline-role">Business Development Executive</h3>
                   <div className="sk-timeline-org">Accelgrowth Technology Pvt. Ltd.</div>
-                  <p style={{ fontSize: '0.84rem', marginTop: '6px' }}>
+                  <p style={{ fontSize: '0.86rem', marginTop: '6px', color: 'var(--sk-ink-muted)' }}>
                     Conducted client discovery, customer trend analytics, and managed UAT requirements.
                   </p>
                 </div>
@@ -449,7 +437,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">Sep 2024 – Dec 2024</div>
                   <h3 className="sk-timeline-role">Business Analyst Intern</h3>
                   <div className="sk-timeline-org">CST - Cyber Sapient</div>
-                  <p style={{ fontSize: '0.84rem', marginTop: '6px' }}>
+                  <p style={{ fontSize: '0.86rem', marginTop: '6px', color: 'var(--sk-ink-muted)' }}>
                     Drafted 100+ business specs and analyzed 50+ datasets with Python.
                   </p>
                 </div>
@@ -458,7 +446,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">Aug 2023 – Sep 2023</div>
                   <h3 className="sk-timeline-role">Operations Intern</h3>
                   <div className="sk-timeline-org">Techmindz</div>
-                  <p style={{ fontSize: '0.84rem', marginTop: '6px' }}>
+                  <p style={{ fontSize: '0.86rem', marginTop: '6px', color: 'var(--sk-ink-muted)' }}>
                     Automated support workflows with AI tools, cutting response latency by 30%.
                   </p>
                 </div>
@@ -473,7 +461,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">2022 – 2024</div>
                   <h3 className="sk-timeline-role">MBA (Operations &amp; Marketing)</h3>
                   <div className="sk-timeline-org">College of Engineering Thalassery • 7.29 CGPA</div>
-                  <p style={{ fontSize: '0.84rem', marginTop: '6px' }}>
+                  <p style={{ fontSize: '0.86rem', marginTop: '6px', color: 'var(--sk-ink-muted)' }}>
                     Specialized in Supply Chain, Operations Research, and Data Marketing.
                   </p>
                 </div>
@@ -482,7 +470,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">2018 – 2022</div>
                   <h3 className="sk-timeline-role">B.Tech (Information Technology)</h3>
                   <div className="sk-timeline-org">College of Engineering Thalassery • 7.84 CGPA</div>
-                  <p style={{ fontSize: '0.84rem', marginTop: '6px' }}>
+                  <p style={{ fontSize: '0.86rem', marginTop: '6px', color: 'var(--sk-ink-muted)' }}>
                     Software engineering, database architecture, and algorithms.
                   </p>
                 </div>
@@ -491,7 +479,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">Industry Credential</div>
                   <h3 className="sk-timeline-role">JPMorgan Chase Agile Job Simulation</h3>
                   <div className="sk-timeline-org">Forage Certified</div>
-                  <a href="https://drive.google.com/file/d/1H1VZzktMJv3bnaK4FfB7O6NTazp3L6CK/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sk-blue)', fontWeight: '700', fontSize: '0.82rem', display: 'inline-block', marginTop: '6px' }}>
+                  <a href="https://drive.google.com/file/d/1H1VZzktMJv3bnaK4FfB7O6NTazp3L6CK/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sk-accent)', fontWeight: '700', fontSize: '0.82rem', display: 'inline-block', marginTop: '6px' }}>
                     View Credential ↗
                   </a>
                 </div>
@@ -500,7 +488,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <div className="sk-timeline-date">Industry Credential</div>
                   <h3 className="sk-timeline-role">micro1 Business Analyst Certified</h3>
                   <div className="sk-timeline-org">micro1 AI Evaluated</div>
-                  <a href="https://drive.google.com/file/d/11k8iMDoCFEd-BMV-rPB-I52-clnJZOyO/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sk-blue)', fontWeight: '700', fontSize: '0.82rem', display: 'inline-block', marginTop: '6px' }}>
+                  <a href="https://drive.google.com/file/d/11k8iMDoCFEd-BMV-rPB-I52-clnJZOyO/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sk-accent)', fontWeight: '700', fontSize: '0.82rem', display: 'inline-block', marginTop: '6px' }}>
                     View Credential ↗
                   </a>
                 </div>
@@ -516,7 +504,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
         <div className="sk-container">
           <div style={{ marginBottom: '28px' }}>
             <h2 className="sk-section-heading">Notes &amp; Articles</h2>
-            <p style={{ fontSize: '1.05rem', color: 'var(--sk-blue)', marginTop: '8px' }}>
+            <p style={{ fontSize: '1.05rem', color: 'var(--sk-ink-muted)', marginTop: '8px' }}>
               Strategic frameworks and deep dives on sales excellence, modern search algorithms, and commercial growth.
             </p>
           </div>
@@ -543,29 +531,24 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
             {blogPosts
               .filter(post => selectedCategory === 'All' || post.category === selectedCategory)
               .slice(0, visibleArticleCount)
-              .map((post, idx) => {
-                const pushpins = ['sk-pushpin-blue', 'sk-pushpin-yellow', 'sk-pushpin-forest', 'sk-pushpin-amber'];
-                const pushpinClass = pushpins[idx % pushpins.length];
-                return (
-                  <a href={`blog/${post.slug}.html`} className="sk-article-card" key={post.slug}>
-                    <div className={`sk-pushpin ${pushpinClass}`}></div>
-                    <div className="sk-article-img-container">
-                      <img src={`images/blogimages/${post.image}`} alt={post.title} className="sk-article-img" loading="lazy" />
+              .map((post) => (
+                <a href={`blog/${post.slug}.html`} className="sk-article-card" key={post.slug}>
+                  <div className="sk-article-img-container">
+                    <img src={`images/blogimages/${post.image}`} alt={post.title} className="sk-article-img" loading="lazy" />
+                  </div>
+                  <div className="sk-article-body">
+                    <div>
+                      <span className="sk-project-tag-pill">{post.category}</span>
+                      <h3 className="sk-article-title" style={{ marginTop: '12px' }}>{post.title}</h3>
+                      <p className="sk-article-excerpt" style={{ marginTop: '8px' }}>{post.excerpt}</p>
                     </div>
-                    <div className="sk-article-body">
-                      <div>
-                        <span className="sk-project-tag-pill">{post.category}</span>
-                        <h3 className="sk-article-title" style={{ marginTop: '12px' }}>{post.title}</h3>
-                        <p className="sk-article-excerpt" style={{ marginTop: '8px' }}>{post.excerpt}</p>
-                      </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', fontWeight: '800', borderTop: '1.5px solid var(--sk-blue)', paddingTop: '12px', marginTop: '16px' }}>
-                        <span>Udith Babu K N</span>
-                        <span><i className="ph-duotone ph-clock" style={{ marginRight: '4px' }}></i>{post.readTime}</span>
-                      </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', fontWeight: '800', borderTop: 'var(--sk-border-hairline)', paddingTop: '12px', marginTop: '16px', color: 'var(--sk-ink-muted)' }}>
+                      <span>Udith Babu K N</span>
+                      <span><i className="ph ph-clock" style={{ marginRight: '4px' }}></i>{post.readTime}</span>
                     </div>
-                  </a>
-                );
-              })}
+                  </div>
+                </a>
+              ))}
           </div>
 
           {/* Load More / Expand Bar */}
@@ -578,7 +561,6 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <button 
                     className="sk-action-pill" 
                     onClick={() => setVisibleArticleCount(prev => prev + 6)}
-                    style={{ background: 'var(--sk-yellow)' }}
                   >
                     Load More Articles ({totalForCategory - visibleArticleCount} remaining) ↓
                   </button>
@@ -587,7 +569,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                   <button 
                     className="sk-action-pill" 
                     onClick={() => setVisibleArticleCount(6)}
-                    style={{ background: '#FFFFFF', marginLeft: hasMore ? '14px' : '0' }}
+                    style={{ marginLeft: hasMore ? '14px' : '0' }}
                   >
                     Show Less ↑
                   </button>
@@ -622,26 +604,19 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
             ].map((faq, i) => (
               <div 
                 key={i} 
-                style={{
-                  background: '#FFFFFF',
-                  border: '2px solid var(--sk-blue)',
-                  borderRadius: '16px',
-                  padding: '20px 24px',
-                  boxShadow: '3px 3px 0px var(--sk-blue)',
-                  cursor: 'pointer'
-                }}
+                className="sk-faq-item"
                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '1.3rem', margin: 0, color: 'var(--sk-blue)' }}>
+                  <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '1.3rem', margin: 0, color: 'var(--sk-ink)' }}>
                     {faq.q}
                   </h3>
-                  <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--sk-blue)' }}>
+                  <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--sk-ink-muted)' }}>
                     {faqOpen === i ? '−' : '+'}
                   </span>
                 </div>
                 {faqOpen === i && (
-                  <p style={{ marginTop: '12px', fontSize: '0.94rem', lineHeight: 1.6, color: 'var(--sk-blue)', margin: '12px 0 0' }}>
+                  <p style={{ marginTop: '12px', fontSize: '0.94rem', lineHeight: 1.6, color: 'var(--sk-ink-muted)', margin: '12px 0 0', borderTop: 'var(--sk-border-hairline)', paddingTop: '10px' }}>
                     {faq.a}
                   </p>
                 )}
@@ -652,29 +627,23 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
       </section>
 
       {/* CONTACT FORM */}
-      <section id="contact" style={{ padding: '40px 0 60px' }}>
+      <section id="contact" style={{ padding: '40px 0 60px', borderBottom: 'var(--sk-border-hairline)' }}>
         <div className="sk-container" style={{ maxWidth: '780px' }}>
-          <div style={{
-            background: '#FFFFFF',
-            border: '2.5px solid var(--sk-blue)',
-            borderRadius: '28px',
-            padding: '40px',
-            boxShadow: '6px 6px 0px var(--sk-blue)'
-          }}>
+          <div className="sk-contact-box">
             <h2 className="sk-section-heading" style={{ marginBottom: '12px', textAlign: 'center' }}>
               Drop a note at Udith's desk.
             </h2>
-            <p style={{ textAlign: 'center', fontSize: '0.95rem', color: 'var(--sk-blue)', marginBottom: '28px' }}>
+            <p style={{ textAlign: 'center', fontSize: '0.95rem', color: 'var(--sk-ink-muted)', marginBottom: '28px' }}>
               Have an open role, project proposal, or want to discuss growth marketing? Send a direct dispatch below.
             </p>
 
             {contactStatus === 'success' ? (
               <div style={{ textAlign: 'center', padding: '30px 10px' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '10px' }}>📬</div>
-                <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '2rem', color: 'var(--sk-blue)' }}>
+                <div style={{ fontSize: '1.8rem', marginBottom: '10px', color: 'var(--sk-accent)' }}>[ DISPATCH RECORDED ]</div>
+                <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '2rem', color: 'var(--sk-ink)' }}>
                   Message Received at Udith's desk!
                 </h3>
-                <p style={{ marginTop: '8px', color: 'var(--sk-blue)' }}>
+                <p style={{ marginTop: '8px', color: 'var(--sk-ink-muted)' }}>
                   Thank you for reaching out. I'll get back to you shortly!
                 </p>
                 <button 
@@ -694,7 +663,7 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase' }}>
+                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
                       Your Name
                     </label>
                     <input 
@@ -702,20 +671,11 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                       name="name" 
                       placeholder="e.g. Jane Doe" 
                       required 
-                      style={{
-                        width: '100%',
-                        padding: '12px 16px',
-                        border: '2px solid var(--sk-blue)',
-                        borderRadius: '12px',
-                        fontFamily: 'inherit',
-                        fontSize: '0.95rem',
-                        boxShadow: '2px 2px 0px var(--sk-blue)',
-                        outline: 'none'
-                      }}
+                      className="sk-form-input"
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase' }}>
+                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
                       Your Email
                     </label>
                     <input 
@@ -723,22 +683,13 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                       name="email" 
                       placeholder="e.g. jane@company.com" 
                       required 
-                      style={{
-                        width: '100%',
-                        padding: '12px 16px',
-                        border: '2px solid var(--sk-blue)',
-                        borderRadius: '12px',
-                        fontFamily: 'inherit',
-                        fontSize: '0.95rem',
-                        boxShadow: '2px 2px 0px var(--sk-blue)',
-                        outline: 'none'
-                      }}
+                      className="sk-form-input"
                     />
                   </div>
                 </div>
 
                 <div style={{ marginBottom: '20px' }}>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase' }}>
+                  <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
                     Note or Opportunity
                   </label>
                   <textarea 
@@ -746,43 +697,20 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
                     rows="4" 
                     placeholder="Tell me what you have in mind..." 
                     required 
-                    style={{
-                      width: '100%',
-                      padding: '12px 16px',
-                      border: '2px solid var(--sk-blue)',
-                      borderRadius: '12px',
-                      fontFamily: 'inherit',
-                      fontSize: '0.95rem',
-                      boxShadow: '2px 2px 0px var(--sk-blue)',
-                      outline: 'none',
-                      resize: 'vertical'
-                    }}
+                    className="sk-form-textarea"
                   ></textarea>
                 </div>
 
                 <button 
                   type="submit" 
                   disabled={contactStatus === 'loading'}
-                  style={{
-                    width: '100%',
-                    background: 'var(--sk-yellow)',
-                    border: '2px solid var(--sk-blue)',
-                    borderRadius: '999px',
-                    padding: '12px',
-                    fontFamily: 'var(--sk-font-sans)',
-                    fontSize: '1rem',
-                    fontWeight: '800',
-                    color: 'var(--sk-blue)',
-                    boxShadow: '3px 3px 0px var(--sk-blue)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
+                  className="sk-submit-btn"
                 >
                   {contactStatus === 'loading' ? 'Delivering to Desk...' : 'Send to Udith’s Desk'}
                 </button>
 
                 {contactStatus === 'error' && (
-                  <p style={{ color: 'red', marginTop: '10px', fontSize: '0.85rem' }}>{contactError}</p>
+                  <p style={{ color: '#B91C1C', marginTop: '10px', fontSize: '0.85rem' }}>{contactError}</p>
                 )}
               </form>
             )}
@@ -805,11 +733,114 @@ export default function ShelbyPortfolio({ onSwitchToClassic }) {
               <a href="#skills" className="sk-footer-link">Skills</a>
               <a href="#articles" className="sk-footer-link">Articles</a>
               <a href="#contact" className="sk-footer-link">Contact</a>
+              <button type="button" onClick={() => setTosOpen(true)} className="sk-footer-link sk-footer-legal-tag">
+                Terms of Service
+              </button>
+              <button type="button" onClick={() => setPrivacyOpen(true)} className="sk-footer-link sk-footer-legal-tag">
+                Privacy Policy
+              </button>
               <a href="#desk" className="sk-footer-link">Back to top ↑</a>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* TERMS OF SERVICE MODAL */}
+      {tosOpen && (
+        <div className="sk-legal-modal-backdrop" onClick={() => setTosOpen(false)} role="dialog" aria-modal="true">
+          <div className="sk-legal-modal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="sk-legal-modal-header">
+              <h3 className="sk-legal-modal-title">Terms of Service</h3>
+              <button type="button" onClick={() => setTosOpen(false)} className="sk-legal-close-btn" aria-label="Close Terms of Service">
+                Close [ESC]
+              </button>
+            </div>
+            <div className="sk-legal-modal-body">
+              <h4>1. Introduction and Scope</h4>
+              <p>
+                Welcome to the official portfolio and case study archive of Udith Babu K N (<a href="https://udithbabukn.github.io/" target="_blank" rel="noopener noreferrer">udithbabukn.github.io</a>). By accessing or utilizing this website, you agree to comply with and be bound by the following terms and conditions.
+              </p>
+
+              <h4>2. Intellectual Property and Content Rights</h4>
+              <p>
+                All text, analytical frameworks, articles, source code samples, case study documentation, and layout designs presented on this website are the intellectual property of Udith Babu K N unless otherwise noted or attributed to third-party employers/clients (such as Rêve, Accelgrowth, or Cyber Sapient).
+              </p>
+              <p>
+                You are permitted to review, quote with appropriate attribution, and link to materials for recruitment, professional evaluation, or academic reference. You may not republish complete articles or software artifacts for commercial profit without explicit prior written authorization.
+              </p>
+
+              <h4>3. Software Tools and Demos</h4>
+              <p>
+                Interactive tools and utilities linked herein (including Web Analyzer Pro, SEO Analytics Dashboard, and ImageForge) are provided on an "as is" and "as available" basis for demonstration and evaluation purposes. No warranty, express or implied, is provided regarding uninterrupted availability or suitability for specific production workloads.
+              </p>
+
+              <h4>4. External Third-Party Links</h4>
+              <p>
+                This portfolio provides direct outbound links to external platforms including GitHub, LinkedIn, Medium, and credential verification portals. Udith Babu K N is not responsible for the privacy practices, content, or availability of third-party domains.
+              </p>
+
+              <h4>5. Governing Law and Jurisdiction</h4>
+              <p>
+                These terms are governed by and construed in accordance with the laws of India, within the jurisdiction of the State of Kerala.
+              </p>
+
+              <h4>6. Inquiries and Contact</h4>
+              <p>
+                For questions regarding permitted use, project licensing, or commercial inquiries, contact: <a href="mailto:udithbabuvarrier@gmail.com">udithbabuvarrier@gmail.com</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* PRIVACY POLICY MODAL */}
+      {privacyOpen && (
+        <div className="sk-legal-modal-backdrop" onClick={() => setPrivacyOpen(false)} role="dialog" aria-modal="true">
+          <div className="sk-legal-modal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="sk-legal-modal-header">
+              <h3 className="sk-legal-modal-title">Privacy Policy</h3>
+              <button type="button" onClick={() => setPrivacyOpen(false)} className="sk-legal-close-btn" aria-label="Close Privacy Policy">
+                Close [ESC]
+              </button>
+            </div>
+            <div className="sk-legal-modal-body">
+              <h4>1. Respect for User Privacy</h4>
+              <p>
+                This website is dedicated to maintaining high standards of data privacy and transparency. We do not operate advertising tracking networks, sell visitor records, or deploy third-party telemetry brokers.
+              </p>
+
+              <h4>2. Information Collected via Direct Dispatch</h4>
+              <p>
+                When you submit a message through the contact form, the information provided (your name, email address, and message content) is transmitted securely via Web3Forms API solely for the purpose of receiving and responding to your inquiry.
+              </p>
+              <p>
+                Your contact details are never shared, rented, or distributed to third-party commercial marketing lists.
+              </p>
+
+              <h4>3. Cookies and Tracking Technologies</h4>
+              <p>
+                This website does not utilize invasive tracking cookies or commercial behavioral profilers. Local browser storage may be utilized strictly for functional preferences (such as reading state or UI navigation).
+              </p>
+
+              <h4>4. Client-Side Tools Data Handling</h4>
+              <p>
+                Utilities linked within this portfolio, such as ImageForge and Web Analyzer Pro, execute processing entirely client-side within your browser sandbox via HTML5 Canvas and DOM APIs. Your files and images are never uploaded or persisted to remote servers.
+              </p>
+
+              <h4>5. Data Subject Rights</h4>
+              <p>
+                If you have submitted personal contact information and wish to request its verification, correction, or deletion from correspondence archives, you may do so at any time by emailing <a href="mailto:udithbabuvarrier@gmail.com">udithbabuvarrier@gmail.com</a>.
+              </p>
+
+              <h4>6. Effective Date and Updates</h4>
+              <p>
+                This policy is effective as of 2026. Any updates reflecting regulatory or architectural changes will be posted directly to this colophon.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
