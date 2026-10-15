@@ -1,0 +1,1130 @@
+/* ==========================================================================
+   EXECUTIVE EDITORIAL DESK DESIGN SYSTEM FOR UDITH BABU K N
+   Aesthetic: Confident Masculine Editorial Desk, Architectural Linen Canvas,
+              Deep Obsidian Slate Inks, Cognac Leather, Blueprint Steel, & Forest Sage.
+   ========================================================================== */
+
+:root {
+  /* Primary Masculine Ink & Border Color */
+  --sk-blue: #0F172A;           /* Deep obsidian slate ink */
+  --sk-blue-hover: #1E293B;     /* Rich charcoal */
+  --sk-blue-subtle: rgba(15, 23, 42, 0.06);
+  --sk-blue-border: 2px solid #0F172A;
+  --sk-blue-border-thick: 2.5px solid #0F172A;
+  
+  /* Handsome Executive Tone Palette */
+  --sk-amber: #D97706;          /* Warm Cognac / Saddle Leather */
+  --sk-amber-light: #FEF3C7;    /* Warm Manila / Draftsman Vellum */
+  --sk-forest: #047857;         /* British Racing / Hunter Green */
+  --sk-forest-light: #D1FAE5;   /* Sage Green Accent */
+  --sk-steel: #2563EB;          /* Architectural Steel Blue */
+  --sk-steel-light: #DBEAFE;    /* Blueprint Ice Slate */
+  --sk-slate: #334155;          /* Gunmetal Graphite */
+  --sk-slate-light: #E2E8F0;    /* Cool Architectural Stone */
+  --sk-manila: #FDE68A;         /* Draft Note Manila Gold */
+  --sk-terracotta: #EA580C;     /* Warm Terracotta Brick */
+  --sk-terracotta-light: #FFEDD5;
+  --sk-white: #FFFFFF;
+  
+  /* Solid Crisp Shadows in Deep Slate Ink */
+  --sk-shadow-card: 4px 4px 0px #0F172A;
+  --sk-shadow-card-hover: 6px 6px 0px #0F172A;
+  --sk-shadow-button: 3px 3px 0px #0F172A;
+  --sk-shadow-button-hover: 5px 5px 0px #0F172A;
+  --sk-shadow-pressed: 1px 1px 0px #0F172A;
+
+  /* Legacy variable mappings to maintain full component compatibility */
+  --sk-yellow: var(--sk-manila);
+  --sk-pink: var(--sk-amber);
+  --sk-pink-light: var(--sk-amber-light);
+  --sk-cyan: var(--sk-steel-light);
+  --sk-cyan-light: var(--sk-steel-light);
+  --sk-lavender: var(--sk-slate-light);
+
+  --sk-font-serif: 'Instrument Serif', Georgia, serif;
+  --sk-font-young: 'Young Serif', Georgia, serif;
+  --sk-font-sans: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --sk-radius-sm: 8px;
+  --sk-radius-md: 16px;
+  --sk-radius-lg: 24px;
+  --sk-radius-pill: 999px;
+
+  --sk-transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Canvas with Handsome Architectural Studio Linen Gradient (Zero pink!) */
+.sk-page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FAFAF8 0%, #F5F3EF 20%, #EDE9E1 55%, #E4DFD5 85%, #DBD5C8 100%);
+  color: var(--sk-blue);
+  font-family: var(--sk-font-sans);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Global Container */
+.sk-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (Executive Floating Header)
+   ========================================================================== */
+.sk-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 0;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(250, 250, 248, 0.88);
+  border-bottom: 2px solid var(--sk-blue);
+}
+
+.sk-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Clean Brand Header (Stamps removed) */
+.sk-brand-clean {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.sk-brand-clean .sk-brand-name {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--sk-blue);
+  transition: var(--sk-transition);
+}
+
+.sk-brand-clean:hover .sk-brand-name {
+  transform: scale(1.02);
+}
+
+.sk-brand-clean .sk-brand-role {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sk-blue);
+  opacity: 0.85;
+}
+
+/* Social Links Pill Bar */
+.sk-socials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.sk-social-pill {
+  font-family: var(--sk-font-sans);
+  font-weight: 800;
+  font-size: 0.86rem;
+  padding: 10px 20px;
+  border-radius: var(--sk-radius-pill);
+  border: var(--sk-blue-border);
+  text-decoration: none;
+  color: var(--sk-blue);
+  box-shadow: var(--sk-shadow-button);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  transition: var(--sk-transition);
+}
+
+.sk-social-pill i {
+  font-size: 1.15rem;
+}
+
+.sk-social-pill:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--sk-shadow-button-hover);
+}
+
+.sk-social-pill.social-linkedin { background-color: #DBEAFE; } /* Blueprint Steel */
+.sk-social-pill.social-instagram { background-color: #FEF3C7; } /* Warm Amber */
+.sk-social-pill.social-facebook { background-color: #E0E7FF; } /* Cadet Slate */
+.sk-social-pill.social-x { background-color: #F1F5F9; } /* Gunmetal Ice */
+.sk-social-pill.social-medium { background-color: #FDE68A; } /* Manila Gold */
+.sk-social-pill.social-pinterest { background-color: #FFEDD5; } /* Terracotta */
+.sk-social-pill.social-pexels { background-color: #D1FAE5; } /* Forest Sage */
+.sk-social-pill.social-email { background-color: #FEF3C7; } /* Executive Vellum */
+
+/* Nav Pills (Handsome Palette: Work, About, Articles, Contact) */
+.sk-nav-pills {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sk-nav-pill-btn {
+  font-family: var(--sk-font-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 8px 24px;
+  border-radius: var(--sk-radius-pill);
+  border: var(--sk-blue-border);
+  text-decoration: none;
+  color: var(--sk-blue);
+  box-shadow: var(--sk-shadow-button);
+  transition: var(--sk-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sk-nav-pill-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-button-hover);
+}
+
+.sk-nav-pill-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: var(--sk-shadow-pressed);
+}
+
+.sk-nav-pill-btn.pill-work { background-color: var(--sk-steel-light); }
+.sk-nav-pill-btn.pill-about { background-color: var(--sk-manila); }
+.sk-nav-pill-btn.pill-skills { background-color: var(--sk-forest-light); }
+.sk-nav-pill-btn.pill-contact { background-color: var(--sk-amber-light); }
+.sk-nav-pill-btn.pill-articles { background-color: var(--sk-terracotta-light); }
+
+/* Top Preview Bar */
+.sk-preview-indicator {
+  background: #E2E8F0;
+  border-bottom: 2px solid var(--sk-blue);
+  color: var(--sk-blue);
+  padding: 8px 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sk-preview-pill {
+  background: var(--sk-blue);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: var(--sk-radius-pill);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   HERO: "UDITH'S DESK." (Shelby Kho Style Interactive Desk Scene)
+   ========================================================================== */
+.sk-desk-hero {
+  padding: 50px 0 30px;
+  position: relative;
+}
+
+.sk-desk-header-center {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+
+.sk-desk-headline {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--sk-blue);
+  margin-bottom: 12px;
+}
+
+.sk-desk-subline {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--sk-blue);
+  line-height: 1.5;
+}
+
+/* Interactive Desk Canvas / Mat */
+.sk-desk-stage {
+  background: rgba(255, 255, 255, 0.82);
+  border: var(--sk-blue-border-thick);
+  border-radius: 36px;
+  box-shadow: var(--sk-shadow-card);
+  padding: 40px;
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Top widgets in Desk: Speech Bot & Sticky Note */
+.sk-desk-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Minicom / Speech Bubble Widget */
+.sk-speech-bubble-widget {
+  background: #FFFFFF;
+  border: var(--sk-blue-border);
+  border-radius: var(--sk-radius-md);
+  padding: 16px 20px;
+  max-width: 380px;
+  box-shadow: var(--sk-shadow-button);
+  position: relative;
+  transition: var(--sk-transition);
+}
+
+.sk-minicom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sk-minicom-badge {
+  background: var(--sk-blue);
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: var(--sk-radius-pill);
+}
+
+.sk-minicom-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.sk-minicom-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid var(--sk-blue);
+  cursor: pointer;
+  transition: var(--sk-transition);
+}
+
+.sk-minicom-dot.active {
+  background-color: var(--sk-blue);
+}
+
+.sk-speech-text {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--sk-blue);
+  min-height: 52px;
+}
+
+.sk-minicom-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sk-minicom-btn {
+  background: var(--sk-yellow);
+  border: 1.5px solid var(--sk-blue);
+  border-radius: var(--sk-radius-pill);
+  color: var(--sk-blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  cursor: pointer;
+  transition: var(--sk-transition);
+}
+
+.sk-minicom-btn:hover {
+  background: var(--sk-cyan);
+}
+
+/* Desk Illustration Objects Row */
+.sk-desk-items-scene {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+  position: relative;
+  z-index: 5;
+}
+
+.sk-desk-item-card {
+  background: #FFFFFF;
+  border: var(--sk-blue-border);
+  border-radius: var(--sk-radius-md);
+  padding: 20px;
+  box-shadow: var(--sk-shadow-button);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: var(--sk-transition);
+  cursor: grab;
+  position: relative;
+}
+
+.sk-desk-item-card:hover {
+  transform: translateY(-5px) rotate(1deg);
+  box-shadow: var(--sk-shadow-card-hover);
+}
+
+.sk-desk-item-card.item-tilt-left {
+  transform: rotate(-1.5deg);
+}
+
+.sk-desk-item-card.item-tilt-right {
+  transform: rotate(1.5deg);
+}
+
+.sk-pushpin {
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--sk-blue);
+  box-shadow: 1px 2px 0px var(--sk-blue);
+  z-index: 10;
+}
+
+.sk-pushpin-blue { background: var(--sk-steel); }
+.sk-pushpin-pink { background: var(--sk-forest); }
+.sk-pushpin-yellow { background: var(--sk-manila); }
+.sk-pushpin-forest { background: var(--sk-forest); }
+.sk-pushpin-amber { background: var(--sk-amber); }
+.sk-pushpin-slate { background: var(--sk-slate); }
+
+.sk-desk-item-title {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: var(--sk-blue);
+}
+
+.sk-desk-item-detail {
+  font-size: 0.82rem;
+  color: var(--sk-blue);
+  font-weight: 500;
+}
+
+.sk-metric-big {
+  font-family: var(--sk-font-serif);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--sk-blue);
+}
+
+/* Desk Bottom Action Pills */
+.sk-desk-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  margin-top: 10px;
+}
+
+.sk-action-pill {
+  font-family: var(--sk-font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 22px;
+  border-radius: var(--sk-radius-pill);
+  border: var(--sk-blue-border);
+  background: var(--sk-white);
+  color: var(--sk-blue);
+  box-shadow: var(--sk-shadow-button);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: var(--sk-transition);
+}
+
+.sk-action-pill:hover {
+  background: var(--sk-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-button-hover);
+}
+
+.sk-action-pill.view-work-pill {
+  background: var(--sk-cyan);
+}
+
+/* ==========================================================================
+   ABOUT SECTION (Shelby Style Pinned Hand-Drawn Paper Notes)
+   ========================================================================== */
+.sk-about-section {
+  padding: 80px 0;
+}
+
+.sk-about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Portrait Polaroid Frame */
+.sk-polaroid-frame {
+  background: #FFFFFF;
+  border: var(--sk-blue-border-thick);
+  border-radius: 20px;
+  padding: 18px 18px 30px;
+  box-shadow: var(--sk-shadow-card);
+  transform: rotate(-2deg);
+  transition: var(--sk-transition);
+  position: relative;
+}
+
+.sk-polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: var(--sk-shadow-card-hover);
+}
+
+.sk-polaroid-tape {
+  position: absolute;
+  top: -15px;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 28px;
+  background: rgba(255, 253, 97, 0.8);
+  border: 1.5px solid var(--sk-blue);
+  box-shadow: 1px 1px 0px var(--sk-blue);
+  transform: rotate(-3deg);
+  z-index: 5;
+}
+
+.sk-polaroid-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: var(--sk-blue-border);
+  border-radius: 12px;
+}
+
+.sk-polaroid-caption {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 1.45rem;
+  color: var(--sk-blue);
+  text-align: center;
+  margin-top: 14px;
+}
+
+.sk-polaroid-sub {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--sk-blue);
+  opacity: 0.8;
+}
+
+/* Pinned Memo Sheets */
+.sk-pinned-sheets {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.sk-memo-sheet {
+  background: #FFFFFF;
+  border: var(--sk-blue-border-thick);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--sk-shadow-card);
+  position: relative;
+  transition: var(--sk-transition);
+}
+
+.sk-memo-sheet:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sk-shadow-card-hover);
+}
+
+.sk-memo-title {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 2.2rem;
+  color: var(--sk-blue);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.sk-memo-body {
+  font-size: 0.95rem;
+  color: var(--sk-blue);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   WORK & PROJECTS (Shelby Style Curated Showcase)
+   ========================================================================== */
+.sk-work-section {
+  padding: 70px 0;
+}
+
+.sk-section-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.sk-section-heading {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  color: var(--sk-blue);
+  line-height: 1;
+}
+
+.sk-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 32px;
+}
+
+.sk-project-card {
+  background: #FFFFFF;
+  border: var(--sk-blue-border-thick);
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: var(--sk-shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  transition: var(--sk-transition);
+  position: relative;
+}
+
+.sk-project-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--sk-shadow-card-hover);
+}
+
+.sk-project-tag-pill {
+  background: var(--sk-cyan-light);
+  border: 1.5px solid var(--sk-blue);
+  border-radius: var(--sk-radius-pill);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--sk-blue);
+  width: fit-content;
+}
+
+.sk-project-title {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 1.85rem;
+  color: var(--sk-blue);
+  line-height: 1.2;
+}
+
+.sk-project-desc {
+  font-size: 0.92rem;
+  color: var(--sk-blue);
+  line-height: 1.6;
+}
+
+.sk-project-link-btn {
+  background: var(--sk-yellow);
+  border: var(--sk-blue-border);
+  border-radius: var(--sk-radius-pill);
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--sk-blue);
+  text-decoration: none;
+  box-shadow: var(--sk-shadow-button);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--sk-transition);
+  width: fit-content;
+}
+
+.sk-project-link-btn:hover {
+  background: var(--sk-amber);
+  color: #FFFFFF;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-button-hover);
+}
+
+/* ==========================================================================
+   SKILLS & STICKY NOTES MATRIX
+   ========================================================================== */
+.sk-skills-section {
+  padding: 70px 0;
+}
+
+.sk-sticky-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.sk-sticky-note {
+  border: var(--sk-blue-border-thick);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--sk-shadow-card);
+  transition: var(--sk-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.sk-sticky-note:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--sk-shadow-card-hover);
+}
+
+.sk-sticky-note.sticky-yellow { background: #FEF3C7; transform: rotate(-1deg); }
+.sk-sticky-note.sticky-pink { background: #DBEAFE; transform: rotate(1.2deg); }
+.sk-sticky-note.sticky-cyan { background: #D1FAE5; transform: rotate(-1deg); }
+.sk-sticky-note.sticky-lavender { background: #E2E8F0; transform: rotate(1deg); }
+
+.sk-sticky-title {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--sk-blue);
+  line-height: 1.1;
+}
+
+.sk-sticky-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sk-sticky-chip {
+  background: #FFFFFF;
+  border: 1.5px solid var(--sk-blue);
+  border-radius: var(--sk-radius-pill);
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--sk-blue);
+  box-shadow: 1px 1px 0px var(--sk-blue);
+}
+
+/* ==========================================================================
+   EXPERIENCE & EDUCATION (TIMELINE PAPERS)
+   ========================================================================== */
+.sk-experience-section {
+  padding: 70px 0;
+}
+
+.sk-timeline-paper {
+  background: #FFFFFF;
+  border: var(--sk-blue-border-thick);
+  border-radius: 28px;
+  padding: 40px;
+  box-shadow: var(--sk-shadow-card);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.sk-timeline-column-title {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 2.2rem;
+  color: var(--sk-blue);
+  margin-bottom: 24px;
+}
+
+.sk-timeline-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sk-timeline-card {
+  background: #F8FAFC;
+  border: 1.5px solid var(--sk-blue);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 2px 2px 0px var(--sk-blue);
+}
+
+.sk-timeline-date {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sk-blue);
+}
+
+.sk-timeline-role {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--sk-blue);
+  margin: 4px 0;
+}
+
+.sk-timeline-org {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--sk-blue);
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   BLOG & THOUGHT LEADERSHIP
+   ========================================================================== */
+.sk-articles-section {
+  padding: 70px 0;
+}
+
+.sk-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.sk-articles-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.sk-filter-pill {
+  font-family: var(--sk-font-sans);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: var(--sk-radius-pill);
+  border: var(--sk-blue-border);
+  background: var(--sk-white);
+  color: var(--sk-blue);
+  box-shadow: var(--sk-shadow-button);
+  cursor: pointer;
+  transition: var(--sk-transition);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sk-filter-pill:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-button-hover);
+}
+
+.sk-filter-pill.active {
+  background: var(--sk-yellow);
+  box-shadow: 4px 4px 0px var(--sk-blue);
+}
+
+.sk-articles-load-more-wrap {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.sk-article-card {
+  background: #FFFFFF;
+  border: var(--sk-blue-border-thick);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--sk-shadow-card);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--sk-transition);
+}
+
+.sk-article-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--sk-shadow-card-hover);
+}
+
+.sk-article-img-container {
+  width: 100%;
+  height: 200px;
+  border-bottom: var(--sk-blue-border);
+  overflow: hidden;
+  background: #000;
+}
+
+.sk-article-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sk-article-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.sk-article-title {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 1.45rem;
+  color: var(--sk-blue);
+  line-height: 1.25;
+}
+
+.sk-article-excerpt {
+  font-size: 0.88rem;
+  color: var(--sk-blue);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   FOOTER (Exact Shelby Kho Signature Style)
+   ========================================================================== */
+.sk-footer {
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+}
+
+.sk-footer-stamps-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sk-footer-hint {
+  font-family: var(--sk-font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--sk-blue);
+  transform: rotate(-4deg);
+}
+
+.sk-footer-stamps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sk-stamp-lg {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 3px solid var(--sk-blue);
+  box-shadow: 4px 4px 0px var(--sk-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--sk-transition);
+  user-select: none;
+}
+
+.sk-stamp-lg:hover {
+  transform: rotate(20deg) scale(1.15);
+  box-shadow: 6px 6px 0px var(--sk-blue);
+}
+
+.sk-stamp-lg-1 { background-color: var(--sk-pink); }
+.sk-stamp-lg-2 { background-color: var(--sk-yellow); }
+.sk-stamp-lg-3 { background-color: var(--sk-cyan); }
+
+.sk-stamp-svg {
+  width: 58px;
+  height: 58px;
+}
+
+/* Email & Copy Button */
+.sk-footer-email {
+  font-family: var(--sk-font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-style: italic;
+  color: var(--sk-blue);
+  text-decoration: none;
+  display: block;
+  margin: 16px 0 48px;
+  transition: var(--sk-transition);
+}
+
+.sk-footer-email:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.sk-copy-email-btn {
+  background: var(--sk-cyan);
+  border: var(--sk-blue-border);
+  border-radius: var(--sk-radius-pill);
+  padding: 8px 24px;
+  font-family: var(--sk-font-sans);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--sk-blue);
+  box-shadow: var(--sk-shadow-button);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--sk-transition);
+  margin-bottom: 50px;
+}
+
+.sk-copy-email-btn:hover {
+  background: var(--sk-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-button-hover);
+}
+
+/* Bottom Bar */
+.sk-footer-bar {
+  border-top: var(--sk-blue-border);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--sk-blue);
+}
+
+.sk-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sk-footer-link {
+  color: var(--sk-blue);
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--sk-transition);
+}
+
+.sk-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 992px) {
+  .sk-desk-items-scene {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sk-about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sk-timeline-paper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sk-header {
+    padding: 12px 0;
+  }
+
+  .sk-header-inner {
+    justify-content: center;
+  }
+
+  .sk-nav-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sk-nav-pill-btn {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
+
+  .sk-desk-top-row {
+    flex-direction: column;
+  }
+
+  .sk-desk-items-scene {
+    grid-template-columns: 1fr;
+  }
+
+  .sk-socials-grid {
+    gap: 8px;
+    margin: 18px 0;
+  }
+
+  .sk-social-pill {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .sk-footer {
+    padding: 50px 0 30px;
+  }
+
+  .sk-footer-email {
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    margin: 12px 0 28px;
+    word-break: break-all;
+  }
+
+  .sk-footer-bar {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .sk-footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+  }
+}
