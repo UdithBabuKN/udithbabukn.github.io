@@ -1348,3 +1348,68 @@ body {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   BREADCRUMB NAVIGATION
+   ========================================================================== */
+.sk-breadcrumb-nav {
+  margin: 0 0 24px;
+  padding: 6px 0 16px;
+  border-bottom: var(--sk-border-hairline);
+}
+
+.sk-breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--sk-font-mono);
+  font-size: 0.82rem;
+}
+
+.sk-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sk-breadcrumb-link {
+  color: var(--sk-green-muted);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: var(--sk-radius-sm);
+  transition: var(--sk-transition);
+  display: inline-flex;
+  align-items: center;
+}
+
+.sk-breadcrumb-link:hover {
+  color: var(--sk-green);
+  background-color: var(--sk-green-subtle);
+}
+
+.sk-breadcrumb-icon {
+  font-size: 0.95rem;
+  margin-right: 3px;
+}
+
+.sk-breadcrumb-sep {
+  color: rgba(20, 69, 47, 0.4);
+  font-weight: 700;
+  user-select: none;
+}
+
+.sk-breadcrumb-current {
+  color: var(--sk-green);
+  font-weight: 800;
+  padding: 3px 10px;
+  background-color: rgba(20, 69, 47, 0.09);
+  border: 1px solid rgba(20, 69, 47, 0.25);
+  border-radius: var(--sk-radius-sm);
+}
+
+

@@ -5,13 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Single Page Apps for GitHub Pages: URL Decoder -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+
     <!-- SEO: Optimized Title for better keyword relevance and click-through rate (50-60 characters) -->
     <title>Udith Babu K N | Marketing &amp; Sales Executive Portfolio</title>
 
     <!-- Preconnect to external domains to speed up connection time -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://unpkg.com">
     <link rel="preconnect" href="https://api.web3forms.com">
 
@@ -76,7 +89,6 @@
     
     <!-- Phosphor Icons (Premium Minimal Icons) -->
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     
 
@@ -145,8 +157,7 @@
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://udithbabukn.github.io/" },
-                { "@type": "ListItem", "position": 2, "name": "Summary", "item": "https://udithbabukn.github.io/#summary" }
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://udithbabukn.github.io/" }
             ]
         }
     }
