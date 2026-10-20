@@ -165,15 +165,15 @@ body {
 }
 
 .sk-hand-left {
-  top: 36px;
+  top: 8px;
   left: 0;
-  width: min(45vw, 680px);
+  width: min(46vw, 680px);
 }
 
 .sk-hand-right {
-  top: 72px;
+  top: 36px;
   right: 0;
-  width: min(43vw, 640px);
+  width: min(44vw, 640px);
 }
 
 .sk-hand-green {
@@ -192,27 +192,28 @@ body {
 
 @media (max-width: 768px) {
   .sk-hand-left {
-    top: 50px;
-    width: 50vw;
+    top: 6px;
+    width: 52vw;
   }
   .sk-hand-right {
-    top: 80px;
-    width: 47vw;
+    top: 28px;
+    width: 48vw;
   }
 }
 
 /* ==========================================================================
-   HEADER & NAVIGATION (PLAIN & CLEAN)
+   HEADER & NAVIGATION (TRANSPARENT & BLENDED WITH BACKGROUND)
    ========================================================================== */
 .sk-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 14px 0;
-  background-color: rgba(255, 255, 255, 0.96);
-  border-bottom: var(--sk-border-hairline);
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 14px 0 8px;
+  background: transparent !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
   transition: padding 0.2s ease;
 }
 
@@ -243,8 +244,10 @@ body {
   border: 1px solid var(--sk-green) !important;
   text-decoration: none;
   color: var(--sk-green) !important;
-  background-color: #FFFFFF !important;
-  box-shadow: none !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  box-shadow: 0 1px 4px rgba(20, 69, 47, 0.08) !important;
   transition: var(--sk-transition);
   display: inline-flex;
   align-items: center;
@@ -1367,10 +1370,15 @@ body {
 
 @media (max-width: 768px) {
   .sk-container {
-    padding: 0 14px;
+    padding: 0 12px;
   }
   .sk-header {
-    padding: 10px 0;
+    padding: 10px 0 4px;
+    background: transparent !important;
+    border-bottom: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
   }
   .sk-header-inner {
     justify-content: center;
@@ -1379,12 +1387,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 7px;
+    gap: 6px 8px;
     width: 100%;
   }
   .sk-nav-pill-btn {
-    padding: 6px 14px;
-    font-size: 0.80rem;
+    padding: 6px 13px;
+    font-size: 0.78rem;
+    background-color: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
     white-space: nowrap;
   }
   .sk-desk-top-row {
@@ -1410,7 +1421,7 @@ body {
 
 @media (max-width: 400px) {
   .sk-header {
-    padding: 8px 0;
+    padding: 8px 0 2px;
   }
   .sk-nav-pills {
     gap: 5px 6px;
