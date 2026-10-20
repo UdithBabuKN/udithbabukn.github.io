@@ -142,7 +142,67 @@ body {
 }
 
 /* ==========================================================================
-   HEADER & NAVIGATION
+   STATIC BACKGROUND (NO ANIMATION, ZERO CPU/GPU OVERHEAD)
+   ========================================================================== */
+.sk-static-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sk-static-hand {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  max-width: 680px;
+  height: auto;
+  opacity: 0.82;
+}
+
+.sk-hand-left {
+  top: 36px;
+  left: 0;
+  width: min(45vw, 680px);
+}
+
+.sk-hand-right {
+  top: 72px;
+  right: 0;
+  width: min(43vw, 640px);
+}
+
+.sk-hand-green {
+  display: block;
+}
+.sk-hand-white {
+  display: none;
+}
+
+[data-theme="dark"] .sk-hand-green {
+  display: none;
+}
+[data-theme="dark"] .sk-hand-white {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .sk-hand-left {
+    top: 50px;
+    width: 50vw;
+  }
+  .sk-hand-right {
+    top: 80px;
+    width: 47vw;
+  }
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION (PLAIN & CLEAN)
    ========================================================================== */
 .sk-header {
   position: sticky;
@@ -151,20 +211,23 @@ body {
   padding: 14px 0;
   background-color: rgba(255, 255, 255, 0.96);
   border-bottom: var(--sk-border-hairline);
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   transition: padding 0.2s ease;
 }
 
-.sk-desktop-nav-container {
+.sk-header-inner {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .sk-nav-pills {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
   list-style: none;
   margin: 0;
@@ -185,14 +248,10 @@ body {
   transition: var(--sk-transition);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   justify-content: center;
   cursor: pointer;
   letter-spacing: 0.02em;
-}
-
-.sk-nav-pill-icon {
-  font-size: 0.92rem;
+  white-space: nowrap;
 }
 
 .sk-nav-pill-btn:hover,
@@ -202,96 +261,6 @@ body {
   color: #FFFFFF !important;
   border-color: var(--sk-green) !important;
   transform: none !important;
-}
-
-/* Mobile Header Elements: Hidden by default on Desktop */
-.sk-mobile-header-bar {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.sk-nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--sk-green);
-}
-
-.sk-brand-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--sk-radius-sm);
-  background-color: var(--sk-green);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  flex-shrink: 0;
-}
-
-.sk-brand-meta {
-  display: flex;
-  flex-direction: column;
-}
-
-.sk-brand-name {
-  font-family: var(--sk-font-serif);
-  font-size: 0.98rem;
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--sk-green);
-  letter-spacing: -0.01em;
-}
-
-.sk-brand-role {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--sk-green-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.sk-mobile-toggle {
-  background-color: #FFFFFF;
-  border: 1px solid var(--sk-green);
-  color: var(--sk-green);
-  border-radius: var(--sk-radius-sm);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.35rem;
-  cursor: pointer;
-  transition: var(--sk-transition);
-  padding: 0;
-}
-
-.sk-mobile-toggle:hover,
-.sk-mobile-toggle.active {
-  background-color: var(--sk-green);
-  color: #FFFFFF;
-}
-
-.sk-mobile-drawer {
-  display: none;
-}
-
-@keyframes skFadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ==========================================================================
@@ -1398,54 +1367,25 @@ body {
 
 @media (max-width: 768px) {
   .sk-container {
-    padding: 0 16px;
+    padding: 0 14px;
   }
   .sk-header {
     padding: 10px 0;
   }
-  .sk-desktop-nav-container {
-    display: none !important;
-  }
-  .sk-mobile-header-bar {
-    display: flex !important;
-  }
-  .sk-mobile-drawer {
-    display: block !important;
-    margin-top: 10px;
-    padding-top: 12px;
-    border-top: var(--sk-border-hairline);
-    animation: skFadeDown 0.2s ease-out;
-  }
-  .sk-mobile-nav-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .sk-mobile-nav-btn {
-    font-family: var(--sk-font-sans);
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 9px 12px;
-    border-radius: var(--sk-radius-sm) !important;
-    border: 1px solid var(--sk-green) !important;
-    text-decoration: none;
-    color: var(--sk-green) !important;
-    background-color: #FFFFFF !important;
-    display: flex;
-    align-items: center;
+  .sk-header-inner {
     justify-content: center;
-    gap: 8px;
-    transition: var(--sk-transition);
   }
-  .sk-mobile-nav-btn:hover,
-  .sk-mobile-nav-btn.active,
-  .sk-mobile-nav-btn[aria-current="page"] {
-    background-color: var(--sk-green) !important;
-    color: #FFFFFF !important;
-    border-color: var(--sk-green) !important;
+  .sk-nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+  }
+  .sk-nav-pill-btn {
+    padding: 6px 14px;
+    font-size: 0.80rem;
+    white-space: nowrap;
   }
   .sk-desk-top-row {
     grid-template-columns: 1fr;
@@ -1465,6 +1405,20 @@ body {
   }
   .sk-footer-links {
     justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .sk-header {
+    padding: 8px 0;
+  }
+  .sk-nav-pills {
+    gap: 5px 6px;
+    justify-content: center;
+  }
+  .sk-nav-pill-btn {
+    padding: 5px 10px;
+    font-size: 0.74rem;
   }
 }
 
