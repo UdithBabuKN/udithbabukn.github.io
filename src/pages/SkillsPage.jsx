@@ -60,9 +60,9 @@ export default function SkillsPage() {
             ]} 
           />
 
-          <div style={{ marginBottom: '36px' }}>
+          <div style={{ marginBottom: '36px', position: 'relative', zIndex: 2 }}>
             <h1 className="sk-section-heading">Toolbox &amp; Methods</h1>
-            <p style={{ fontSize: '1.05rem', color: 'var(--sk-ink-muted)', marginTop: '8px' }}>
+            <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
               Hand-picked capabilities across growth marketing, technical analysis, and project execution.
             </p>
           </div>

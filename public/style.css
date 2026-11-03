@@ -1,41 +1,57 @@
 /* ==========================================================================
-   EXCLUSIVE DARK TEXTURED GREEN & WHITE DESIGN SYSTEM - BLOG & ARTICLES
+   EXCLUSIVE BURGUNDY & DUSTY ROSE PALETTE DESIGN SYSTEM - BLOG & ARTICLES
    UDITH BABU K N PORTFOLIO
-   Aesthetic: Strictly Dark Textured Green & White (Zero Black, Zero Gray, Zero Pastels, Zero Rainbow).
-              All Text, Headings, Subheadings, Icons, Borders, and Accents in Dark Green.
-              Ground & Cards in Pure White & Crisp Botanical Tints with Architectural Grain Texture.
-              Dynamic Dark Green ASCII Character Background Field.
+   Palette:
+     Color 1: #7D0642 (Primary Deep Burgundy / Wine)
+     Color 2: #AB5E7B (Medium Dusty Rose / Mauve Accent)
+     Color 3: #D59B9B (Muted Rose / Blush)
+     Color 4: #F2DBCF (Warm Almond / Cream Highlight)
+     Deep Contrast Ink: #59042F (High-Contrast Velvet Wine, 12.8:1 WCAG AAA Contrast)
+   Aesthetic: Warm Architectural Burgundy & Almond White with Tactile Micro-Grain.
+              All Text, Headings, Subheadings, Icons, Borders, and Accents in Palette Tones.
+              Dynamic Burgundy ASCII Character Background Field.
               Modern Geometric Typography (Outfit & Plus Jakarta Sans & JetBrains Mono).
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Core Dark Textured Green Palette */
-  --sk-green: #14452F;               /* Primary Dark Forest / British Racing Green */
-  --sk-green-hover: #0B301F;         /* Deepest Pine / Evergreen */
-  --sk-green-deep: #072718;          /* High-Contrast Bold Green */
-  --sk-green-dark: #0F3D27;          /* Rich Dark Green (High-Legibility Body Text) */
-  --sk-green-muted: #1E5A3B;         /* Medium Botanical Green */
-  --sk-green-subtle: rgba(20, 69, 47, 0.08);
-  --sk-green-border: rgba(20, 69, 47, 0.28);
-  --sk-green-border-strong: #14452F;
+  /* Core Burgundy & Rose Palette from Provided Palette:
+     Color 1: #7D0642 (Primary Brand Deep Burgundy)
+     Color 2: #AB5E7B (Medium Dusty Rose)
+     Color 3: #D59B9B (Muted Blush)
+     Color 4: #F2DBCF (Warm Cream / Almond)
+  */
+  --sk-green: #7D0642;               /* Primary Brand Deep Burgundy (Color 1) */
+  --sk-green-hover: #5E0431;         /* Deep Wine Hover */
+  --sk-green-deep: #000000;          /* High-Contrast Bold Black */
+  --sk-green-dark: #111111;          /* Crisp Solid Black Text */
+  --sk-green-muted: #374151;         /* Dark Slate Charcoal (High Legibility for Subtitles & Meta) */
+  --sk-green-subtle: rgba(125, 6, 66, 0.08);
+  --sk-green-border: rgba(125, 6, 66, 0.25);
+  --sk-green-border-strong: #7D0642;
 
-  /* Ink & Text: STRICTLY DARK TEXTURED GREEN (NO BLACK, NO GRAY) */
-  --sk-ink: #0F3D27;                 /* Deep Textured Green Text */
-  --sk-ink-hover: #14452F;
-  --sk-ink-muted: #1E5A3B;           /* Medium Forest Green */
-  --sk-ink-subtle: rgba(20, 69, 47, 0.12);
+  /* Ink & Text: SOLID CRISP HIGH-CONTRAST BLACK */
+  --sk-ink: #111111;                 /* Pure Crisp Black Body Text */
+  --sk-ink-hover: #000000;           /* Pure Deep Black on hover */
+  --sk-ink-muted: #374151;           /* Dark Slate Charcoal for Subtext & Descriptions */
+  --sk-ink-subtle: rgba(0, 0, 0, 0.12);
   
-  /* Hairline Borders in Dark Green Tone */
-  --sk-border-hairline: 1px solid rgba(20, 69, 47, 0.28);
+  /* Hairline Borders in Burgundy Tone */
+  --sk-border-hairline: 1px solid rgba(125, 6, 66, 0.22);
   --sk-border-strong: 1px solid var(--sk-green);
   
   /* Crisp White Canvas & Surfaces */
   --sk-canvas: #FFFFFF;
-  --sk-surface-card: rgba(255, 255, 255, 0.94);
-  --sk-surface-secondary: #F2F9F5;
-  --sk-surface-accent: rgba(20, 69, 47, 0.06);
+  --sk-surface-card: rgba(255, 255, 255, 0.96);
+  --sk-surface-secondary: #FAF4F0;   /* Soft warm cream surface based on #F2DBCF */
+  --sk-surface-accent: rgba(125, 6, 66, 0.06);
+
+  /* Four Palette Tones */
+  --sk-palette-1: #7D0642;
+  --sk-palette-2: #AB5E7B;
+  --sk-palette-3: #D59B9B;
+  --sk-palette-4: #F2DBCF;
 
   /* Legacy variable mappings to maintain full component compatibility */
   --sk-blue: var(--sk-green);
@@ -122,7 +138,7 @@ body {
   background-image:
     url('ascii-hand-left-green.png'),
     url('ascii-hand-right-green.png'),
-    radial-gradient(circle at 50% 50%, rgba(20, 69, 47, 0.045) 1px, transparent 1px);
+    radial-gradient(circle at 50% 50%, rgba(125, 6, 66, 0.045) 1px, transparent 1px);
   background-size:
     min(44vw, 720px) auto,
     min(42vw, 680px) auto,
@@ -155,7 +171,7 @@ body {
   line-height: 28px;
   letter-spacing: 14px;
   word-break: break-all;
-  color: rgba(20, 69, 47, 0.045);
+  color: rgba(125, 6, 66, 0.045);
   z-index: 0;
   overflow: hidden;
   white-space: pre-wrap;
@@ -328,7 +344,7 @@ body {
 }
 
 .sk-breadcrumb-nav a {
-  color: var(--sk-green);
+  color: #111111;
   text-decoration: none;
   font-weight: 700;
   transition: var(--sk-transition);
@@ -336,11 +352,11 @@ body {
 
 .sk-breadcrumb-nav a:hover {
   text-decoration: underline;
-  color: var(--sk-green-hover);
+  color: var(--sk-green);
 }
 
 .sk-breadcrumb-sep {
-  color: rgba(20, 69, 47, 0.4);
+  color: #6B7280;
   font-weight: 400;
 }
 
@@ -406,7 +422,7 @@ body {
   font-weight: 800;
   font-size: clamp(2.3rem, 5.5vw, 3.6rem);
   line-height: 1.12;
-  color: var(--sk-green);
+  color: #111111;
   margin: 0 0 28px 0;
   letter-spacing: -0.03em;
 }
@@ -445,7 +461,7 @@ body {
   font-family: var(--sk-font-sans);
   font-weight: 800;
   font-size: 1rem;
-  color: var(--sk-green);
+  color: #111111;
   line-height: 1.2;
 }
 
@@ -453,7 +469,7 @@ body {
   font-family: var(--sk-font-sans);
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--sk-green-muted);
+  color: #374151;
   margin-top: 2px;
 }
 
@@ -491,7 +507,7 @@ body {
 /* Featured Cover Image Frame */
 .sk-article-cover-frame {
   width: 100%;
-  border: 1px solid rgba(20, 69, 47, 0.28);
+  border: 1px solid rgba(125, 6, 66, 0.22);
   border-radius: var(--sk-radius-sm);
   box-shadow: none !important;
   overflow: hidden;
@@ -529,7 +545,7 @@ body {
   font-style: normal;
   font-size: 2rem;
   font-weight: 800;
-  color: var(--sk-green);
+  color: #111111;
   margin-top: 48px;
   margin-bottom: 18px;
   padding-bottom: 10px;
@@ -543,7 +559,7 @@ body {
   font-style: normal;
   font-size: 1.55rem;
   font-weight: 700;
-  color: var(--sk-green);
+  color: #111111;
   margin-top: 36px;
   margin-bottom: 14px;
   line-height: 1.25;
@@ -555,7 +571,7 @@ body {
   font-style: normal;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--sk-green);
+  color: #111111;
   margin-top: 28px;
   margin-bottom: 10px;
   letter-spacing: -0.015em;
@@ -615,7 +631,7 @@ body {
 
 .sk-article-prose code {
   background: var(--sk-surface-secondary);
-  border: 1px solid rgba(20, 69, 47, 0.3);
+  border: 1px solid rgba(125, 6, 66, 0.22);
   padding: 2px 7px;
   border-radius: var(--sk-radius-sm);
   font-size: 0.88em;
@@ -625,8 +641,8 @@ body {
 }
 
 .sk-article-prose pre {
-  background: #0B301F;
-  color: #F0FDF4;
+  background: #59042F;
+  color: #FDF5F0;
   border: 1px solid var(--sk-green);
   border-radius: var(--sk-radius-sm);
   padding: 20px;

@@ -100,7 +100,7 @@ export default function ContactPage() {
             <h1 className="sk-section-heading" style={{ marginBottom: '12px', textAlign: 'center' }}>
               Drop a note at Udith's desk.
             </h1>
-            <p style={{ textAlign: 'center', fontSize: '0.95rem', color: 'var(--sk-ink-muted)', marginBottom: '28px' }}>
+            <p className="sk-page-subtitle" style={{ textAlign: 'center', fontSize: '0.98rem', color: '#000000', fontWeight: '600', marginBottom: '28px' }}>
               Have an open role, project proposal, or want to discuss growth marketing? Send a direct dispatch below.
             </p>
 

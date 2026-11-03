@@ -60,9 +60,9 @@ export default function AboutPage() {
             ]} 
           />
 
-          <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '36px', position: 'relative', zIndex: 2 }}>
             <h1 className="sk-section-heading">About Me</h1>
-            <p style={{ fontSize: '1.05rem', color: 'var(--sk-ink-muted)', marginTop: '8px' }}>
+            <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
               Bridging business analysis, operations strategy, and algorithmic search growth.
             </p>
           </div>

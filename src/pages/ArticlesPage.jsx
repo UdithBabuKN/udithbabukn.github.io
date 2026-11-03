@@ -64,9 +64,9 @@ export default function ArticlesPage() {
             ]} 
           />
 
-          <div style={{ marginBottom: '28px' }}>
+          <div style={{ marginBottom: '28px', position: 'relative', zIndex: 2 }}>
             <h1 className="sk-section-heading">Notes &amp; Articles</h1>
-            <p style={{ fontSize: '1.05rem', color: 'var(--sk-ink-muted)', marginTop: '8px' }}>
+            <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
               Strategic frameworks and deep dives on sales excellence, modern search algorithms, and commercial growth.
             </p>
           </div>

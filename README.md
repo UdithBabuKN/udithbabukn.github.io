@@ -19,11 +19,14 @@ I specialize in technical SEO audits, search intent architecture, Google Search 
 
 ## Architectural & Design Aesthetic
 
-- **Design System:** Exclusive **Dark Textured Green & White** visual hierarchy.
-  - Primary Dark Forest Green (`#14452F`)
-  - Deepest Evergreen (`#0B301F`) & Body Green (`#0F3D27`)
-  - Crisp Architectural White Surfaces (`#FFFFFF`)
-  - Dynamic Dark Green ASCII Character Background Field
+- **Design System:** Exclusive **Burgundy & Dusty Rose Palette** visual hierarchy.
+  - Primary Deep Burgundy (`#7D0642`)
+  - Medium Dusty Rose (`#AB5E7B`)
+  - Muted Blush Rose (`#D59B9B`)
+  - Warm Cream / Almond Highlight (`#F2DBCF`)
+  - High-Legibility Deep Velvet Wine Body (`#59042F`)
+  - Crisp Architectural White Surfaces (`#FFFFFF`) & Soft Warm Cream Tint (`#FAF4F0`)
+  - Dynamic Burgundy ASCII Character Background Field
 - **Modern Geometric Typography:** Google Fonts pairings featuring **Outfit**, **Plus Jakarta Sans**, and **JetBrains Mono**.
 - **Interactive Desk Mat:** Tactile Minicom speech widget with status cards, Google Search metrics, and interactive project previews.
 - **Micro-Interactions:** Zero-shadow tactile pill buttons, card hover lift, and responsive accordion drawer systems.

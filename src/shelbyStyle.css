@@ -1,45 +1,61 @@
 /* ==========================================================================
-   EXCLUSIVE DARK TEXTURED GREEN & WHITE DESIGN SYSTEM FOR UDITH BABU K N
-   Aesthetic: Strictly Dark Textured Green & White (Zero Black, Zero Gray, Zero Pastels, Zero Rainbow).
-              All Text, Headings, Subheadings, Icons, Borders, and Accents in Dark Green.
-              Ground & Cards in Pure White & Crisp Botanical Tints with Architectural Grain Texture.
-              Dynamic Dark Green ASCII Character Background Field.
+   EXCLUSIVE BURGUNDY & DUSTY ROSE PALETTE DESIGN SYSTEM FOR UDITH BABU K N
+   Palette:
+     Color 1: #7D0642 (Primary Deep Burgundy / Wine)
+     Color 2: #AB5E7B (Medium Dusty Rose / Mauve Accent)
+     Color 3: #D59B9B (Muted Rose / Blush)
+     Color 4: #F2DBCF (Warm Almond / Cream Highlight)
+     Deep Contrast Ink: #59042F (High-Contrast Velvet Wine, 12.8:1 WCAG AAA Contrast)
+   Aesthetic: Warm Architectural Burgundy & Almond White with Tactile Micro-Grain.
+              All Text, Headings, Subheadings, Icons, Borders, and Accents in Palette Tones.
+              Dynamic Burgundy ASCII Character Background Field.
               Modern Geometric Typography (Outfit & Plus Jakarta Sans & JetBrains Mono).
    ========================================================================== */
 
 :root {
-  /* Core Dark Textured Green Palette */
-  --sk-green: #14452F;               /* Primary Dark Forest / British Racing Green */
-  --sk-green-hover: #0B301F;         /* Deepest Pine / Evergreen */
-  --sk-green-deep: #072718;          /* High-Contrast Bold Green */
-  --sk-green-dark: #0F3D27;          /* Rich Dark Green (High-Legibility Body Text) */
-  --sk-green-muted: #1E5A3B;         /* Medium Botanical Green */
-  --sk-green-subtle: rgba(20, 69, 47, 0.08);
-  --sk-green-border: rgba(20, 69, 47, 0.28);
-  --sk-green-border-strong: #14452F;
+  /* Core Burgundy & Rose Palette from Provided Palette:
+     Color 1: #7D0642 (Primary Brand Deep Burgundy)
+     Color 2: #AB5E7B (Medium Dusty Rose)
+     Color 3: #D59B9B (Muted Blush)
+     Color 4: #F2DBCF (Warm Cream / Almond)
+  */
+  --sk-green: #7D0642;               /* Primary Brand Deep Burgundy (Color 1) */
+  --sk-green-hover: #5E0431;         /* Deep Wine Hover */
+  --sk-green-deep: #000000;          /* High-Contrast Bold Black */
+  --sk-green-dark: #000000;          /* Pure Crisp Black Text */
+  --sk-green-muted: #111111;         /* Solid Black Text for Subtitles, Descriptions & Meta */
+  --sk-green-subtle: rgba(125, 6, 66, 0.08);
+  --sk-green-border: rgba(125, 6, 66, 0.25);
+  --sk-green-border-strong: #7D0642;
 
-  /* Ink & Text: STRICTLY DARK TEXTURED GREEN (NO BLACK, NO GRAY) */
-  --sk-ink: #0F3D27;                 /* Deep Textured Green Text */
-  --sk-ink-hover: #14452F;
-  --sk-ink-muted: #1E5A3B;           /* Medium Forest Green */
-  --sk-ink-subtle: rgba(20, 69, 47, 0.12);
+  /* Ink & Text: SOLID CRISP HIGH-CONTRAST PURE BLACK */
+  --sk-ink: #000000;                 /* Pure Solid Black Body Text */
+  --sk-ink-hover: #000000;           /* Pure Solid Black */
+  --sk-ink-muted: #111111;           /* Crisp Solid Black for Subtext & Descriptions */
+  --sk-ink-subtle: rgba(0, 0, 0, 0.12);
   
-  /* Hairline Borders in Dark Green Tone */
-  --sk-border-hairline: 1px solid rgba(20, 69, 47, 0.28);
+  /* Hairline Borders in Burgundy Tone */
+  --sk-border-hairline: 1px solid rgba(125, 6, 66, 0.22);
   --sk-border-strong: 1px solid var(--sk-green);
   
-  /* Crisp White Canvas & Surfaces (Reveals dark green ASCII character background) */
+  /* Crisp White Canvas & Surfaces tinted with Palette 4 (#F2DBCF) */
   --sk-canvas: #FFFFFF;
-  --sk-surface-card: rgba(255, 255, 255, 0.94);
-  --sk-surface-secondary: #F2F9F5;
-  --sk-surface-accent: rgba(20, 69, 47, 0.06);
+  --sk-surface-card: rgba(255, 255, 255, 0.96);
+  --sk-surface-secondary: #FAF4F0;   /* Soft warm cream surface based on #F2DBCF */
+  --sk-surface-accent: rgba(125, 6, 66, 0.06);
 
-  /* Green Accents */
-  --sk-accent: #14452F;
-  --sk-accent-hover: #0B301F;
-  --sk-accent-subtle: rgba(20, 69, 47, 0.08);
-  --sk-steel: #14452F;
-  --sk-steel-subtle: rgba(20, 69, 47, 0.06);
+  /* Burgundy Accents & Palette Shades */
+  --sk-accent: #7D0642;              /* Color 1 */
+  --sk-accent-hover: #5E0431;
+  --sk-accent-subtle: rgba(125, 6, 66, 0.08);
+  --sk-steel: #AB5E7B;               /* Color 2 */
+  --sk-steel-subtle: rgba(171, 94, 123, 0.12);
+
+  /* Four Palette Tones Explicitly Exposed */
+  --sk-palette-1: #7D0642;
+  --sk-palette-2: #AB5E7B;
+  --sk-palette-3: #D59B9B;
+  --sk-palette-4: #F2DBCF;
 
   /* Legacy variable mappings to preserve component compatibility */
   --sk-blue: var(--sk-green);
@@ -110,7 +126,7 @@ body {
   min-height: 100vh;
   background-color: transparent;
   /* Subtle dark textured botanical micro-grain */
-  background-image: radial-gradient(circle at 50% 50%, rgba(20, 69, 47, 0.045) 1px, transparent 1px);
+  background-image: radial-gradient(circle at 50% 50%, rgba(125, 6, 66, 0.045) 1px, transparent 1px);
   background-size: 24px 24px;
   color: var(--sk-ink);
   font-family: var(--sk-font-sans);
@@ -161,19 +177,24 @@ body {
   user-select: none;
   max-width: 680px;
   height: auto;
-  opacity: 0.82;
+  opacity: 0.18;
+  transition: opacity 0.25s ease;
 }
 
 .sk-hand-left {
   top: 8px;
   left: 0;
-  width: min(46vw, 680px);
+  width: min(44vw, 640px);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 .sk-hand-right {
   top: 36px;
   right: 0;
-  width: min(44vw, 640px);
+  width: min(42vw, 600px);
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 .sk-hand-green {
@@ -243,11 +264,11 @@ body {
   border-radius: var(--sk-radius-sm) !important;
   border: 1px solid var(--sk-green) !important;
   text-decoration: none;
-  color: var(--sk-green) !important;
-  background-color: rgba(255, 255, 255, 0.92) !important;
+  color: #111111 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(6px) !important;
   -webkit-backdrop-filter: blur(6px) !important;
-  box-shadow: 0 1px 4px rgba(20, 69, 47, 0.08) !important;
+  box-shadow: 0 1px 4px rgba(125, 6, 66, 0.08) !important;
   transition: var(--sk-transition);
   display: inline-flex;
   align-items: center;
@@ -280,6 +301,8 @@ body {
   text-align: center;
   max-width: 820px;
   margin: 0 auto 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .sk-desk-headline {
@@ -289,15 +312,30 @@ body {
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.05;
-  color: var(--sk-green);
+  color: #000000;
   margin: 0 0 14px;
+  text-shadow: 0 0 12px #FFFFFF, 0 0 24px #FFFFFF;
 }
 
 .sk-desk-subline {
-  font-size: 1.12rem;
+  font-size: 1.14rem;
   font-weight: 600;
-  color: var(--sk-green-dark);
+  color: #000000 !important;
+  line-height: 1.65;
+  text-shadow: 0 0 10px #FFFFFF, 0 0 18px #FFFFFF, 0 0 28px #FFFFFF;
+  position: relative;
+  z-index: 2;
+}
+
+.sk-section-heading + p,
+.sk-page-subtitle {
+  font-size: 1.05rem;
+  font-weight: 600 !important;
+  color: #000000 !important;
   line-height: 1.6;
+  text-shadow: 0 0 10px #FFFFFF, 0 0 18px #FFFFFF, 0 0 28px #FFFFFF;
+  position: relative;
+  z-index: 2;
 }
 
 /* Desk Stage */
@@ -388,7 +426,7 @@ body {
   background: #FFFFFF !important;
   border: 1px solid var(--sk-green) !important;
   border-radius: var(--sk-radius-sm) !important;
-  color: var(--sk-green) !important;
+  color: #111111 !important;
   font-size: 0.76rem;
   font-weight: 700;
   padding: 5px 14px;
@@ -494,8 +532,8 @@ body {
 
 .sk-desk-item-desc {
   font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--sk-green-muted);
+  font-weight: 600;
+  color: #000000;
   line-height: 1.5;
   margin: 0;
 }
@@ -516,7 +554,7 @@ body {
   border-radius: var(--sk-radius-sm) !important;
   border: 1px solid var(--sk-green) !important;
   background: #FFFFFF !important;
-  color: var(--sk-green) !important;
+  color: #111111 !important;
   box-shadow: none !important;
   cursor: pointer;
   display: inline-flex;
@@ -564,7 +602,7 @@ body {
   border-radius: var(--sk-radius-sm) !important;
   border: 1px solid var(--sk-green) !important;
   text-decoration: none;
-  color: var(--sk-green) !important;
+  color: #111111 !important;
   box-shadow: none !important;
   display: inline-flex;
   align-items: center;
@@ -607,9 +645,10 @@ body {
   font-weight: 800;
   letter-spacing: -0.03em;
   font-size: clamp(2.4rem, 4.5vw, 3.4rem);
-  color: var(--sk-green);
+  color: #000000;
   line-height: 1.1;
   margin: 0;
+  text-shadow: 0 0 12px #FFFFFF, 0 0 20px #FFFFFF;
 }
 
 .sk-section-count-badge {
@@ -738,8 +777,8 @@ body {
 
 .sk-project-desc {
   font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--sk-green-muted);
+  font-weight: 550;
+  color: #000000;
   line-height: 1.62;
   margin: 0;
 }
@@ -751,7 +790,7 @@ body {
   padding: 9px 20px;
   font-size: 0.84rem;
   font-weight: 700;
-  color: var(--sk-green) !important;
+  color: #111111 !important;
   text-decoration: none;
   box-shadow: none !important;
   display: inline-flex;
@@ -826,7 +865,7 @@ body {
 
 .sk-sticky-chip {
   background: var(--sk-surface-secondary) !important;
-  border: 1px solid rgba(20, 69, 47, 0.3) !important;
+  border: 1px solid rgba(125, 6, 66, 0.22) !important;
   border-radius: var(--sk-radius-sm) !important;
   padding: 7px 12px;
   font-size: 0.84rem;
@@ -870,7 +909,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.025em;
   font-size: 2.1rem;
-  color: var(--sk-green);
+  color: #111111;
   margin-bottom: 24px;
 }
 
@@ -945,7 +984,7 @@ body {
   border-radius: var(--sk-radius-sm) !important;
   border: 1px solid var(--sk-green) !important;
   background: #FFFFFF !important;
-  color: var(--sk-green) !important;
+  color: #111111 !important;
   box-shadow: none !important;
   cursor: pointer;
   transition: var(--sk-transition);
@@ -956,7 +995,7 @@ body {
 .sk-filter-pill:hover {
   background: var(--sk-surface-secondary) !important;
   border-color: var(--sk-green) !important;
-  color: var(--sk-green) !important;
+  color: #000000 !important;
   transform: none !important;
   box-shadow: none !important;
 }
@@ -1000,7 +1039,7 @@ body {
 .sk-article-img-container {
   width: 100%;
   height: 180px;
-  border-bottom: 1px solid rgba(20, 69, 47, 0.25);
+  border-bottom: 1px solid rgba(125, 6, 66, 0.2);
   overflow: hidden;
   background: var(--sk-surface-secondary);
 }
@@ -1042,8 +1081,8 @@ body {
 
 .sk-article-excerpt {
   font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--sk-green-muted);
+  font-weight: 550;
+  color: #000000;
   line-height: 1.55;
   margin: 0;
   display: -webkit-box;
@@ -1055,8 +1094,8 @@ body {
 .sk-article-meta {
   font-family: var(--sk-font-mono);
   font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--sk-green-muted);
+  font-weight: 700;
+  color: #000000;
 }
 
 .sk-articles-load-more-wrap {
@@ -1148,7 +1187,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--sk-green);
+  color: #111111;
   margin-bottom: 8px;
 }
 
@@ -1156,10 +1195,10 @@ body {
 .sk-form-textarea {
   width: 100%;
   padding: 13px 16px;
-  border: 1px solid rgba(20, 69, 47, 0.4) !important;
+  border: 1px solid rgba(125, 6, 66, 0.25) !important;
   border-radius: var(--sk-radius-sm) !important;
   background: #FFFFFF !important;
-  color: var(--sk-green-dark) !important;
+  color: #111111 !important;
   font-family: var(--sk-font-sans);
   font-size: 0.94rem;
   font-weight: 500;
@@ -1170,7 +1209,7 @@ body {
 
 .sk-form-input::placeholder,
 .sk-form-textarea::placeholder {
-  color: rgba(20, 69, 47, 0.5);
+  color: #6B7280;
 }
 
 .sk-form-input:focus,
@@ -1207,7 +1246,7 @@ body {
 .sk-legal-modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(11, 48, 31, 0.65);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
   z-index: 1000;
   display: flex;
@@ -1242,7 +1281,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.025em;
   font-size: 1.8rem;
-  color: var(--sk-green);
+  color: #111111;
   margin: 0;
 }
 
@@ -1255,7 +1294,7 @@ body {
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
-  color: var(--sk-green);
+  color: #111111;
   transition: var(--sk-transition);
 }
 
@@ -1309,7 +1348,7 @@ body {
   justify-content: space-between;
   font-size: 0.86rem;
   font-weight: 600;
-  color: var(--sk-green-muted);
+  color: #374151;
   flex-wrap: wrap;
   gap: 16px;
 }
@@ -1322,7 +1361,7 @@ body {
 }
 
 .sk-footer-link {
-  color: var(--sk-green);
+  color: #111111;
   text-decoration: none;
   font-weight: 700;
   transition: var(--sk-transition);
@@ -1335,12 +1374,12 @@ body {
 }
 
 .sk-footer-link:hover {
-  color: var(--sk-green-hover);
+  color: var(--sk-green);
   text-decoration: underline;
 }
 
 .sk-footer-legal-tag {
-  color: var(--sk-green);
+  color: #374151;
   font-weight: 800;
 }
 
@@ -1461,7 +1500,7 @@ body {
 }
 
 .sk-breadcrumb-link {
-  color: var(--sk-green-muted);
+  color: #374151;
   text-decoration: none;
   font-weight: 600;
   padding: 3px 6px;
@@ -1472,7 +1511,7 @@ body {
 }
 
 .sk-breadcrumb-link:hover {
-  color: var(--sk-green);
+  color: #000000;
   background-color: var(--sk-green-subtle);
 }
 
@@ -1482,17 +1521,17 @@ body {
 }
 
 .sk-breadcrumb-sep {
-  color: rgba(20, 69, 47, 0.4);
+  color: #6B7280;
   font-weight: 700;
   user-select: none;
 }
 
 .sk-breadcrumb-current {
-  color: var(--sk-green);
+  color: #111111;
   font-weight: 800;
   padding: 3px 10px;
-  background-color: rgba(20, 69, 47, 0.09);
-  border: 1px solid rgba(20, 69, 47, 0.25);
+  background-color: var(--sk-surface-secondary);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: var(--sk-radius-sm);
 }
 
