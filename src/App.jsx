@@ -26,8 +26,8 @@ function HashRedirectHandler() {
         'about': '/about',
         'bio': '/about',
         'skills': '/skills',
-        'articles': '/articles',
-        'blog': '/articles',
+        'articles': '/blog',
+        'blog': '/blog',
         'contact': '/contact'
       };
 
@@ -54,7 +54,8 @@ function App() {
           <Route path="/work" element={<WorkPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/skills" element={<SkillsPage />} />
-          <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/blog" element={<ArticlesPage />} />
+          <Route path="/articles" element={<Navigate to="/blog" replace />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* Fallback to Home */}
           <Route path="*" element={<Navigate to="/" replace />} />

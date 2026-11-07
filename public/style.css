@@ -279,6 +279,7 @@ body {
 }
 
 /* Explicit specificity guarantee for all pill variants when active */
+.sk-nav-pill-btn.pill-blog.active,
 .sk-nav-pill-btn.pill-articles.active,
 .sk-nav-pill-btn.pill-work.active,
 .sk-nav-pill-btn.pill-about.active,

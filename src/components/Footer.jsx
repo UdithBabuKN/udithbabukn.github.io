@@ -24,7 +24,7 @@ export default function Footer() {
               <Link to="/work" className="sk-footer-link">Work</Link>
               <Link to="/about" className="sk-footer-link">About</Link>
               <Link to="/skills" className="sk-footer-link">Skills</Link>
-              <Link to="/articles" className="sk-footer-link">Articles</Link>
+              <Link to="/blog" className="sk-footer-link">Blog</Link>
               <Link to="/contact" className="sk-footer-link">Contact</Link>
               <button 
                 type="button" 

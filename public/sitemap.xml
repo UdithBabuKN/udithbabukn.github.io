@@ -4,13 +4,13 @@
   <!-- Main Pages Sitemap (Homepage, Blog listing) -->
   <sitemap>
     <loc>https://udithbabukn.github.io/sitemap-pages.xml</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-11-07</lastmod>
   </sitemap>
 
-  <!-- Blog Posts Sitemap (All 100 blog articles) -->
+  <!-- Blog Posts Sitemap (All 150 blog articles) -->
   <sitemap>
     <loc>https://udithbabukn.github.io/sitemap-blog.xml</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-11-07</lastmod>
   </sitemap>
 
 </sitemapindex>

@@ -5,17 +5,18 @@ import { blogPosts } from '../data/blogPostsData';
 
 export default function ArticlesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
   const [visibleArticleCount, setVisibleArticleCount] = useState(6);
 
   const schemaData = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "CollectionPage",
-        "@id": "https://udithbabukn.github.io/articles",
-        "url": "https://udithbabukn.github.io/articles",
-        "name": "Notes & Articles | Udith Babu K N",
-        "description": "Strategic frameworks and deep dives on sales excellence, modern search algorithms, and commercial growth.",
+        "@type": ["CollectionPage", "Blog"],
+        "@id": "https://udithbabukn.github.io/blog",
+        "url": "https://udithbabukn.github.io/blog",
+        "name": "Blog & Strategy Notes | Udith Babu K N",
+        "description": "Strategic frameworks, algorithmic SEO architectures, and empirical growth deep dives on commercial revenue systems by Udith Babu K N.",
         "breadcrumb": {
           "@type": "BreadcrumbList",
           "itemListElement": [
@@ -28,8 +29,8 @@ export default function ArticlesPage() {
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "Articles",
-              "item": "https://udithbabukn.github.io/articles"
+              "name": "Blog",
+              "item": "https://udithbabukn.github.io/blog"
             }
           ]
         }
@@ -40,35 +41,61 @@ export default function ArticlesPage() {
   return (
     <>
       <Helmet>
-        <title>Articles | Notes &amp; Articles | Udith Babu K N</title>
+        <title>Blog | Notes &amp; Frameworks | Udith Babu K N</title>
         <meta 
           name="description" 
-          content="Strategic frameworks and deep dives on sales excellence, modern search algorithms, and commercial growth by Udith Babu K N." 
+          content="Strategic frameworks, AI search architectures, and empirical growth deep dives by Udith Babu K N." 
         />
-        <link rel="canonical" href="https://udithbabukn.github.io/articles" />
-        <meta property="og:title" content="Articles | Notes &amp; Articles | Udith Babu K N" />
-        <meta property="og:description" content="Strategic frameworks and deep dives on sales excellence, modern search algorithms, and commercial growth." />
-        <meta property="og:url" content="https://udithbabukn.github.io/articles" />
+        <link rel="canonical" href="https://udithbabukn.github.io/blog" />
+        <meta property="og:title" content="Blog | Notes &amp; Frameworks | Udith Babu K N" />
+        <meta property="og:description" content="Strategic frameworks, AI search architectures, and empirical growth deep dives on commercial revenue systems." />
+        <meta property="og:url" content="https://udithbabukn.github.io/blog" />
         <script type="application/ld+json">
           {JSON.stringify(schemaData)}
         </script>
       </Helmet>
 
       {/* ARTICLES SECTION */}
-      <section id="articles" className="sk-articles-section" style={{ paddingTop: '28px', borderBottom: 'var(--sk-border-hairline)', paddingBottom: '70px' }}>
+      <section id="blog" className="sk-articles-section" style={{ paddingTop: '28px', borderBottom: 'var(--sk-border-hairline)', paddingBottom: '70px' }}>
         <div className="sk-container">
           <Breadcrumbs 
             items={[
               { label: 'Home', path: '/' },
-              { label: 'Articles', path: '/articles' }
+              { label: 'Blog', path: '/blog' }
             ]} 
           />
 
-          <div style={{ marginBottom: '28px', position: 'relative', zIndex: 2 }}>
-            <h1 className="sk-section-heading">Notes &amp; Articles</h1>
+          <div style={{ marginBottom: '24px', position: 'relative', zIndex: 2 }}>
+            <h1 className="sk-section-heading">Blog &amp; Frameworks</h1>
             <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
-              Strategic frameworks and deep dives on sales excellence, modern search algorithms, and commercial growth.
+              Strategic frameworks, algorithmic search architectures, and empirical revenue systems.
             </p>
+          </div>
+
+          {/* Quick Search & Category Filter Bar */}
+          <div style={{ marginBottom: '20px', maxWidth: '440px', position: 'relative' }}>
+            <i className="ph ph-magnifying-glass" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--sk-ink-muted)', fontSize: '1.05rem' }}></i>
+            <input
+              type="text"
+              placeholder="Search by topic, framework, or keyword..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setVisibleArticleCount(6);
+              }}
+              style={{
+                width: '100%',
+                padding: '10px 16px 10px 42px',
+                borderRadius: '24px',
+                border: '1px solid #CBD5E1',
+                background: '#FFFFFF',
+                fontSize: '0.92rem',
+                fontFamily: 'var(--sk-font-sans)',
+                outline: 'none',
+                color: 'var(--sk-ink)',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+              }}
+            />
           </div>
 
           {/* Interactive Category Filter Bar */}
@@ -91,7 +118,13 @@ export default function ArticlesPage() {
           {/* Articles Grid */}
           <div className="sk-articles-grid">
             {blogPosts
-              .filter(post => selectedCategory === 'All' || post.category === selectedCategory)
+              .filter(post => {
+                const matchesCat = selectedCategory === 'All' || post.category === selectedCategory;
+                const matchesSearch = !searchQuery || 
+                  post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+              })
               .slice(0, visibleArticleCount)
               .map((post) => (
                 <a href={`/blog/${post.slug}.html`} className="sk-article-card" key={post.slug}>
@@ -115,8 +148,14 @@ export default function ArticlesPage() {
 
           {/* Load More / Expand Bar */}
           {(() => {
-            const totalForCategory = blogPosts.filter(p => selectedCategory === 'All' || p.category === selectedCategory).length;
-            const hasMore = totalForCategory > visibleArticleCount;
+            const filteredTotal = blogPosts.filter(post => {
+              const matchesCat = selectedCategory === 'All' || post.category === selectedCategory;
+              const matchesSearch = !searchQuery || 
+                post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+              return matchesCat && matchesSearch;
+            }).length;
+            const hasMore = filteredTotal > visibleArticleCount;
             return (
               <div className="sk-articles-load-more-wrap">
                 {hasMore && (
@@ -124,7 +163,7 @@ export default function ArticlesPage() {
                     className="sk-action-pill" 
                     onClick={() => setVisibleArticleCount(prev => prev + 6)}
                   >
-                    Load More Articles ({totalForCategory - visibleArticleCount} remaining) ↓
+                    Load More Articles ({filteredTotal - visibleArticleCount} remaining) ↓
                   </button>
                 )}
                 {visibleArticleCount > 6 && (

@@ -38,6 +38,13 @@ export default function WorkPage() {
       desc: "Zero-tracking, privacy-first format converter allowing seamless transforms between JPG, PNG, and WebP with zero ads or signups.",
       link: "https://udithkn.github.io/ImageForge/",
       type: "Live Tool"
+    },
+    {
+      title: "Algorithmic Growth Architecture & GEO Engine",
+      tag: "GEO • AEO • Semantic Schema Graph",
+      desc: "Comprehensive generative engine optimization blueprint and entity network engineered to dominate zero-click AI search in 2026 and 2027.",
+      link: "/blog/udith-babu-kn-marketing-methodology.html",
+      type: "Architecture"
     }
   ];
 

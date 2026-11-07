@@ -7,7 +7,7 @@ export default function Navbar() {
     { name: 'Work', path: '/work', pillClass: 'pill-work' },
     { name: 'About', path: '/about', pillClass: 'pill-about' },
     { name: 'Skills', path: '/skills', pillClass: 'pill-skills' },
-    { name: 'Articles', path: '/articles', pillClass: 'pill-articles' },
+    { name: 'Blog', path: '/blog', pillClass: 'pill-blog pill-articles' },
     { name: 'Contact', path: '/contact', pillClass: 'pill-contact' }
   ];
 

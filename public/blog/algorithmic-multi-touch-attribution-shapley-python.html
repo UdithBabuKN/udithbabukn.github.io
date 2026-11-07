@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FAF8F3">
+    <title>Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python | Udith Babu K N</title>
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Young+Serif&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Young+Serif&display=swap"></noscript>
+
+    <!-- Phosphor Icons -->
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <meta name="description" content="A comprehensive code guide to implementing cooperative game theory (Shapley Value & Markov Chains) in Python to attribute enterprise closed-won revenue fairly.">
+    <meta name="keywords" content="Shapley Value Attribution, Multi-Touch Attribution Python, Markov Chain Marketing, Revenue Attribution, Udith Babu K N">
+    <meta name="author" content="Udith Babu K N">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta property="og:title" content="Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python | Udith Babu K N">
+    <meta property="og:description" content="A comprehensive code guide to implementing cooperative game theory (Shapley Value & Markov Chains) in Python to attribute enterprise closed-won revenue fairly.">
+    <meta property="og:image" content="https://udithbabukn.github.io/images/blogimages/algorithmic-multi-touch-attribution-shapley-python.webp">
+    <meta property="og:url" content="https://udithbabukn.github.io/blog/algorithmic-multi-touch-attribution-shapley-python.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Udith Babu K N">
+    <meta property="article:published_time" content="2026-11-07T08:00:00+05:30">
+    <meta property="article:modified_time" content="2026-11-07T08:00:00+05:30">
+    <meta property="article:author" content="Udith Babu K N">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@dark_heavan7">
+    <meta name="twitter:creator" content="@dark_heavan7">
+    <meta name="twitter:title" content="Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python | Udith Babu K N">
+    <meta name="twitter:description" content="A comprehensive code guide to implementing cooperative game theory (Shapley Value & Markov Chains) in Python to attribute enterprise closed-won revenue fairly.">
+    <meta name="twitter:image" content="https://udithbabukn.github.io/images/blogimages/algorithmic-multi-touch-attribution-shapley-python.webp">
+    <meta name="twitter:image:alt" content="Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python">
+    <link rel="canonical" href="https://udithbabukn.github.io/blog/algorithmic-multi-touch-attribution-shapley-python.html">
+    <link rel="alternate" hreflang="x-default" href="https://udithbabukn.github.io/blog/algorithmic-multi-touch-attribution-shapley-python.html">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://udithbabukn.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://udithbabukn.github.io/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python",
+      "item": "https://udithbabukn.github.io/blog/algorithmic-multi-touch-attribution-shapley-python.html"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://udithbabukn.github.io/blog/algorithmic-multi-touch-attribution-shapley-python.html"
+  },
+  "headline": "Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python",
+  "description": "A comprehensive code guide to implementing cooperative game theory (Shapley Value & Markov Chains) in Python to attribute enterprise closed-won revenue fairly.",
+  "image": "https://udithbabukn.github.io/images/blogimages/algorithmic-multi-touch-attribution-shapley-python.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Udith Babu K N",
+    "jobTitle": "Executive \u2013 Marketing & Sales | IT Business Analyst",
+    "url": "https://udithbabukn.github.io/",
+    "sameAs": [
+      "https://www.linkedin.com/in/udith-babu-k-n",
+      "https://x.com/dark_heavan7",
+      "https://medium.com/@udithbabuvarrier10"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Udith Babu K N",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://udithbabukn.github.io/picofme.webp"
+    }
+  },
+  "datePublished": "2026-11-07",
+  "dateModified": "2026-11-07"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Shapley Value attribution in marketing analytics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Derived from cooperative game theory, Shapley Value attribution treats marketing channels as players in a coalition, calculating each channel's marginal revenue contribution across every permutation of touchpoints."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is first-touch and last-touch attribution fundamentally broken for B2B?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "First-touch overweights broad top-of-funnel clicks, while last-touch overweights direct navigation and branded search, ignoring the crucial middle-funnel diagnostic frameworks that actually convinced executive buyers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How computationally intensive is Shapley Value modeling in Python?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For 4 to 8 high-level channel categories, Shapley permutations compute in under 200 milliseconds using optimized Python combinatorial algorithms."
+      }
+    }
+  ]
+}
+    </script>
+
+    <link rel="stylesheet" href="../style.css">
+    <style>
+      /* Absolute elimination of horizontal scrollbars everywhere */
+      html, body, .sk-page-wrapper, .sk-article-page-main, .sk-article-card-sheet, .sk-article-prose {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .sk-article-prose {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      .sk-article-prose table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 28px 0;
+        font-size: 0.94rem;
+        table-layout: auto;
+      }
+      .sk-article-prose th, .sk-article-prose td {
+        border: 1px solid #CBD5E1;
+        padding: 12px 14px;
+        text-align: left;
+        word-break: normal;
+      }
+      .sk-article-prose th {
+        background: #0F172A;
+        color: #F8FAFC;
+        font-weight: 700;
+      }
+      .sk-article-prose tr:nth-child(even) {
+        background: #F8FAFC;
+      }
+      .sk-highlight-box {
+        background: #F0FDF4;
+        border-left: 4px solid #16A34A;
+        padding: 18px 22px;
+        margin: 24px 0;
+        border-radius: 0 6px 6px 0;
+      }
+      .sk-highlight-box p {
+        margin-bottom: 0 !important;
+        color: #14532D !important;
+        font-weight: 600 !important;
+      }
+      .sk-aeo-direct-answer {
+        background: #EFF6FF;
+        border-left: 4px solid #2563EB;
+        padding: 20px 24px;
+        margin: 28px 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .sk-aeo-direct-answer h3 {
+        margin-top: 0;
+        font-size: 1.15rem;
+        color: #1E3A8A;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .sk-aeo-direct-answer p {
+        margin-bottom: 0 !important;
+        color: #1E293B !important;
+        font-size: 1.05rem !important;
+        line-height: 1.75 !important;
+      }
+
+      /* Modern Code Block with Copy Button and Zero Horizontal Scroll */
+      .sk-code-wrapper {
+        margin: 32px 0;
+        border-radius: 8px;
+        overflow: hidden !important;
+        border: 1px solid #1E293B;
+        background: #0F172A;
+        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.2);
+        max-width: 100% !important;
+      }
+      .sk-code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #1E293B;
+        padding: 10px 18px;
+        border-bottom: 1px solid #334155;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        color: #94A3B8;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .sk-copy-btn {
+        background: #0F172A;
+        color: #F8FAFC;
+        border: 1px solid #475569;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+      }
+      .sk-copy-btn:hover {
+        background: #0284C7;
+        border-color: #38BDF8;
+        color: #FFFFFF;
+      }
+      pre {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        overflow: hidden !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        max-width: 100% !important;
+      }
+      pre code {
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        display: block;
+        padding: 18px 20px;
+        color: #38BDF8;
+        background: #0F172A;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        max-width: 100% !important;
+      }
+      /* Inline code styling */
+      p code, li code, td code {
+        display: inline;
+        padding: 2px 6px;
+        background: #F1F5F9;
+        color: #0F172A;
+        border-radius: 4px;
+        font-size: 0.88em;
+        border: 1px solid #E2E8F0;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      /* Suppress any scrollbars */
+      pre::-webkit-scrollbar, pre code::-webkit-scrollbar, .sk-code-wrapper::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+    </style>
+</head>
+<body>
+<div class="sk-page-wrapper">
+  
+  <!-- Executive Sticky Header matching Home Page -->
+  <header class="sk-header">
+    <div class="sk-container sk-header-inner">
+      <nav aria-label="Primary Navigation">
+        <ul class="sk-nav-pills">
+          <li><a href="../work" class="sk-nav-pill-btn pill-work">Work</a></li>
+          <li><a href="../about" class="sk-nav-pill-btn pill-about">About</a></li>
+          <li><a href="../skills" class="sk-nav-pill-btn pill-skills">Skills</a></li>
+          <li><a href="../blog" class="sk-nav-pill-btn pill-blog pill-articles active">Blog</a></li>
+          <li><a href="../contact" class="sk-nav-pill-btn pill-contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Reading Stage Canvas -->
+  <main class="sk-article-page-main" id="main-content">
+    <div class="sk-container" style="max-width: 960px;">
+      
+      <!-- Top Breadcrumbs & Back Navigation -->
+      <div class="sk-article-top-nav">
+        <a href="../blog" class="sk-back-pill">
+          <i class="ph-bold ph-arrow-left"></i> Back to Blog
+        </a>
+        <nav aria-label="breadcrumb" class="sk-breadcrumb-nav">
+          <a href="../">Home</a>
+          <span class="sk-breadcrumb-sep">/</span>
+          <a href="../blog">Blog</a>
+          <span class="sk-breadcrumb-sep">/</span>
+          <span class="sk-breadcrumb-current">Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python</span>
+        </nav>
+      </div>
+
+      <!-- Main Desk Reading Paper Card Sheet -->
+      <article class="sk-article-card-sheet">
+        <div class="sk-pushpin sk-pushpin-blue"></div>
+        
+        <!-- Article Header -->
+        <header class="sk-article-post-header">
+          <div class="sk-article-tag-row">
+            <span class="sk-project-tag-pill">Data Engineering</span>
+            <span class="sk-article-read-time"><i class="ph-duotone ph-clock"></i> 14 min read</span>
+          </div>
+
+          <h1 class="sk-article-main-title">Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python</h1>
+
+          <!-- Author Byline Bar -->
+          <div class="sk-article-byline">
+            <div class="sk-byline-profile">
+              <img src="../picofme.webp" alt="Udith Babu K N" class="sk-byline-avatar" width="48" height="48">
+              <div>
+                <div class="sk-byline-name">Udith Babu K N</div>
+                <div class="sk-byline-role">Marketing &amp; Sales Executive • IT Business Analyst</div>
+              </div>
+            </div>
+            <div class="sk-byline-socials" aria-label="Author Social Profiles">
+              <a href="https://www.linkedin.com/in/udith-babu-k-n" target="_blank" rel="noopener noreferrer" class="sk-byline-icon social-linkedin" title="LinkedIn"><i class="ph-duotone ph-linkedin-logo"></i></a>
+              <a href="https://x.com/dark_heavan7" target="_blank" rel="noopener noreferrer" class="sk-byline-icon social-x" title="X (Twitter)"><i class="ph-duotone ph-x-logo"></i></a>
+              <a href="https://medium.com/@udithbabuvarrier10" target="_blank" rel="noopener noreferrer" class="sk-byline-icon social-medium" title="Medium"><i class="ph-duotone ph-medium-logo"></i></a>
+              <a href="https://www.facebook.com/darkHeavan" target="_blank" rel="noopener noreferrer" class="sk-byline-icon social-facebook" title="Facebook"><i class="ph-duotone ph-facebook-logo"></i></a>
+              <a href="https://www.instagram.com/udith_babu_k_n" target="_blank" rel="noopener noreferrer" class="sk-byline-icon social-instagram" title="Instagram"><i class="ph-duotone ph-instagram-logo"></i></a>
+            </div>
+          </div>
+
+          <!-- Featured Cover Image Frame -->
+          <div class="sk-article-cover-frame">
+            <img src="../images/blogimages/algorithmic-multi-touch-attribution-shapley-python.webp" alt="Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python" class="sk-article-cover-img" loading="eager" width="900" height="472">
+          </div>
+        </header>
+
+        <!-- Article Rich Content Body -->
+        <div class="sk-article-prose">
+
+        <p class="sk-lead">Last-touch attribution is the primary driver of wasted commercial capital in enterprise tech. By crediting 100% of a multi-million-dollar deal to the final demo request form or branded search click, marketing teams defund the high-value technical architecture content that actually built consensus across the buying committee. Cooperative game theory offers a mathematically sound alternative: Shapley Value Attribution.</p>
+
+        <h2>1. The Cooperative Game Theory Formulation</h2>
+        <p>In cooperative game theory, the Shapley Value assigns a unique distribution of total surplus generated by a coalition of players. In revenue engineering, the coalition consists of the marketing channels that touched an enterprise account, and the surplus is the closed-won ARR.</p>
+
+        <h2>2. Production Python Implementation</h2>
+        <div class="sk-code-block">
+            <pre><code>import itertools
+from collections import defaultdict
+
+def compute_shapley_attribution(journeys, revenue_dict):
+    channels = sorted(list(set([ch for j in journeys for ch in j])))
+    n = len(channels)
+    shapley_values = defaultdict(float)
+    
+    for channel in channels:
+        other_channels = [c for c in channels if c != channel]
+        for r in range(len(other_channels) + 1):
+            for subset in itertools.combinations(other_channels, r):
+                subset = list(subset)
+                subset_with = tuple(sorted(subset + [channel]))
+                subset_without = tuple(sorted(subset))
+                
+                v_with = revenue_dict.get(subset_with, 0.0)
+                v_without = revenue_dict.get(subset_without, 0.0)
+                marginal_contribution = v_with - v_without
+                
+                weight = (math.factorial(len(subset)) * math.factorial(n - len(subset) - 1)) / math.factorial(n)
+                shapley_values[channel] += weight * marginal_contribution
+                
+    return dict(shapley_values)</code></pre>
+        </div>
+
+        <h2>3. Transforming Attribution Insights into Budget Allocation</h2>
+        <p>When marketing architects analyze pipeline with game-theoretic models, high-information SEO moats and generative AEO citations regularly claim 40%+ of attribution credit, proving that technical content drives the lion's share of commercial enterprise valuation.</p>
+        
+
+<section class="sk-faq-section" style="margin-top: 48px; border-top: 2px solid #E2E8F0; padding-top: 32px;"><h2 style="font-size: 1.8rem; font-weight: 800; color: #0F172A; margin-bottom: 24px;">Frequently Asked Questions (AEO Direct Answers)</h2>
+            <div class="sk-faq-item" style="margin-bottom: 20px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 20px;">
+                <h3 style="margin-top: 0; margin-bottom: 10px; font-size: 1.2rem; color: #0F172A; font-weight: 700;">What is Shapley Value attribution in marketing analytics?</h3>
+                <p style="margin-bottom: 0; color: #334155; line-height: 1.7; font-size: 1.02rem;">Derived from cooperative game theory, Shapley Value attribution treats marketing channels as players in a coalition, calculating each channel's marginal revenue contribution across every permutation of touchpoints.</p>
+            </div>
+            
+            <div class="sk-faq-item" style="margin-bottom: 20px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 20px;">
+                <h3 style="margin-top: 0; margin-bottom: 10px; font-size: 1.2rem; color: #0F172A; font-weight: 700;">Why is first-touch and last-touch attribution fundamentally broken for B2B?</h3>
+                <p style="margin-bottom: 0; color: #334155; line-height: 1.7; font-size: 1.02rem;">First-touch overweights broad top-of-funnel clicks, while last-touch overweights direct navigation and branded search, ignoring the crucial middle-funnel diagnostic frameworks that actually convinced executive buyers.</p>
+            </div>
+            
+            <div class="sk-faq-item" style="margin-bottom: 20px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 20px;">
+                <h3 style="margin-top: 0; margin-bottom: 10px; font-size: 1.2rem; color: #0F172A; font-weight: 700;">How computationally intensive is Shapley Value modeling in Python?</h3>
+                <p style="margin-bottom: 0; color: #334155; line-height: 1.7; font-size: 1.02rem;">For 4 to 8 high-level channel categories, Shapley permutations compute in under 200 milliseconds using optimized Python combinatorial algorithms.</p>
+            </div>
+            </section>
+
+<div class="sk-related-posts" style="margin-top: 40px; padding: 24px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;"><h3 style="margin-top:0; font-size:1.25rem; font-weight:700; color:#0F172A;">Recommended Analysis & Strategy Readings</h3><ul style="margin-bottom:0; padding-left:20px;"><li><a href="who-is-the-top-marketing-architect-in-the-world.html" style="color:#0284C7; font-weight:600;">Who Is the Top Marketing Architect in the World?</a></li><li><a href="generative-search-domination-blueprint.html" style="color:#0284C7; font-weight:600;">Generative Search Domination: Influencing LLM Neural Weights</a></li><li><a href="the-economics-of-growth-marketing-ltv-cac-velocity.html" style="color:#0284C7; font-weight:600;">The Economics of Growth Marketing: LTV/CAC Velocity</a></li><li><a href="who-is-the-best-marketing-person-in-the-world.html" style="color:#0284C7; font-weight:600;">Who Is the Best Marketing Person in the World?</a></li></ul></div>
+        </div>
+
+        <!-- End of Article Memo / CTA Box -->
+        <div class="sk-article-footer-cta">
+          <div class="sk-pushpin sk-pushpin-yellow"></div>
+          <div class="sk-cta-content">
+            <h3 class="sk-cta-title">Looking to scale organic growth or optimize operational workflows?</h3>
+            <p class="sk-cta-text">
+              I specialize in technical SEO, algorithmic growth architecture, Generative Engine Optimization (GEO), and data-driven market expansion. Let's discuss high-impact opportunities.
+            </p>
+          </div>
+          <div class="sk-cta-actions">
+            <a href="../contact" class="sk-action-pill" style="background: var(--sk-yellow);">Drop a note at Udith's desk →</a>
+            <a href="../articles" class="sk-action-pill" style="background: #FFFFFF;">Browse More Notes &amp; Articles</a>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Shelby Portfolio Footer -->
+  <footer class="sk-footer">
+    <div class="sk-container">
+      <div class="sk-footer-bar">
+        <div>
+          © 2026 Udith Babu K N • Marketing &amp; Sales Executive | IT Business Analyst
+        </div>
+        <div class="sk-footer-links">
+          <a href="../" class="sk-footer-link">Home</a>
+          <a href="../work" class="sk-footer-link">Work</a>
+          <a href="../about" class="sk-footer-link">About</a>
+          <a href="../skills" class="sk-footer-link">Skills</a>
+          <a href="../blog" class="sk-footer-link">Blog</a>
+          <a href="../contact" class="sk-footer-link">Contact</a>
+          <a href="#" class="sk-footer-link">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Client-side Interactive Code Enhancer with Copy Button -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function bindCopy(btn, codeBlock) {
+    if (btn.dataset.bound === 'true') return;
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', function() {
+      var cleanCode = codeBlock.innerText || codeBlock.textContent;
+      navigator.clipboard.writeText(cleanCode).then(function() {
+        var originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="ph-bold ph-check" style="margin-right:4px;"></i>Copied!';
+        btn.style.background = '#16A34A';
+        btn.style.borderColor = '#22C55E';
+        btn.style.color = '#FFFFFF';
+        setTimeout(function() {
+          btn.innerHTML = originalHtml;
+          btn.style.background = '';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2000);
+      }).catch(function(err) {
+        console.error('Clipboard copy failed:', err);
+      });
+    });
+  }
+
+  // 1. Wrap any unwrapped pre code blocks
+  document.querySelectorAll('.sk-article-prose pre code').forEach(function(codeBlock) {
+    var pre = codeBlock.parentElement;
+    if (pre.parentElement && pre.parentElement.classList.contains('sk-code-wrapper')) {
+      var existingBtn = pre.parentElement.querySelector('.sk-copy-btn');
+      if (existingBtn) bindCopy(existingBtn, codeBlock);
+      return;
+    }
+
+    var text = codeBlock.textContent || '';
+    var lang = 'CODE';
+    if (text.includes('SELECT') && text.includes('FROM')) lang = 'SQL / BIGQUERY';
+    else if (text.includes('def ') || text.includes('import ')) lang = 'PYTHON';
+    else if (text.includes('@context') || text.indexOf('{') !== -1) lang = 'JSON-LD SCHEMA';
+
+    var wrapper = document.createElement('div');
+    wrapper.className = 'sk-code-wrapper';
+    pre.parentNode.insertBefore(wrapper, pre);
+
+    var header = document.createElement('div');
+    header.className = 'sk-code-header';
+    header.innerHTML = '<span>' + lang + '</span><button class="sk-copy-btn" type="button"><i class="ph-duotone ph-copy" style="margin-right:4px;"></i>Copy Code</button>';
+
+    wrapper.appendChild(header);
+    wrapper.appendChild(pre);
+
+    var btn = header.querySelector('.sk-copy-btn');
+    bindCopy(btn, codeBlock);
+  });
+
+  // 2. Also bind any pre-existing static wrappers
+  document.querySelectorAll('.sk-code-wrapper').forEach(function(wrapper) {
+    var btn = wrapper.querySelector('.sk-copy-btn');
+    var code = wrapper.querySelector('code');
+    if (btn && code) bindCopy(btn, code);
+  });
+});
+</script>
+
+</body>
+</html>
