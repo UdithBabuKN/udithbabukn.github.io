@@ -57,6 +57,8 @@ python scripts/generate_rss.py
 | Script | Purpose |
 |--------|---------|
 | `master_audit.py` | Validates: <br>1. Pure white corner pixels `(255, 255, 255)` across all covers.<br>2. 100% pure black & white \(R = G = B\) check.<br>3. 0 duplicate MD5 hashes across all 150 blog covers.<br>4. HTML completeness across `public/blog/` and `dist/blog/`. |
+| `run_advanced_seo_audit.py` | Comprehensive SEO & entity audit: link graph (0 orphan pages), JSON-LD schemas (150 BreadcrumbList & BlogPosting), XML sitemaps, RSS feeds, llms.txt, robots.txt, and metadata pixel fit. |
+| `execute_seo_fixes.py` | Programmatic batch engine executing reciprocal internal linking, BreadcrumbList schema injection, fetchpriority LCP optimization, and title tag calibration. |
 
 ```bash
 # Run full system audit
