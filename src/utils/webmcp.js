@@ -293,6 +293,9 @@ export function initWebMcp() {
         }
         return true;
       },
+      getTools() {
+        return Array.from(registry.values());
+      },
       getRegisteredTools() {
         return Array.from(registry.values());
       },
@@ -303,9 +306,18 @@ export function initWebMcp() {
   };
 
   // Wire up document.modelContext, navigator.modelContext, and window.modelContext
-  document.modelContext = createModelContextShim(document.modelContext);
+  const shim = createModelContextShim(document.modelContext);
+  document.modelContext = shim;
   if (typeof navigator !== "undefined") {
-    navigator.modelContext = createModelContextShim(navigator.modelContext);
+    try {
+      Object.defineProperty(navigator, 'modelContext', {
+        value: shim,
+        configurable: true,
+        writable: true
+      });
+    } catch {
+      navigator.modelContext = shim;
+    }
   }
   window.modelContext = document.modelContext;
   window.__WEBMCP_TOOLS__ = registry;

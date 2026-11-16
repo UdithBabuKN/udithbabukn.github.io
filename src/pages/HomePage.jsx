@@ -134,6 +134,48 @@ export default function HomePage() {
             <p className="sk-desk-subline">
               Udith Babu K N; Marketing &amp; Sales Executive and IT Business Analyst from Kerala, India, currently driving organic scale and operational growth.
             </p>
+
+            {/* Quick Declarative WebMCP Search Tool */}
+            <form
+              role="search"
+              action="/blog"
+              toolname="search_articles"
+              tooldescription="Search 150+ in-depth technical playbooks, GEO/AEO research papers, and revenue frameworks authored by Udith Babu K N"
+              toolautosubmit="true"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const q = e.currentTarget.elements.query?.value;
+                if (q) window.location.href = `/blog?q=${encodeURIComponent(q)}`;
+              }}
+              style={{
+                margin: '18px auto 0 auto',
+                maxWidth: '460px',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <Icon name="search" size={16} style={{ position: 'absolute', left: '16px', color: 'var(--sk-ink-muted)', pointerEvents: 'none' }} />
+              <input
+                type="search"
+                name="query"
+                placeholder="Search frameworks, GEO, CAC, SEO playbooks..."
+                aria-label="Search articles and frameworks"
+                description="Keywords or topics to search for, e.g. GEO, AEO, CAC, RevOps"
+                style={{
+                  width: '100%',
+                  padding: '9px 16px 9px 42px',
+                  borderRadius: '24px',
+                  border: '1px solid #CBD5E1',
+                  background: '#FFFFFF',
+                  fontSize: '0.88rem',
+                  fontFamily: 'var(--sk-font-sans)',
+                  outline: 'none',
+                  color: 'var(--sk-ink)',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+                }}
+              />
+            </form>
           </div>
 
           {/* Interactive Illustrated Desk Mat */}

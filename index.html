@@ -46,6 +46,9 @@
     <link rel="alternate" type="application/rss+xml" title="Udith Babu K N Articles RSS Feed" href="/rss.xml">
     <link rel="alternate" type="application/rss+xml" title="Udith Babu K N Articles Atom Feed" href="/feed.xml">
 
+    <!-- Agentic Resource Discovery (ARD) Manifest -->
+    <link rel="ard" type="application/json" href="/.well-known/ard.json">
+
     <!-- Favicon: Updated to use a multi-resolution .ico file for broader compatibility -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -145,8 +148,11 @@
 
         function createShim(orig) {
           orig = orig || {};
-          return {
+          var shim = {
             tools: toolMap,
+            getTools: function() { return Array.from(toolMap.values()); },
+            getRegisteredTools: function() { return Array.from(toolMap.values()); },
+            listTools: function() { return Array.from(toolMap.values()); },
             registerTool: function(t) {
               toolMap.set(t.name, t);
               if (typeof orig.registerTool === "function") {
@@ -160,17 +166,25 @@
                 try { orig.unregisterTool(name); } catch (e) {}
               }
               return Promise.resolve(true);
-            },
-            getRegisteredTools: function() { return Array.from(toolMap.values()); },
-            listTools: function() { return Array.from(toolMap.values()); }
+            }
           };
+          return shim;
         }
 
-        document.modelContext = createShim(document.modelContext);
+        var shim = createShim((typeof navigator !== "undefined" && navigator.modelContext) || (typeof document !== "undefined" ? document.modelContext : null));
         if (typeof navigator !== "undefined") {
-          navigator.modelContext = createShim(navigator.modelContext);
+          try {
+            Object.defineProperty(navigator, 'modelContext', {
+              value: shim,
+              configurable: true,
+              writable: true
+            });
+          } catch (e) {
+            navigator.modelContext = shim;
+          }
         }
-        window.modelContext = document.modelContext;
+        document.modelContext = shim;
+        window.modelContext = shim;
         window.__WEBMCP_TOOLS__ = toolMap;
       })();
     </script>

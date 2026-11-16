@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:udithbabukn.github.io:portfolio:webmcp",
+      "displayName": "Udith Babu K N WebMCP Tool Suite",
+      "type": "application/json",
+      "url": "https://udithbabukn.github.io/",
+      "representativeQueries": [
+        "search Udith Babu articles and GEO playbooks",
+        "get Udith Babu marketing architecture portfolio",
+        "contact Udith Babu for marketing leadership"
+      ]
+    }
+  ]
+}
