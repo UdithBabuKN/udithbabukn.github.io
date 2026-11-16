@@ -41,10 +41,6 @@ function HashRedirectHandler() {
 }
 
 function App() {
-  useEffect(() => {
-    updateDates();
-  }, []);
-
   return (
     <BrowserRouter>
       <HashRedirectHandler />
@@ -63,20 +59,6 @@ function App() {
       </Layout>
     </BrowserRouter>
   );
-}
-
-function updateDates() {
-  const currentDate = new Date().toISOString().split('T')[0];
-  const schemaDataElement = document.getElementById('schema-data');
-  if (schemaDataElement) {
-    try {
-      const schemaData = JSON.parse(schemaDataElement.textContent);
-      schemaData.dateModified = currentDate;
-      schemaDataElement.textContent = JSON.stringify(schemaData, null, 4);
-    } catch (e) {
-      console.error("Could not parse or update schema data:", e);
-    }
-  }
 }
 
 export default App;
