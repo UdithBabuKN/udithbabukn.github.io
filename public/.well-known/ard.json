@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/spec/schema/v1.json",
+  "version": "1.0.0",
+  "publisher": {
+    "name": "Udith Babu K N",
+    "domain": "udithbabukn.github.io",
+    "url": "https://udithbabukn.github.io/",
+    "contact": "mailto:udithbabuvarrier@gmail.com"
+  },
+  "resources": [
+    {
+      "urn": "urn:air:udithbabukn.github.io:portfolio:webmcp",
+      "name": "Udith Babu K N WebMCP Tool Suite",
+      "description": "In-browser WebMCP tool suite for discovering Udith Babu's executive profile, 150+ research frameworks, skills breakdown, and career milestones.",
+      "protocol": "webmcp",
+      "transport": "in-browser",
+      "url": "https://udithbabukn.github.io/",
+      "capabilities": [
+        "get_portfolio_profile",
+        "search_articles",
+        "get_skills",
+        "get_work_experience",
+        "submit_contact_inquiry"
+      ]
+    }
+  ]
+}

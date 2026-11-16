@@ -122,7 +122,14 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form action="https://api.web3forms.com/submit" method="POST" onSubmit={handleContactSubmit}>
+              <form 
+                action="https://api.web3forms.com/submit" 
+                method="POST" 
+                onSubmit={handleContactSubmit}
+                toolname="send_contact_message"
+                tooldescription="Send a direct contact inquiry or collaboration message to Udith Babu K N"
+                toolautosubmit="false"
+              >
                 <input type="hidden" name="access_key" value="87c7f836-6a95-44f3-8391-314433633006" />
                 <input type="hidden" name="subject" value="New Portfolio Dispatch (Shelby Desk Style)" />
                 <input type="hidden" name="from_name" value="Udith's Desk" />
@@ -136,6 +143,7 @@ export default function ContactPage() {
                     <input 
                       type="text" 
                       name="name" 
+                      description="Sender's full name"
                       placeholder="e.g. Jane Doe" 
                       required 
                       className="sk-form-input"
@@ -148,6 +156,7 @@ export default function ContactPage() {
                     <input 
                       type="email" 
                       name="email" 
+                      description="Sender's email address for direct reply"
                       placeholder="e.g. jane@company.com" 
                       required 
                       className="sk-form-input"
@@ -161,6 +170,7 @@ export default function ContactPage() {
                   </label>
                   <textarea 
                     name="message" 
+                    description="Message, inquiry, or partnership opportunity details"
                     rows="4" 
                     placeholder="Tell me what you have in mind..." 
                     required 

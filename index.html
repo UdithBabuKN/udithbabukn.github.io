@@ -25,7 +25,6 @@
     <!-- Preconnect to external domains to speed up connection time -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com">
     <link rel="preconnect" href="https://api.web3forms.com">
 
     <!-- SEO: Resource Hints for Performance -->
@@ -47,6 +46,9 @@
     <link rel="alternate" type="application/rss+xml" title="Udith Babu K N Articles RSS Feed" href="/rss.xml">
     <link rel="alternate" type="application/rss+xml" title="Udith Babu K N Articles Atom Feed" href="/feed.xml">
 
+    <!-- Agentic Resource Discovery (ARD) Manifest & WebMCP Tools -->
+    <link rel="ard" type="application/json" href="/.well-known/ard.json">
+
     <!-- Favicon: Updated to use a multi-resolution .ico file for broader compatibility -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -54,8 +56,9 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <!-- Performance: Preload critical images -->
-    <link rel="preload" as="image" href="/picofme.webp">
+    <!-- Performance: Preload critical LCP background images with fetchpriority high -->
+    <link rel="preload" as="image" href="/ascii-hand-left-green.webp" fetchpriority="high" type="image/webp">
+    <link rel="preload" as="image" href="/ascii-hand-right-green.webp" fetchpriority="high" type="image/webp">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Udith Babu K N | Marketing and Sales Executive Portfolio">
@@ -89,8 +92,93 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
     </noscript>
     
-    <!-- Phosphor Icons (Premium Minimal Icons) -->
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- WebMCP (Web Model Context Protocol) Bootstrap & Declarations -->
+    <script>
+      (function() {
+        var tools = [
+          {
+            name: "get_portfolio_profile",
+            description: "Retrieve comprehensive professional profile, credentials, and formulated frameworks for Udith Babu K N.",
+            inputSchema: { type: "object", properties: {}, additionalProperties: false }
+          },
+          {
+            name: "search_articles",
+            description: "Search 150+ in-depth technical playbooks, GEO/AEO research papers, and revenue frameworks authored by Udith Babu K N.",
+            inputSchema: {
+              type: "object",
+              properties: {
+                query: { type: "string", description: "Keywords or topic to search for" },
+                category: { type: "string", description: "Category filter" },
+                limit: { type: "number", description: "Maximum number of results" }
+              },
+              additionalProperties: false
+            }
+          },
+          {
+            name: "get_skills",
+            description: "Get verified competency breakdown for Udith Babu K N across Marketing Architecture, IT Business Analysis, and Technical Stack.",
+            inputSchema: {
+              type: "object",
+              properties: {
+                category: { type: "string", description: "Skill category", enum: ["marketing", "business_analysis", "tech_stack", "all"] }
+              },
+              additionalProperties: false
+            }
+          },
+          {
+            name: "get_work_experience",
+            description: "Get verified work history, roles, enterprise achievements, and organizational impact for Udith Babu K N.",
+            inputSchema: { type: "object", properties: {}, additionalProperties: false }
+          },
+          {
+            name: "submit_contact_inquiry",
+            description: "Submit a direct partnership, consultation, or hiring inquiry to Udith Babu K N.",
+            inputSchema: {
+              type: "object",
+              properties: {
+                name: { type: "string", description: "Full name" },
+                email: { type: "string", description: "Email address" },
+                message: { type: "string", description: "Inquiry details" }
+              },
+              required: ["name", "email", "message"],
+              additionalProperties: false
+            }
+          }
+        ];
+        var toolMap = new Map();
+        tools.forEach(function(t) { toolMap.set(t.name, t); });
+
+        function createShim(orig) {
+          orig = orig || {};
+          return {
+            tools: toolMap,
+            registerTool: function(t) {
+              toolMap.set(t.name, t);
+              if (typeof orig.registerTool === "function") {
+                try { orig.registerTool(t); } catch (e) {}
+              }
+              return Promise.resolve(true);
+            },
+            unregisterTool: function(name) {
+              toolMap.delete(name);
+              if (typeof orig.unregisterTool === "function") {
+                try { orig.unregisterTool(name); } catch (e) {}
+              }
+              return Promise.resolve(true);
+            },
+            getRegisteredTools: function() { return Array.from(toolMap.values()); },
+            listTools: function() { return Array.from(toolMap.values()); }
+          };
+        }
+
+        document.modelContext = createShim(document.modelContext);
+        if (typeof navigator !== "undefined") {
+          navigator.modelContext = createShim(navigator.modelContext);
+        }
+        window.modelContext = document.modelContext;
+        window.__WEBMCP_TOOLS__ = toolMap;
+      })();
+    </script>
 
     
 
@@ -178,7 +266,7 @@
         }
     }
     </script>
-    <script defer src="https://analytics-dashboard-two-sigma.vercel.app/client-script.js"></script>
+    <script defer async src="https://analytics-dashboard-two-sigma.vercel.app/client-script.js"></script>
 </head>
 <body>
     <div id="root">

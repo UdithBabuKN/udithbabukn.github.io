@@ -7,6 +7,9 @@ Sitemap: https://udithbabukn.github.io/sitemap.xml
 Sitemap: https://udithbabukn.github.io/sitemap-blog.xml
 Sitemap: https://udithbabukn.github.io/sitemap-pages.xml
 
+# Agentic Resource Discovery (ARD) Manifest & WebMCP
+Agentmap: https://udithbabukn.github.io/.well-known/ard.json
+
 # Syndication Feeds for AI Engines and News Crawlers
 # https://udithbabukn.github.io/rss.xml
 # https://udithbabukn.github.io/feed.xml

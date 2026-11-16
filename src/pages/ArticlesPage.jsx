@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { blogPosts } from '../data/blogPostsData';
+import Icon from '../components/Icons';
 
 export default function ArticlesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -72,11 +73,21 @@ export default function ArticlesPage() {
             </p>
           </div>
 
-          {/* Quick Search & Category Filter Bar */}
-          <div style={{ marginBottom: '20px', maxWidth: '440px', position: 'relative' }}>
-            <i className="ph ph-magnifying-glass" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--sk-ink-muted)', fontSize: '1.05rem' }}></i>
+          {/* Quick Search & Category Filter Bar (WebMCP Declarative Tool) */}
+          <form
+            role="search"
+            toolname="search_articles"
+            tooldescription="Search Udith Babu's articles, frameworks, and playbooks by keyword, topic, or category"
+            toolautosubmit="true"
+            onSubmit={(e) => e.preventDefault()}
+            style={{ marginBottom: '20px', maxWidth: '440px', position: 'relative' }}
+          >
+            <Icon name="search" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--sk-ink-muted)', width: '18px', height: '18px' }} />
             <input
-              type="text"
+              type="search"
+              name="query"
+              aria-label="Search articles and frameworks"
+              description="Keywords or topics to search for, e.g. GEO, AEO, CAC, RevOps"
               placeholder="Search by topic, framework, or keyword..."
               value={searchQuery}
               onChange={(e) => {
@@ -96,7 +107,7 @@ export default function ArticlesPage() {
                 boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
               }}
             />
-          </div>
+          </form>
 
           {/* Interactive Category Filter Bar */}
           <div className="sk-articles-filter-bar">
@@ -139,7 +150,7 @@ export default function ArticlesPage() {
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', fontWeight: '800', borderTop: 'var(--sk-border-hairline)', paddingTop: '12px', marginTop: '16px', color: 'var(--sk-ink-muted)' }}>
                       <span>Udith Babu K N</span>
-                      <span><i className="ph ph-clock" style={{ marginRight: '4px' }}></i>{post.readTime}</span>
+                      <span><Icon name="clock" size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} />{post.readTime}</span>
                     </div>
                   </div>
                 </a>

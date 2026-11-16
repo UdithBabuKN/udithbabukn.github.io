@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import Icon from '../components/Icons';
 
 export default function HomePage() {
   const [minicomIndex, setMinicomIndex] = useState(0);
@@ -245,7 +246,7 @@ export default function HomePage() {
                   className="sk-social-pill"
                   title={item.name}
                 >
-                  <i className={`ph ${item.icon}`} aria-hidden="true"></i>
+                  <Icon name={item.icon} aria-hidden="true" size={16} />
                   <span>{item.name}</span>
                 </a>
               ))}
