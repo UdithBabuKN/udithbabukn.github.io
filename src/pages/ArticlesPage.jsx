@@ -57,7 +57,7 @@ export default function ArticlesPage() {
       </Helmet>
 
       {/* ARTICLES SECTION */}
-      <section id="blog" className="sk-articles-section" style={{ paddingTop: '28px', borderBottom: 'var(--sk-border-hairline)', paddingBottom: '70px' }}>
+      <section id="blog" className="sk-articles-section" style={{ paddingTop: '28px', borderBottom: 'none', paddingBottom: '70px' }}>
         <div className="sk-container">
           <Breadcrumbs 
             items={[
@@ -68,7 +68,7 @@ export default function ArticlesPage() {
 
           <div style={{ marginBottom: '24px', position: 'relative', zIndex: 2 }}>
             <h1 className="sk-section-heading">Blog &amp; Frameworks</h1>
-            <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
+            <p className="sk-page-subtitle" style={{ marginTop: '8px' }}>
               Strategic frameworks, algorithmic search architectures, and empirical revenue systems.
             </p>
           </div>
@@ -80,9 +80,9 @@ export default function ArticlesPage() {
             tooldescription="Search Udith Babu's articles, frameworks, and playbooks by keyword, topic, or category"
             toolautosubmit="true"
             onSubmit={(e) => e.preventDefault()}
-            style={{ marginBottom: '20px', maxWidth: '440px', position: 'relative' }}
+            style={{ marginBottom: '24px', maxWidth: '460px', position: 'relative' }}
           >
-            <Icon name="search" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--sk-ink-muted)', width: '18px', height: '18px' }} />
+            <Icon name="search" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--sk-navy)', width: '18px', height: '18px' }} />
             <input
               type="search"
               name="query"
@@ -96,15 +96,15 @@ export default function ArticlesPage() {
               }}
               style={{
                 width: '100%',
-                padding: '10px 16px 10px 42px',
-                borderRadius: '24px',
-                border: '1px solid #CBD5E1',
+                padding: '10px 18px 10px 44px',
+                borderRadius: '9999px',
+                border: '1.5px solid var(--sk-navy)',
                 background: '#FFFFFF',
-                fontSize: '0.92rem',
-                fontFamily: 'var(--sk-font-sans)',
+                fontSize: '0.88rem',
+                fontFamily: 'var(--sk-font-mono)',
                 outline: 'none',
-                color: 'var(--sk-ink)',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+                color: 'var(--sk-navy)',
+                boxShadow: '2px 2px 0px var(--sk-navy)'
               }}
             />
           </form>

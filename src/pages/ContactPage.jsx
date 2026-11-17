@@ -87,7 +87,7 @@ export default function ContactPage() {
       </Helmet>
 
       {/* CONTACT FORM */}
-      <section id="contact" style={{ padding: '28px 0 70px', borderBottom: 'var(--sk-border-hairline)' }}>
+      <section id="contact" style={{ padding: '28px 0 70px', borderBottom: 'none' }}>
         <div className="sk-container" style={{ maxWidth: '780px' }}>
           <Breadcrumbs 
             items={[
@@ -100,17 +100,19 @@ export default function ContactPage() {
             <h1 className="sk-section-heading" style={{ marginBottom: '12px', textAlign: 'center' }}>
               Drop a note at Udith's desk.
             </h1>
-            <p className="sk-page-subtitle" style={{ textAlign: 'center', fontSize: '0.98rem', color: '#000000', fontWeight: '600', marginBottom: '28px' }}>
+            <p className="sk-page-subtitle" style={{ textAlign: 'center', fontSize: '1.05rem', fontWeight: '600', marginBottom: '28px' }}>
               Have an open role, project proposal, or want to discuss growth marketing? Send a direct dispatch below.
             </p>
 
             {contactStatus === 'success' ? (
               <div style={{ textAlign: 'center', padding: '30px 10px' }}>
-                <div style={{ fontSize: '1.8rem', marginBottom: '10px', color: 'var(--sk-accent)' }}>[ DISPATCH RECORDED ]</div>
-                <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '2rem', color: 'var(--sk-ink)' }}>
+                <div style={{ fontFamily: 'var(--sk-font-mono)', fontSize: '1.1rem', fontWeight: '800', marginBottom: '14px', color: '#000000', background: 'var(--sk-yellow)', display: 'inline-block', padding: '4px 14px', borderRadius: '4px', border: '1.5px solid #000000' }}>
+                  [ 🎯 DISPATCH RECORDED // RECEIVED ]
+                </div>
+                <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '2rem', color: '#000000' }}>
                   Message Received at Udith's desk!
                 </h3>
-                <p style={{ marginTop: '8px', color: 'var(--sk-ink-muted)' }}>
+                <p style={{ marginTop: '8px', color: '#334155' }}>
                   Thank you for reaching out. I'll get back to you shortly!
                 </p>
                 <button 
@@ -137,7 +139,7 @@ export default function ContactPage() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
+                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
                       Your Name
                     </label>
                     <input 
@@ -150,7 +152,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
+                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
                       Your Email
                     </label>
                     <input 
@@ -165,7 +167,7 @@ export default function ContactPage() {
                 </div>
 
                 <div style={{ marginBottom: '20px' }}>
-                  <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
+                  <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
                     Note or Opportunity
                   </label>
                   <textarea 

@@ -51,7 +51,7 @@ export default function SkillsPage() {
       </Helmet>
 
       {/* SKILLS & STICKY NOTES MATRIX */}
-      <section id="skills" className="sk-skills-section" style={{ paddingTop: '28px', borderBottom: 'var(--sk-border-hairline)', paddingBottom: '70px' }}>
+      <section id="skills" className="sk-skills-section" style={{ paddingTop: '28px', borderBottom: 'none', paddingBottom: '70px' }}>
         <div className="sk-container">
           <Breadcrumbs 
             items={[
@@ -62,7 +62,7 @@ export default function SkillsPage() {
 
           <div style={{ marginBottom: '36px', position: 'relative', zIndex: 2 }}>
             <h1 className="sk-section-heading">Toolbox &amp; Methods</h1>
-            <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
+            <p className="sk-page-subtitle" style={{ marginTop: '8px' }}>
               Hand-picked capabilities across growth marketing, technical analysis, and project execution.
             </p>
           </div>

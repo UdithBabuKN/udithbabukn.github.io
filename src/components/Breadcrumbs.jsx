@@ -37,7 +37,6 @@ export default function Breadcrumbs({ items = [] }) {
                     itemProp="item" 
                     className="sk-breadcrumb-link"
                   >
-                    {index === 0 && <span className="sk-breadcrumb-icon" aria-hidden="true">⌂ </span>}
                     <span itemProp="name">{item.label}</span>
                   </Link>
                   <meta itemProp="position" content={position} />

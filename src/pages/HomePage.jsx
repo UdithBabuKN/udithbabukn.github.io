@@ -19,7 +19,6 @@ export default function HomePage() {
     { name: 'LinkedIn', icon: 'ph-linkedin-logo', url: 'https://www.linkedin.com/in/udith-babu-k-n', cls: 'social-linkedin' },
     { name: 'Instagram', icon: 'ph-instagram-logo', url: 'https://www.instagram.com/udith_babu_k_n', cls: 'social-instagram' },
     { name: 'Facebook', icon: 'ph-facebook-logo', url: 'https://www.facebook.com/darkHeavan', cls: 'social-facebook' },
-    { name: 'X (Twitter)', icon: 'ph-x-logo', url: 'https://x.com/dark_heavan7', cls: 'social-x' },
     { name: 'Medium', icon: 'ph-medium-logo', url: 'https://medium.com/@udithbabuvarrier10', cls: 'social-medium' },
     { name: 'Pinterest', icon: 'ph-pinterest-logo', url: 'https://br.pinterest.com/udith_babu_k_n', cls: 'social-pinterest' },
     { name: 'Pexels', icon: 'ph-camera', url: 'https://www.pexels.com/@udith-babu-k-n-288919024', cls: 'social-pexels' },
@@ -31,10 +30,6 @@ export default function HomePage() {
 
   const handlePrevMinicom = () => {
     setMinicomIndex((prev) => (prev - 1 + minicomMessages.length) % minicomMessages.length);
-  };
-
-  const handleResetDesk = () => {
-    setMinicomIndex((prev) => (prev + 1) % minicomMessages.length);
   };
 
   const schemaData = {
@@ -134,48 +129,6 @@ export default function HomePage() {
             <p className="sk-desk-subline">
               Udith Babu K N; Marketing &amp; Sales Executive and IT Business Analyst from Kerala, India, currently driving organic scale and operational growth.
             </p>
-
-            {/* Quick Declarative WebMCP Search Tool */}
-            <form
-              role="search"
-              action="/blog"
-              toolname="search_articles"
-              tooldescription="Search 150+ in-depth technical playbooks, GEO/AEO research papers, and revenue frameworks authored by Udith Babu K N"
-              toolautosubmit="true"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const q = e.currentTarget.elements.query?.value;
-                if (q) window.location.href = `/blog?q=${encodeURIComponent(q)}`;
-              }}
-              style={{
-                margin: '18px auto 0 auto',
-                maxWidth: '460px',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center'
-              }}
-            >
-              <Icon name="search" size={16} style={{ position: 'absolute', left: '16px', color: 'var(--sk-ink-muted)', pointerEvents: 'none' }} />
-              <input
-                type="search"
-                name="query"
-                placeholder="Search frameworks, GEO, CAC, SEO playbooks..."
-                aria-label="Search articles and frameworks"
-                description="Keywords or topics to search for, e.g. GEO, AEO, CAC, RevOps"
-                style={{
-                  width: '100%',
-                  padding: '9px 16px 9px 42px',
-                  borderRadius: '24px',
-                  border: '1px solid #CBD5E1',
-                  background: '#FFFFFF',
-                  fontSize: '0.88rem',
-                  fontFamily: 'var(--sk-font-sans)',
-                  outline: 'none',
-                  color: 'var(--sk-ink)',
-                  boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
-                }}
-              />
-            </form>
           </div>
 
           {/* Interactive Illustrated Desk Mat */}
@@ -183,8 +136,11 @@ export default function HomePage() {
             {/* Top row: Minicom speech bubble + Focus Note */}
             <div className="sk-desk-top-row">
               <div className="sk-speech-bubble-widget">
-                <div className="sk-minicom-header">
-                  <span className="sk-minicom-badge">MINICOM</span>
+                <div className="sk-speech-text">
+                  {minicomMessages[minicomIndex]}
+                </div>
+
+                <div className="sk-minicom-nav" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
                   <div className="sk-minicom-dots">
                     {minicomMessages.map((_, i) => (
                       <span 
@@ -194,24 +150,19 @@ export default function HomePage() {
                       ></span>
                     ))}
                   </div>
-                </div>
-
-                <div className="sk-speech-text">
-                  {minicomMessages[minicomIndex]}
-                </div>
-
-                <div className="sk-minicom-nav">
-                  <button className="sk-minicom-btn" onClick={handlePrevMinicom}>←</button>
-                  <button className="sk-minicom-btn" onClick={handleNextMinicom}>Next →</button>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <button className="sk-minicom-btn" onClick={handlePrevMinicom} aria-label="Previous note">←</button>
+                    <button className="sk-minicom-btn" onClick={handleNextMinicom} aria-label="Next note">Next →</button>
+                  </div>
                 </div>
               </div>
 
               {/* Status Note */}
-              <div className="sk-status-note" style={{ maxWidth: '280px' }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--sk-accent)' }}>
+              <div className="sk-status-note">
+                <div style={{ fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#000000' }}>
                   📌 Current Focus
                 </div>
-                <div style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '1.25rem', marginTop: '4px' }}>
+                <div style={{ fontFamily: 'var(--sk-font-serif)', fontWeight: '800', fontSize: '1.25rem', marginTop: '6px', color: '#000000' }}>
                   Open for Marketing Executive &amp; Growth Roles
                 </div>
               </div>
@@ -221,7 +172,7 @@ export default function HomePage() {
             <div className="sk-desk-items-scene">
               {/* Item 1 */}
               <div className="sk-desk-item-card">
-                <span className="sk-desk-item-detail">Google Search Console</span>
+                <span className="sk-desk-item-detail">[01 // GSC.350+]</span>
                 <div className="sk-metric-big">350+</div>
                 <div className="sk-desk-item-title">Daily Organic Clicks</div>
                 <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
@@ -231,7 +182,7 @@ export default function HomePage() {
 
               {/* Item 2 */}
               <div className="sk-desk-item-card">
-                <span className="sk-desk-item-detail">Academic Foundation</span>
+                <span className="sk-desk-item-detail">[02 // MBA.BTECH]</span>
                 <div className="sk-metric-big">MBA &amp; B.Tech</div>
                 <div className="sk-desk-item-title">Dual Degree Focus</div>
                 <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
@@ -241,7 +192,7 @@ export default function HomePage() {
 
               {/* Item 3 */}
               <div className="sk-desk-item-card">
-                <span className="sk-desk-item-detail">Quality &amp; Delivery</span>
+                <span className="sk-desk-item-detail">[03 // QA.98%]</span>
                 <div className="sk-metric-big">98%</div>
                 <div className="sk-desk-item-title">UAT Compliance</div>
                 <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
@@ -251,7 +202,7 @@ export default function HomePage() {
 
               {/* Item 4 */}
               <div className="sk-desk-item-card">
-                <span className="sk-desk-item-detail">AI Automation</span>
+                <span className="sk-desk-item-detail">[04 // AI.-30%]</span>
                 <div className="sk-metric-big">-30%</div>
                 <div className="sk-desk-item-title">Triage Time</div>
                 <p style={{ fontSize: '0.84rem', margin: 0, color: 'var(--sk-ink-muted)' }}>
@@ -260,12 +211,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Desk Bottom Action Pills */}
-            <div className="sk-desk-bottom-row">
-              <button className="sk-action-pill" onClick={handleResetDesk}>
-                Reset Desk ↺
-              </button>
-
+            {/* Desk Bottom Action Pill */}
+            <div className="sk-desk-bottom-row" style={{ justifyContent: 'center' }}>
               <Link to="/work" className="sk-action-pill view-work-pill">
                 View Work ↓
               </Link>
@@ -274,7 +221,7 @@ export default function HomePage() {
 
           {/* Social Links Ribbon Under Desk */}
           <div style={{ marginTop: '36px', textAlign: 'center' }}>
-            <span style={{ fontSize: '0.82rem', fontWeight: '800', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--sk-ink-muted)' }}>
+            <span style={{ fontSize: '0.84rem', fontWeight: '800', letterSpacing: '0.09em', textTransform: 'uppercase', color: '#FFFFFF', WebkitTextStroke: '0.6px #000000', paintOrder: 'stroke fill' }}>
               Connect Across Channels
             </span>
 
@@ -369,7 +316,7 @@ export default function HomePage() {
                   <div className="sk-timeline-date">Industry Credential</div>
                   <h3 className="sk-timeline-role">JPMorgan Chase Agile Job Simulation</h3>
                   <div className="sk-timeline-org">Forage Certified</div>
-                  <a href="https://drive.google.com/file/d/1H1VZzktMJv3bnaK4FfB7O6NTazp3L6CK/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sk-accent)', fontWeight: '700', fontSize: '0.82rem', display: 'inline-block', marginTop: '6px' }}>
+                  <a href="https://drive.google.com/file/d/1H1VZzktMJv3bnaK4FfB7O6NTazp3L6CK/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ color: '#FFFFFF', background: '#000000', border: '1px solid #000000', borderRadius: '4px', padding: '3px 10px', fontWeight: '800', fontSize: '0.80rem', display: 'inline-block', marginTop: '8px', textDecoration: 'none' }}>
                     View Credential ↗
                   </a>
                 </div>
@@ -378,7 +325,7 @@ export default function HomePage() {
                   <div className="sk-timeline-date">Industry Credential</div>
                   <h3 className="sk-timeline-role">micro1 Business Analyst Certified</h3>
                   <div className="sk-timeline-org">micro1 AI Evaluated</div>
-                  <a href="https://drive.google.com/file/d/11k8iMDoCFEd-BMV-rPB-I52-clnJZOyO/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--sk-accent)', fontWeight: '700', fontSize: '0.82rem', display: 'inline-block', marginTop: '6px' }}>
+                  <a href="https://drive.google.com/file/d/11k8iMDoCFEd-BMV-rPB-I52-clnJZOyO/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: '#FFFFFF', background: '#000000', border: '1px solid #000000', borderRadius: '4px', padding: '3px 10px', fontWeight: '800', fontSize: '0.80rem', display: 'inline-block', marginTop: '8px', textDecoration: 'none' }}>
                     View Credential ↗
                   </a>
                 </div>
@@ -389,7 +336,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ ACCORDION */}
-      <section className="sk-about-section" style={{ borderBottom: 'var(--sk-border-hairline)', paddingBottom: '60px' }}>
+      <section className="sk-about-section" style={{ borderBottom: 'none', paddingBottom: '60px' }}>
         <div className="sk-container" style={{ maxWidth: '880px' }}>
           <h2 className="sk-section-heading" style={{ textAlign: 'center', marginBottom: '30px' }}>
             Frequently Asked Questions
@@ -420,7 +367,7 @@ export default function HomePage() {
                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'italic', fontSize: '1.3rem', margin: 0, color: 'var(--sk-ink)' }}>
+                  <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'normal', fontWeight: '800', fontSize: '1.25rem', margin: 0, color: 'var(--sk-ink)' }}>
                     {faq.q}
                   </h3>
                   <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--sk-ink-muted)' }}>

@@ -106,7 +106,7 @@ export default function WorkPage() {
 
           <div style={{ marginBottom: '32px', position: 'relative', zIndex: 2 }}>
             <h1 className="sk-section-heading">Selected Projects &amp; Tools</h1>
-            <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
+            <p className="sk-page-subtitle" style={{ marginTop: '8px' }}>
               Tools and dashboards built to solve real problems in analytics, SEO, and web performance.
             </p>
           </div>

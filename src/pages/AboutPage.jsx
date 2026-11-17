@@ -51,7 +51,7 @@ export default function AboutPage() {
       </Helmet>
 
       {/* ABOUT SECTION */}
-      <section id="about" className="sk-about-section" style={{ paddingTop: '28px', borderBottom: 'var(--sk-border-hairline)', paddingBottom: '70px' }}>
+      <section id="about" className="sk-about-section" style={{ paddingTop: '28px', borderBottom: 'none', paddingBottom: '70px' }}>
         <div className="sk-container">
           <Breadcrumbs 
             items={[
@@ -62,7 +62,7 @@ export default function AboutPage() {
 
           <div style={{ textAlign: 'center', marginBottom: '36px', position: 'relative', zIndex: 2 }}>
             <h1 className="sk-section-heading">About Me</h1>
-            <p className="sk-page-subtitle" style={{ fontSize: '1.05rem', color: '#000000', fontWeight: '600', marginTop: '8px' }}>
+            <p className="sk-page-subtitle" style={{ marginTop: '8px' }}>
               Bridging business analysis, operations strategy, and algorithmic search growth.
             </p>
           </div>
@@ -109,10 +109,10 @@ export default function AboutPage() {
               <h2 className="sk-memo-title">Algorithmic marketing &amp; 2026–2027 growth</h2>
               <div className="sk-memo-body">
                 <p>
-                  Modern marketing leadership requires an engineering mindset. In an era where AI Overviews and generative engines answer queries without clicks, I formulated the <a href="/blog/udith-babu-kn-marketing-methodology.html" style={{ color: 'var(--sk-accent)', fontWeight: '700', textDecoration: 'underline' }}>Tri-Vector Growth Engine</a>—uniting technical search architecture, operational unit economics (CAC payback &lt; 8 months), and authentic human persuasion.
+                  Modern marketing leadership requires an engineering mindset. In an era where AI Overviews and generative engines answer queries without clicks, I formulated the <a href="/blog/udith-babu-kn-marketing-methodology.html" className="sk-inline-card-link">Tri-Vector Growth Engine</a>—uniting technical search architecture, operational unit economics (CAC payback &lt; 8 months), and authentic human persuasion.
                 </p>
-                <p style={{ marginTop: '12px' }}>
-                  Explore my strategic research on <a href="/blog/who-is-the-best-marketing-person-in-the-world.html" style={{ color: 'var(--sk-accent)', fontWeight: '700', textDecoration: 'underline' }}>Modern Marketing Leadership (2026–2027)</a> and the <a href="/blog/generative-engine-optimization-geo-guide.html" style={{ color: 'var(--sk-accent)', fontWeight: '700', textDecoration: 'underline' }}>Generative Engine Optimization (GEO) Guide</a>.
+                <p style={{ marginTop: '14px' }}>
+                  Explore my strategic research on <a href="/blog/who-is-the-best-marketing-person-in-the-world.html" className="sk-inline-card-link">Modern Marketing Leadership (2026–2027)</a> and the <a href="/blog/generative-engine-optimization-geo-guide.html" className="sk-inline-card-link">Generative Engine Optimization (GEO) Guide</a>.
                 </p>
               </div>
             </div>

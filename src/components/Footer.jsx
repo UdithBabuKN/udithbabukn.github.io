@@ -5,42 +5,63 @@ export default function Footer() {
   const [tosOpen, setTosOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
-  const scrollToTop = (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <>
       <footer className="sk-footer">
-        <div className="sk-container">
-          <div className="sk-footer-bar">
-            <div>
-              © {new Date().getFullYear()} Udith Babu K N • Kerala, India
-            </div>
+        {/* Organic Hand-Drawn Wavy Top Divider */}
+        <div className="sk-footer-wave-wrap" aria-hidden="true">
+          <svg
+            className="sk-footer-wave-svg"
+            viewBox="0 0 1440 50"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* White solid wave fill underneath */}
+            <path
+              d="M0,28 C60,28 100,8 160,8 C220,8 250,38 310,36 C370,34 430,16 490,16 C550,16 590,34 660,32 C730,30 800,18 870,22 C940,26 1000,32 1060,24 C1120,16 1150,6 1220,6 C1290,6 1320,38 1380,34 C1400,32 1420,26 1440,24 L1440,50 L0,50 Z"
+              fill="#FFFFFF"
+            />
+            {/* Black narrow border line tracing the wavy top crest */}
+            <path
+              d="M0,28 C60,28 100,8 160,8 C220,8 250,38 310,36 C370,34 430,16 490,16 C550,16 590,34 660,32 C730,30 800,18 870,22 C940,26 1000,32 1060,24 C1120,16 1150,6 1220,6 C1290,6 1320,38 1380,34 C1400,32 1420,26 1440,24"
+              stroke="#000000"
+              strokeWidth="2"
+              vectorEffect="non-scaling-stroke"
+              fill="none"
+            />
+          </svg>
+        </div>
 
-            <div className="sk-footer-links">
-              <Link to="/" className="sk-footer-link">Home</Link>
-              <Link to="/work" className="sk-footer-link">Work</Link>
-              <Link to="/about" className="sk-footer-link">About</Link>
-              <Link to="/skills" className="sk-footer-link">Skills</Link>
-              <Link to="/blog" className="sk-footer-link">Blog</Link>
-              <Link to="/contact" className="sk-footer-link">Contact</Link>
-              <button 
-                type="button" 
-                onClick={() => setTosOpen(true)} 
-                className="sk-footer-link sk-footer-legal-tag"
-              >
-                Terms of Service
-              </button>
-              <button 
-                type="button" 
-                onClick={() => setPrivacyOpen(true)} 
-                className="sk-footer-link sk-footer-legal-tag"
-              >
-                Privacy Policy
-              </button>
-              <a href="#top" onClick={scrollToTop} className="sk-footer-link">Back to top ↑</a>
+        <div className="sk-footer-body">
+          <div className="sk-container">
+            <div className="sk-footer-bar">
+              <div>
+                © {new Date().getFullYear()} Udith Babu K N • Kerala, India
+              </div>
+
+              <div className="sk-footer-links">
+                <Link to="/" className="sk-footer-link">Home</Link>
+                <Link to="/work" className="sk-footer-link">Work</Link>
+                <Link to="/about" className="sk-footer-link">About</Link>
+                <Link to="/skills" className="sk-footer-link">Skills</Link>
+                <Link to="/blog" className="sk-footer-link">Blog</Link>
+                <Link to="/contact" className="sk-footer-link">Contact</Link>
+                <button 
+                  type="button" 
+                  onClick={() => setTosOpen(true)} 
+                  className="sk-footer-link sk-footer-legal-tag"
+                >
+                  Terms of Service
+                </button>
+                <button 
+                  type="button" 
+                  onClick={() => setPrivacyOpen(true)} 
+                  className="sk-footer-link sk-footer-legal-tag"
+                >
+                  Privacy Policy
+                </button>
+              </div>
             </div>
           </div>
         </div>

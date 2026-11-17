@@ -36,7 +36,6 @@ const PROFILE_DATA = {
     linkedin: "https://www.linkedin.com/in/udith-babu-k-n",
     github: "https://github.com/UdithBabuKN",
     medium: "https://medium.com/@udithbabuvarrier10",
-    x: "https://x.com/dark_heavan7",
     instagram: "https://www.instagram.com/udith_babu_k_n"
   },
   formulatedFrameworks: [
