@@ -11,7 +11,9 @@ export default defineConfig({
       injectRegister: 'script-defer',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
-        globIgnores: ['blog/**', 'images/blogimages/**']
+        globIgnores: ['blog/**', 'images/blogimages/**'],
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [/^\/blog/, /\.html$/]
       }
     })
   ],

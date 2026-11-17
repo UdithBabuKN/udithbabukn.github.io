@@ -138,7 +138,7 @@ export default function ArticlesPage() {
               })
               .slice(0, visibleArticleCount)
               .map((post) => (
-                <a href={`/blog/${post.slug}.html`} className="sk-article-card" key={post.slug}>
+                <a href={`/blog/${post.slug}.html`} className="sk-article-card" key={post.slug} target="_self">
                   <div className="sk-article-img-container">
                     <img src={`/images/blogimages/${post.image}`} alt={post.title} className="sk-article-img" loading="lazy" />
                   </div>
