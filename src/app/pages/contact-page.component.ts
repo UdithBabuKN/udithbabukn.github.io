@@ -1,18 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
-import { BreadcrumbsComponent } from '../components/breadcrumbs.component';
 import { SeoService } from '../services/seo.service';
 import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
 
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [BreadcrumbsComponent],
+  imports: [],
   template: `
     <section id="contact" style="padding: 28px 0 70px; border-bottom: none;">
       <div class="sk-container" style="max-width: 780px;">
-        <app-breadcrumbs [items]="breadcrumbs" />
-
-        <div class="sk-contact-box" style="margin-top: 20px;">
+        <div class="sk-contact-box" style="margin-top: 12px;">
           <h1 class="sk-section-heading" style="margin-bottom: 12px; text-align: center;">
             Drop a note at Udith's desk.
           </h1>
@@ -22,16 +19,14 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
 
           @if (contactStatus() === 'success') {
             <div style="text-align: center; padding: 30px 10px;">
-              <div
-                style="font-family: var(--sk-font-mono); font-size: 1.1rem; font-weight: 800; margin-bottom: 14px; color: #000000; background: var(--sk-yellow); display: inline-block; padding: 4px 14px; border-radius: 4px; border: 1.5px solid #000000;"
-              >
-                [ 🎯 DISPATCH RECORDED // RECEIVED ]
+              <div class="ca-success-badge">
+                DISPATCH RECORDED • RECEIVED
               </div>
-              <h3 style="font-family: var(--sk-font-serif); font-style: italic; font-size: 2rem; color: #000000;">
-                Message Received at Udith's desk!
-              </h3>
-              <p style="margin-top: 8px; color: #334155;">
-                Thank you for reaching out. I'll get back to you shortly!
+              <h2 class="ca-success-title">
+                Message Received at Udith's desk
+              </h2>
+              <p style="margin-top: 8px; color: var(--ca-text-secondary);">
+                Thank you for reaching out. I'll get back to you shortly.
               </p>
               <button
                 type="button"

@@ -1,5 +1,4 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { BreadcrumbsComponent } from '../components/breadcrumbs.component';
 import { IconComponent } from '../components/icon.component';
 import { blogPosts } from '../data/blog-posts.data';
 import { SeoService } from '../services/seo.service';
@@ -7,12 +6,10 @@ import { SeoService } from '../services/seo.service';
 @Component({
   selector: 'app-articles-page',
   standalone: true,
-  imports: [BreadcrumbsComponent, IconComponent],
+  imports: [IconComponent],
   template: `
     <section id="blog" class="sk-articles-section" style="padding-top: 28px; border-bottom: none; padding-bottom: 70px;">
       <div class="sk-container">
-        <app-breadcrumbs [items]="breadcrumbs" />
-
         <div style="margin-bottom: 24px; position: relative; z-index: 2;">
           <h1 class="sk-section-heading">Blog &amp; Frameworks</h1>
           <p class="sk-page-subtitle" style="margin-top: 8px;">
@@ -30,7 +27,7 @@ import { SeoService } from '../services/seo.service';
           style="margin-bottom: 24px; max-width: 460px; position: relative;"
         >
           <span
-            style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--sk-navy); display: inline-flex; pointer-events: none;"
+            style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--ca-text-muted); display: inline-flex; pointer-events: none;"
           >
             <app-icon name="search" [size]="18" />
           </span>
@@ -42,7 +39,7 @@ import { SeoService } from '../services/seo.service';
             placeholder="Search by topic, framework, or keyword..."
             [value]="searchQuery()"
             (input)="onSearchInput($event)"
-            style="width: 100%; padding: 10px 18px 10px 44px; border-radius: 9999px; border: 1.5px solid var(--sk-navy); background: #FFFFFF; font-size: 0.88rem; font-family: var(--sk-font-mono); outline: none; color: var(--sk-navy); box-shadow: 2px 2px 0px var(--sk-navy);"
+            class="ca-search-input"
           />
         </form>
 

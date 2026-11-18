@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../components/icon.component';
 import { SeoService } from '../services/seo.service';
@@ -8,117 +8,40 @@ import { SeoService } from '../services/seo.service';
   standalone: true,
   imports: [RouterLink, IconComponent],
   template: `
-    <!-- HERO SECTION: "UDITH'S DESK." -->
-    <section id="desk" class="sk-desk-hero">
-      <div class="sk-container">
-        <div class="sk-desk-header-center">
-          <h1 class="sk-desk-headline">Udith's desk.</h1>
-          <p class="sk-desk-subline">
-            Udith Babu K N; Marketing &amp; Sales Executive and IT Business Analyst from Kerala, India, currently
-            driving organic scale and operational growth.
+    <!-- HERO SECTION -->
+    <section id="desk" class="ca-hero-section">
+      <div class="sk-container ca-hero-container">
+        <div class="ca-hero-centered">
+          <h1 class="ca-hero-title">
+            <span class="ca-hero-title-top">Udith Babu K N</span>
+            <span class="ca-hero-title-sub">Scale Organic &amp; Revenue Growth</span>
+          </h1>
+
+          <p class="ca-hero-lead">
+            Marketing &amp; Sales Executive and IT Business Analyst from Kerala, India. Combining technical SEO,
+            Generative Engine Optimization (GEO), and Python data pipelines to turn search intent into measurable
+            pipeline velocity.
           </p>
-        </div>
 
-        <!-- Interactive Illustrated Desk Mat -->
-        <div class="sk-desk-stage">
-          <div class="sk-desk-top-row">
-            <div class="sk-speech-bubble-widget">
-              <div class="sk-speech-text">{{ minicomMessages[minicomIndex()] }}</div>
-
-              <div class="sk-minicom-nav" style="justify-content: space-between; align-items: center;">
-                <div class="sk-minicom-dots">
-                  @for (msg of minicomMessages; track $index) {
-                    <button
-                      type="button"
-                      [class]="'sk-minicom-dot' + (minicomIndex() === $index ? ' active' : '')"
-                      [attr.aria-label]="'Show note ' + ($index + 1)"
-                      [attr.aria-current]="minicomIndex() === $index ? 'true' : null"
-                      (click)="minicomIndex.set($index)"
-                    ></button>
-                  }
-                </div>
-                <div style="display: flex; gap: 8px;">
-                  <button type="button" class="sk-minicom-btn" (click)="prevMinicom()" aria-label="Previous note">←</button>
-                  <button type="button" class="sk-minicom-btn" (click)="nextMinicom()" aria-label="Next note">Next →</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="sk-status-note">
-              <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #000000;">
-                <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true" style="flex-shrink: 0;">
-                  <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a6 6 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707s.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a6 6 0 0 1 1.013.16l3.134-3.133a3 3 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146"/>
-                </svg>
-                <span>Current Focus</span>
-              </div>
-              <div style="font-family: var(--sk-font-serif); font-weight: 800; font-size: 1.25rem; margin-top: 6px; color: #000000;">
-                Open for Marketing Executive &amp; Growth Roles
-              </div>
-            </div>
-          </div>
-
-          <!-- Fidget & Desk Objects Row -->
-          <div class="sk-desk-items-scene">
-            <div class="sk-desk-item-card">
-              <span class="sk-desk-item-detail">[01 // GSC.350+]</span>
-              <div class="sk-metric-big">350+</div>
-              <div class="sk-desk-item-title">Daily Organic Clicks</div>
-              <p style="font-size: 0.84rem; margin: 0; color: var(--sk-ink-muted);">
-                Scaled organic search traffic from 90 to 350+ via technical crawl optimization.
-              </p>
-            </div>
-
-            <div class="sk-desk-item-card">
-              <span class="sk-desk-item-detail">[02 // MBA.BTECH]</span>
-              <div class="sk-metric-big">MBA &amp; B.Tech</div>
-              <div class="sk-desk-item-title">Dual Degree Focus</div>
-              <p style="font-size: 0.84rem; margin: 0; color: var(--sk-ink-muted);">
-                Operations &amp; Marketing (72.9%) + Information Technology (78.4%).
-              </p>
-            </div>
-
-            <div class="sk-desk-item-card">
-              <span class="sk-desk-item-detail">[03 // QA.98%]</span>
-              <div class="sk-metric-big">98%</div>
-              <div class="sk-desk-item-title">UAT Compliance</div>
-              <p style="font-size: 0.84rem; margin: 0; color: var(--sk-ink-muted);">
-                100+ business requirements documented and approved at Cyber Sapient.
-              </p>
-            </div>
-
-            <div class="sk-desk-item-card">
-              <span class="sk-desk-item-detail">[04 // AI.-30%]</span>
-              <div class="sk-metric-big">-30%</div>
-              <div class="sk-desk-item-title">Triage Time</div>
-              <p style="font-size: 0.84rem; margin: 0; color: var(--sk-ink-muted);">
-                Streamlined customer service workflows using AI integrations at Techmindz.
-              </p>
-            </div>
-          </div>
-
-          <div class="sk-desk-bottom-row" style="justify-content: center;">
-            <a routerLink="/work" class="sk-action-pill view-work-pill">View Work ↓</a>
+          <div class="ca-hero-cta-group ca-hero-cta-centered">
+            <a routerLink="/work" class="ca-btn ca-btn-primary ca-btn-lg">View Selected Work</a>
+            <a routerLink="/contact" class="ca-btn ca-btn-secondary ca-btn-lg">Drop a Note</a>
           </div>
         </div>
 
-        <!-- Social Links Ribbon -->
-        <div style="margin-top: 36px; text-align: center;">
-          <span
-            style="font-size: 0.84rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: #FFFFFF; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 1px 2px #000000;"
-          >
-            Connect Across Channels
-          </span>
-
-          <div class="sk-socials-grid">
+        <!-- Authority & Social Channels Strip -->
+        <div class="ca-authority-strip">
+          <div class="ca-authority-label">Connect across channels &amp; publications</div>
+          <div class="ca-authority-badges">
             @for (item of socialLinks; track item.url) {
               <a
                 [href]="item.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="sk-social-pill"
+                class="ca-authority-badge"
                 [title]="item.name"
               >
-                <app-icon [name]="item.icon" [size]="16" />
+                <app-icon [name]="item.icon" [size]="15" />
                 <span>{{ item.name }}</span>
               </a>
             }
@@ -127,45 +50,53 @@ import { SeoService } from '../services/seo.service';
       </div>
     </section>
 
-    <!-- EXPERIENCE & EDUCATION (Timeline Paper) -->
-    <section class="sk-experience-section" style="padding: 60px 0 20px;">
+    <!-- EXPERIENCE & EDUCATION (Frosted Rose Band) -->
+    <section class="sk-experience-section ca-section-alt" aria-labelledby="experience-heading">
       <div class="sk-container">
+        <div class="ca-section-head">
+          <span class="ca-section-tag">Career &amp; Credentials</span>
+          <h2 id="experience-heading" class="ca-section-title">Work experience &amp; academic foundation</h2>
+          <p class="ca-section-desc">
+            Hands-on leadership across growth marketing, business development, and IT business analysis.
+          </p>
+        </div>
+
         <div class="sk-timeline-paper">
           <div>
-            <h2 class="sk-timeline-column-title">Work Experience</h2>
+            <h3 class="sk-timeline-column-title">Work Experience</h3>
             <div class="sk-timeline-entries">
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">Aug 2025 – Present</div>
-                <h3 class="sk-timeline-role">Executive – Marketing &amp; Sales</h3>
+                <h4 class="sk-timeline-role">Executive – Marketing &amp; Sales</h4>
                 <div class="sk-timeline-org">Rêve</div>
-                <p style="font-size: 0.86rem; margin-top: 6px; color: var(--sk-ink-muted);">
+                <p class="ca-timeline-desc">
                   Directing comprehensive marketing campaigns, SEO audits, and organic ranking growth.
                 </p>
               </div>
 
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">May 2025 – Aug 2025</div>
-                <h3 class="sk-timeline-role">Business Development Executive</h3>
+                <h4 class="sk-timeline-role">Business Development Executive</h4>
                 <div class="sk-timeline-org">Accelgrowth Technology Pvt. Ltd.</div>
-                <p style="font-size: 0.86rem; margin-top: 6px; color: var(--sk-ink-muted);">
+                <p class="ca-timeline-desc">
                   Conducted client discovery, customer trend analytics, and managed UAT requirements.
                 </p>
               </div>
 
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">Sep 2024 – Dec 2024</div>
-                <h3 class="sk-timeline-role">Business Analyst Intern</h3>
+                <h4 class="sk-timeline-role">Business Analyst Intern</h4>
                 <div class="sk-timeline-org">CST - Cyber Sapient</div>
-                <p style="font-size: 0.86rem; margin-top: 6px; color: var(--sk-ink-muted);">
+                <p class="ca-timeline-desc">
                   Drafted 100+ business specs and analyzed 50+ datasets with Python.
                 </p>
               </div>
 
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">Aug 2023 – Sep 2023</div>
-                <h3 class="sk-timeline-role">Operations Intern</h3>
+                <h4 class="sk-timeline-role">Operations Intern</h4>
                 <div class="sk-timeline-org">Techmindz</div>
-                <p style="font-size: 0.86rem; margin-top: 6px; color: var(--sk-ink-muted);">
+                <p class="ca-timeline-desc">
                   Automated support workflows with AI tools, cutting response latency by 30%.
                 </p>
               </div>
@@ -173,35 +104,35 @@ import { SeoService } from '../services/seo.service';
           </div>
 
           <div>
-            <h2 class="sk-timeline-column-title">Education &amp; Honors</h2>
+            <h3 class="sk-timeline-column-title">Education &amp; Honors</h3>
             <div class="sk-timeline-entries">
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">2022 – 2024</div>
-                <h3 class="sk-timeline-role">MBA (Operations &amp; Marketing)</h3>
+                <h4 class="sk-timeline-role">MBA (Operations &amp; Marketing)</h4>
                 <div class="sk-timeline-org">College of Engineering Thalassery • 7.29 CGPA</div>
-                <p style="font-size: 0.86rem; margin-top: 6px; color: var(--sk-ink-muted);">
+                <p class="ca-timeline-desc">
                   Specialized in Supply Chain, Operations Research, and Data Marketing.
                 </p>
               </div>
 
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">2018 – 2022</div>
-                <h3 class="sk-timeline-role">B.Tech (Information Technology)</h3>
+                <h4 class="sk-timeline-role">B.Tech (Information Technology)</h4>
                 <div class="sk-timeline-org">College of Engineering Thalassery • 7.84 CGPA</div>
-                <p style="font-size: 0.86rem; margin-top: 6px; color: var(--sk-ink-muted);">
+                <p class="ca-timeline-desc">
                   Software engineering, database architecture, and algorithms.
                 </p>
               </div>
 
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">Industry Credential</div>
-                <h3 class="sk-timeline-role">JPMorgan Chase Agile Job Simulation</h3>
+                <h4 class="sk-timeline-role">JPMorgan Chase Agile Job Simulation</h4>
                 <div class="sk-timeline-org">Forage Certified</div>
                 <a
                   href="https://drive.google.com/file/d/1H1VZzktMJv3bnaK4FfB7O6NTazp3L6CK/view?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style="color: #FFFFFF; background: #000000; border: 1px solid #000000; border-radius: 4px; padding: 3px 10px; font-weight: 800; font-size: 0.80rem; display: inline-block; margin-top: 8px; text-decoration: none;"
+                  class="ca-credential-link"
                 >
                   View Credential ↗
                 </a>
@@ -209,13 +140,13 @@ import { SeoService } from '../services/seo.service';
 
               <div class="sk-timeline-card">
                 <div class="sk-timeline-date">Industry Credential</div>
-                <h3 class="sk-timeline-role">micro1 Business Analyst Certified</h3>
+                <h4 class="sk-timeline-role">micro1 Business Analyst Certified</h4>
                 <div class="sk-timeline-org">micro1 AI Evaluated</div>
                 <a
                   href="https://drive.google.com/file/d/11k8iMDoCFEd-BMV-rPB-I52-clnJZOyO/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style="color: #FFFFFF; background: #000000; border: 1px solid #000000; border-radius: 4px; padding: 3px 10px; font-weight: 800; font-size: 0.80rem; display: inline-block; margin-top: 8px; text-decoration: none;"
+                  class="ca-credential-link"
                 >
                   View Credential ↗
                 </a>
@@ -227,11 +158,12 @@ import { SeoService } from '../services/seo.service';
     </section>
 
     <!-- FAQ ACCORDION (native <details>/<summary>, keyboard & find-in-page accessible) -->
-    <section class="sk-about-section" aria-labelledby="faq-heading" style="border-bottom: none; padding-bottom: 60px;">
+    <section class="sk-about-section" aria-labelledby="faq-heading">
       <div class="sk-container" style="max-width: 880px;">
-        <h2 id="faq-heading" class="sk-section-heading" style="text-align: center; margin-bottom: 30px;">
-          Frequently Asked Questions
-        </h2>
+        <div class="ca-section-head">
+          <span class="ca-section-tag">FAQ</span>
+          <h2 id="faq-heading" class="ca-section-title">Frequently Asked Questions</h2>
+        </div>
 
         <div class="sk-faq-list">
           @for (faq of faqs; track faq.q) {
@@ -246,16 +178,6 @@ import { SeoService } from '../services/seo.service';
   `,
 })
 export class HomePageComponent {
-  readonly minicomIndex = signal(0);
-
-  readonly minicomMessages = [
-    "Hi! Step up to Udith's desk! Marketing & Sales Executive and IT Business Analyst.",
-    'Dual Degree: MBA in Operations & Marketing + B.Tech in Information Technology.',
-    'Google Search impact: Scaled organic clicks from 90 to 350+ peak daily!',
-    'Shipped 5+ live production web tools with Python, MySQL, and Angular.',
-    'Say hi or discuss high-impact roles: udithbabuvarrier@gmail.com',
-  ];
-
   readonly socialLinks = [
     { name: 'LinkedIn', icon: 'ph-linkedin-logo', url: 'https://www.linkedin.com/in/udith-babu-k-n' },
     { name: 'Instagram', icon: 'ph-instagram-logo', url: 'https://www.instagram.com/udith_babu_k_n' },
@@ -390,13 +312,5 @@ export class HomePageComponent {
         ],
       },
     });
-  }
-
-  nextMinicom(): void {
-    this.minicomIndex.update((i) => (i + 1) % this.minicomMessages.length);
-  }
-
-  prevMinicom(): void {
-    this.minicomIndex.update((i) => (i - 1 + this.minicomMessages.length) % this.minicomMessages.length);
   }
 }

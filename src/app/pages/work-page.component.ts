@@ -1,16 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { BreadcrumbsComponent } from '../components/breadcrumbs.component';
 import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-work-page',
   standalone: true,
-  imports: [BreadcrumbsComponent],
+  imports: [],
   template: `
     <section id="work" class="sk-work-section" style="padding-top: 28px;">
       <div class="sk-container">
-        <app-breadcrumbs [items]="breadcrumbs" />
-
         <div style="margin-bottom: 32px; position: relative; z-index: 2;">
           <h1 class="sk-section-heading">Selected Projects &amp; Tools</h1>
           <p class="sk-page-subtitle" style="margin-top: 8px;">

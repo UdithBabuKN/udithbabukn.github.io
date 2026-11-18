@@ -7,25 +7,18 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <footer class="sk-footer">
-      <!-- Organic Hand-Drawn Wavy Top Divider -->
+      <!-- Smooth Organic Dark Wave Top Transition -->
       <div class="sk-footer-wave-wrap" aria-hidden="true">
         <svg
           class="sk-footer-wave-svg"
-          viewBox="0 0 1440 50"
+          viewBox="0 0 1440 56"
           preserveAspectRatio="none"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M0,28 C60,28 100,8 160,8 C220,8 250,38 310,36 C370,34 430,16 490,16 C550,16 590,34 660,32 C730,30 800,18 870,22 C940,26 1000,32 1060,24 C1120,16 1150,6 1220,6 C1290,6 1320,38 1380,34 C1400,32 1420,26 1440,24 L1440,50 L0,50 Z"
-            fill="#FFFFFF"
-          />
-          <path
-            d="M0,28 C60,28 100,8 160,8 C220,8 250,38 310,36 C370,34 430,16 490,16 C550,16 590,34 660,32 C730,30 800,18 870,22 C940,26 1000,32 1060,24 C1120,16 1150,6 1220,6 C1290,6 1320,38 1380,34 C1400,32 1420,26 1440,24"
-            stroke="#000000"
-            stroke-width="2"
-            vector-effect="non-scaling-stroke"
-            fill="none"
+            d="M0,32 C180,54 360,8 580,26 C800,44 980,10 1200,24 C1320,32 1390,38 1440,30 L1440,56 L0,56 Z"
+            fill="#0B0B0E"
           />
         </svg>
       </div>
@@ -33,7 +26,7 @@ import { RouterLink } from '@angular/router';
       <div class="sk-footer-body">
         <div class="sk-container">
           <div class="sk-footer-bar">
-            <div>© 2026 Udith Babu K N • Kerala, India</div>
+            <div class="ca-footer-copy">© 2026 Udith Babu K N • Kerala, India</div>
 
             <div class="sk-footer-links">
               <a routerLink="/" class="sk-footer-link">Home</a>
@@ -60,7 +53,7 @@ import { RouterLink } from '@angular/router';
         <h3 id="tos-modal-title" class="sk-legal-modal-title">Terms of Service</h3>
         <form method="dialog">
           <button type="submit" class="sk-legal-close-btn" aria-label="Close Terms of Service">
-            Close [ESC]
+            Close
           </button>
         </form>
       </div>
@@ -123,7 +116,7 @@ import { RouterLink } from '@angular/router';
         <h3 id="privacy-modal-title" class="sk-legal-modal-title">Privacy Policy</h3>
         <form method="dialog">
           <button type="submit" class="sk-legal-close-btn" aria-label="Close Privacy Policy">
-            Close [ESC]
+            Close
           </button>
         </form>
       </div>

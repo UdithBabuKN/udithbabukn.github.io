@@ -20,6 +20,7 @@ const LEGACY_HASH_ROUTES: Record<string, string> = {
   imports: [RouterOutlet, NavbarComponent, FooterComponent],
   template: `
     <div class="sk-page-wrapper">
+      <a href="#main-content" class="skip-link">Skip to content</a>
       <app-navbar />
       <main id="main-content">
         <router-outlet />

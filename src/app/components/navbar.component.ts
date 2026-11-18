@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -6,36 +6,65 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   template: `
-    <header class="sk-header">
-      <div class="sk-container sk-header-inner">
-        <nav aria-label="Main Navigation">
-          <ul class="sk-nav-pills">
-            @for (item of navItems; track item.path; let idx = $index) {
+    <header class="ca-site-header">
+      <div class="ca-nav-wrap ca-nav-centered">
+        <nav aria-label="Main Navigation" class="ca-nav-main">
+          <ul [class]="'ca-nav-links' + (mobileOpen() ? ' mobile-open' : '')">
+            @for (item of navItems; track item.path) {
               <li>
                 <a
                   [routerLink]="item.path"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-                  [class]="'sk-nav-pill-btn ' + item.pillClass + ' dispersed-item-' + idx"
+                  class="ca-nav-link"
+                  (click)="closeMenu()"
                 >
-                  <span class="sk-nav-index-tag">{{ item.id }}.</span>
-                  <span>{{ item.name }}</span>
+                  {{ item.name }}
                 </a>
               </li>
             }
           </ul>
         </nav>
+
+        <button
+          type="button"
+          class="ca-mobile-toggle"
+          [attr.aria-expanded]="mobileOpen()"
+          aria-label="Toggle navigation menu"
+          (click)="toggleMenu()"
+        >
+          @if (mobileOpen()) {
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          } @else {
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          }
+          <span class="ca-mobile-toggle-label">Menu</span>
+        </button>
       </div>
     </header>
   `,
 })
 export class NavbarComponent {
+  readonly mobileOpen = signal(false);
+
   readonly navItems = [
-    { id: '01', name: 'Home', path: '/', pillClass: 'pill-home' },
-    { id: '02', name: 'Work', path: '/work', pillClass: 'pill-work' },
-    { id: '03', name: 'About', path: '/about', pillClass: 'pill-about' },
-    { id: '04', name: 'Skills', path: '/skills', pillClass: 'pill-skills' },
-    { id: '05', name: 'Blog', path: '/blog', pillClass: 'pill-blog pill-articles' },
-    { id: '06', name: 'Contact', path: '/contact', pillClass: 'pill-contact' },
+    { name: 'Home', path: '/' },
+    { name: 'Work', path: '/work' },
+    { name: 'About', path: '/about' },
+    { name: 'Skills', path: '/skills' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Contact', path: '/contact' },
   ];
+
+  toggleMenu(): void {
+    this.mobileOpen.update((v) => !v);
+  }
+
+  closeMenu(): void {
+    this.mobileOpen.set(false);
+  }
 }
