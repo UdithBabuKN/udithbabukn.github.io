@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
 
 export default function ContactPage() {
   const [contactStatus, setContactStatus] = useState('idle');
   const [contactError, setContactError] = useState('');
+
+  // Sync aria-invalid and aria-describedby strictly with :user-invalid
+  const syncFieldAria = (el, forceInvalid = false) => {
+    if (!el || !el.dataset?.error) return;
+    const errorId = el.dataset.error;
+    const isInvalid = forceInvalid || (CSS.supports('selector(:user-invalid)') ? el.matches(':user-invalid') : !el.validity.valid);
+    el.setAttribute('aria-invalid', isInvalid ? 'true' : 'false');
+    if (isInvalid) {
+      el.setAttribute('aria-describedby', errorId);
+    } else {
+      el.removeAttribute('aria-describedby');
+    }
+  };
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
@@ -132,52 +146,81 @@ export default function ContactPage() {
                 tooldescription="Send a direct contact inquiry or collaboration message to Udith Babu K N"
                 toolautosubmit="false"
               >
-                <input type="hidden" name="access_key" value="87c7f836-6a95-44f3-8391-314433633006" />
+                <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
                 <input type="hidden" name="subject" value="New Portfolio Dispatch (Shelby Desk Style)" />
                 <input type="hidden" name="from_name" value="Udith's Desk" />
                 <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+                <div className="sk-form-row">
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
+                    <label htmlFor="contact-name" style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
                       Your Name
                     </label>
                     <input 
+                      id="contact-name"
                       type="text" 
                       name="name" 
+                      autoComplete="name"
+                      aria-invalid="false"
+                      data-error="contact-name-error"
                       description="Sender's full name"
                       placeholder="e.g. Jane Doe" 
                       required 
+                      onBlur={(e) => syncFieldAria(e.target)}
+                      onInvalid={(e) => syncFieldAria(e.target, true)}
+                      onChange={(e) => { if (e.target.getAttribute('aria-invalid') === 'true') syncFieldAria(e.target); }}
                       className="sk-form-input"
                     />
+                    <div id="contact-name-error" className="sk-field-error">
+                      <span role="img" aria-label="Error">!</span> Please enter your name.
+                    </div>
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
+                    <label htmlFor="contact-email" style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
                       Your Email
                     </label>
                     <input 
+                      id="contact-email"
                       type="email" 
                       name="email" 
+                      autoComplete="email"
+                      aria-invalid="false"
+                      data-error="contact-email-error"
                       description="Sender's email address for direct reply"
                       placeholder="e.g. jane@company.com" 
                       required 
+                      onBlur={(e) => syncFieldAria(e.target)}
+                      onInvalid={(e) => syncFieldAria(e.target, true)}
+                      onChange={(e) => { if (e.target.getAttribute('aria-invalid') === 'true') syncFieldAria(e.target); }}
                       className="sk-form-input"
                     />
+                    <div id="contact-email-error" className="sk-field-error">
+                      <span role="img" aria-label="Error">!</span> Enter an email address in the format you@example.com.
+                    </div>
                   </div>
                 </div>
 
                 <div style={{ marginBottom: '20px' }}>
-                  <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
+                  <label htmlFor="contact-message" style={{ display: 'block', fontSize: '0.76rem', fontWeight: '800', marginBottom: '6px', textTransform: 'uppercase', color: '#000000' }}>
                     Note or Opportunity
                   </label>
                   <textarea 
+                    id="contact-message"
                     name="message" 
+                    aria-invalid="false"
+                    data-error="contact-message-error"
                     description="Message, inquiry, or partnership opportunity details"
                     rows="4" 
                     placeholder="Tell me what you have in mind..." 
                     required 
+                    onBlur={(e) => syncFieldAria(e.target)}
+                    onInvalid={(e) => syncFieldAria(e.target, true)}
+                    onChange={(e) => { if (e.target.getAttribute('aria-invalid') === 'true') syncFieldAria(e.target); }}
                     className="sk-form-textarea"
                   ></textarea>
+                  <div id="contact-message-error" className="sk-field-error">
+                    <span role="img" aria-label="Error">!</span> Please enter your message.
+                  </div>
                 </div>
 
                 <button 

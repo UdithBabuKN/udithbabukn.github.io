@@ -19,17 +19,10 @@ I specialize in technical SEO audits, search intent architecture, Google Search 
 
 ## Architectural & Design Aesthetic
 
-- **Design System:** Exclusive **Burgundy & Dusty Rose Palette** visual hierarchy.
-  - Primary Deep Burgundy (`#7D0642`)
-  - Medium Dusty Rose (`#AB5E7B`)
-  - Muted Blush Rose (`#D59B9B`)
-  - Warm Cream / Almond Highlight (`#F2DBCF`)
-  - High-Legibility Deep Velvet Wine Body (`#59042F`)
-  - Crisp Architectural White Surfaces (`#FFFFFF`) & Soft Warm Cream Tint (`#FAF4F0`)
-  - Dynamic Burgundy ASCII Character Background Field
+- **Design System:** High-contrast monochrome cards (`#FFFFFF` / `#000000`) with brutalist `2px` borders and hard shadows set over an interactive WebGL fluid canvas (`olivasky.png`).
 - **Modern Geometric Typography:** Google Fonts pairings featuring **Outfit**, **Plus Jakarta Sans**, and **JetBrains Mono**.
 - **Interactive Desk Mat:** Tactile Minicom speech widget with status cards, Google Search metrics, and interactive project previews.
-- **Micro-Interactions:** Zero-shadow tactile pill buttons, card hover lift, and responsive accordion drawer systems.
+- **Micro-Interactions:** Tactile pill navigation, tilted desk cards that straighten on hover, and responsive accordion drawer systems.
 
 ---
 
@@ -43,39 +36,45 @@ The portfolio is structured as a high-performance Single Page Application (SPA) 
 | `/work` | **Work** | Production case studies & live applications (*SEO & Analytics Dashboard*, *Web Analyzer Pro*, *Malicious JPEG Security Extension*, *Free LinkedIn Banner Collection*, *ImageForge*). |
 | `/about` | **About** | Professional ethos, data & search mechanics manifesto, and Agile delivery credentials memo sheets. |
 | `/skills` | **Skills** | Core competencies across *Marketing & SEO*, *Core Technologies*, *Project & Design*, and *Business & Analysis*. |
-| `/articles`| **Articles** | Searchable digital marketing and sales library with category filters, pagination, and direct access to 100 deep-dive articles. |
+| `/blog` | **Blog** | Searchable digital marketing and sales library with category filters, pagination, and direct access to 150 deep-dive static HTML articles. |
 | `/contact` | **Contact** | Integrated Web3Forms contact form with direct validation and social channel access. |
 
 ---
 
-## Advanced SEO & Schema Markup
+## Modern Web Platform & SEO Architecture
 
+- **Native HTML & CSS Primitives:**
+  - Native `<dialog>` legal modals (`showModal()`, `closedby="any"` with Safari bounds fallback, and `overscroll-behavior: contain` backdrop scroll locking).
+  - Native `<details>` / `<summary>` FAQ accordion with `::details-content` progressive animations (`prefers-reduced-motion` aware).
+  - Post-interaction form validation via `:user-invalid` / `:user-valid`, `autocomplete`, and synced `aria-invalid` / `aria-describedby`.
+  - Off-screen blog card deferral using `content-visibility: auto` paired with `contain-intrinsic-size`.
+  - Idle-pausing WebGL fluid canvas (`src/components/LiquidBackground.jsx`).
 - **Schema.org Structured Data (JSON-LD):**
-  - `@type: WebSite` & `@type: ProfilePage` on the Home page.
-  - `@type: CollectionPage` on the Work and Articles pages.
-  - `@type: AboutPage` on the About page.
-  - `@type: ContactPage` on the Contact page.
-  - Semantic `@type: BreadcrumbList` microdata on all subpages for rich search engine result snippets.
-- **GitHub Pages SPA Routing:** Configured with `public/404.html` and query redirect handling to support direct URL access, refreshes, and deep links without 404 errors.
-- **Automated Sitemaps & Robots:** XML sitemaps (`sitemap.xml`, `sitemap-pages.xml`, `sitemap-blog.xml`) with updated priority indices and clean canonical links.
+  - `@type: ProfilePage` (in `index.html`) & `@type: FAQPage` on the Home page.
+  - `@type: CollectionPage` on the Work page and `CollectionPage` / `Blog` on `/blog`.
+  - `@type: AboutPage` on `/about` and `@type: ContactPage` on `/contact`.
+  - Semantic `@type: BreadcrumbList` microdata across subpages.
+- **Routing, PWA & Discovery:**
+  - GitHub Pages SPA fallback (`public/404.html`) + Workbox service worker (`vite-plugin-pwa`) configured to pass `/blog/*.html` directly to static articles.
+  - XML sitemaps (`sitemap.xml`, `sitemap-pages.xml`, `sitemap-blog.xml`), RSS feed (`rss.xml`), `robots.txt`, `llms.txt`, `.well-known/ard.json`, and in-browser WebMCP tools (`src/utils/webmcp.js`).
 
 ---
 
 ## Tech Stack
 
 - **Framework:** React 19 + React Router DOM v7
-- **Bundler:** Vite 8 (ESM build with lightning-fast HMR)
+- **Bundler & PWA:** Vite 8 + `vite-plugin-pwa` (Workbox)
 - **Head & SEO:** React Helmet Async
-- **Icons:** Phosphor Icons (SVG / Web Font)
-- **Styling:** Vanilla CSS (`src/shelbyStyle.css`) with modular design tokens and zero heavy UI frameworks
-- **Deployment:** GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)
+- **Icons:** Custom inline SVG component (`src/components/Icons.jsx`) + Phosphor Icons on static blog pages
+- **Styling:** Vanilla CSS (`src/shelbyStyle.css` and `public/style.css`) with zero heavy UI frameworks
+- **Deployment:** GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`, running lint + build on push to `main`)
 
 ---
 
 ## Local Development
 
 ### Prerequisites
-- Node.js (v18 or higher recommended)
+- Node.js `22+` (or `20.19+`, required by Vite 8 and ESLint 10)
 - npm
 
 ### Setup & Run
@@ -108,4 +107,4 @@ npm run preview
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source under the MIT License.

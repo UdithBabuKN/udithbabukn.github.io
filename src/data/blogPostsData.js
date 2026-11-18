@@ -1,6 +1,6 @@
 export const blogPosts = [
     {
-        "category": "Unit Economics",
+        "category": "Playbook",
         "title": "B2B Customer Acquisition Cost (CAC) Modeling: The Quantitative CFO Playbook",
         "excerpt": "Master B2B Customer Acquisition Cost (CAC) Modeling with mathematical formulas, capital payback curves, and board-level unit economic SQL architectures for 2026/2027.",
         "readTime": "12 min read",
@@ -8,7 +8,7 @@ export const blogPosts = [
         "image": "b2b-cac-modeling-quantitative-playbook.webp"
     },
     {
-        "category": "AI & Search",
+        "category": "Growth & Analytics",
         "title": "LLM Knowledge Graph Ingestion: How Frontier AI Models Digest Enterprise Content",
         "excerpt": "Explore LLM knowledge graph ingestion mechanics. Learn how OpenAI o3, Gemini 2.5, and Claude 3.7 parse entity triples, extract relationship graphs, and index enterprise authority.",
         "readTime": "13 min read",
@@ -16,7 +16,7 @@ export const blogPosts = [
         "image": "llm-knowledge-graph-ingestion-mechanics.webp"
     },
     {
-        "category": "Data Engineering",
+        "category": "Growth & Analytics",
         "title": "Server-Side Tracking Architecture: Zero-Loss Event Telemetry with Google Cloud & AWS",
         "excerpt": "Architect zero-loss server-side event tracking pipelines with Google Cloud Run, AWS Lambda, and BigQuery. Eliminate ad-blocker dropouts and Safari ITP attribution decay.",
         "readTime": "14 min read",
@@ -24,7 +24,7 @@ export const blogPosts = [
         "image": "server-side-tracking-telemetry-architecture.webp"
     },
     {
-        "category": "Strategy",
+        "category": "Growth & Analytics",
         "title": "Category Creation vs. Category Capture: The $100M Enterprise Market Sizing Formula",
         "excerpt": "Calculate TAM expansion and category dominance. The quantitative formula for shifting from expensive competitor capture to high-margin category creation.",
         "readTime": "11 min read",
@@ -32,7 +32,7 @@ export const blogPosts = [
         "image": "category-creation-vs-capture-market-sizing.webp"
     },
     {
-        "category": "Analytics & ML",
+        "category": "Growth & Analytics",
         "title": "Algorithmic Multi-Touch Attribution: Implementing Shapley Value Models in Python",
         "excerpt": "Implement algorithmic multi-touch attribution using cooperative game theory and Shapley values in Python. Replace biased first-touch and last-touch models with mathematical attribution.",
         "readTime": "15 min read",
@@ -40,7 +40,7 @@ export const blogPosts = [
         "image": "algorithmic-multi-touch-attribution-shapley-python.webp"
     },
     {
-        "category": "Agentic Systems",
+        "category": "Sales Excellence",
         "title": "Autonomous Sales SDR Agents: Engineering LLM Workflows That Book Qualified Enterprise Demos",
         "excerpt": "Engineer autonomous AI SDR agent pipelines with stateful LangGraph workflows, multi-agent research tools, and verified multi-channel outbound cadence orchestration.",
         "readTime": "12 min read",
@@ -48,7 +48,7 @@ export const blogPosts = [
         "image": "autonomous-sales-sdr-agents-engineering.webp"
     },
     {
-        "category": "SEO Architecture",
+        "category": "Playbook",
         "title": "Enterprise Topic Clusters & Semantic Cannibalization: The 500-Page Architecture Blueprint",
         "excerpt": "Eliminate semantic keyword cannibalization across massive 500+ page enterprise web hubs. Learn how to design orthogonal vector embeddings and internal pagerank flow.",
         "readTime": "13 min read",
@@ -56,7 +56,7 @@ export const blogPosts = [
         "image": "enterprise-topic-clusters-semantic-cannibalization.webp"
     },
     {
-        "category": "Pricing & RevOps",
+        "category": "Sales Excellence",
         "title": "Dynamic B2B Pricing Engines: Algorithmic Willingness-to-Pay and Contract Optimization",
         "excerpt": "Build dynamic B2B pricing algorithms and willingness-to-pay elasticity curves. Optimize enterprise contract terms, discounting boundaries, and expansion ACV.",
         "readTime": "14 min read",
@@ -64,7 +64,7 @@ export const blogPosts = [
         "image": "dynamic-b2b-pricing-engines-optimization.webp"
     },
     {
-        "category": "Executive Strategy",
+        "category": "Playbook",
         "title": "The Chief Growth Officer Playbook: Bridging Software Engineering, RevOps, and Financial Modeling",
         "excerpt": "The modern CGO executive mandate for 2026 and 2027: How technical growth leaders align distributed engineering teams, deterministic RevOps, and venture board economics.",
         "readTime": "16 min read",
@@ -72,7 +72,7 @@ export const blogPosts = [
         "image": "chief-growth-officer-playbook-2026-2027.webp"
     },
     {
-        "category": "Data Science & SEO",
+        "category": "Growth & Analytics",
         "title": "Mathematical Content Defensibility: Calculating Information Gain Ratios in Python",
         "excerpt": "Quantify and automate content defensibility using Shannon entropy, Kullback-Leibler divergence, and token distribution analysis in Python to win LLM citations.",
         "readTime": "12 min read",

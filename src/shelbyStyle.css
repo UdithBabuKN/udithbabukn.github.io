@@ -325,9 +325,7 @@ body {
    ========================================================================== */
 .sk-header:hover .sk-nav-pill-btn,
 .sk-nav-pills:hover .sk-nav-pill-btn,
-.sk-nav-pill-btn:hover,
-body.is-assembled .sk-nav-pill-btn,
-.is-assembled .sk-nav-pill-btn {
+.sk-nav-pill-btn:hover {
   transform: translate(0, 0) rotate(0deg) !important;
   border-style: solid !important;
   border-width: 1.5px !important;
@@ -460,9 +458,7 @@ body.is-assembled .sk-nav-pill-btn,
   will-change: transform, box-shadow, border-color;
 }
 
-.sk-speech-bubble-widget:hover,
-body.is-assembled .sk-speech-bubble-widget,
-.is-assembled .sk-speech-bubble-widget {
+.sk-speech-bubble-widget:hover {
   transform: rotate(0deg) !important;
   border-style: solid !important;
   border-color: #000000 !important;
@@ -563,9 +559,7 @@ body.is-assembled .sk-speech-bubble-widget,
   will-change: transform, box-shadow, border-color;
 }
 
-.sk-status-note:hover,
-body.is-assembled .sk-status-note,
-.is-assembled .sk-status-note {
+.sk-status-note:hover {
   transform: rotate(0deg) scale(1.02) !important;
   border-style: solid !important;
   border-color: #000000 !important;
@@ -614,9 +608,7 @@ body.is-assembled .sk-status-note,
 /* ==========================================================================
    MAGNETIC SNAP ON HOVER (SHOWS ORIGINAL WAY)
    ========================================================================== */
-.sk-desk-item-card:hover,
-body.is-assembled .sk-desk-item-card,
-.is-assembled .sk-desk-item-card {
+.sk-desk-item-card:hover {
   transform: translate(0, -6px) rotate(0deg) !important;
   border: 2px solid #000000 !important;
   background: #FFFFFF !important;
@@ -839,9 +831,7 @@ body.is-assembled .sk-desk-item-card,
   transform: rotate(-2.2deg) translateY(-3px);
 }
 
-.sk-memo-sheet:hover,
-body.is-assembled .sk-memo-sheet:hover,
-.is-assembled .sk-memo-sheet:hover {
+.sk-memo-sheet:hover {
   border: 2px solid #000000 !important;
   background: #FFFFFF !important;
   transform: translateY(-8px) rotate(0deg) scale(1.015) !important;
@@ -942,9 +932,7 @@ body.is-assembled .sk-memo-sheet:hover,
   transform: rotate(0.8deg);
 }
 
-.sk-project-card:hover,
-body.is-assembled .sk-project-card:hover,
-.is-assembled .sk-project-card:hover {
+.sk-project-card:hover {
   border: 2px solid #000000 !important;
   background: #FFFFFF !important;
   transform: translateY(-8px) rotate(0deg) scale(1.015) !important;
@@ -1046,9 +1034,7 @@ body.is-assembled .sk-project-card:hover,
   transform: rotate(1.2deg);
 }
 
-.sk-sticky-note:hover,
-body.is-assembled .sk-sticky-note:hover,
-.is-assembled .sk-sticky-note:hover {
+.sk-sticky-note:hover {
   border: 2px solid #000000 !important;
   background: #FFFFFF !important;
   transform: translateY(-8px) rotate(0deg) scale(1.015) !important;
@@ -1145,9 +1131,7 @@ body.is-assembled .sk-sticky-note:hover,
   transform: rotate(0.7deg);
 }
 
-.sk-timeline-card:hover,
-body.is-assembled .sk-timeline-card:hover,
-.is-assembled .sk-timeline-card:hover {
+.sk-timeline-card:hover {
   border: 2px solid #000000 !important;
   background: #FFFFFF !important;
   transform: translateY(-6px) rotate(0deg) scale(1.01) !important;
@@ -1276,13 +1260,16 @@ body.is-assembled .sk-timeline-card:hover,
   transform-origin: center center;
 }
 
+.sk-article-card-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 420px;
+}
+
 .sk-article-card:nth-child(even) {
   transform: rotate(0.8deg);
 }
 
-.sk-article-card:hover,
-body.is-assembled .sk-article-card:hover,
-.is-assembled .sk-article-card:hover {
+.sk-article-card:hover {
   border: 2px solid #000000 !important;
   background: #FFFFFF !important;
   transform: translateY(-8px) rotate(0deg) scale(1.015) !important;
@@ -1396,9 +1383,13 @@ body.is-assembled .sk-article-card:hover,
   transition: var(--sk-spring-snap);
 }
 
-.sk-faq-item:hover,
-body.is-assembled .sk-faq-item,
-.is-assembled .sk-faq-item {
+.sk-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sk-faq-item:hover {
   border-style: solid !important;
   border-color: #000000 !important;
   background: #FFFFFF !important;
@@ -1406,16 +1397,62 @@ body.is-assembled .sk-faq-item,
   transform: translateY(-2px);
 }
 
-.sk-faq-q {
+.sk-faq-summary {
+  list-style: none;
   font-family: var(--sk-font-serif);
   font-style: normal;
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #000000;
   margin: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.sk-faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.sk-faq-summary::before {
+  content: "▸";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  font-size: 1.05rem;
+  color: #000000;
+  rotate: 0deg;
+}
+
+.sk-faq-item[open] > .sk-faq-summary::before {
+  rotate: 90deg;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sk-faq-summary::before {
+    transition: rotate 0.2s ease;
+  }
+
+  .sk-faq-item::details-content {
+    transition: block-size, content-visibility, display;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    transition-behavior: allow-discrete;
+  }
+}
+
+.sk-faq-item::details-content {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
+}
+
+.sk-faq-item:not([open])::details-content {
+  block-size: 0;
 }
 
 .sk-faq-a {
@@ -1423,7 +1460,9 @@ body.is-assembled .sk-faq-item,
   font-weight: 500;
   color: var(--sk-ink-muted);
   line-height: 1.6;
-  margin-top: 14px;
+  margin: 12px 0 0;
+  border-top: var(--sk-border-hairline);
+  padding-top: 10px;
 }
 
 /* ==========================================================================
@@ -1458,6 +1497,19 @@ body.is-assembled .sk-faq-item,
   font-weight: 600 !important;
   -webkit-text-stroke: 0 !important;
   text-shadow: none !important;
+}
+
+.sk-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 640px) {
+  .sk-form-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sk-form-group {
@@ -1504,6 +1556,27 @@ body.is-assembled .sk-faq-item,
   box-shadow: 0 0 0 2px #000000, 2px 2px 0px #000000 !important;
 }
 
+.sk-field-error {
+  display: none;
+  color: #B91C1C;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+:is(.sk-form-input, .sk-form-textarea):user-invalid {
+  border-color: #B91C1C !important;
+  background: #FEF2F2 !important;
+}
+
+:is(.sk-form-input, .sk-form-textarea):user-invalid + .sk-field-error {
+  display: block;
+}
+
+:is(.sk-form-input, .sk-form-textarea):user-valid {
+  border-color: #15803D !important;
+}
+
 .sk-submit-btn {
   width: 100%;
   background: #000000 !important;
@@ -1529,30 +1602,35 @@ body.is-assembled .sk-faq-item,
 }
 
 /* ==========================================================================
-   TERMS OF SERVICE & PRIVACY POLICY MODALS
+   TERMS OF SERVICE & PRIVACY POLICY MODALS (Native <dialog>)
    ========================================================================== */
-.sk-legal-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(6px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.sk-legal-modal-card {
+.sk-legal-dialog {
+  padding: 0;
   background: #FFFFFF;
   border: 2px solid #000000;
   border-radius: var(--sk-radius-md);
   max-width: 720px;
-  width: 100%;
+  width: calc(100% - 48px);
   max-height: 85vh;
+  box-shadow: 8px 8px 0px #000000;
+  color: var(--sk-ink);
+  overflow: hidden;
+}
+
+.sk-legal-dialog[open] {
   display: flex;
   flex-direction: column;
-  box-shadow: 8px 8px 0px #000000;
+}
+
+.sk-legal-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+.sk-legal-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .sk-legal-modal-header {
@@ -1596,6 +1674,7 @@ body.is-assembled .sk-faq-item,
 .sk-legal-modal-body {
   padding: 28px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   font-size: 0.94rem;
   line-height: 1.68;
   color: var(--sk-ink);

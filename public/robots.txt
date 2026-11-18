@@ -7,9 +7,8 @@ Sitemap: https://udithbabukn.github.io/sitemap.xml
 Sitemap: https://udithbabukn.github.io/sitemap-blog.xml
 Sitemap: https://udithbabukn.github.io/sitemap-pages.xml
 
-# Syndication Feeds for AI Engines and News Crawlers
+# Syndication Feed for AI Engines and News Crawlers
 # https://udithbabukn.github.io/rss.xml
-# https://udithbabukn.github.io/feed.xml
 
 # Explicitly grant full crawl access to AI Answer Engines & Generative LLMs (GEO & AEO)
 User-agent: GPTBot

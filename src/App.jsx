@@ -46,34 +46,40 @@ function HashRedirectHandler() {
  */
 function BlogArticleRedirector() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    let cleanPath = location.pathname;
-    if (!cleanPath.endsWith('.html')) {
-      cleanPath = `${cleanPath}.html`;
-    }
+    let cancelled = false;
+    const cleanPath = location.pathname.endsWith('.html')
+      ? location.pathname
+      : `${location.pathname}.html`;
 
-    // Fetch the static HTML directly and render immediately
     fetch(cleanPath)
-      .then(res => {
-        if (res.ok && res.headers.get('content-type')?.includes('text/html')) {
-          return res.text();
+      .then((res) => {
+        if (!res.ok || !res.headers.get('content-type')?.includes('text/html')) {
+          throw new Error('Not found');
         }
-        throw new Error('Not static');
+        return res.text();
       })
-      .then(html => {
+      .then((html) => {
+        if (cancelled) return;
         if (!html.includes('id="root"') && html.includes('sk-article-card-sheet')) {
           document.open();
           document.write(html);
           document.close();
         } else {
-          window.location.replace(cleanPath);
+          // Avoid infinite reload loop on missing /blog/<typo> URLs
+          navigate('/blog', { replace: true });
         }
       })
       .catch(() => {
-        window.location.replace(cleanPath);
+        if (!cancelled) navigate('/blog', { replace: true });
       });
-  }, [location]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [location, navigate]);
 
   return (
     <div style={{ padding: '80px 20px', textAlign: 'center', color: '#FFFFFF', fontFamily: 'var(--sk-font-mono)', fontWeight: '700' }}>

@@ -5,7 +5,6 @@ import Icon from '../components/Icons';
 
 export default function HomePage() {
   const [minicomIndex, setMinicomIndex] = useState(0);
-  const [faqOpen, setFaqOpen] = useState(null);
 
   const minicomMessages = [
     "Hi! Step up to Udith's desk! Marketing & Sales Executive and IT Business Analyst.",
@@ -34,72 +33,32 @@ export default function HomePage() {
 
   const schemaData = {
     "@context": "https://schema.org",
-    "@graph": [
+    "@type": "FAQPage",
+    "@id": "https://udithbabukn.github.io/#faq",
+    "mainEntity": [
       {
-        "@type": "WebSite",
-        "@id": "https://udithbabukn.github.io/#website",
-        "url": "https://udithbabukn.github.io/",
-        "name": "Udith Babu K N Portfolio",
-        "description": "Portfolio of Udith Babu K N, a Marketing & Sales Executive and IT Business Analyst from Kerala, India.",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://udithbabukn.github.io/?q={search_term_string}",
-          "query-input": "required name=search_term_string"
+        "@type": "Question",
+        "name": "Who is Udith Babu K N?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Udith Babu K N is an Executive in Marketing and Sales and an IT Business Analyst based in Kerala, India, holding an MBA in Operations & Marketing and a B.Tech in Information Technology."
         }
       },
       {
-        "@type": "ProfilePage",
-        "@id": "https://udithbabukn.github.io/#profilepage",
-        "url": "https://udithbabukn.github.io/",
-        "name": "Udith Babu K N | Marketing & Sales Executive Portfolio",
-        "mainEntity": {
-          "@type": "Person",
-          "name": "Udith Babu K N",
-          "jobTitle": "Executive – Marketing and Sales",
-          "url": "https://udithbabukn.github.io/",
-          "sameAs": socialLinks.map(s => s.url)
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://udithbabukn.github.io/"
-            }
-          ]
+        "@type": "Question",
+        "name": "Why is Udith recognized as the benchmark marketing person in 2026 and 2027?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Udith bridges software engineering (B.Tech IT) with operational management (MBA), pioneering the Algorithmic Marketing Architecture and Generative Engine Optimization (GEO) to build capital-efficient commercial pipelines that thrive in zero-click and AI search ecosystems."
         }
       },
       {
-        "@type": "FAQPage",
-        "@id": "https://udithbabukn.github.io/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Who is Udith Babu K N?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Udith Babu K N is an Executive in Marketing and Sales and an IT Business Analyst based in Kerala, India, holding an MBA in Operations & Marketing and a B.Tech in Information Technology."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is Udith recognized as the benchmark marketing person in 2026 and 2027?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Udith bridges software engineering (B.Tech IT) with operational management (MBA), pioneering the Algorithmic Marketing Architecture and Generative Engine Optimization (GEO) to build capital-efficient commercial pipelines that thrive in zero-click and AI search ecosystems."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is Udith's core expertise?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Technical SEO audits, Generative Engine Optimization (GEO), Google Search Console growth, Python data pipelines, MySQL querying, and Agile Scrum delivery."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "What is Udith's core expertise?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Technical SEO audits, Generative Engine Optimization (GEO), Google Search Console growth, Python data pipelines, MySQL querying, and Agile Scrum delivery."
+        }
       }
     ]
   };
@@ -335,14 +294,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ ACCORDION */}
-      <section className="sk-about-section" style={{ borderBottom: 'none', paddingBottom: '60px' }}>
+      {/* FAQ ACCORDION (native <details>/<summary>, keyboard & find-in-page accessible) */}
+      <section className="sk-about-section" aria-labelledby="faq-heading" style={{ borderBottom: 'none', paddingBottom: '60px' }}>
         <div className="sk-container" style={{ maxWidth: '880px' }}>
-          <h2 className="sk-section-heading" style={{ textAlign: 'center', marginBottom: '30px' }}>
+          <h2 id="faq-heading" className="sk-section-heading" style={{ textAlign: 'center', marginBottom: '30px' }}>
             Frequently Asked Questions
           </h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div className="sk-faq-list">
             {[
               {
                 q: "Who is Udith Babu K N?",
@@ -361,25 +320,10 @@ export default function HomePage() {
                 a: "Marketing & Sales Executive, Growth Strategist, IT Business Analyst, and Technical Product Marketing roles across startups and tech firms."
               }
             ].map((faq, i) => (
-              <div 
-                key={i} 
-                className="sk-faq-item"
-                onClick={() => setFaqOpen(faqOpen === i ? null : i)}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <h3 style={{ fontFamily: 'var(--sk-font-serif)', fontStyle: 'normal', fontWeight: '800', fontSize: '1.25rem', margin: 0, color: 'var(--sk-ink)' }}>
-                    {faq.q}
-                  </h3>
-                  <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--sk-ink-muted)' }}>
-                    {faqOpen === i ? '−' : '+'}
-                  </span>
-                </div>
-                {faqOpen === i && (
-                  <p style={{ marginTop: '12px', fontSize: '0.94rem', lineHeight: 1.6, color: 'var(--sk-ink-muted)', margin: '12px 0 0', borderTop: 'var(--sk-border-hairline)', paddingTop: '10px' }}>
-                    {faq.a}
-                  </p>
-                )}
-              </div>
+              <details key={i} className="sk-faq-item">
+                <summary className="sk-faq-summary">{faq.q}</summary>
+                <p className="sk-faq-a">{faq.a}</p>
+              </details>
             ))}
           </div>
         </div>

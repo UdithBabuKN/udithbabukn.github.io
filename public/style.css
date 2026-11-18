@@ -250,9 +250,7 @@ body {
 /* Magnetic hover snap */
 .sk-header:hover .sk-nav-pill-btn,
 .sk-nav-pills:hover .sk-nav-pill-btn,
-.sk-nav-pill-btn:hover,
-body.is-assembled .sk-nav-pill-btn,
-.is-assembled .sk-nav-pill-btn {
+.sk-nav-pill-btn:hover {
   transform: translate(0, 0) rotate(0deg) !important;
   border-style: solid !important;
   border-width: 1.5px !important;

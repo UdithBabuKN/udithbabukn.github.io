@@ -215,9 +215,11 @@ export default function LiquidBackground() {
       new Uint8Array([17, 68, 209, 255])
     );
 
+    let cancelled = false;
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = () => {
+      if (cancelled) return;
       gl.bindTexture(gl.TEXTURE_2D, waterTexture);
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
@@ -225,6 +227,7 @@ export default function LiquidBackground() {
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      wake();
     };
     img.src = '/olivasky.png';
 
@@ -255,6 +258,16 @@ export default function LiquidBackground() {
     const currentVelocity = { x: 0, y: 0 };
     let lastTime = performance.now();
 
+    let lastActiveTime = performance.now();
+    let animId = null;
+
+    function wake() {
+      lastActiveTime = performance.now();
+      if (animId === null && !cancelled) {
+        animId = requestAnimationFrame(render);
+      }
+    }
+
     function handlePointer(clientX, clientY) {
       const now = performance.now();
       const dt = Math.max(10, now - lastTime);
@@ -274,6 +287,7 @@ export default function LiquidBackground() {
       }
       lastMouse.x = clientX;
       lastMouse.y = clientY;
+      wake();
     }
 
     function onPointerMove(e) {
@@ -292,6 +306,7 @@ export default function LiquidBackground() {
       handlePointer(clientX, clientY);
       targetVelocity.x += (Math.random() - 0.5) * 3.5;
       targetVelocity.y += (Math.random() - 0.5) * 3.5;
+      wake();
     }
 
     window.addEventListener('pointermove', onPointerMove, { passive: true });
@@ -309,16 +324,16 @@ export default function LiquidBackground() {
       const h = window.innerHeight;
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
+      wake();
     }
     window.addEventListener('resize', resize, { passive: true });
     resize();
 
-    // Render loop
-    let animId;
-    let startTime = performance.now();
+    // Render loop (pauses when fluid settles to save GPU/battery)
+    const startTime = performance.now();
 
     function render(now) {
-      animId = requestAnimationFrame(render);
+      animId = null;
 
       currentVelocity.x += (targetVelocity.x - currentVelocity.x) * 0.16;
       currentVelocity.y += (targetVelocity.y - currentVelocity.y) * 0.16;
@@ -373,7 +388,7 @@ export default function LiquidBackground() {
       gl.uniform1i(renderUniforms.tWater, 1);
 
       // Calculate cover dimensions
-      let scaleW = 1, scaleH = 1;
+      let scaleW, scaleH;
       const screenAspect = window.innerHeight / window.innerWidth;
       if (screenAspect < imageAspect) {
         scaleW = 1;
@@ -387,12 +402,19 @@ export default function LiquidBackground() {
       gl.uniform1f(renderUniforms.uTime, (now - startTime) * 0.001);
 
       gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+      const speed = Math.hypot(currentVelocity.x, currentVelocity.y);
+      if (speed > 0.0005 || now - lastActiveTime < 2200) {
+        animId = requestAnimationFrame(render);
+      }
     }
 
-    animId = requestAnimationFrame(render);
+    wake();
 
     return () => {
-      cancelAnimationFrame(animId);
+      cancelled = true;
+      img.onload = null;
+      if (animId !== null) cancelAnimationFrame(animId);
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerdown', onPointerDown);
       window.removeEventListener('touchmove', onTouchMove);

@@ -6,6 +6,8 @@ import { blogPosts } from '../data/blogPostsData';
  * Implements in-browser tool registration for AI agents & agentic browsing.
  */
 
+export const WEB3FORMS_ACCESS_KEY = "87c7f836-6a95-44f3-8391-314433633006";
+
 // Profile metadata
 const PROFILE_DATA = {
   name: "Udith Babu K N",
@@ -224,6 +226,12 @@ export const webMcpTools = [
           message: "Fields 'name', 'email', and 'message' are required."
         });
       }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return JSON.stringify({
+          status: "error",
+          message: "Please provide a valid email address."
+        });
+      }
       try {
         const res = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
@@ -232,7 +240,7 @@ export const webMcpTools = [
             Accept: "application/json"
           },
           body: JSON.stringify({
-            access_key: "87c7f836-6a95-44f3-8391-314433633006",
+            access_key: WEB3FORMS_ACCESS_KEY,
             name,
             email,
             message,

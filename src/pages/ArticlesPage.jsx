@@ -137,8 +137,13 @@ export default function ArticlesPage() {
                 return matchesCat && matchesSearch;
               })
               .slice(0, visibleArticleCount)
-              .map((post) => (
-                <a href={`/blog/${post.slug}.html`} className="sk-article-card" key={post.slug} target="_self">
+              .map((post, idx) => (
+                <a
+                  href={`/blog/${post.slug}.html`}
+                  className={`sk-article-card${idx >= 6 ? ' sk-article-card-deferred' : ''}`}
+                  key={post.slug}
+                  target="_self"
+                >
                   <div className="sk-article-img-container">
                     <img src={`/images/blogimages/${post.image}`} alt={post.title} className="sk-article-img" loading="lazy" />
                   </div>
