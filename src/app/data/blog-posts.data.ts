@@ -1,4 +1,13 @@
-export const blogPosts = [
+export interface BlogPost {
+  category: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  slug: string;
+  image: string;
+}
+
+export const blogPosts: BlogPost[] = [
     {
         "category": "Playbook",
         "title": "B2B Customer Acquisition Cost (CAC) Modeling: The Quantitative CFO Playbook",

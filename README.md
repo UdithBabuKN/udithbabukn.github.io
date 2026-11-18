@@ -28,7 +28,7 @@ I specialize in technical SEO audits, search intent architecture, Google Search 
 
 ## Site Structure & Subpages
 
-The portfolio is structured as a high-performance Single Page Application (SPA) with dedicated, indexable subpages:
+The portfolio is built with **Angular 22 + Static Site Generation (`@angular/ssr`, `RenderMode.Prerender`)**, pre-rendering every route into static HTML at build time for instant loads, SEO, and zero-server GitHub Pages hosting:
 
 | Route | Page | Purpose & Content |
 |---|---|---|
@@ -37,7 +37,7 @@ The portfolio is structured as a high-performance Single Page Application (SPA) 
 | `/about` | **About** | Professional ethos, data & search mechanics manifesto, and Agile delivery credentials memo sheets. |
 | `/skills` | **Skills** | Core competencies across *Marketing & SEO*, *Core Technologies*, *Project & Design*, and *Business & Analysis*. |
 | `/blog` | **Blog** | Searchable digital marketing and sales library with category filters, pagination, and direct access to 150 deep-dive static HTML articles. |
-| `/contact` | **Contact** | Integrated Web3Forms contact form with direct validation and social channel access. |
+| `/contact` | **Contact** | Integrated Web3Forms contact form with post-interaction validation and direct dispatch. |
 
 ---
 
@@ -48,33 +48,32 @@ The portfolio is structured as a high-performance Single Page Application (SPA) 
   - Native `<details>` / `<summary>` FAQ accordion with `::details-content` progressive animations (`prefers-reduced-motion` aware).
   - Post-interaction form validation via `:user-invalid` / `:user-valid`, `autocomplete`, and synced `aria-invalid` / `aria-describedby`.
   - Off-screen blog card deferral using `content-visibility: auto` paired with `contain-intrinsic-size`.
-  - Idle-pausing WebGL fluid canvas (`src/components/LiquidBackground.jsx`).
+  - Idle-pausing WebGL fluid canvas (`src/app/components/liquid-background.component.ts`).
 - **Schema.org Structured Data (JSON-LD):**
-  - `@type: ProfilePage` (in `index.html`) & `@type: FAQPage` on the Home page.
-  - `@type: CollectionPage` on the Work page and `CollectionPage` / `Blog` on `/blog`.
-  - `@type: AboutPage` on `/about` and `@type: ContactPage` on `/contact`.
+  - `@type: ProfilePage` (in `src/index.html`) & `@type: FAQPage` on the Home page.
+  - `@type: CollectionPage` on `/work` and `/skills`, `CollectionPage` / `Blog` on `/blog`, `AboutPage` on `/about`, and `ContactPage` on `/contact`.
   - Semantic `@type: BreadcrumbList` microdata across subpages.
-- **Routing, PWA & Discovery:**
-  - GitHub Pages SPA fallback (`public/404.html`) + Workbox service worker (`vite-plugin-pwa`) configured to pass `/blog/*.html` directly to static articles.
-  - XML sitemaps (`sitemap.xml`, `sitemap-pages.xml`, `sitemap-blog.xml`), RSS feed (`rss.xml`), `robots.txt`, `llms.txt`, `.well-known/ard.json`, and in-browser WebMCP tools (`src/utils/webmcp.js`).
+- **Prerendering & Discovery:**
+  - Angular SSG prerenders `/`, `/work`, `/about`, `/skills`, `/blog`, and `/contact` into standalone HTML files with client hydration (`withEventReplay()`), while all 150 `/blog/*.html` files are served directly as static HTML (no PWA service worker).
+  - XML sitemaps (`sitemap.xml`, `sitemap-pages.xml`, `sitemap-blog.xml`), RSS feed (`rss.xml`), `robots.txt`, `llms.txt`, `.well-known/ard.json`, and in-browser WebMCP tools (`src/app/utils/webmcp.ts`).
 
 ---
 
 ## Tech Stack
 
-- **Framework:** React 19 + React Router DOM v7
-- **Bundler & PWA:** Vite 8 + `vite-plugin-pwa` (Workbox)
-- **Head & SEO:** React Helmet Async
-- **Icons:** Custom inline SVG component (`src/components/Icons.jsx`) + Phosphor Icons on static blog pages
+- **Framework:** Angular 22 (Standalone Components, Signals, Zoneless Change Detection)
+- **SSG & Hydration:** `@angular/ssr` (`outputMode: "static"`, `RenderMode.Prerender`)
+- **Build Tooling:** `@angular/build` (esbuild application builder) + TypeScript 6
+- **Icons:** Custom inline SVG component (`src/app/components/icon.component.ts`) + Phosphor Icons on static blog pages
 - **Styling:** Vanilla CSS (`src/shelbyStyle.css` and `public/style.css`) with zero heavy UI frameworks
-- **Deployment:** GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`, running lint + build on push to `main`)
+- **Deployment:** GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`, running typecheck + SSG build on push to `main`)
 
 ---
 
 ## Local Development
 
 ### Prerequisites
-- Node.js `22+` (or `20.19+`, required by Vite 8 and ESLint 10)
+- Node.js `24+` (or `22.22+`, required by Angular 22)
 - npm
 
 ### Setup & Run
@@ -91,16 +90,13 @@ npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### Production Build & Linting
+### Typecheck & Production SSG Build
 ```bash
-# Run ESLint checks
-npm run lint
+# Run TypeScript type checks
+npm run typecheck
 
-# Build optimized production bundle
+# Build & prerender static site to dist/portfolio/browser
 npm run build
-
-# Preview production build locally
-npm run preview
 ```
 
 ---
