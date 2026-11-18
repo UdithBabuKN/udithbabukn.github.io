@@ -4,6 +4,25 @@
    (#C81E1E) & Pure White (#FFFFFF) Palette, Two-Tone Rose Wave Cards, Dark Wave Footer.
    ========================================================================== */
 
+/* Metric-matched fallback fonts to eliminate font-swap layout shift (CLS = 0) */
+@font-face {
+  font-family: 'Outfit Fallback';
+  src: local('Arial'), local('Segoe UI'), local('Roboto'), local('Helvetica Neue');
+  size-adjust: 90%;
+  ascent-override: 100%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback';
+  src: local('Arial'), local('Segoe UI'), local('Roboto'), local('Helvetica Neue');
+  size-adjust: 105%;
+  ascent-override: 96%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
 :root {
   color-scheme: light;
   accent-color: #C81E1E;
@@ -60,9 +79,9 @@
   --ca-shadow-lg: 0 16px 36px -8px rgba(17, 24, 39, 0.12), 0 4px 12px rgba(17, 24, 39, 0.05);
 
   /* Typography Stacks */
-  --sk-font-serif: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --sk-font-young: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --sk-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sk-font-serif: 'Outfit', 'Outfit Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sk-font-young: 'Outfit', 'Outfit Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sk-font-sans: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --sk-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Geometry & Motion */
@@ -247,33 +266,59 @@ textarea:focus-visible {
 }
 
 /* ==========================================================================
-   FLOATING CENTERED FROSTED-GLASS PILL NAVBAR (Matches Individual Blogs 1:1)
+   FLOATING COMPACT FROSTED-GLASS PILL NAVBAR (Matches Individual Blogs 1:1)
    ========================================================================== */
 .ca-site-header {
   position: sticky;
   top: 10px;
   z-index: 100;
-  width: calc(100% - 32px);
-  max-width: 1240px;
+  width: fit-content;
+  max-width: calc(100% - 24px);
   margin: 10px auto 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--ca-border-subtle);
-  border-radius: 24px;
-  box-shadow: 0 4px 20px -2px rgba(17, 24, 39, 0.08);
+  border-radius: 9999px;
+  box-shadow: 0 4px 18px -2px rgba(17, 24, 39, 0.08);
   transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .ca-nav-wrap {
-  width: 100%;
-  padding: 0 22px;
-  height: 58px;
+  width: auto;
+  padding: 4px 6px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 8px;
   position: relative;
+}
+
+.ca-nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--sk-font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ca-text-primary);
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  height: 34px;
+  padding: 0 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ca-nav-toggle:hover {
+  background-color: var(--ca-rose-subtle);
+  color: var(--ca-brand-red);
 }
 
 .ca-nav-main {
@@ -286,7 +331,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -296,14 +341,14 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 600;
   line-height: 1;
   color: var(--ca-text-secondary);
   text-decoration: none;
-  padding: 8px 15px;
-  height: 36px;
-  border-radius: var(--sk-radius-sm);
+  padding: 6px 13px;
+  height: 32px;
+  border-radius: 9999px;
   white-space: nowrap;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -319,36 +364,11 @@ textarea:focus-visible {
   font-weight: 700;
 }
 
-.ca-mobile-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid #E5E7EB;
-  color: var(--ca-text-primary);
-  cursor: pointer;
-  border-radius: var(--sk-radius-sm);
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 14px;
-  gap: 8px;
-  font-family: var(--sk-font-sans);
-  font-size: 0.86rem;
-  font-weight: 600;
-  align-items: center;
-  justify-content: center;
-  touch-action: manipulation;
-}
-
-.ca-mobile-toggle:hover {
-  background: var(--ca-rose-subtle);
-  border-color: var(--ca-rose-border);
-  color: var(--ca-brand-red);
-}
-
 /* ==========================================================================
    HERO SECTION (Split Editorial Layout + macOS Showcase Window)
    ========================================================================== */
 .ca-hero-section {
-  padding: 58px 0 42px;
+  padding: 46px 0 40px;
   position: relative;
 }
 
@@ -358,13 +378,13 @@ textarea:focus-visible {
 
 .ca-hero-centered {
   text-align: center;
-  max-width: 780px;
+  max-width: 1040px;
   margin: 0 auto 36px;
 }
 
 .ca-hero-centered .ca-hero-lead {
   margin: 0 auto 28px;
-  max-width: 60ch;
+  max-width: 680px;
 }
 
 .ca-hero-cta-centered {
@@ -373,13 +393,12 @@ textarea:focus-visible {
 
 .ca-hero-title {
   font-family: var(--sk-font-serif);
-  font-size: clamp(2.5rem, 4.6vw, 3.75rem);
+  font-size: clamp(2.35rem, 4.2vw, 3.5rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.035em;
   color: #111827;
   margin: 0 0 20px;
-  text-wrap: balance;
 }
 
 .ca-hero-title-top {
@@ -397,8 +416,7 @@ textarea:focus-visible {
   line-height: 1.65;
   color: var(--ca-text-secondary);
   margin: 0 0 26px;
-  max-width: 54ch;
-  text-wrap: pretty;
+  max-width: 580px;
 }
 
 .ca-hero-cta-group {
@@ -746,7 +764,7 @@ textarea:focus-visible {
 
 .ca-section-head {
   text-align: center;
-  max-width: 680px;
+  max-width: 760px;
   margin: 0 auto 32px;
 }
 
@@ -904,8 +922,6 @@ textarea:focus-visible {
 .sk-experience-section {
   padding: 56px 0;
   position: relative;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
 }
 
 .sk-timeline-paper {
@@ -1824,52 +1840,21 @@ textarea:focus-visible {
 
 @media (max-width: 900px) {
   .ca-site-header {
-    width: calc(100% - 20px);
+    width: fit-content;
+    max-width: calc(100% - 20px);
     top: 8px;
-    border-radius: 20px;
+    border-radius: 9999px;
   }
   .ca-nav-wrap {
-    padding: 0 14px;
-    height: 54px;
-    justify-content: center;
-  }
-  .ca-nav-links {
-    display: none;
-  }
-  .ca-nav-links.mobile-open {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-    background: #FFFFFF;
-    padding: 14px 16px;
-    border: 1px solid var(--ca-border-subtle);
-    border-radius: 16px;
-    box-shadow: 0 16px 36px rgba(17, 24, 39, 0.16);
-    gap: 4px;
-    z-index: 200;
-  }
-  .ca-nav-links.mobile-open .ca-nav-link {
-    justify-content: flex-start;
-    min-height: 44px;
-    font-size: 0.95rem;
-    padding: 8px 14px;
-  }
-  .ca-mobile-toggle {
-    display: inline-flex;
+    padding: 4px 6px;
+    min-height: 38px;
   }
   .sk-timeline-paper,
   .sk-projects-grid,
   .sk-pinned-sheets,
   .sk-sticky-grid {
     grid-template-columns: 1fr;
-  }
-  .ca-footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    gap: 20px;
   }
 }
 
@@ -1877,53 +1862,212 @@ textarea:focus-visible {
   .sk-container {
     padding: 0 16px;
   }
+  .ca-site-header {
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    margin: 10px 14px 0 auto;
+    top: 10px;
+    border-radius: 9999px;
+  }
+  .ca-nav-wrap {
+    padding: 3px;
+    min-height: auto;
+    justify-content: flex-end;
+  }
+  .ca-nav-toggle {
+    display: inline-flex;
+  }
+  .ca-nav-main {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 190px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--ca-border-subtle);
+    border-radius: 16px;
+    box-shadow: 0 14px 32px -6px rgba(17, 24, 39, 0.16);
+    z-index: 120;
+  }
+  .ca-nav-main.is-open {
+    display: block;
+  }
+  .ca-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    width: 100%;
+  }
+  .ca-nav-link {
+    width: 100%;
+    justify-content: flex-start;
+    height: 38px;
+    padding: 0 14px;
+    font-size: 0.88rem;
+    border-radius: 10px;
+  }
   .ca-hero-section {
-    padding: 28px 0 32px;
+    padding: 18px 0 26px;
+  }
+  .ca-hero-centered {
+    margin-bottom: 24px;
+  }
+  .ca-hero-title {
+    font-size: clamp(1.9rem, 7.6vw, 2.35rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  .ca-hero-lead {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .ca-hero-cta-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .ca-hero-cta-group .ca-btn {
+    width: 100%;
+    padding: 11px 12px;
+    font-size: 0.86rem;
+    min-height: 44px;
+  }
+  .ca-authority-strip {
+    margin-top: 4px;
+    padding-top: 18px;
+  }
+  .ca-authority-label {
+    font-size: 0.68rem;
+    margin-bottom: 12px;
+  }
+  .ca-authority-badges {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .ca-authority-badge {
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 0.76rem;
+    gap: 5px;
+    min-height: 38px;
   }
   .ca-section,
   .sk-experience-section,
   .sk-about-section {
-    padding: 40px 0;
+    padding: 36px 0;
   }
-  .ca-hero-title {
-    font-size: 2.05rem;
-    line-height: 1.14;
+  .sk-work-section,
+  .sk-skills-section,
+  .sk-articles-section {
+    padding: 20px 0 48px !important;
   }
-  .ca-hero-lead {
-    font-size: 0.96rem;
+  .ca-section-head {
+    margin-bottom: 22px;
   }
-  .ca-hero-cta-group {
-    flex-direction: column;
-    align-items: stretch;
+  .ca-section-title,
+  .sk-section-heading {
+    font-size: 1.55rem;
+    line-height: 1.2;
   }
-  .ca-hero-cta-group .ca-btn {
-    width: 100%;
+  .ca-section-desc,
+  .sk-page-subtitle {
+    font-size: 0.92rem;
   }
-  .ca-hero-trust-bar {
-    grid-template-columns: 1fr;
-    gap: 8px;
+  .sk-timeline-column-title {
+    font-size: 1.18rem;
+    margin-bottom: 12px;
   }
-  .ca-feature-buttons {
-    grid-template-columns: repeat(2, 1fr);
+  .sk-timeline-entries {
+    gap: 12px;
+  }
+  .sk-timeline-card {
+    padding: 16px 18px;
+  }
+  .sk-timeline-role {
+    font-size: 1.02rem;
+  }
+  .ca-timeline-desc {
+    font-size: 0.85rem;
+  }
+  .sk-faq-list {
+    gap: 10px;
+  }
+  .sk-faq-item {
+    padding: 15px 16px;
+  }
+  .sk-faq-summary {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .sk-faq-a {
+    font-size: 0.88rem;
+  }
+  .sk-project-card,
+  .sk-memo-sheet,
+  .sk-sticky-note {
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+  .sk-project-title,
+  .sk-memo-title,
+  .sk-sticky-title {
+    font-size: 1.2rem;
+  }
+  .sk-articles-filter-bar {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .sk-filter-pill {
+    padding: 6px 12px;
+    font-size: 0.78rem;
   }
   .ca-cards-grid-4,
   .sk-articles-grid,
-  .sk-form-row,
-  .ca-footer-grid {
+  .sk-form-row {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .ca-cta-banner {
-    padding: 32px 20px;
+  .sk-form-input,
+  .sk-form-textarea {
+    font-size: 16px;
   }
   .sk-contact-box {
-    padding: 24px 18px;
+    padding: 22px 16px;
+    border-radius: 14px;
   }
   .sk-footer-wave-svg {
-    height: 34px;
+    height: 30px;
+  }
+  .sk-footer-body {
+    padding: 16px 0 24px;
   }
   .sk-footer-bar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .sk-footer-links {
+    justify-content: center;
+    gap: 8px 14px;
+  }
+}
+
+@media (max-width: 359px) {
+  .ca-hero-cta-group {
+    grid-template-columns: 1fr;
+  }
+  .ca-authority-badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

@@ -124,39 +124,39 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   FLOATING CENTERED FROSTED-GLASS PILL HEADER (Identical to Home Page)
+   FLOATING COMPACT FROSTED-GLASS PILL HEADER (Identical to Home Page)
    ========================================================================== */
 .sk-header {
   position: sticky;
   top: 10px;
   z-index: 100;
-  width: calc(100% - 32px);
-  max-width: 1240px;
+  width: fit-content;
+  max-width: calc(100% - 24px);
   margin: 10px auto 0;
   padding: 0 !important;
-  background: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.94) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid #E5E7EB !important;
-  border-radius: 24px !important;
-  box-shadow: 0 4px 20px -2px rgba(17, 24, 39, 0.08) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 18px -2px rgba(17, 24, 39, 0.08) !important;
 }
 
 .sk-header-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 58px;
-  padding: 6px 18px !important;
+  width: auto;
+  min-height: 40px;
+  padding: 4px 6px !important;
 }
 
 .sk-nav-pills {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-wrap: nowrap;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -169,10 +169,10 @@ button:focus-visible {
 .sk-nav-pill-btn {
   font-family: var(--sk-font-sans);
   font-weight: 600;
-  font-size: 0.88rem;
-  padding: 8px 15px;
-  height: 36px;
-  border-radius: 8px !important;
+  font-size: 0.84rem;
+  padding: 6px 13px;
+  height: 32px;
+  border-radius: 9999px !important;
   border: 1px solid transparent !important;
   text-decoration: none;
   color: #374151 !important;
@@ -660,9 +660,10 @@ button:focus-visible {
    ========================================================================== */
 @media (max-width: 900px) {
   .sk-header {
-    width: calc(100% - 20px);
+    width: fit-content;
+    max-width: calc(100% - 20px);
     top: 8px;
-    border-radius: 20px !important;
+    border-radius: 9999px !important;
   }
   .sk-article-card-sheet {
     padding: 36px 28px 44px;
@@ -672,55 +673,96 @@ button:focus-visible {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .sk-container {
     padding: 0 16px;
   }
+  .sk-header {
+    width: fit-content;
+    max-width: calc(100% - 16px);
+    margin: 8px auto 0;
+    top: 8px;
+    border-radius: 9999px !important;
+  }
   .sk-header-inner {
-    padding: 8px 10px !important;
-    min-height: auto;
+    padding: 3px 5px !important;
+    min-height: 36px;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sk-header-inner::-webkit-scrollbar {
+    display: none;
+  }
+  .sk-header-inner nav {
+    width: auto;
   }
   .sk-nav-pills {
-    gap: 4px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    width: auto;
   }
   .sk-nav-pill-btn {
-    padding: 6px 10px;
-    height: 32px;
-    font-size: 0.8rem;
+    width: auto;
+    padding: 5px 10px;
+    height: 30px;
+    font-size: 0.78rem;
+    border-radius: 9999px !important;
+  }
+  .sk-article-page-main {
+    padding: 20px 0 48px;
   }
   .sk-article-card-sheet {
-    padding: 24px 18px 32px;
-    border-radius: 12px;
+    padding: 22px 16px 28px;
+    border-radius: 14px;
   }
   .sk-article-main-title {
-    font-size: clamp(1.65rem, 6.2vw, 2.1rem);
+    font-size: clamp(1.6rem, 6.4vw, 2.05rem);
     margin-bottom: 18px;
   }
   .sk-article-top-nav {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    margin-bottom: 16px;
   }
   .sk-article-cover-frame {
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
   .sk-article-prose {
-    font-size: 0.98rem;
-    line-height: 1.75;
+    font-size: 0.96rem;
+    line-height: 1.74;
   }
   .sk-article-prose h2 {
-    font-size: 1.48rem;
-    margin-top: 32px;
+    font-size: 1.42rem;
+    margin-top: 30px;
   }
   .sk-article-prose h3 {
-    font-size: 1.24rem;
-    margin-top: 24px;
+    font-size: 1.2rem;
+    margin-top: 22px;
   }
   .sk-article-footer-cta {
-    padding: 22px 18px;
+    padding: 22px 16px;
+  }
+  .sk-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sk-action-pill {
+    width: 100%;
+  }
+  .sk-footer {
+    padding: 24px 0 24px !important;
   }
   .sk-footer-bar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .sk-footer-links {
+    justify-content: center;
+    gap: 8px 14px;
   }
 }
