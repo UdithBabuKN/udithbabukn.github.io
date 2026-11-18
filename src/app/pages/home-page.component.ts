@@ -104,7 +104,7 @@ import { SeoService } from '../services/seo.service';
         <!-- Social Links Ribbon -->
         <div style="margin-top: 36px; text-align: center;">
           <span
-            style="font-size: 0.84rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: #FFFFFF; -webkit-text-stroke: 0.6px #000000; paint-order: stroke fill;"
+            style="font-size: 0.84rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: #FFFFFF; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 1px 2px #000000;"
           >
             Connect Across Channels
           </span>
