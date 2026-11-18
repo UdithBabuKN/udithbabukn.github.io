@@ -19,9 +19,6 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
 
           @if (contactStatus() === 'success') {
             <div style="text-align: center; padding: 30px 10px;">
-              <div class="ca-success-badge">
-                DISPATCH RECORDED • RECEIVED
-              </div>
               <h2 class="ca-success-title">
                 Message Received at Udith's desk
               </h2>
