@@ -118,7 +118,6 @@
 html {
   scroll-behavior: smooth;
   background-color: #1144D1;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -129,7 +128,6 @@ body {
   background: transparent;
   color: var(--sk-ink);
   font-family: var(--sk-font-sans);
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -142,9 +140,15 @@ body::before {
   width: 100%;
   height: 100vh;
   height: 100lvh;
-  background: #1144D1 url('/olivasky.png') center center / cover no-repeat;
+  background: #1144D1 url('/olivasky.webp') center center / cover no-repeat;
   pointer-events: none;
   z-index: -1;
+}
+
+@media (max-width: 768px) {
+  body::before {
+    background-image: url('/olivasky-mobile.webp');
+  }
 }
 
 .sk-page-wrapper {
@@ -287,7 +291,6 @@ body::before {
   letter-spacing: 0.02em;
   white-space: nowrap;
   position: relative;
-  will-change: transform, box-shadow, border-color, background-color;
 }
 
 /* Subtle Vertical Kinetic Float (Zero horizontal overlap / collision) */
@@ -454,7 +457,6 @@ body::before {
   justify-content: space-between;
   transform: rotate(-0.8deg);
   transition: var(--sk-spring-snap);
-  will-change: transform, box-shadow, border-color;
 }
 
 .sk-speech-bubble-widget:hover {
@@ -557,7 +559,6 @@ body::before {
   justify-content: center;
   transition: var(--sk-spring-snap);
   cursor: pointer;
-  will-change: transform, box-shadow, border-color;
 }
 
 .sk-status-note:hover {
@@ -589,7 +590,6 @@ body::before {
   transition: var(--sk-spring-snap);
   cursor: pointer;
   position: relative;
-  will-change: transform, box-shadow, border-color, background-color;
 }
 
 /* Intentional Kinetic Drift for Each Dispersed Metric Card */
@@ -1071,6 +1071,8 @@ body::before {
   position: relative;
   z-index: 1;
   border-bottom: none !important;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 960px;
 }
 
 .sk-timeline-paper {
@@ -1335,6 +1337,8 @@ body::before {
 .sk-faq-list {
   max-width: 860px;
   margin: 0 auto;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
 }
 
 .sk-faq-item {
@@ -1658,6 +1662,8 @@ body::before {
   border-top: none !important;
   padding: 0 !important;
   text-align: center;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 120px;
 }
 
 .sk-footer-wave-wrap {
