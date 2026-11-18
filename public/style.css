@@ -127,18 +127,30 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  background-color: #FFFFFF;
+  background-color: #1144D1;
 }
 
 body {
   margin: 0;
   padding: 0;
   color: var(--sk-ink);
-  background: #1144D1 url('/olivasky.png') center center / cover no-repeat fixed;
+  background: transparent;
   font-family: var(--sk-font-sans);
   line-height: 1.6;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  background: #1144D1 url('/olivasky.png') center center / cover no-repeat;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .sk-page-wrapper {
@@ -146,9 +158,9 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  z-index: 1;
   overflow-x: hidden;
   background: transparent;
-  background-attachment: scroll;
 }
 
 .sk-container {

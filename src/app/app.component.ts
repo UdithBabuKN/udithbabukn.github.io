@@ -1,7 +1,6 @@
 import { Component, afterNextRender, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './components/footer.component';
-import { LiquidBackgroundComponent } from './components/liquid-background.component';
 import { NavbarComponent } from './components/navbar.component';
 
 const LEGACY_HASH_ROUTES: Record<string, string> = {
@@ -18,10 +17,9 @@ const LEGACY_HASH_ROUTES: Record<string, string> = {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LiquidBackgroundComponent, NavbarComponent, FooterComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent],
   template: `
     <div class="sk-page-wrapper">
-      <app-liquid-background />
       <app-navbar />
       <main id="main-content">
         <router-outlet />

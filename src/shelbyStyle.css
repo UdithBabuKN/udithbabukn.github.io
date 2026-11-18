@@ -126,12 +126,25 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #1144D1 url('/olivasky.png') center center / cover no-repeat fixed;
+  background: transparent;
   color: var(--sk-ink);
   font-family: var(--sk-font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fixed Full-Viewport Background Image (Desktop & Mobile Safe) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  background: #1144D1 url('/olivasky.png') center center / cover no-repeat;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .sk-page-wrapper {
@@ -143,6 +156,7 @@ body {
   font-family: var(--sk-font-sans);
   line-height: 1.6;
   position: relative;
+  z-index: 1;
   overflow-x: hidden;
 }
 
@@ -212,18 +226,6 @@ body {
   color: rgba(0, 155, 215, 0.55);
   font-weight: 600;
   user-select: none;
-}
-
-/* Interactive Liquid Shader Canvas (Kevin van der Wijst style fluid distortion) */
-.sk-liquid-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  display: block;
 }
 
 /* ==========================================================================
