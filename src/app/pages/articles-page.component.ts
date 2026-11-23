@@ -15,6 +15,9 @@ import { SeoService } from '../services/seo.service';
           <p class="sk-page-subtitle" style="margin-top: 8px;">
             Strategic frameworks, algorithmic search architectures, and empirical revenue systems.
           </p>
+          <div class="sk-preferred-source-bar">
+            <div google-add-preferred-source-btn data-theme="light"></div>
+          </div>
         </div>
 
         <!-- Quick Search Bar (WebMCP Declarative Tool) -->
@@ -36,7 +39,10 @@ import { SeoService } from '../services/seo.service';
             name="query"
             aria-label="Search articles and frameworks"
             description="Keywords or topics to search for, e.g. GEO, AEO, CAC, RevOps"
-            placeholder="Search by topic, framework, or keyword..."
+            placeholder="Search by topic, framework, or keyword…"
+            spellcheck="false"
+            autocapitalize="none"
+            autocomplete="off"
             [value]="searchQuery()"
             (input)="onSearchInput($event)"
             class="ca-search-input"

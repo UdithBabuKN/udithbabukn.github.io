@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   standalone: true,
   template: `
     <div style="padding: 80px 20px; text-align: center; color: #FFFFFF; font-family: var(--sk-font-mono); font-weight: 700;">
-      Opening article...
+      Opening article…
     </div>
   `,
 })

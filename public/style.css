@@ -1,31 +1,34 @@
 /* ==========================================================================
    UDITH BABU K N — INDIVIDUAL BLOG ARTICLES STYLESHEET
-   1:1 Red & White CloudAtler Design System Parity with Home Page
+   1:1 Topographic Indigo & Blue Design System Parity with Home Page
    ========================================================================== */
 
 :root {
   color-scheme: light;
-  accent-color: #C81E1E;
+  accent-color: #2B38BA;
 
-  --ca-brand-red: #C81E1E;
-  --ca-brand-red-hover: #991B1B;
-  --ca-brand-red-border: #B91C1C;
-  --ca-rose-fill: #FEE2E2;
-  --ca-rose-subtle: #FEF2F2;
-  --ca-rose-border: #FECACA;
-  --ca-red-link: #B91C1C;
-  --ca-red-link-hover: #991B1B;
+  --ca-brand-primary: #2B38BA;
+  --ca-brand-primary-hover: #1E2B96;
+  --ca-brand-primary-border: #3B49DF;
+  --ca-brand-red: #2B38BA;
+  --ca-brand-red-hover: #1E2B96;
+  --ca-brand-red-border: #3B49DF;
+  --ca-rose-fill: #E0E7FF;
+  --ca-rose-subtle: #EEF2FF;
+  --ca-rose-border: #C7D2FE;
+  --ca-red-link: #2B38BA;
+  --ca-red-link-hover: #1E2B96;
 
-  --sk-black: #111827;
-  --sk-ink: #111827;
-  --sk-ink-muted: #374151;
-  --sk-ink-subtle: #52525B;
-  --sk-navy: #7F1D1D;
-  --sk-yellow: #FEE2E2;
+  --sk-black: #0F172A;
+  --sk-ink: #0F172A;
+  --sk-ink-muted: #334155;
+  --sk-ink-subtle: #64748B;
+  --sk-navy: #172554;
+  --sk-yellow: #E0E7FF;
   --sk-white: #FFFFFF;
 
-  --sk-border-hairline: 1px solid #E5E7EB;
-  --sk-border-strong: 1.5px solid #FECACA;
+  --sk-border-hairline: 1px solid #E2E8F0;
+  --sk-border-strong: 1.5px solid #C7D2FE;
 
   --sk-font-serif: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --sk-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -53,7 +56,7 @@
 }
 
 ::selection {
-  background-color: #C81E1E;
+  background-color: #2B38BA;
   color: #FFFFFF;
 }
 
@@ -67,7 +70,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  color: #111827;
+  color: #0F172A;
   background: transparent;
   font-family: var(--sk-font-sans);
   line-height: 1.6;
@@ -83,15 +86,9 @@ body::before {
   width: 100%;
   height: 100vh;
   height: 100lvh;
-  background: #FFFFFF url('/images/bg-facets-red.webp') center center / cover no-repeat;
+  background: #F8FAFC url('/images/bg-pattern.webp') center center / cover no-repeat;
   pointer-events: none;
   z-index: -1;
-}
-
-@media (max-width: 768px) {
-  body::before {
-    background-image: url('/images/bg-facets-red-mobile.webp');
-  }
 }
 
 .sk-page-wrapper {
@@ -119,7 +116,7 @@ body::before {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #C81E1E;
+  outline: 2px solid var(--sk-color-primary, #2B38BA);
   outline-offset: 2px;
 }
 
@@ -187,17 +184,17 @@ button:focus-visible {
 }
 
 .sk-nav-pill-btn:hover {
-  background-color: #FEF2F2 !important;
-  color: #C81E1E !important;
+  background-color: #EEF2FF !important;
+  color: #2B38BA !important;
   transform: none !important;
   box-shadow: none !important;
   border-color: transparent !important;
 }
 
 .sk-nav-pill-btn.active {
-  background-color: #C81E1E !important;
+  background-color: #2B38BA !important;
   color: #FFFFFF !important;
-  border-color: #B91C1C !important;
+  border-color: #1E2B96 !important;
   font-weight: 700 !important;
 }
 
@@ -227,20 +224,20 @@ button:focus-visible {
   font-family: var(--sk-font-sans);
   font-size: 0.84rem;
   font-weight: 600;
-  color: #111827 !important;
+  color: #0F172A !important;
   background: #FFFFFF !important;
-  border: 1px solid #D1D5DB !important;
+  border: 1px solid #CBD5E1 !important;
   border-radius: 8px !important;
   padding: 8px 14px;
   text-decoration: none;
-  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
   transition: var(--sk-transition);
 }
 
 .sk-back-pill:hover {
-  background: #FEF2F2 !important;
-  border-color: #C81E1E !important;
-  color: #C81E1E !important;
+  background: #EEF2FF !important;
+  border-color: #C7D2FE !important;
+  color: #2B38BA !important;
   transform: translateY(-1px);
 }
 
@@ -258,8 +255,8 @@ button:focus-visible {
 }
 
 .sk-breadcrumb-nav a:hover {
-  background: #FEF2F2;
-  color: #C81E1E;
+  background: #EEF2FF;
+  color: #2B38BA;
 }
 
 .sk-breadcrumb-sep {
@@ -268,12 +265,12 @@ button:focus-visible {
 }
 
 .sk-breadcrumb-current {
-  color: #B91C1C;
+  color: #2B38BA;
   font-weight: 700;
-  background: #FEF2F2;
+  background: #EEF2FF;
   padding: 2px 10px;
   border-radius: 6px;
-  border: 1px solid #FECACA;
+  border: 1px solid #C7D2FE;
   max-width: 340px;
   white-space: nowrap;
   overflow: hidden;
@@ -281,33 +278,34 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   EDITORIAL ARTICLE CARD SHEET (Crisp White CloudAtler Card)
+   EDITORIAL ARTICLE CARD SHEET (Clean Bright Porcelain Card)
    ========================================================================== */
 .sk-article-card-sheet {
-  background: #FFFFFF;
-  border: 1px solid #E5E7EB;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.06) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
   padding: 48px 56px 56px;
   position: relative;
+  color: #0F172A;
 }
 
 .sk-article-hero-banner {
-  background: #FEF2F2;
-  border: 1px solid #FECACA;
+  background: #EEF2FF !important;
+  border: 1px solid #C7D2FE !important;
   border-radius: 12px;
   padding: 32px;
   margin-bottom: 32px;
-  color: #111827;
+  color: #0F172A;
   box-shadow: none;
 }
 
 .sk-project-tag-pill,
 .sk-article-tag {
   display: inline-block;
-  background: #FEF2F2 !important;
-  color: #B91C1C !important;
-  border: 1px solid #FECACA !important;
+  background: #EEF2FF !important;
+  color: #2B38BA !important;
+  border: 1px solid #C7D2FE !important;
   border-radius: 6px;
   padding: 4px 12px;
   font-family: var(--sk-font-mono);
@@ -329,9 +327,9 @@ button:focus-visible {
   font-family: var(--sk-font-mono);
   font-size: 0.76rem;
   font-weight: 600;
-  color: #374151;
-  background: #F9FAFB;
-  border: 1px solid #E5E7EB;
+  color: #475569;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
   padding: 4px 10px;
   border-radius: 6px;
   display: inline-flex;
@@ -345,7 +343,7 @@ button:focus-visible {
   font-weight: 700;
   font-size: clamp(2rem, 4.4vw, 3rem);
   line-height: 1.14;
-  color: #111827;
+  color: #0F172A !important;
   margin: 0 0 24px 0;
   letter-spacing: -0.03em;
   text-wrap: balance;
@@ -355,15 +353,28 @@ button:focus-visible {
   display: none !important;
 }
 
+/* Google Preferred Sources (https://developers.google.com/search/docs/appearance/preferred-sources) */
+.sk-preferred-source-bar {
+  display: flex;
+  align-items: center;
+  margin: 0 0 24px 0;
+  min-height: 40px;
+}
+
+.sk-preferred-source-bar [google-add-preferred-source-btn] {
+  display: inline-flex;
+  align-items: center;
+}
+
 /* Featured Cover Image Frame */
 .sk-article-cover-frame {
   width: 100%;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #E2E8F0;
   border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.06) !important;
+  box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.06) !important;
   overflow: hidden;
   margin-bottom: 36px;
-  background: #FFFFFF;
+  background: #F8FAFC;
   line-height: 0;
 }
 
@@ -372,22 +383,22 @@ button:focus-visible {
   height: auto;
   object-fit: contain;
   display: block;
-  background: #FFFFFF;
+  background: transparent;
 }
 
 /* ==========================================================================
-   ARTICLE PROSE & TYPOGRAPHY (Red & White Editorial)
+   ARTICLE PROSE & TYPOGRAPHY (Indigo Topographic Editorial)
    ========================================================================== */
 .sk-article-prose {
   font-family: var(--sk-font-sans);
   font-size: 1.04rem;
   line-height: 1.8;
-  color: #1F2937;
+  color: #334155;
 }
 
 .sk-article-prose p {
   margin-bottom: 20px;
-  color: #374151;
+  color: #334155;
   font-weight: 450;
 }
 
@@ -395,11 +406,11 @@ button:focus-visible {
   font-family: var(--sk-font-serif);
   font-size: 1.75rem;
   font-weight: 700;
-  color: #111827;
+  color: #0F172A;
   margin-top: 44px;
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #E5E7EB;
+  border-bottom: 1px solid #E2E8F0;
   line-height: 1.24;
   letter-spacing: -0.025em;
 }
@@ -408,7 +419,7 @@ button:focus-visible {
   font-family: var(--sk-font-serif);
   font-size: 1.38rem;
   font-weight: 700;
-  color: #111827;
+  color: #0F172A;
   margin-top: 32px;
   margin-bottom: 12px;
   line-height: 1.28;
@@ -419,59 +430,63 @@ button:focus-visible {
   font-family: var(--sk-font-serif);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #111827;
+  color: #0F172A;
   margin-top: 24px;
   margin-bottom: 10px;
 }
 
 .sk-article-prose strong {
   font-weight: 700;
-  color: #111827;
+  color: #0F172A;
 }
 
 .sk-article-prose ul,
 .sk-article-prose ol {
   padding-left: 26px;
   margin-bottom: 24px;
-  color: #374151;
+  color: #334155;
 }
 
 .sk-article-prose li {
   margin-bottom: 10px;
   line-height: 1.72;
+  color: #334155;
 }
 
 .sk-article-prose a {
-  color: #B91C1C !important;
+  color: #2B38BA !important;
   background: transparent;
   padding: 0;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgba(43, 56, 186, 0.4);
+  text-underline-offset: 3px;
   border-bottom: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 .sk-article-prose a:hover {
-  color: #7F1D1D !important;
+  color: #1E2B96 !important;
+  text-decoration-color: #1E2B96;
   background: transparent;
 }
 
-/* Override legacy inline blue links inside Related Articles section */
+/* Override legacy inline links inside Related Articles section */
 .sk-article-card-sheet a[href$=".html"] {
-  color: #B91C1C !important;
+  color: #2B38BA !important;
   font-weight: 600;
   text-decoration: none !important;
 }
 
 .sk-article-card-sheet a[href$=".html"]:hover {
-  color: #7F1D1D !important;
-  text-decoration: none !important;
+  color: #1E2B96 !important;
+  text-decoration: underline !important;
 }
 
-/* Blockquotes with Soft Rose Accent */
+/* Blockquotes with Soft Indigo Accent */
 .sk-article-prose blockquote {
-  background: #FEF2F2 !important;
-  border-left: 4px solid #C81E1E !important;
+  background: #EEF2FF !important;
+  border-left: 4px solid #2B38BA !important;
   border-radius: 10px;
   padding: 20px 24px;
   margin: 28px 0;
@@ -479,23 +494,23 @@ button:focus-visible {
   font-weight: 500;
   font-size: 1.06rem;
   line-height: 1.65;
-  color: #111827 !important;
+  color: #1E2B96 !important;
   box-shadow: none !important;
 }
 
 .sk-article-prose blockquote p {
-  color: #111827 !important;
+  color: #1E2B96 !important;
   margin: 0;
 }
 
 .sk-article-prose code {
-  background: #FEF2F2;
-  border: 1px solid #FECACA;
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
   padding: 2px 6px;
   border-radius: 6px;
   font-size: 0.88em;
   font-family: var(--sk-font-mono);
-  color: #991B1B;
+  color: #2B38BA;
   font-weight: 600;
 }
 
@@ -521,27 +536,27 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   ARTICLE END CTA BANNER (Soft Rose Topographic Banner — Matches Home Page)
+   ARTICLE END CTA BANNER (Topographic Soft Blue Banner)
    ========================================================================== */
 .sk-article-footer-cta {
   margin-top: 44px;
-  background-color: #FEE2E2 !important;
-  border: 1px solid #FECACA !important;
+  background: #EEF2FF !important;
+  border: 1px solid #C7D2FE !important;
   border-radius: 16px;
   padding: 34px 38px;
-  box-shadow: 0 12px 32px -8px rgba(17, 24, 39, 0.08) !important;
+  box-shadow: 0 4px 18px -2px rgba(43, 56, 186, 0.08) !important;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  color: #111827;
+  color: #0F172A;
 }
 
 .sk-cta-title {
   font-family: var(--sk-font-serif);
   font-size: 1.65rem;
   font-weight: 700;
-  color: #111827 !important;
+  color: #0F172A !important;
   line-height: 1.24;
   margin-bottom: 4px;
   letter-spacing: -0.025em;
@@ -550,7 +565,7 @@ button:focus-visible {
 .sk-cta-text {
   font-size: 0.98rem;
   font-weight: 500;
-  color: #374151 !important;
+  color: #475569 !important;
   line-height: 1.6;
   margin: 0;
 }
@@ -569,11 +584,11 @@ button:focus-visible {
   font-size: 0.88rem;
   padding: 11px 20px;
   border-radius: 8px !important;
-  border: 1.5px solid #B91C1C !important;
-  background: #C81E1E !important;
+  border: 1.5px solid #1E2B96 !important;
+  background: #2B38BA !important;
   color: #FFFFFF !important;
   text-decoration: none;
-  box-shadow: 0 1px 2px rgba(127, 29, 29, 0.14) !important;
+  box-shadow: 0 1px 2px rgba(43, 56, 186, 0.2) !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -584,17 +599,23 @@ button:focus-visible {
 
 .sk-action-pill:nth-child(2) {
   background: #FFFFFF !important;
-  color: #111827 !important;
-  border-color: #D1D5DB !important;
-  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04) !important;
+  color: #0F172A !important;
+  border: 1.5px solid #CBD5E1 !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
+}
+
+.sk-action-pill:nth-child(2):hover {
+  background: #F8FAFC !important;
+  border-color: #94A3B8 !important;
+  color: #2B38BA !important;
 }
 
 .sk-action-pill:hover {
-  background: #991B1B !important;
+  background: #1E2B96 !important;
   color: #FFFFFF !important;
-  border-color: #7F1D1D !important;
+  border-color: #172554 !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 12px rgba(200, 30, 30, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(43, 56, 186, 0.3) !important;
 }
 
 /* ==========================================================================
@@ -652,7 +673,7 @@ button:focus-visible {
 }
 
 .sk-footer-link:hover {
-  color: #F87171 !important;
+  color: #9F9EFC !important;
 }
 
 /* ==========================================================================
@@ -764,5 +785,16 @@ button:focus-visible {
   .sk-footer-links {
     justify-content: center;
     gap: 8px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

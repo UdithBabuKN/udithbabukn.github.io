@@ -157,7 +157,7 @@ import { SeoService } from '../services/seo.service';
       </div>
     </section>
 
-    <!-- FAQ ACCORDION (native <details>/<summary>, keyboard & find-in-page accessible) -->
+    <!-- FAQ DIRECT ANSWERS (Open Q&A cards with answers directly visible) -->
     <section class="sk-about-section" aria-labelledby="faq-heading">
       <div class="sk-container" style="max-width: 880px;">
         <div class="ca-section-head">
@@ -167,10 +167,10 @@ import { SeoService } from '../services/seo.service';
 
         <div class="sk-faq-list">
           @for (faq of faqs; track faq.q) {
-            <details class="sk-faq-item">
-              <summary class="sk-faq-summary">{{ faq.q }}</summary>
+            <article class="sk-faq-item">
+              <h3 class="sk-faq-q">{{ faq.q }}</h3>
               <p class="sk-faq-a">{{ faq.a }}</p>
-            </details>
+            </article>
           }
         </div>
       </div>

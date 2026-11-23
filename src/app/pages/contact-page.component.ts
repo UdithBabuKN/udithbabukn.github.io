@@ -52,7 +52,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
                 <div>
                   <label
                     for="contact-name"
-                    style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #000000;"
+                    style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #0F172A;"
                   >
                     Your Name
                   </label>
@@ -61,6 +61,8 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
                     type="text"
                     name="name"
                     autocomplete="name"
+                    autocapitalize="words"
+                    spellcheck="false"
                     aria-invalid="false"
                     data-error="contact-name-error"
                     description="Sender's full name"
@@ -78,7 +80,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
                 <div>
                   <label
                     for="contact-email"
-                    style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #000000;"
+                    style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #0F172A;"
                   >
                     Your Email
                   </label>
@@ -87,6 +89,9 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
                     type="email"
                     name="email"
                     autocomplete="email"
+                    autocapitalize="none"
+                    inputmode="email"
+                    spellcheck="false"
                     aria-invalid="false"
                     data-error="contact-email-error"
                     description="Sender's email address for direct reply"
@@ -107,7 +112,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
               <div style="margin-bottom: 20px;">
                 <label
                   for="contact-message"
-                  style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #000000;"
+                  style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #0F172A;"
                 >
                   Note or Opportunity
                 </label>
@@ -118,7 +123,8 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
                   data-error="contact-message-error"
                   description="Message, inquiry, or partnership opportunity details"
                   rows="4"
-                  placeholder="Tell me what you have in mind..."
+                  spellcheck="true"
+                  placeholder="Tell me what you have in mind…"
                   required
                   (blur)="syncFieldAria($event.target)"
                   (invalid)="syncFieldAria($event.target, true)"
@@ -131,7 +137,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
               </div>
 
               <button type="submit" [disabled]="contactStatus() === 'loading'" class="sk-submit-btn">
-                {{ contactStatus() === 'loading' ? 'Delivering to Desk...' : "Send to Udith’s Desk" }}
+                {{ contactStatus() === 'loading' ? 'Delivering to Desk…' : "Send to Udith’s Desk" }}
               </button>
 
               @if (contactStatus() === 'error') {
