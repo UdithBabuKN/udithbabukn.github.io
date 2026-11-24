@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/">
 
-    <!-- Single Page Apps for GitHub Pages: URL Decoder -->
+    <!-- Single Page Apps for GitHub Pages: URL Decoder & Mobile PWA Install Suppressor -->
     <script>
       (function(l) {
         if (l.search[1] === '/' ) {
@@ -16,7 +16,12 @@
               l.pathname.slice(0, -1) + decoded + l.hash
           );
         }
-      }(window.location))
+      }(window.location));
+
+      // Prevent mobile browser automatic PWA install popups / mini-infobars
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+      });
     </script>
 
     <!-- Google Preferred Sources (https://developers.google.com/search/docs/appearance/preferred-sources) -->
@@ -46,12 +51,11 @@
     <!-- Agentic Resource Discovery (ARD) Manifest -->
     <link rel="ard" type="application/json" href="/.well-known/ard.json">
 
-    <!-- Favicons & Web Manifest -->
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- Open Graph / Facebook -->
