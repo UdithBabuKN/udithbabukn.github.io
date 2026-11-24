@@ -1,22 +1,17 @@
 import os
 import shutil
 import subprocess
-from PIL import Image
+from PIL import Image, ImageDraw
 
 workspace_dir = r"c:\Users\Admin\OneDrive\Desktop\udithbabukn.github.io-main"
 public_dir = os.path.join(workspace_dir, "public")
 artifact_dir = r"C:\Users\Admin\.gemini\antigravity\brain\12bbfec4-39d8-4992-a47d-8ddb5b5aa061"
 
-option9_svg_path = os.path.join(public_dir, "favicons", "option9.svg")
-target_svg_path = os.path.join(public_dir, "favicon.svg")
+svg_path = os.path.join(public_dir, "favicon.svg")
 
-# 1. Copy option9.svg to public/favicon.svg
-shutil.copyfile(option9_svg_path, target_svg_path)
-print(f"Copied {option9_svg_path} -> {target_svg_path}")
-
-# 2. Create a clean standalone HTML template for 1024x1024 screenshot
+# 1. Create a clean standalone HTML template for 1024x1024 screenshot with transparent body
 render_html = os.path.join(public_dir, "_render_temp.html")
-with open(option9_svg_path, "r", encoding="utf-8") as f:
+with open(svg_path, "r", encoding="utf-8") as f:
     svg_content = f.read()
 
 html_content = f"""<!DOCTYPE html>
@@ -25,7 +20,7 @@ html_content = f"""<!DOCTYPE html>
 <meta charset="utf-8">
 <style>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  html, body {{ width: 1024px; height: 1024px; overflow: hidden; background: transparent; }}
+  html, body {{ width: 1024px; height: 1024px; overflow: hidden; background: transparent !important; }}
   svg {{ width: 1024px; height: 1024px; display: block; }}
 </style>
 </head>
@@ -37,7 +32,7 @@ html_content = f"""<!DOCTYPE html>
 with open(render_html, "w", encoding="utf-8") as f:
     f.write(html_content)
 
-# 3. Render 1024x1024 PNG using Chrome headless
+# 2. Render 1024x1024 PNG using Chrome headless with transparent background
 chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 temp_png_1024 = os.path.join(public_dir, "_temp_1024.png")
 
@@ -45,6 +40,7 @@ cmd = [
     chrome_path,
     "--headless=new",
     "--disable-gpu",
+    "--default-background-color=00000000",
     "--force-device-scale-factor=1",
     "--window-size=1024,1024",
     f"--screenshot={temp_png_1024}",
@@ -54,45 +50,69 @@ cmd = [
 print("Rendering 1024x1024 with Chrome headless...")
 subprocess.run(cmd, check=True)
 
-# 4. Process with PIL
-img = Image.open(temp_png_1024).convert("RGBA")
-print(f"Rendered image size: {img.size}")
+raw_img = Image.open(temp_png_1024).convert("RGBA")
 
-# High-Res 1:1 master PNG
-master_1024 = os.path.join(public_dir, "udith-brand-mark-1x1.png")
-img.save(master_1024, "PNG", optimize=True)
-print(f"Saved: {master_1024}")
+# 3. Create a strict squircle alpha mask at 1024x1024 (radius = 256px, 25%)
+# This guarantees that all 4 corners are mathematically (0, 0, 0, 0) - ZERO white pixels!
+width, height = raw_img.size
+mask = Image.new("L", (width, height), 0)
+draw = ImageDraw.Draw(mask)
+corner_radius = int(width * 0.25)
+draw.rounded_rectangle((0, 0, width, height), radius=corner_radius, fill=255)
 
-# Copy 1:1 master to artifact directory for easy user download
+# Clean master image: wherever mask is 0, pixel is (0, 0, 0, 0)
+master_1024 = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+master_1024.paste(raw_img, (0, 0), mask=mask)
+
+print(f"Master top-left pixel: {master_1024.getpixel((0, 0))}")
+print(f"Master top-right pixel: {master_1024.getpixel((width - 1, 0))}")
+print(f"Master center pixel: {master_1024.getpixel((width // 2, height // 2))}")
+
+# 4. Save 1:1 master PNG
+master_png_path = os.path.join(public_dir, "udith-brand-mark-1x1.png")
+master_1024.save(master_png_path, "PNG", optimize=True)
+print(f"Saved: {master_png_path}")
+
+# Copy 1:1 master to artifact directory
 artifact_master = os.path.join(artifact_dir, "udith-brand-mark-1x1.png")
-shutil.copyfile(master_1024, artifact_master)
+shutil.copyfile(master_png_path, artifact_master)
 print(f"Saved artifact: {artifact_master}")
 
-# 512x512
-img_512 = img.resize((512, 512), Image.Resampling.LANCZOS)
-img_512.save(os.path.join(public_dir, "android-chrome-512x512.png"), "PNG", optimize=True)
-img_512.save(os.path.join(public_dir, "favicon-512x512.png"), "PNG", optimize=True)
+def export_icon(size, filename):
+    resized = master_1024.resize((size, size), Image.Resampling.LANCZOS)
+    # Re-apply exact squircle mask at target size to eliminate any downsampling fringing
+    target_mask = Image.new("L", (size, size), 0)
+    target_draw = ImageDraw.Draw(target_mask)
+    r = max(2, int(size * 0.25))
+    target_draw.rounded_rectangle((0, 0, size, size), radius=r, fill=255)
+    
+    clean_icon = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    clean_icon.paste(resized, (0, 0), mask=target_mask)
+    
+    out_path = os.path.join(public_dir, filename)
+    clean_icon.save(out_path, "PNG", optimize=True)
+    print(f"Saved {filename} ({size}x{size}) - corner(0,0): {clean_icon.getpixel((0,0))}")
+    return clean_icon
 
-# 192x192
-img_192 = img.resize((192, 192), Image.Resampling.LANCZOS)
-img_192.save(os.path.join(public_dir, "android-chrome-192x192.png"), "PNG", optimize=True)
+# Export all PNG sizes
+export_icon(512, "android-chrome-512x512.png")
+export_icon(512, "favicon-512x512.png")
+export_icon(192, "android-chrome-192x192.png")
+export_icon(180, "apple-touch-icon.png")
+icon_32 = export_icon(32, "favicon-32x32.png")
+icon_16 = export_icon(16, "favicon-16x16.png")
 
-# 180x180 (Apple touch icon)
-img_180 = img.resize((180, 180), Image.Resampling.LANCZOS)
-img_180.save(os.path.join(public_dir, "apple-touch-icon.png"), "PNG", optimize=True)
+# 5. Build multi-resolution ICO with 16, 32, 48, 64
+icon_48 = master_1024.resize((48, 48), Image.Resampling.LANCZOS)
+icon_64 = master_1024.resize((64, 64), Image.Resampling.LANCZOS)
 
-# 32x32
-img_32 = img.resize((32, 32), Image.Resampling.LANCZOS)
-img_32.save(os.path.join(public_dir, "favicon-32x32.png"), "PNG", optimize=True)
-
-# 16x16
-img_16 = img.resize((16, 16), Image.Resampling.LANCZOS)
-img_16.save(os.path.join(public_dir, "favicon-16x16.png"), "PNG", optimize=True)
-
-# Multi-resolution ICO: 16, 32, 48, 64
 ico_path = os.path.join(public_dir, "favicon.ico")
-img.save(ico_path, format="ICO", sizes=[(16, 16), (32, 32), (48, 48), (64, 64)])
-print(f"Saved multi-res ICO: {ico_path}")
+master_1024.save(
+    ico_path,
+    format="ICO",
+    sizes=[(16, 16), (32, 32), (48, 48), (64, 64)]
+)
+print(f"Saved multi-resolution ICO: {ico_path}")
 
 # Cleanup temp files
 if os.path.exists(render_html):
@@ -100,4 +120,4 @@ if os.path.exists(render_html):
 if os.path.exists(temp_png_1024):
     os.remove(temp_png_1024)
 
-print("All production favicon formats and 1:1 PNG generated successfully!")
+print("ALL FAVICON ASSETS GENERATED WITH ZERO CORNER ARTIFACTS!")

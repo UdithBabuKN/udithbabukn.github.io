@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <rect width="512" height="512" rx="128" fill="#F8FAFC"/>
-  <rect x="20" y="20" width="472" height="472" rx="108" fill="none" stroke="#E2E8F0" stroke-width="3"/>
-  <!-- Solid High-Density Minimal U -->
-  <path d="M160 148 V284 C160 348 200 388 256 388 C312 388 352 348 352 284 V148" fill="none" stroke="#0F172A" stroke-width="60" stroke-linecap="round"/>
-  <!-- Focal Punctuation Dot (Decisive executive closure) -->
-  <circle cx="352" cy="148" r="18" fill="#2563EB"/>
-</svg>

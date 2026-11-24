@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <rect width="512" height="512" rx="128" fill="#0F172A"/>
-  <!-- Square-outer, round-inner engineered glyph -->
-  <path d="M144 144 H204 V280 C204 316 226 340 256 340 C286 340 308 316 308 280 V144 H368 V288 C368 360 318 400 256 400 C194 400 144 360 144 288 Z" fill="#FFFFFF"/>
-  <rect x="320" y="144" width="48" height="12" fill="#38BDF8"/>
-</svg>

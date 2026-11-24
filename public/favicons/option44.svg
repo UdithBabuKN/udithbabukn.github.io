@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <rect width="512" height="512" rx="128" fill="#3B0764"/>
-  <!-- Optical White Monolith U -->
-  <path d="M156 148 V290 C156 354 198 392 256 392 C314 392 356 354 356 290 V148" fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
-  <!-- Radiant Coral Apex Dot -->
-  <circle cx="356" cy="148" r="18" fill="#F43F5E"/>
-</svg>

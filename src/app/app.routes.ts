@@ -32,11 +32,5 @@ export const routes: Routes = [
     path: 'contact',
     loadComponent: () => import('./pages/contact-page.component').then((m) => m.ContactPageComponent),
   },
-  {
-    path: 'favicons',
-    loadComponent: () => import('./pages/favicon-options.component').then((m) => m.FaviconOptionsComponent),
-  },
-  { path: 'favicon-options', redirectTo: 'favicons', pathMatch: 'full' },
-  { path: 'favicon-options.html', redirectTo: 'favicons', pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];

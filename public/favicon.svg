@@ -1,16 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
     <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0A0F1D"/>
-      <stop offset="100%" stop-color="#030712"/>
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
     </linearGradient>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FCD34D"/>
-      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="40%" stop-color="#F59E0B"/>
       <stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#F59E0B" flood-opacity="0.3"/>
+    </filter>
   </defs>
+  <!-- Sleek deep obsidian squircle with smooth radius -->
   <rect width="512" height="512" rx="128" fill="url(#bg9)"/>
-  <rect x="20" y="20" width="472" height="472" rx="108" fill="none" stroke="rgba(245,158,11,0.15)" stroke-width="2"/>
-  <path d="M150 140 C150 280 170 380 256 380 C340 380 362 290 362 230 C362 170 320 150 280 180 C246 206 250 260 274 270" fill="none" stroke="url(#goldGrad)" stroke-width="44" stroke-linecap="round"/>
+  <rect x="16" y="16" width="480" height="480" rx="116" fill="none" stroke="rgba(245,158,11,0.2)" stroke-width="4"/>
+  <!-- High-legibility Golden Ratio Spiral U: bold 64px gauge, open negative space -->
+  <path d="M148 116 V276 C148 356 196 404 256 404 C318 404 366 354 366 274 C366 194 322 154 268 184 C228 206 238 266 274 274" fill="none" stroke="url(#goldGrad)" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" filter="url(#goldGlow)"/>
 </svg>
