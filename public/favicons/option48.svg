@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect width="512" height="512" rx="128" fill="#0C4A6E"/>
+  <!-- Left Arctic Cyan Pillar -->
+  <rect x="144" y="140" width="56" height="154" rx="8" fill="#38BDF8"/>
+  <!-- Right Solar Amber Pillar -->
+  <rect x="312" y="140" width="56" height="154" rx="8" fill="#F59E0B"/>
+  <!-- Unifying White Foundation Arc -->
+  <path d="M144 260 C144 372 368 372 368 260" fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+</svg>

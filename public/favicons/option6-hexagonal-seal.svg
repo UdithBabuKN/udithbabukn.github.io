@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="hexBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E2B96"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="hexBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#93C5FD"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="#F8FAFC"/>
+  <!-- Hexagon Badge -->
+  <polygon points="256,40 436,144 436,368 256,472 76,368 76,144" fill="url(#hexBg)" stroke="url(#hexBorder)" stroke-width="12"/>
+  <!-- Centered Bold Monogram -->
+  <path d="M 180 160 L 180 280 C 180 330, 214 366, 256 366 C 298 366, 332 330, 332 280 L 332 160" fill="none" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

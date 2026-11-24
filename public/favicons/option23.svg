@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="liBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A66C2"/>
+      <stop offset="100%" stop-color="#004182"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#liBg)"/>
+  <!-- Bold Modern Lowercase 'ub' Ligature -->
+  <!-- 'u' form -->
+  <path d="M144 200 V300 C144 330 164 346 196 346 C228 346 248 328 248 296 V200 H204 V290 C204 304 196 312 184 312 C172 312 164 304 164 290 V200 Z" fill="#FFFFFF"/>
+  <rect x="232" y="228" width="22" height="114" fill="#FFFFFF"/>
+  <!-- 'b' form with high stem -->
+  <rect x="286" y="148" width="42" height="194" rx="4" fill="#FFFFFF"/>
+  <path d="M326 230 C352 226 384 242 384 286 C384 330 352 346 326 344 V306 C338 306 348 298 348 286 C348 274 338 266 326 266 Z" fill="#FFFFFF"/>
+  <!-- Electric Cyan telemetry beacon -->
+  <circle cx="396" cy="148" r="16" fill="#38BDF8"/>
+</svg>

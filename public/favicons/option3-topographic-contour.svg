@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="gradTop3A" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="gradTop3B" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="gradTop3C" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#312E81"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#bg3)"/>
+  <!-- Outer Contour U -->
+  <path d="M 124 130 L 124 286 C 124 366, 184 416, 256 416 C 328 416, 388 366, 388 286 L 388 130" fill="none" stroke="url(#gradTop3A)" stroke-width="32" stroke-linecap="round"/>
+  <!-- Middle Contour U -->
+  <path d="M 176 150 L 176 280 C 176 332, 212 366, 256 366 C 300 366, 336 332, 336 280 L 336 150" fill="none" stroke="url(#gradTop3B)" stroke-width="26" stroke-linecap="round"/>
+  <!-- Core Contour U -->
+  <path d="M 226 170 L 226 274 C 226 298, 238 316, 256 316 C 274 316, 286 298, 286 274 L 286 170" fill="none" stroke="url(#gradTop3C)" stroke-width="20" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="claudeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97757"/>
+      <stop offset="50%" stop-color="#C15F3C"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <radialGradient id="sparkLight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF8F4"/>
+      <stop offset="100%" stop-color="#F5EBE1"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#sparkLight)"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="rgba(217,119,87,0.18)" stroke-width="3"/>
+  <!-- Claude-style organic asterisk where vertical lobes shape an iconic U-basin -->
+  <g transform="translate(256, 256)">
+    <!-- Central hub -->
+    <circle cx="0" cy="0" r="42" fill="#C15F3C"/>
+    <!-- North-West petal (Left U-arm top) -->
+    <path d="M-28 -28 L-76 -130 A28 28 0 0 1 -24 -150 L10 -40 Z" fill="#D97757"/>
+    <!-- North-East petal (Right U-arm top) -->
+    <path d="M28 -28 L76 -130 A28 28 0 0 0 24 -150 L-10 -40 Z" fill="#D97757"/>
+    <!-- East Petal -->
+    <path d="M36 -12 L140 -20 A24 24 0 0 1 146 32 L34 24 Z" fill="#2563EB"/>
+    <!-- West Petal -->
+    <path d="M-36 -12 L-140 -20 A24 24 0 0 0 -146 32 L-34 24 Z" fill="#2563EB"/>
+    <!-- South U-Cradle Petal (Broad bottom loop) -->
+    <path d="M-34 32 C-70 120 70 120 34 32 Z" fill="#1D4ED8"/>
+    <!-- Inner optical U indicator -->
+    <path d="M-40 -60 V20 C-40 60 40 60 40 -60" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="0" cy="-70" r="10" fill="#F59E0B"/>
+  </g>
+</svg>

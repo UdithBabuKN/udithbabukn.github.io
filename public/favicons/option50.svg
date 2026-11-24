@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect width="512" height="512" rx="128" fill="#1E0E3D"/>
+  <!-- Left Continuous Stem in Electric Teal -->
+  <rect x="144" y="140" width="56" height="150" rx="6" fill="#14B8A6"/>
+  <!-- Base Sweep in Electric Teal -->
+  <path d="M144 260 C144 374 368 374 368 260" fill="none" stroke="#14B8A6" stroke-width="56" stroke-linecap="round"/>
+  <!-- Upper Right Stem in Pure White with Negative Space Cut -->
+  <rect x="312" y="140" width="56" height="50" rx="6" fill="#FFFFFF"/>
+  <rect x="312" y="214" width="56" height="76" rx="6" fill="#14B8A6"/>
+</svg>

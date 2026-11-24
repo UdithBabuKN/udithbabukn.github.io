@@ -1,66 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <linearGradient id="bg" x1="10%" y1="90%" x2="90%" y2="10%">
-      <stop offset="0%" stop-color="#080B1E"/>
-      <stop offset="45%" stop-color="#141B54"/>
-      <stop offset="100%" stop-color="#2835A8"/>
+    <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0F1D"/>
+      <stop offset="100%" stop-color="#030712"/>
     </linearGradient>
-
-    <linearGradient id="curve1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#9F9EFC" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#5A5DD2" stop-opacity="0.5"/>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
-
-    <linearGradient id="curve2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.75"/>
-      <stop offset="100%" stop-color="#2B38BA" stop-opacity="0.35"/>
-    </linearGradient>
-
-    <linearGradient id="monogramGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="100%" stop-color="#E2E8FF"/>
-    </linearGradient>
-
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
-    </filter>
   </defs>
-
-  <!-- Squircle Base Canvas -->
-  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
-
-  <!-- Topographic Layer 1 (Outer Deep Waves) -->
-  <path d="M0 180 C 140 120, 220 280, 512 160 L 512 512 L 0 512 Z" fill="#141B54" opacity="0.65"/>
-
-  <!-- Topographic Layer 2 (Middle Waves) -->
-  <path d="M0 270 C 120 200, 260 360, 512 240 L 512 512 L 0 512 Z" fill="#1C256E" opacity="0.75"/>
-
-  <!-- Topographic Layer 3 (Inner Waves) -->
-  <path d="M0 360 C 150 300, 300 430, 512 330 L 512 512 L 0 512 Z" fill="#242E86" opacity="0.85"/>
-
-  <!-- Topographic Layer 4 (Bottom Deep Basin) -->
-  <path d="M0 430 C 160 390, 330 470, 512 410 L 512 512 L 0 512 Z" fill="#0C1030" opacity="0.9"/>
-
-  <!-- Contour Elevation Lines (Fluid Organic Topography matching wallpaper) -->
-  <path d="M -20 120 Q 140 60, 260 170 T 530 110" fill="none" stroke="url(#curve1)" stroke-width="7" opacity="0.9"/>
-  <path d="M -20 190 Q 150 130, 280 230 T 530 180" fill="none" stroke="url(#curve1)" stroke-width="5.5" opacity="0.75"/>
-  <path d="M -20 270 Q 130 200, 280 320 T 530 250" fill="none" stroke="url(#curve2)" stroke-width="5" opacity="0.65"/>
-  <path d="M -20 350 Q 160 290, 310 390 T 530 330" fill="none" stroke="url(#curve2)" stroke-width="4.5" opacity="0.5"/>
-  <path d="M -20 420 Q 170 380, 330 450 T 530 400" fill="none" stroke="url(#curve2)" stroke-width="3.5" opacity="0.4"/>
-
-  <!-- Center Highlight / Brand Accent Halo -->
-  <circle cx="256" cy="256" r="140" fill="#3B49DF" opacity="0.22" filter="url(#glow)"/>
-
-  <!-- Monogram "U" for Udith Babu K N -->
-  <g filter="url(#glow)">
-    <path d="M 180 155 
-             L 180 265 
-             A 76 76 0 0 0 332 265 
-             L 332 155" 
-          fill="none" 
-          stroke="url(#monogramGrad)" 
-          stroke-width="52" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"/>
-  </g>
+  <rect width="512" height="512" rx="128" fill="url(#bg9)"/>
+  <rect x="20" y="20" width="472" height="472" rx="108" fill="none" stroke="rgba(245,158,11,0.15)" stroke-width="2"/>
+  <path d="M150 140 C150 280 170 380 256 380 C340 380 362 290 362 230 C362 170 320 150 280 180 C246 206 250 260 274 270" fill="none" stroke="url(#goldGrad)" stroke-width="44" stroke-linecap="round"/>
 </svg>

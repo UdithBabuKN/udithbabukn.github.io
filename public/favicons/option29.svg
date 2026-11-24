@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ghDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181717"/>
+      <stop offset="100%" stop-color="#0D1117"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#ghDark)"/>
+  <rect x="18" y="18" width="476" height="476" rx="110" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <!-- Negative Space Carved Monolithic U -->
+  <path d="M160 144 V284 C160 348 200 388 256 388 C312 388 352 348 352 284 V144 H294 V280 C294 308 276 328 256 328 C236 328 218 308 218 280 V144 Z" fill="#FFFFFF"/>
+  <!-- Terminal Prompt Caret / Cursor in Electric Cyan -->
+  <polygon points="364,154 388,174 364,194" fill="#58A6FF"/>
+</svg>

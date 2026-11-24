@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5865F2"/>
+      <stop offset="100%" stop-color="#4752C4"/>
+    </linearGradient>
+    <filter id="clydeGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#23272A" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="136" fill="url(#blurple)"/>
+  <!-- Subtle inner specular ring -->
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+  <!-- Clyde-inspired friendly geometric U headset/crest -->
+  <path d="M152 170 V270 C152 350 200 392 256 392 C312 392 360 350 360 270 V170 C340 190 310 196 280 186 L256 200 L232 186 C202 196 172 190 152 170 Z" fill="#FFFFFF" filter="url(#clydeGlow)"/>
+  <!-- Twin expressive optic nodes -->
+  <circle cx="210" cy="276" r="22" fill="#5865F2"/>
+  <circle cx="302" cy="276" r="22" fill="#5865F2"/>
+</svg>

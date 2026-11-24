@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2B38BA"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#bg9)"/>
+  <!-- Circular Golden Ratio Orbit -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>
+  <!-- Encircling U -->
+  <path d="M 160 140 L 160 270 C 160 330, 202 376, 256 376 C 310 376, 352 330, 352 270 L 352 140" fill="none" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round"/>
+  <!-- 4-Point Compass Polaris Star -->
+  <path d="M 256 180 Q 256 220 280 220 Q 256 220 256 260 Q 256 220 232 220 Q 256 220 256 180 Z" fill="#67E8F9"/>
+  <circle cx="256" cy="220" r="5" fill="#FFFFFF"/>
+</svg>

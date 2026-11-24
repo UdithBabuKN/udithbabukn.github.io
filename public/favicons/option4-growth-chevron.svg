@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2B38BA"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#bg4)"/>
+  <!-- Left Pillar -->
+  <path d="M 144 116 L 144 280 C 144 350, 192 396, 256 396 C 300 396, 336 372, 352 336" fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+  <!-- Right Ascent Arrow -->
+  <path d="M 368 310 L 368 136 L 416 184" fill="none" stroke="#60A5FA" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="296,136 368,136 368,208" fill="none" stroke="#60A5FA" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
