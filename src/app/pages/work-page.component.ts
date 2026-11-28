@@ -34,7 +34,7 @@ import { SeoService } from '../services/seo.service';
                 >
                   Launch {{ proj.type }} ↗
                 </a>
-                <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; color: var(--sk-ink-muted);">
+                <span style="font-family: var(--sk-font-mono); font-variant-numeric: tabular-nums; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--sk-ink-muted);">
                   0{{ idx + 1 }}
                 </span>
               </div>

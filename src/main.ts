@@ -1,9 +1,6 @@
-import { initWebMcp } from './app/utils/webmcp';
-
-initWebMcp();
-
-// Purge any legacy Workbox service worker without blocking initial paint
-const cleanupLegacySw = () => {
+// Defer non-critical background setup until after load + idle so initial TBT stays near zero
+const runDeferredSetup = () => {
+  void import('./app/utils/webmcp').then(({ initWebMcp }) => initWebMcp());
   if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then((registrations) => {
       registrations.forEach((reg) => {
@@ -14,10 +11,17 @@ const cleanupLegacySw = () => {
 };
 
 if (typeof window !== 'undefined') {
-  if ('requestIdleCallback' in window) {
-    window.requestIdleCallback(cleanupLegacySw, { timeout: 3000 });
+  const scheduleDeferred = () => {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(runDeferredSetup, { timeout: 3500 });
+    } else {
+      globalThis.setTimeout(runDeferredSetup, 2000);
+    }
+  };
+  if (document.readyState === 'complete') {
+    globalThis.setTimeout(scheduleDeferred, 1500);
   } else {
-    globalThis.setTimeout(cleanupLegacySw, 1500);
+    window.addEventListener('load', () => globalThis.setTimeout(scheduleDeferred, 1500), { once: true });
   }
 
   let bootstrapped = false;

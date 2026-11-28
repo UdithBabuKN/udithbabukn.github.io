@@ -1,4 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, afterNextRender, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../components/icon.component';
 import { blogPosts } from '../data/blog-posts.data';
 import { SeoService } from '../services/seo.service';
@@ -150,8 +151,18 @@ export class ArticlesPageComponent {
   readonly remainingCount = computed(() => Math.max(0, this.filteredPosts().length - this.visibleArticleCount()));
 
   private readonly seo = inject(SeoService);
+  private readonly doc = inject(DOCUMENT);
 
   constructor() {
+    afterNextRender(() => {
+      const src = 'https://news.google.com/swg/js/v1/publisher.js';
+      if (!this.doc.querySelector(`script[src="${src}"]`)) {
+        const script = this.doc.createElement('script');
+        script.async = true;
+        script.src = src;
+        this.doc.head.appendChild(script);
+      }
+    });
     this.seo.update({
       title: 'Blog | Notes & Frameworks | Udith Babu K N',
       description: 'Strategic frameworks, AI search architectures, and empirical growth deep dives by Udith Babu K N.',

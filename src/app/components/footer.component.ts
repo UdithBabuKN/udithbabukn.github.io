@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
         >
           <path
             d="M0,32 C180,54 360,8 580,26 C800,44 980,10 1200,24 C1320,32 1390,38 1440,30 L1440,56 L0,56 Z"
-            fill="#0B0B0E"
+            fill="#121215"
           />
         </svg>
       </div>

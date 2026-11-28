@@ -64,7 +64,7 @@ import { SeoService } from '../services/seo.service';
                 engines answer queries without clicks, I formulated the
                 <a href="/blog/udith-babu-kn-marketing-methodology.html" class="sk-inline-card-link"
                   >Tri-Vector Growth Engine</a
-                >—uniting technical search architecture, operational unit economics (CAC payback &lt; 8 months), and
+                >, uniting technical search architecture, operational unit economics (CAC payback &lt; 8 months), and
                 authentic human persuasion.
               </p>
               <p style="margin-top: 14px;">

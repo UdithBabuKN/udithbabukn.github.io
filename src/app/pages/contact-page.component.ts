@@ -13,7 +13,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
           <h1 class="sk-section-heading" style="margin-bottom: 12px; text-align: center;">
             Drop a note at Udith's desk.
           </h1>
-          <p class="sk-page-subtitle" style="text-align: center; font-size: 1.05rem; font-weight: 600; margin-bottom: 28px;">
+          <p class="sk-page-subtitle" style="text-align: center; font-size: 1.02rem; font-weight: 500; margin-bottom: 28px;">
             Have an open role, project proposal, or want to discuss growth marketing? Send a direct dispatch below.
           </p>
 
@@ -52,7 +52,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
                 <div>
                   <label
                     for="contact-name"
-                    style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #0F172A;"
+                    style="display: block; font-size: 0.76rem; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; color: var(--ca-text-primary);"
                   >
                     Your Name
                   </label>
@@ -80,7 +80,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
                 <div>
                   <label
                     for="contact-email"
-                    style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #0F172A;"
+                    style="display: block; font-size: 0.76rem; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; color: var(--ca-text-primary);"
                   >
                     Your Email
                   </label>
@@ -112,7 +112,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../utils/webmcp';
               <div style="margin-bottom: 20px;">
                 <label
                   for="contact-message"
-                  style="display: block; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; color: #0F172A;"
+                  style="display: block; font-size: 0.76rem; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; color: var(--ca-text-primary);"
                 >
                   Note or Opportunity
                 </label>

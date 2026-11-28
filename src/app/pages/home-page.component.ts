@@ -1,56 +1,116 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../components/icon.component';
+import { PortraitLightboxComponent } from '../components/portrait-lightbox.component';
+import { PORTRAIT_FRAMES } from '../data/portraits.data';
 import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink, IconComponent],
+  imports: [RouterLink, IconComponent, PortraitLightboxComponent],
   template: `
-    <!-- HERO SECTION -->
+    <!-- EDITORIAL HERO WITH SPREAD-OUT PORTRAIT COLLAGE -->
     <section id="desk" class="ca-hero-section">
       <div class="sk-container ca-hero-container">
-        <div class="ca-hero-centered">
-          <h1 class="ca-hero-title">
-            <span class="ca-hero-title-top">Udith Babu K N</span>
-            <span class="ca-hero-title-sub">Scale Organic &amp; Revenue Growth</span>
-          </h1>
+        <div class="ca-hero-split">
+          <!-- Left Editorial Column -->
+          <div class="ca-hero-content">
+            <p class="ca-hero-role-line">Marketing &amp; Sales Executive · IT Business Analyst</p>
 
-          <p class="ca-hero-lead">
-            Marketing &amp; Sales Executive and IT Business Analyst from Kerala, India. Combining technical SEO,
-            Generative Engine Optimization (GEO), and Python data pipelines to turn search intent into measurable
-            pipeline velocity.
-          </p>
+            <h1 class="ca-hero-title">
+              <span class="ca-hero-title-top">Udith Babu K N</span>
+              <span class="ca-hero-title-sub">
+                Scale Organic &amp; <span class="ca-hero-title-accent">Revenue Growth</span>
+              </span>
+            </h1>
 
-          <div class="ca-hero-cta-group ca-hero-cta-centered">
-            <a routerLink="/work" class="ca-btn ca-btn-primary ca-btn-lg">View Selected Work</a>
-            <a routerLink="/contact" class="ca-btn ca-btn-secondary ca-btn-lg">Drop a Note</a>
+            <p class="ca-hero-lead">
+              Based in Kerala, India. Combining technical SEO, Generative Engine Optimization (GEO), and Python data
+              pipelines to turn search intent into measurable pipeline velocity.
+            </p>
+
+            <div class="ca-hero-cta-group">
+              <a routerLink="/work" class="ca-btn ca-btn-primary ca-btn-lg">View Selected Work</a>
+              <a routerLink="/contact" class="ca-btn ca-btn-secondary ca-btn-lg">Drop a Note</a>
+            </div>
+
+            <!-- Authority & Social Channels Strip -->
+            <div class="ca-authority-strip">
+              <div class="ca-authority-label">Connect across channels &amp; publications</div>
+              <div class="ca-authority-badges">
+                @for (item of socialLinks; track item.url) {
+                  <a
+                    [href]="item.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="ca-authority-badge"
+                    [title]="item.name"
+                  >
+                    <app-icon [name]="item.icon" [size]="15" />
+                    <span>{{ item.name }}</span>
+                  </a>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side of Spread-Out Collage (3 Prominent Portraits) -->
+          <div class="ca-collage-upper" aria-label="Featured portrait collage">
+            @for (frame of upperCollageFrames; track frame.id; let idx = $index) {
+              <button
+                type="button"
+                [class]="'ca-collage-card ca-collage-upper-' + (idx + 1)"
+                [attr.aria-label]="'Inspect portrait: ' + frame.label"
+                (click)="openLightboxById(frame.id)"
+              >
+                <span class="ca-collage-frame">
+                  <img
+                    [src]="frame.thumbSrc"
+                    [attr.srcset]="frame.srcSet"
+                    sizes="(max-width: 640px) 28vw, 220px"
+                    [alt]="frame.alt"
+                    class="ca-collage-img"
+                    width="320"
+                    height="569"
+                    [attr.fetchpriority]="idx === 0 ? 'high' : null"
+                    decoding="async"
+                  />
+                </span>
+              </button>
+            }
           </div>
         </div>
 
-        <!-- Authority & Social Channels Strip -->
-        <div class="ca-authority-strip">
-          <div class="ca-authority-label">Connect across channels &amp; publications</div>
-          <div class="ca-authority-badges">
-            @for (item of socialLinks; track item.url) {
-              <a
-                [href]="item.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="ca-authority-badge"
-                [title]="item.name"
-              >
-                <app-icon [name]="item.icon" [size]="15" />
-                <span>{{ item.name }}</span>
-              </a>
-            }
-          </div>
+        <!-- Spread-Out Lower Hero Collage Field (Continues seamlessly inside Hero only) -->
+        <div class="ca-collage-spread" aria-label="Extended portrait collage">
+          @for (frame of lowerCollageFrames; track frame.id; let idx = $index) {
+            <button
+              type="button"
+              [class]="'ca-collage-card ca-collage-spread-' + (idx + 1)"
+              [attr.aria-label]="'Inspect portrait: ' + frame.label"
+              (click)="openLightboxById(frame.id)"
+            >
+              <span class="ca-collage-frame">
+                <img
+                  [src]="frame.thumbSrc"
+                  [attr.srcset]="frame.srcSet"
+                  sizes="(max-width: 640px) 44vw, 180px"
+                  [alt]="frame.alt"
+                  class="ca-collage-img"
+                  width="320"
+                  height="569"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+            </button>
+          }
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE & EDUCATION (Frosted Rose Band) -->
+    <!-- EXPERIENCE & EDUCATION -->
     <section class="sk-experience-section ca-section-alt" aria-labelledby="experience-heading">
       <div class="sk-container">
         <div class="ca-section-head">
@@ -157,7 +217,7 @@ import { SeoService } from '../services/seo.service';
       </div>
     </section>
 
-    <!-- FAQ DIRECT ANSWERS (Open Q&A cards with answers directly visible) -->
+    <!-- FAQ DIRECT ANSWERS -->
     <section class="sk-about-section" aria-labelledby="faq-heading">
       <div class="sk-container" style="max-width: 880px;">
         <div class="ca-section-head">
@@ -175,9 +235,47 @@ import { SeoService } from '../services/seo.service';
         </div>
       </div>
     </section>
+
+    <app-portrait-lightbox
+      #lightbox
+      [activeFrame]="lightboxPortrait()"
+      [totalCount]="totalPortraits"
+      (step)="stepLightbox($event)"
+      (closed)="lightboxIndex.set(null)"
+    />
   `,
 })
 export class HomePageComponent {
+  readonly portraits = PORTRAIT_FRAMES;
+  readonly totalPortraits = PORTRAIT_FRAMES.length;
+
+  readonly upperCollageFrames = [
+    PORTRAIT_FRAMES[0], // udith-01: Pinstripe & Rimless Shades (focal hero shot)
+    PORTRAIT_FRAMES[9], // udith-10: Tailored Aubergine Blazer
+    PORTRAIT_FRAMES[5], // udith-06: Studio Espresso I
+  ];
+
+  readonly lowerCollageFrames = [
+    PORTRAIT_FRAMES[1], // udith-02: Monochrome Profile
+    PORTRAIT_FRAMES[3], // udith-04: Forest & Sienna
+    PORTRAIT_FRAMES[11], // udith-12: Golden Hour Denim I
+    PORTRAIT_FRAMES[2], // udith-03: Monochrome Front
+    PORTRAIT_FRAMES[6], // udith-07: Studio Espresso II
+    PORTRAIT_FRAMES[10], // udith-11: Waistcoat & Blazer Drape
+    PORTRAIT_FRAMES[8], // udith-09: Knit & Navy Layer
+    PORTRAIT_FRAMES[4], // udith-05: Monochrome Detail
+    PORTRAIT_FRAMES[7], // udith-08: Studio Espresso III
+    PORTRAIT_FRAMES[12], // udith-13: Tailored Waistcoat
+    PORTRAIT_FRAMES[13], // udith-14: Golden Hour Denim II
+  ];
+
+  readonly lightboxIndex = signal<number | null>(null);
+  readonly lightboxPortrait = computed(() => {
+    const idx = this.lightboxIndex();
+    return idx === null ? null : this.portraits[idx];
+  });
+  private readonly lightbox = viewChild<PortraitLightboxComponent>('lightbox');
+
   readonly socialLinks = [
     { name: 'LinkedIn', icon: 'ph-linkedin-logo', url: 'https://www.linkedin.com/in/udith-babu-k-n' },
     { name: 'Instagram', icon: 'ph-instagram-logo', url: 'https://www.instagram.com/udith_babu_k_n' },
@@ -225,7 +323,7 @@ export class HomePageComponent {
             '@id': 'https://udithbabukn.github.io/#profilepage',
             url: 'https://udithbabukn.github.io/',
             datePublished: '2024-01-01',
-            dateModified: '2026-11-18',
+            dateModified: '2026-11-28',
             mainEntity: {
               '@type': 'Person',
               name: 'Udith Babu K N',
@@ -237,10 +335,10 @@ export class HomePageComponent {
               url: 'https://udithbabukn.github.io/',
               image: {
                 '@type': 'ImageObject',
-                url: 'https://udithbabukn.github.io/picofme.webp',
+                url: 'https://udithbabukn.github.io/images/portraits/udith-01.webp',
                 caption: 'Udith Babu K N',
-                width: '512',
-                height: '512',
+                width: '576',
+                height: '1024',
               },
               sameAs: this.socialLinks.map((s) => s.url),
               address: {
@@ -311,6 +409,20 @@ export class HomePageComponent {
           },
         ],
       },
+    });
+  }
+
+  openLightboxById(id: number): void {
+    const idx = this.portraits.findIndex((p) => p.id === id);
+    if (idx === -1) return;
+    this.lightboxIndex.set(idx);
+    this.lightbox()?.open();
+  }
+
+  stepLightbox(delta: number): void {
+    this.lightboxIndex.update((i) => {
+      if (i === null) return 0;
+      return (i + delta + this.totalPortraits) % this.totalPortraits;
     });
   }
 }

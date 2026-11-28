@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-blog-redirect',
   standalone: true,
   template: `
-    <div style="padding: 80px 20px; text-align: center; color: #FFFFFF; font-family: var(--sk-font-mono); font-weight: 700;">
+    <div style="padding: 80px 20px; text-align: center; color: var(--ca-text-primary); font-family: var(--sk-font-mono); font-weight: 700;">
       Opening article…
     </div>
   `,
